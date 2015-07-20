@@ -39,7 +39,6 @@
 
 /* this project */
 #include "common.h"
-#include "x86.h"
 #include "init.h"
 #include "detour.h"
 #include "symtab.h"
