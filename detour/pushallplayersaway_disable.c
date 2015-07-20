@@ -6,19 +6,12 @@ DETOUR(pushallplayersaway_disable);
  * (used by engiebot behaviors to push players when they spawn and build) */
 
 
-static void (*trampoline_CTFGameRules_PushAllPlayersAway)(void*);
+static void (*trampoline_CTFGameRules_PushAllPlayersAway)(void*, void*, float, float, int, void*);
 
 
-void detour_CTFGameRules_PushAllPlayersAway(void* this)
+void detour_CTFGameRules_PushAllPlayersAway(void* this, void* loc, float f1, float f2, int i1, void* players)
 {
-	/* only run the function every third time */
-	static int c = 0;
-	if (c == 0) {
-		trampoline_CTFGameRules_PushAllPlayersAway(this);
-	}
-	if (++c == 3) {
-		c = 0;
-	}
+	/* do absolutely nothing */
 }
 
 
