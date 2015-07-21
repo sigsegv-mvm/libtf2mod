@@ -4,6 +4,8 @@
 
 static void *_sym_obj(const char *name)
 {
+	pr_debug("obj:  %s\n", name);
+	
 	symbol_t sym;
 	if (!symtab_obj_name(&sym, name)) {
 		pr_warn("could not get address for object symbol '%s'\n", name);
@@ -16,6 +18,8 @@ static void *_sym_obj(const char *name)
 
 static void *_sym_func(const char *name)
 {
+	pr_debug("func: %s\n", name);
+	
 	symbol_t sym;
 	if (!symtab_func_name(&sym, name)) {
 		pr_warn("could not get address for function symbol '%s'\n", name);
