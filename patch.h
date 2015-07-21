@@ -34,11 +34,11 @@ typedef struct {
 
 void patch_all(void);
 
-void func_read(const func_t *func, size_t off, size_t len, uint8_t *dst);
-bool func_verify(const func_t *func, size_t off, size_t len, const uint8_t *cmp);
+void func_read(void *pfunc, size_t off, size_t len, uint8_t *dst);
+bool func_verify(void *pfunc, size_t off, size_t len, const uint8_t *cmp);
 
-void func_write(const func_t *func, size_t off, size_t len, const uint8_t *src);
-void func_write_nop(const func_t *func, size_t off, size_t count);
+void func_write(void *pfunc, size_t off, size_t len, const uint8_t *src);
+void func_write_nop(void *pfunc, size_t off, size_t count);
 
 
 extern patch_info_t patch_eh_unrestrict_class;

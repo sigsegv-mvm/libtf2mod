@@ -71,16 +71,20 @@ void patch_all(void)
 }
 
 
-void func_read(const func_t *func, size_t off, size_t len, uint8_t *dst)
+void func_read(void *pfunc, size_t off, size_t len, uint8_t *dst)
 {
+	func_t *func = func_register(pfunc);
+	
 	assert(off + len <= func->func_size);
 	uintptr_t where = func->func_addr + off;
 	
 	memcpy(dst, (void *)where, len);
 }
 
-bool func_verify(const func_t *func, size_t off, size_t len, const uint8_t *cmp)
+bool func_verify(void *pfunc, size_t off, size_t len, const uint8_t *cmp)
 {
+	func_t *func = func_register(pfunc);
+	
 	assert(off + len <= func->func_size);
 	uintptr_t where = func->func_addr + off;
 	
@@ -100,8 +104,10 @@ bool func_verify(const func_t *func, size_t off, size_t len, const uint8_t *cmp)
 }
 
 
-void func_write(const func_t *func, size_t off, size_t len, const uint8_t *src)
+void func_write(void *pfunc, size_t off, size_t len, const uint8_t *src)
 {
+	func_t *func = func_register(pfunc);
+	
 	assert(off + len <= func->func_size);
 	uintptr_t where = func->func_addr + off;
 	
@@ -110,8 +116,10 @@ void func_write(const func_t *func, size_t off, size_t len, const uint8_t *src)
 	func_protect(func);
 }
 
-void func_write_nop(const func_t *func, size_t off, size_t count)
+void func_write_nop(void *pfunc, size_t off, size_t count)
 {
+	func_t *func = func_register(pfunc);
+	
 	assert(off + count <= func->func_size);
 	uintptr_t where = func->func_addr + off;
 	
