@@ -5,14 +5,9 @@ PATCH(redcredits_unrestrict_class);
 /* allow red credits to drop for classes other than sniper */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFPlayer::Event_Killed(CTakeDamageInfo const&) */
-	func1 = func_register(
-		"_ZN9CTFPlayer12Event_KilledERK15CTakeDamageInfo");
+	
 }
 
 
@@ -26,7 +21,8 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFPlayer_Event_Killed,
+		check1_base, sizeof(check1), check1)) result = false;
 	return result;
 }
 
@@ -34,5 +30,6 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* NOP out the jump */
-	func_write_nop(func1, 0x083e, 6);
+	func_write_nop(CTFPlayer_Event_Killed,
+		0x083e, 6);
 }

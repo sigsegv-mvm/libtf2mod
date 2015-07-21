@@ -5,14 +5,9 @@ PATCH(human_deathyell_enable);
 /* make the MvM death sound happen along with regular death yells instead of replacing them */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFPlayer::DeathSound(CTakeDamageInfo const&) */
-	func1 = func_register(
-		"_ZN9CTFPlayer10DeathSoundERK15CTakeDamageInfo");
+	
 }
 
 
@@ -41,9 +36,12 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
-	if (!func_verify(func1, check2_base, sizeof(check2), check2)) result = false;
-	if (!func_verify(func1, check3_base, sizeof(check3), check3)) result = false;
+	if (!func_verify(CTFPlayer_DeathSound,
+		check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFPlayer_DeathSound,
+		check2_base, sizeof(check2), check2)) result = false;
+	if (!func_verify(CTFPlayer_DeathSound,
+		check3_base, sizeof(check3), check3)) result = false;
 	return result;
 }
 
@@ -51,7 +49,11 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* go back to the regular death sound code instead of jumping to the exit */
-	uint8_t data[4];
-	*((uintptr_t *)data) = (0x00a7 - (0x02a6 + 5));
-	func_write(func1, 0x02a7, sizeof(data), data);
+	size_t data1_base = 0x02a7;
+	uint8_t data1[4];
+	*((uintptr_t *)data1) = (0x00a7 - (0x02a6 + 5));
+	
+	
+	func_write(CTFPlayer_DeathSound,
+		data1_base, sizeof(data1), data1);
 }

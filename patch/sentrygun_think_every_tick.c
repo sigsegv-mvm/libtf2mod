@@ -5,14 +5,9 @@ PATCH(sentrygun_think_every_tick);
 /* make sentry guns think on every tick instead of every third tick */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFObjectSentrygun::SentryThink() */
-	func1 = func_register(
-		"_ZN16CObjectSentrygun11SentryThinkEv");
+	
 }
 
 
@@ -25,7 +20,8 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CObjectSentrygun_SentryThink,
+		check1_base, sizeof(check1), check1)) result = false;
 	return result;
 }
 
@@ -33,5 +29,6 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* NOP out the addition instruction */
-	func_write_nop(func1, 0x005a, 8);
+	func_write_nop(CObjectSentrygun_SentryThink,
+		0x005a, 8);
 }

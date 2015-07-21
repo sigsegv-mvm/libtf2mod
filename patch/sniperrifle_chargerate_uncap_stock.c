@@ -5,14 +5,9 @@ PATCH(sniperrifle_chargerate_uncap_stock);
 /* remove the 200% maximum charge rate cap */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFSniperRifle::ItemPostFrame() */
-	func1 = func_register(
-		"_ZN14CTFSniperRifle13ItemPostFrameEv");
+	
 }
 
 
@@ -37,8 +32,10 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
-	if (!func_verify(func1, check2_base, sizeof(check2), check2)) result = false;
+	if (!func_verify(CTFSniperRifle_ItemPostFrame,
+		check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFSniperRifle_ItemPostFrame,
+		check2_base, sizeof(check2), check2)) result = false;
 	return result;
 }
 
@@ -46,5 +43,6 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* NOP out the MIN operation */
-	func_write_nop(func1, 0x0282, 8);
+	func_write_nop(CTFSniperRifle_ItemPostFrame,
+		0x0282, 8);
 }

@@ -5,45 +5,29 @@ PATCH(eh_unrestrict_weaponid);
 /* allow explosive headshot on weapons that are not sniper rifles */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFPlayer::OnTakeDamage_Alive(CTakeDamageInfo const&) */
-	func1 = func_register(
-		"_ZN9CTFPlayer18OnTakeDamage_AliveERK15CTakeDamageInfo");
+	
 }
 
 
 PATCH_CHECK
 {
-	symbol_t sym1;
-	symtab_func_name(&sym1,
-		"_Z22WeaponID_IsSniperRiflei");
-	uintptr_t off1 = calc_relative_jump(func1, 0x1003, dl_baseaddr + sym1.addr);
+	uintptr_t off1 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x1003,
+		WeaponID_IsSniperRifle);
 	
-	symbol_t sym2;
-	symtab_obj_name(&sym2,
-		"g_pGameRules");
-	uintptr_t off2 = dl_baseaddr + sym2.addr;
+	uintptr_t off2 = (uintptr_t)g_pGameRules;
 	
-	symbol_t sym3;
-	symtab_func_name(&sym3,
-		"_ZN12CTFGameRules20GameModeUsesUpgradesEv");
-	uintptr_t off3 = calc_relative_jump(func1, 0x1081, dl_baseaddr + sym3.addr);
+	uintptr_t off3 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x1081,
+		CTFGameRules_GameModeUsesUpgrades);
 	
 	uintptr_t off4 = dl_baseaddr + find_string("explosive_sniper_shot");
 	
-	symbol_t sym5;
-	symtab_func_name(&sym5,
-		"_ZN17CAttributeManager15AttribHookValueIiEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
-	uintptr_t off5 = calc_relative_jump(func1, 0x10c4, dl_baseaddr + sym5.addr);
+	uintptr_t off5 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x10c4,
+		CAttributeManager_AttribHookValue_int);
 	
-	symbol_t sym6;
-	symtab_func_name(&sym6,
-		"_ZN14CTFSniperRifle17ExplosiveHeadShotEP9CTFPlayerS1_");
-	uintptr_t off6 = calc_relative_jump(func1, 0x10f1, dl_baseaddr + sym6.addr);
+	uintptr_t off6 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x10f1,
+		CTFSniperRifle_ExplosiveHeadShot);
 	
 	
 	size_t check1_base = 0x1000;
@@ -87,15 +71,23 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
-	if (!func_verify(func1, check2_base, sizeof(check2), check2)) result = false;
+	if (!func_verify(CTFPlayer_OnTakeDamage_Alive,
+		check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFPlayer_OnTakeDamage_Alive,
+		check2_base, sizeof(check2), check2)) result = false;
 	return result;
 }
 
 
 PATCH_APPLY
 {
-	/* modify the conditional jump at 0x100a so it jumps to 1071 */
-	uint8_t data1[] = { 0x61, 0x00, 0x00, 0x00 };
-	func_write(func1, 0x100c, sizeof(data1), data1);
+	/* modify the conditional jump at 0x100a so it jumps to 0x1071 */
+	size_t data1_base = 0x100c;
+	uint8_t data1[] = {
+		0x61, 0x00, 0x00, 0x00
+	};
+	
+	
+	func_write(CTFPlayer_OnTakeDamage_Alive,
+		data1_base, sizeof(data1), data1);
 }

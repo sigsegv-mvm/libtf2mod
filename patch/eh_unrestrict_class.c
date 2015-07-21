@@ -5,23 +5,16 @@ PATCH(eh_unrestrict_class);
 /* allow explosive headshot on classes other than sniper */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFGameRules::CanUpgradeWithAttrib(CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*) */
-	func1 = func_register(
-		"_ZN12CTFGameRules20CanUpgradeWithAttribEP9CTFPlayeritP22CMannVsMachineUpgrades");
+	
 }
 
 
 PATCH_CHECK
 {
-	symbol_t sym1;
-	symtab_func_name(&sym1,
-		"_ZNK9CTFPlayer13IsPlayerClassEi");
-	uintptr_t off1 = calc_relative_jump(func1, 0x0b0c, dl_baseaddr + sym1.addr);
+	uintptr_t off1 = calc_relative_jump(CTFGameRules_CanUpgradeWithAttrib,
+		0x0b0c, CTFPlayer_IsPlayerClass);
 	
 	
 	size_t check1_base = 0x0a68;
@@ -42,8 +35,10 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
-	if (!func_verify(func1, check2_base, sizeof(check2), check2)) result = false;
+	if (!func_verify(CTFGameRules_CanUpgradeWithAttrib,
+		check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFGameRules_CanUpgradeWithAttrib,
+		check2_base, sizeof(check2), check2)) result = false;
 	return result;
 }
 
@@ -51,5 +46,5 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* NOP out the conditional jump at +0B13 */
-	func_write_nop(func1, 0x0b13, 6);
+	func_write_nop(CTFGameRules_CanUpgradeWithAttrib, 0x0b13, 6);
 }

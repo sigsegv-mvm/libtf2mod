@@ -5,14 +5,9 @@ PATCH(arrow_pen_ignoreuber);
 /* prevent arrow projectiles with projectile penetration from breaking on uber players */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFProjectileArrow::StrikeTarget(mstudiobbox_t*, CBaseEntity*) [clone .part.323] */
-	func1 = func_register(
-		"_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity.part.323");
+	
 }
 
 
@@ -29,7 +24,8 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFProjectile_Arrow_StrikeTarget_clone323,
+		check1_base, sizeof(check1), check1)) result = false;
 	return result;
 }
 
@@ -37,5 +33,6 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* NOP out the jump when invuln is detected */
-	func_write_nop(func1, 0x002d, 6);
+	func_write_nop(CTFProjectile_Arrow_StrikeTarget_clone323,
+		0x002d, 6);
 }

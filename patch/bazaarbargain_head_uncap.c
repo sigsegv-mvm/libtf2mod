@@ -5,14 +5,9 @@ PATCH(bazaarbargain_head_uncap);
 /* remove the 6-head cap on the Bazaar Bargain */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFSniperRifleDecap::SniperRifleChargeRateMod() */
-	func1 = func_register(
-		"_ZN19CTFSniperRifleDecap24SniperRifleChargeRateModEv");
+	
 }
 
 
@@ -26,7 +21,8 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFSniperRifleDecap_SniperRifleChargeRateMod,
+		check1_base, sizeof(check1), check1)) result = false;
 	return result;
 }
 
@@ -34,5 +30,6 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* NOP out the jump instruction for heads > 5 */
-	func_write_nop(func1, 0x001d, 2);
+	func_write_nop(CTFSniperRifleDecap_SniperRifleChargeRateMod,
+		0x001d, 2);
 }

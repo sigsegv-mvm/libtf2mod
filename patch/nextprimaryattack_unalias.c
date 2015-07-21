@@ -3,25 +3,20 @@
 
 PATCH(nextprimaryattack_unalias);
 /* calculate m_flNextPrimaryAttack based on previous value rather than "now" */
-
-
-static func_t *func1;
+/* BUG: causes sniper rifle to instantly shoot multiple times during one tick,
+ * depleting ammo and causing havoc */
+/* we should see if we can make a minigun-specific hook/patch instead */
 
 
 PATCH_INIT
 {
-	/* CTFWeaponBaseGun::PrimaryAttack() */
-	func1 = func_register(
-		"_ZN16CTFWeaponBaseGun13PrimaryAttackEv");
+	
 }
 
 
 PATCH_CHECK
 {
-	symbol_t sym1;
-	symtab_obj_name(&sym1,
-		"gpGlobals");
-	uintptr_t off1 = dl_baseaddr + sym1.addr;
+	uintptr_t off1 = (uintptr_t)gpGlobals;
 	
 	
 	size_t check1_base = 0x028d;
@@ -37,7 +32,8 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFWeaponBaseGun_PrimaryAttack,
+		check1_base, sizeof(check1), check1)) result = false;
 	return result;
 }
 
@@ -45,7 +41,8 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* make the calculation relative to the previous value of m_flNextPrimaryAttack */
-	uint8_t data[] = {
+	size_t data1_base = 0x029a;
+	uint8_t data1[] = {
 		0x8d, 0x83, 0xb4, 0x05, 0x00, 0x00, // +029A  lea eax,[ebx+0x5b4]
 		0xf3, 0x0f, 0x10, 0x45, 0xc0,       // +02A0  movss xmm0,DWORD PTR [ebp-0x40]
 		0xf3, 0x0f, 0x58, 0x00,             // +02A5  addss xmm0,DWORD PTR [eax]
@@ -54,5 +51,6 @@ PATCH_APPLY
 	};
 	
 	
-	func_write(func1, 0x029a, sizeof(data), data);
+	func_write(CTFWeaponBaseGun_PrimaryAttack,
+		data1_base, sizeof(data1), data1);
 }

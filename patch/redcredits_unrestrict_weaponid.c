@@ -5,23 +5,16 @@ PATCH(redcredits_unrestrict_weaponid);
 /* allow red credits to drop from revolver headshots */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFPlayer::Event_Killed(CTakeDamageInfo const&) */
-	func1 = func_register(
-		"_ZN9CTFPlayer12Event_KilledERK15CTakeDamageInfo");
+	
 }
 
 
 PATCH_CHECK
 {
-	symbol_t sym1;
-	symtab_func_name(&sym1,
-		"_Z27WeaponID_IsSniperRifleOrBowi");
-	uintptr_t off1 = calc_relative_jump(func1, 0x089c, dl_baseaddr + sym1.addr);
+	uintptr_t off1 = calc_relative_jump(CTFPlayer_Event_Killed, 0x089c,
+		WeaponID_IsSniperRifleOrBow);
 	
 	
 	size_t check1_base = 0x089c;
@@ -31,34 +24,32 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFPlayer_Event_Killed,
+		check1_base, sizeof(check1), check1)) result = false;
 	return result;
 }
 
 
 PATCH_APPLY
 {
-	void *buf;
-	if ((buf = mmap(NULL, 4096, PROT_READ | PROT_WRITE | PROT_EXEC,
-		MAP_ANONYMOUS | MAP_PRIVATE, -1, 0)) == MAP_FAILED) {
-		err(1, "mmap for %s failed", __func__);
-	}
+	void *new_func = alloc_func(1);
 	
 	
-	uintptr_t off1 = calc_relative_jump(func1, 0x089c, (uintptr_t)buf);
+	uintptr_t off1 = calc_relative_jump(CTFPlayer_Event_Killed, 0x089c,
+		new_func);
 	
-	symbol_t sym1;
-	symtab_func_name(&sym1,
-		"_Z27WeaponID_IsSniperRifleOrBowi");
-	uintptr_t off2 = (dl_baseaddr + sym1.addr) - ((uintptr_t)buf + 0x001b);
+	uintptr_t off2 = (uintptr_t)WeaponID_IsSniperRifleOrBow -
+		((uintptr_t)new_func + 0x001b);
 	
 	
+	size_t data1_base = 0x089c;
 	uint8_t data1[] = {
 		0xe8, CONV_LE(off1) // +089C  call buf
 	};
 	
 	/* wrapper function: return true for 0x2b (revolver weapon ID);
 	 * otherwise, simply call WeaponID_IsSniperRifleOrBow */
+	size_t data2_base = 0x0000;
 	uint8_t data2[] = {
 		0x55,                         // +0000  push ebp
 		0x89, 0xe5,                   // +0001  mov ebp,esp
@@ -75,6 +66,11 @@ PATCH_APPLY
 	};
 	
 	
-	func_write(func1, 0x089c, sizeof(data1), data1);
-	memcpy(buf, data2, sizeof(data2));
+	/* modify the original function to jump to our new function */
+	func_write(CTFPlayer_Event_Killed,
+		data1_base, sizeof(data1), data1);
+	
+	
+	/* write the contents of the new function */
+	memcpy(new_func, data2, sizeof(data2));
 }

@@ -5,14 +5,9 @@ PATCH(eh_unrestrict_projtype);
 /* allow explosive headshot on weapons with projectile type other than bullet */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFGameRules::CanUpgradeWithAttrib(CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*) */
-	func1 = func_register(
-		"_ZN12CTFGameRules20CanUpgradeWithAttribEP9CTFPlayeritP22CMannVsMachineUpgrades");
+	
 }
 
 
@@ -31,15 +26,23 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFGameRules_CanUpgradeWithAttrib,
+		check1_base, sizeof(check1), check1)) result = false;
 	return result;
 }
 
 
 PATCH_APPLY
 {
+	size_t data1_base = 0x0b2d;
+	uint8_t data1[] = {
+		0xb8, 0x01, 0x00, 0x00, 0x00, // +0B2D  mov eax,0x1
+		0x90, 0x90, 0x90, 0x90, 0x90, // +0B32  nop nop nop nop nop
+		0x90, 0x90, 0x90, 0x90,       // +0B37  nop nop nop nop
+	};
+	
+	
 	/* replace the function call with mov eax,0x00000001 and some NOP's */
-	uint8_t data1[] = { 0xb8, 0x01, 0x00, 0x00, 0x00 };
-	func_write(func1, 0x0b2d, sizeof(data1), data1);
-	func_write_nop(func1, 0xb2d + sizeof(data1), 9);
+	func_write(CTFGameRules_CanUpgradeWithAttrib,
+		data1_base, sizeof(data1), data1);
 }

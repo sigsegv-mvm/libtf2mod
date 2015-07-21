@@ -5,28 +5,19 @@ PATCH(spawnprotect_cond51_only);
 /* remove conds 5 and 8 from robot spawn protection, leaving only cond 51 */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFBotMainAction::Update(CTFBot*, float) */
-	func1 = func_register(
-		"_ZN16CTFBotMainAction6UpdateEP6CTFBotf");
+	
 }
 
 
 PATCH_CHECK
 {
-	symbol_t sym1;
-	symtab_func_name(&sym1,
-		"_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
-	uintptr_t off1 = calc_relative_jump(func1, 0x0695, dl_baseaddr + sym1.addr);
+	uintptr_t off1 = calc_relative_jump(CTFBotMainAction_Update, 0x0695,
+		CTFPlayerShared_AddCond);
 	
-	symbol_t sym2;
-	symtab_func_name(&sym2,
-		"_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
-	uintptr_t off2 = calc_relative_jump(func1, 0x06db, dl_baseaddr + sym2.addr);
+	uintptr_t off2 = calc_relative_jump(CTFBotMainAction_Update, 0x06db,
+		CTFPlayerShared_AddCond);
 	
 	
 	size_t check1_base = 0x0677;
@@ -51,8 +42,10 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
-	if (!func_verify(func1, check2_base, sizeof(check2), check2)) result = false;
+	if (!func_verify(CTFBotMainAction_Update,
+		check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFBotMainAction_Update,
+		check2_base, sizeof(check2), check2)) result = false;
 	return result;
 }
 
@@ -60,6 +53,8 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* NOP out both function calls */
-	func_write_nop(func1, 0x0695, 5);
-	func_write_nop(func1, 0x06db, 5);
+	func_write_nop(CTFBotMainAction_Update,
+		0x0695, 5);
+	func_write_nop(CTFBotMainAction_Update,
+		0x06db, 5);
 }

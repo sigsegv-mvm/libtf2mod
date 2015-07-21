@@ -5,14 +5,9 @@ PATCH(eh_recursive_fix);
 /* check for bleed damage and disallow it from causing explosive headshots */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFPlayer::OnTakeDamage_Alive(CTakeDamageInfo const&) */
-	func1 = func_register(
-		"_ZN9CTFPlayer18OnTakeDamage_AliveERK15CTakeDamageInfo");
+	
 }
 
 
@@ -38,41 +33,43 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
-	if (!func_verify(func1, check2_base, sizeof(check2), check2)) result = false;
+	if (!func_verify(CTFPlayer_OnTakeDamage_Alive,
+		check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFPlayer_OnTakeDamage_Alive,
+		check2_base, sizeof(check2), check2)) result = false;
 	return result;
 }
 
 
 PATCH_APPLY
 {
-	void *buf;
-	if ((buf = mmap(NULL, 4096, PROT_READ | PROT_WRITE | PROT_EXEC,
-		MAP_ANONYMOUS | MAP_PRIVATE, -1, 0)) == MAP_FAILED) {
-		err(1, "mmap for %s failed", __func__);
-	}
+	void *new_func = alloc_func(1);
 	
 	
-	uintptr_t off1 = calc_relative_jump(func1, 0x10d7, (uintptr_t)buf);
+	uintptr_t off1 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x10d7,
+		new_func);
 	
 	
+	size_t data1_base = 0x10d7;
 	uint8_t data1[] = {
-		0xe9, CONV_LE(off1)     // jmp buf
+		0xe9, CONV_LE(off1)     // jmp new_func
 		0x90, 0x90, 0x90, 0x90, // nop x 4
 	};
 	
 	
-	uintptr_t dest_bad  = func1->func_addr + 0x04e9;
-	uintptr_t dest_good = func1->func_addr + 0x10e0;
+	uintptr_t dest_bad  = (uintptr_t)CTFPlayer_OnTakeDamage_Alive + 0x04e9;
+	uintptr_t dest_good = (uintptr_t)CTFPlayer_OnTakeDamage_Alive + 0x10e0;
 	
-	uintptr_t off2 = dest_bad  - ((uintptr_t)buf + 0x0009);
-	uintptr_t off3 = dest_good - ((uintptr_t)buf + 0x0012);
-	uintptr_t off4 = dest_good - ((uintptr_t)buf + 0x001b);
-	uintptr_t off5 = dest_bad  - ((uintptr_t)buf + 0x0029);
-	uintptr_t off6 = dest_bad  - ((uintptr_t)buf + 0x0036);
-	uintptr_t off7 = dest_good - ((uintptr_t)buf + 0x003b);
+	uintptr_t off2 = dest_bad  - ((uintptr_t)new_func + 0x0009);
+	uintptr_t off3 = dest_good - ((uintptr_t)new_func + 0x0012);
+	uintptr_t off4 = dest_good - ((uintptr_t)new_func + 0x001b);
+	uintptr_t off5 = dest_bad  - ((uintptr_t)new_func + 0x0029);
+	uintptr_t off6 = dest_bad  - ((uintptr_t)new_func + 0x0036);
+	uintptr_t off7 = dest_good - ((uintptr_t)new_func + 0x003b);
 	
 	
+	/* add a test for m_iDamageCustom == 0x22 (bleed) */
+	size_t data2_base = 0x0000;
 	uint8_t data2[] = {
 		0x83, 0xf8, 0x22,                         // +0000  cmp eax,0x22
 		0x0f, 0x84, CONV_LE(off2)                 // +0003  je BAD
@@ -89,6 +86,11 @@ PATCH_APPLY
 	};
 	
 	
-	func_write(func1, 0x10d7, sizeof(data1), data1);
-	memcpy(buf, data2, sizeof(data2));
+	/* modify the original function to jump to our new function */
+	func_write(CTFPlayer_OnTakeDamage_Alive,
+		data1_base, sizeof(data1), data1);
+	
+	
+	/* write the contents of the new function */
+	memcpy(new_func, data2, sizeof(data2));
 }

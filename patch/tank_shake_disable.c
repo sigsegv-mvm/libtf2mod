@@ -5,23 +5,16 @@ PATCH(tank_shake_disable);
 /* disable screen shake caused by being near the tank */
 
 
-static func_t *func1;
-
-
 PATCH_INIT
 {
-	/* CTFTankBoss::TankBossThink() */
-	func1 = func_register(
-		"_ZN11CTFTankBoss13TankBossThinkEv");
+	
 }
 
 
 PATCH_CHECK
 {
-	symbol_t sym1;
-	symtab_func_name(&sym1,
-		"_Z16UTIL_ScreenShakeRK6Vectorffff14ShakeCommand_tb");
-	uintptr_t off1 = calc_relative_jump(func1, 0x0aac, dl_baseaddr + sym1.addr);
+	uintptr_t off1 = calc_relative_jump(CTFTankBoss_TankBossThink, 0x0aac,
+		UTIL_ScreenShake);
 	
 	
 	size_t check1_base = 0x0a94;
@@ -34,7 +27,8 @@ PATCH_CHECK
 	
 	
 	bool result = true;
-	if (!func_verify(func1, check1_base, sizeof(check1), check1)) result = false;
+	if (!func_verify(CTFTankBoss_TankBossThink,
+		check1_base, sizeof(check1), check1)) result = false;
 	return result;
 }
 
@@ -42,5 +36,5 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* NOP out the function call */
-	func_write_nop(func1, 0x0a94, 24);
+	func_write_nop(CTFTankBoss_TankBossThink, 0x0a94, 24);
 }
