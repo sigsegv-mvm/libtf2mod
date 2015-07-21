@@ -17,7 +17,7 @@ static void detour_CBaseObject_DoQuickBuild(CBaseObject* this)
 		((uint8_t *)this)[0xa0e] != 0) {
 		//pr_debug("%s: is a mini sentry\n",
 		//	__func__);
-		uint32_t health = CObjectSentrygun_GetMaxHealthForCurrentLevel(this);
+		int health = CObjectSentrygun_GetMaxHealthForCurrentLevel(this);
 		CBaseObject_SetHealth(this, (float)health);
 	} else {
 		//pr_debug("%s: not a mini sentry\n",
