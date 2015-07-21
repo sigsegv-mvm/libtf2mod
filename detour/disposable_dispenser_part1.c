@@ -5,10 +5,10 @@ DETOUR(disposable_dispenser_part1);
 /* allows the build menu to build a disposable dispenser */
 
 
-static int (*trampoline_CTFPlayer_CanBuild)(void*, int, int) = NULL;
+static int (*trampoline_CTFPlayer_CanBuild)(CTFPlayer* this, int, int);
 
 
-int detour_CTFPlayer_CanBuild(void* this, int type, int subtype)
+static int detour_CTFPlayer_CanBuild(CTFPlayer* this, int type, int subtype)
 {
 	int result = trampoline_CTFPlayer_CanBuild(this, type, subtype);
 	
@@ -60,21 +60,5 @@ int detour_CTFPlayer_CanBuild(void* this, int type, int subtype)
 
 DETOUR_SETUP
 {
-	func_t *func1 = func_register(
-		"_ZN9CTFPlayer8CanBuildEii");
-	
-	
-	/* CTFPlayer::CanBuild(int, int) */
-	trampoline_CTFPlayer_CanBuild =
-		(void *)(func1->trampoline_addr);
-	
-	/* CBaseAnimating::SetModelScale(float, float) */
-	/*func_CBaseAnimating_SetModelScale =
-		(void *)(func_register(
-		"_ZN14CBaseAnimating13SetModelScaleEff")
-		->func_addr);*/
-	
-	
-	func_detour_enable(func1,
-		&detour_CTFPlayer_CanBuild);
+	DETOUR_CREATE(CTFPlayer_CanBuild);
 }

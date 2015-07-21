@@ -5,10 +5,10 @@ DETOUR(disposable_dispenser_part4);
 /* determine whether a dispenser should be a mini-dispenser */
 
 
-static bool (*trampoline_CObjectDispenser_ShouldBeMiniBuilding)(void*, void*) = NULL;
+static bool (*trampoline_CObjectDispenser_ShouldBeMiniBuilding)(CObjectDispenser* this, CTFPlayer*);
 
 
-bool detour_CObjectDispenser_ShouldBeMiniBuilding(void* this, void* player)
+static bool detour_CObjectDispenser_ShouldBeMiniBuilding(CObjectDispenser* this, CTFPlayer* player)
 {
 	// TEMPORARY HACK!
 	//return true;
@@ -18,15 +18,5 @@ bool detour_CObjectDispenser_ShouldBeMiniBuilding(void* this, void* player)
 
 DETOUR_SETUP
 {
-	func_t *func1 = func_register(
-		"_ZN16CObjectDispenser20ShouldBeMiniBuildingEP9CTFPlayer");
-	
-	
-	/* CObjectDispenser::ShouldBeMiniBuilding(CTFPlayer*) */
-	trampoline_CObjectDispenser_ShouldBeMiniBuilding =
-		(void *)(func1->trampoline_addr);
-	
-	
-	func_detour_enable(func1,
-		&detour_CObjectDispenser_ShouldBeMiniBuilding);
+	DETOUR_CREATE(CObjectDispenser_ShouldBeMiniBuilding);
 }

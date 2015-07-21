@@ -6,10 +6,10 @@ DETOUR(sentryrotate_every_third_tick);
  * for the sentrygun_think_every_tick patch */
 
 
-static void (*trampoline_CObjectSentrygun_SentryRotate)(void*);
+static void (*trampoline_CObjectSentrygun_SentryRotate)(CObjectSentrygun* this);
 
 
-void detour_CObjectSentrygun_SentryRotate(void* this)
+static void detour_CObjectSentrygun_SentryRotate(CObjectSentrygun* this)
 {
 	/* only run the function every third time */
 	static int c = 0;
@@ -24,15 +24,5 @@ void detour_CObjectSentrygun_SentryRotate(void* this)
 
 DETOUR_SETUP
 {
-	func_t *func1 = func_register(
-		"_ZN16CObjectSentrygun12SentryRotateEv");
-	
-	
-	/* CObjectSentrygun::SentryRotate() */
-	trampoline_CObjectSentrygun_SentryRotate =
-		(void *)(func1->trampoline_addr);
-	
-	
-	func_detour_enable(func1,
-		&detour_CObjectSentrygun_SentryRotate);
+	DETOUR_CREATE(CObjectSentrygun_SentryRotate);
 }
