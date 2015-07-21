@@ -8,8 +8,6 @@ patch_info_t *patches[] = {
 	&patch_eh_recursive_fix,
 	&patch_arrow_pen_ignoreuber,
 	&patch_spawnprotect_cond51_only,
-	&patch_robot_tickle_enable,
-	&patch_robot_gib_normal,
 	&patch_human_deathyell_enable,
 	&patch_sniperrifle_chargerate_uncap_stock,
 	&patch_sniperrifle_chargerate_uncap_classic,
