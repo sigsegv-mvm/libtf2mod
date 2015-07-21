@@ -5,12 +5,6 @@ PATCH(bazaarbargain_head_uncap);
 /* remove the 6-head cap on the Bazaar Bargain */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	size_t check1_base = 0x001a;

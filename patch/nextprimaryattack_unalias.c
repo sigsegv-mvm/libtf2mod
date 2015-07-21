@@ -8,12 +8,6 @@ PATCH(nextprimaryattack_unalias);
 /* we should see if we can make a minigun-specific hook/patch instead */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	uintptr_t off1 = (uintptr_t)gpGlobals;

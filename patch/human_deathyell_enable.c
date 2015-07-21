@@ -5,12 +5,6 @@ PATCH(human_deathyell_enable);
 /* make the MvM death sound happen along with regular death yells instead of replacing them */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	size_t check1_base = 0x0024;

@@ -5,12 +5,6 @@ PATCH(arrow_pen_ignoreuber);
 /* prevent arrow projectiles with projectile penetration from breaking on uber players */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	size_t check1_base = 0x0020;

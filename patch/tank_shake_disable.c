@@ -5,12 +5,6 @@ PATCH(tank_shake_disable);
 /* disable screen shake caused by being near the tank */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	uintptr_t off1 = calc_relative_jump(CTFTankBoss_TankBossThink, 0x0aac,

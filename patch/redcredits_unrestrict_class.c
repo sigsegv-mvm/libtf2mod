@@ -5,12 +5,6 @@ PATCH(redcredits_unrestrict_class);
 /* allow red credits to drop for classes other than sniper */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	size_t check1_base = 0x0837;

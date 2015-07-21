@@ -5,12 +5,6 @@ PATCH(spawnprotect_cond51_only);
 /* remove conds 5 and 8 from robot spawn protection, leaving only cond 51 */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	uintptr_t off1 = calc_relative_jump(CTFBotMainAction_Update, 0x0695,

@@ -5,12 +5,6 @@ PATCH(eh_unrestrict_weaponid);
 /* allow explosive headshot on weapons that are not sniper rifles */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	uintptr_t off1 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x1003,

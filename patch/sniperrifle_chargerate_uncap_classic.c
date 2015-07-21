@@ -5,12 +5,6 @@ PATCH(sniperrifle_chargerate_uncap_classic);
 /* remove the 200% maximum charge rate cap */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	size_t check1_base = 0x0146;

@@ -5,12 +5,6 @@ PATCH(eh_unrestrict_projtype);
 /* allow explosive headshot on weapons with projectile type other than bullet */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	size_t check1_base = 0x0b2d;

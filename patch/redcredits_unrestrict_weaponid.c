@@ -5,12 +5,6 @@ PATCH(redcredits_unrestrict_weaponid);
 /* allow red credits to drop from revolver headshots */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	uintptr_t off1 = calc_relative_jump(CTFPlayer_Event_Killed, 0x089c,

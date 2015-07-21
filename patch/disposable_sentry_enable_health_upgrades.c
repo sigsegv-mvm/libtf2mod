@@ -5,12 +5,6 @@ PATCH(disposable_sentry_enable_health_upgrades);
 /* make building health upgrades increase disposable mini-sentry health */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	size_t check1_base = 0x0030;

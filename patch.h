@@ -2,20 +2,16 @@
 #define _LIBTF2MOD_PATCH_H
 
 
-#define PATCH_INIT \
-	static void patch_init(void)
 #define PATCH_CHECK \
 	static bool patch_check(void)
 #define PATCH_APPLY \
 	static void patch_apply(void)
 
 #define PATCH(_name) \
-	PATCH_INIT; \
 	PATCH_CHECK; \
 	PATCH_APPLY; \
 	patch_info_t patch_ ## _name = { \
 		.name  = #_name, \
-		.init  = &patch_init, \
 		.check = &patch_check, \
 		.apply = &patch_apply, \
 	};
@@ -24,7 +20,6 @@
 typedef struct {
 	const char *name;
 	
-	void (*init)(void);
 	bool (*check)(void);
 	void (*apply)(void);
 	

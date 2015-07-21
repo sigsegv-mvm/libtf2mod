@@ -5,12 +5,6 @@ PATCH(sentrygun_think_every_tick);
 /* make sentry guns think on every tick instead of every third tick */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	size_t check1_base = 0x005a;

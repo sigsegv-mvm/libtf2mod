@@ -5,12 +5,6 @@ PATCH(currencypack_no_pull);
 /* disable the scout class's credit attraction force */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	uintptr_t off1 = calc_relative_jump(CTFPlayerShared_RadiusCurrencyCollectionCheck,

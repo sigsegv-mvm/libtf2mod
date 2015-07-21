@@ -23,18 +23,6 @@ patch_info_t *patches[] = {
 };
 
 
-void patch_init_all(void)
-{
-	for (int i = 0; i < sizeof(patches) / sizeof(*patches); ++i) {
-		patch_info_t *patch = patches[i];
-		
-		pr_special("INIT: %s\n", patch->name);
-		
-		patch->ok = false;
-		patch->init();
-	}
-}
-
 void patch_check_all(void)
 {
 	for (int i = 0; i < sizeof(patches) / sizeof(*patches); ++i) {
@@ -65,7 +53,6 @@ void patch_apply_all(void)
 
 void patch_all(void)
 {
-	patch_init_all();
 	patch_check_all();
 	patch_apply_all();
 }

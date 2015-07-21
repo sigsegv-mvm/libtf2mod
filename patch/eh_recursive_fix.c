@@ -5,12 +5,6 @@ PATCH(eh_recursive_fix);
 /* check for bleed damage and disallow it from causing explosive headshots */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	size_t check1_base = 0x10d7;

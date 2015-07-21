@@ -5,12 +5,6 @@ PATCH(eh_unrestrict_class);
 /* allow explosive headshot on classes other than sniper */
 
 
-PATCH_INIT
-{
-	
-}
-
-
 PATCH_CHECK
 {
 	uintptr_t off1 = calc_relative_jump(CTFGameRules_CanUpgradeWithAttrib,
