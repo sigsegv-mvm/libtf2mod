@@ -27,6 +27,13 @@ typedef struct {
 } func_t;
 
 
+#define CONV_LE(_dword) \
+	(uint8_t)((uint32_t)(_dword) >>  0), \
+	(uint8_t)((uint32_t)(_dword) >>  8), \
+	(uint8_t)((uint32_t)(_dword) >> 16), \
+	(uint8_t)((uint32_t)(_dword) >> 24),
+
+
 #define pr_debug(_fmt, ...) \
 	fprintf(stderr, "\e[37m" _fmt "\e[0m", ##__VA_ARGS__)
 #define pr_info(_fmt, ...) \
