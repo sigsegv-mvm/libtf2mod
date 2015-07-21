@@ -39,6 +39,7 @@
 
 /* this project */
 #include "common.h"
+#include "symbols.h"
 #include "init.h"
 #include "detour.h"
 #include "symtab.h"
