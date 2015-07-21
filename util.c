@@ -1,10 +1,9 @@
 #include "all.h"
 
 
-uintptr_t calc_relative_jump(const func_t *func, size_t off, uintptr_t dst)
+uintptr_t calc_relative_jump(void *src, size_t off, void *dst)
 {
-	// WARNING: be sure to add dt_baseaddr to dst if you get dst from the symtab
-	return (dst - ((func->func_addr + off) + 5));
+	return ((uintptr_t)dst - (((uintptr_t)src + off) + 5));
 }
 
 

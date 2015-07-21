@@ -2,7 +2,7 @@
 #define _LIBTF2MOD_UTIL_H
 
 
-uintptr_t calc_relative_jump(const func_t *func, size_t off, uintptr_t dst);
+uintptr_t calc_relative_jump(void *src, size_t off, void *dst);
 
 void mem_unprotect(const void *addr, size_t len);
 void mem_protect(const void *addr, size_t len);
