@@ -35,6 +35,8 @@ void *func_detour(void *pfunc, void *detour);
 extern detour_info_t detour_sentryrotate_every_third_tick;
 extern detour_info_t detour_minisentry_quickbuild_health_fix;
 extern detour_info_t detour_pushallplayersaway_disable;
+extern detour_info_t detour_robot_tickle_enable;
+extern detour_info_t detour_robot_gib_normal;
 
 extern detour_info_t detour_mini_dispenser;
 

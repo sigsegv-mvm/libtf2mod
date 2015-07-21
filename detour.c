@@ -5,6 +5,8 @@ detour_info_t *detours[] = {
 	&detour_sentryrotate_every_third_tick,
 	&detour_minisentry_quickbuild_health_fix,
 	&detour_pushallplayersaway_disable,
+	&detour_robot_tickle_enable,
+	&detour_robot_gib_normal,
 	
 	//&detour_mini_dispenser,
 	
