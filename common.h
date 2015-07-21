@@ -9,8 +9,8 @@ typedef struct {
 } symbol_t;
 
 typedef struct {
-	char *name;
-	char *name_demangled;
+	const char *name;
+	const char *name_demangled;
 	
 	uintptr_t func_addr;
 	size_t    func_size;
