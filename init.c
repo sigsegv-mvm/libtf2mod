@@ -19,6 +19,9 @@ void tf2mod_init(void)
 	pr_info("libtf2mod: preparing symbol table\n");
 	symtab_init("tf/bin/server_srv.so");
 	
+	pr_info("libtf2mod: retrieving addresses for functions and globals\n");
+	symbols_init();
+	
 	
 	pr_info("libtf2mod: applying patches\n");
 	patch_all();
