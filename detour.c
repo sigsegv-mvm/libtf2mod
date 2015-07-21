@@ -47,10 +47,10 @@ func_t *func_register(void *pfunc)
 	assert(num_funcs < (sizeof(funcs) / sizeof(*funcs)));
 	func = funcs + num_funcs++;
 	
-	func->func_addr = dl_baseaddr + (uintptr_t)pfunc;
+	func->func_addr = (uintptr_t)pfunc;
 	
 	symbol_t sym;
-	if (!symtab_func_addr(&sym, func->func_addr)) {
+	if (!symtab_func_addr(&sym, (uintptr_t)pfunc - dl_baseaddr)) {
 		errx(1, "symtab_func_addr(0x%08x) failed", func->func_addr);
 	}
 	
