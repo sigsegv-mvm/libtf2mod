@@ -52,6 +52,8 @@ typedef void CTFBotMainAction;
 
 typedef void CUtlVector;
 
+typedef void CGameTrace;
+
 typedef void mstudiobbox_t;
 
 typedef unknown_t ETFCond;
@@ -128,6 +130,7 @@ extern bool (*CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*,
 extern bool (*CTFGameRules_GameModeUsesUpgrades)(CTFGameRules* this);
 extern void (*CTFGameRules_PushAllPlayersAway)(CTFGameRules* this, Vector const*, float, float, int, CUtlVector*);
 
+extern unknown_t (*CTFBotMainAction_OnContact)(CTFBotMainAction* this, CTFBot*, CBaseEntity*, CGameTrace*);
 extern unknown_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, float);
 
 

@@ -93,5 +93,6 @@ void symbols_init(void)
 	CTFGameRules_GameModeUsesUpgrades = _sym_func("_ZN12CTFGameRules20GameModeUsesUpgradesEv");
 	CTFGameRules_PushAllPlayersAway = _sym_func("_ZN12CTFGameRules18PushAllPlayersAwayERK6VectorffiP10CUtlVectorIP9CTFPlayer10CUtlMemoryIS5_iEE");
 	
+	CTFBotMainAction_OnContact = _sym_func("_ZN16CTFBotMainAction9OnContactEP6CTFBotP11CBaseEntityP10CGameTrace");
 	CTFBotMainAction_Update = _sym_func("_ZN16CTFBotMainAction6UpdateEP6CTFBotf");
 }

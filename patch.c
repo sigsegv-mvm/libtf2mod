@@ -17,6 +17,7 @@ patch_info_t *patches[] = {
 	&patch_redcredits_unrestrict_weaponid,
 	&patch_redcredits_unrestrict_class,
 	&patch_disposable_sentry_enable_health_upgrades,
+	&patch_giant_stomp_disable,
 	
 	//&patch_tank_shake_disable,
 	//&patch_currencypack_no_pull,
