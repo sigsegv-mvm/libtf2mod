@@ -2,9 +2,6 @@
 
 
 patch_info_t *patches[] = {
-	//&patch_engiebot_nopush_telespawn,
-	//&patch_engiebot_nopush_buildsentrygun,
-	//&patch_engiebot_nopush_buildteleportexit,
 	&patch_eh_unrestrict_class,
 	&patch_eh_unrestrict_projtype,
 	&patch_eh_unrestrict_weaponid,

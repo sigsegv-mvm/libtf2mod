@@ -41,9 +41,6 @@ void func_write(const func_t *func, size_t off, size_t len, const uint8_t *src);
 void func_write_nop(const func_t *func, size_t off, size_t count);
 
 
-extern patch_info_t patch_engiebot_nopush_telespawn;
-extern patch_info_t patch_engiebot_nopush_buildsentrygun;
-extern patch_info_t patch_engiebot_nopush_buildteleportexit;
 extern patch_info_t patch_eh_unrestrict_class;
 extern patch_info_t patch_eh_unrestrict_projtype;
 extern patch_info_t patch_eh_unrestrict_weaponid;
