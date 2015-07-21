@@ -40,6 +40,8 @@ bool func_verify(void *pfunc, size_t off, size_t len, const uint8_t *cmp);
 void func_write(void *pfunc, size_t off, size_t len, const uint8_t *src);
 void func_write_nop(void *pfunc, size_t off, size_t count);
 
+void *alloc_func(size_t pages);
+
 
 extern patch_info_t patch_eh_unrestrict_class;
 extern patch_info_t patch_eh_unrestrict_projtype;

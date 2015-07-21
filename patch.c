@@ -127,3 +127,15 @@ void func_write_nop(void *pfunc, size_t off, size_t count)
 	memset((void *)where, 0x90, count);
 	func_protect(func);
 }
+
+
+void *alloc_func(size_t pages)
+{
+	void *buf;
+	if ((buf = mmap(NULL, pages * PAGE_SIZE, PROT_READ | PROT_WRITE | PROT_EXEC,
+		MAP_ANONYMOUS | MAP_PRIVATE, -1, 0)) == MAP_FAILED) {
+		err(1, "mmap in %s failed", __func__);
+	}
+	
+	return buf;
+}
