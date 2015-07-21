@@ -31,13 +31,13 @@ void detour_all(void)
 }
 
 
-func_t *func_register(const char *name)
+func_t *func_register(void *pfunc)
 {
 	func_t *func;
 	
 	/* skip if function is already registered */
 	for (func = funcs; func != funcs + num_funcs; ++func) {
-		if (strcmp(name, func->name) == 0) {
+		if (func->func_addr == (uintptr_t)pfunc) {
 			return func;
 		}
 	}
@@ -45,15 +45,16 @@ func_t *func_register(const char *name)
 	assert(num_funcs < (sizeof(funcs) / sizeof(*funcs)));
 	func = funcs + num_funcs++;
 	
-	func->name = strdup(name);
-	func->name_demangled = cplus_demangle(name, DMGL_GNU_V3	|
-		DMGL_TYPES | DMGL_ANSI | DMGL_PARAMS);
+	func->func_addr = dl_baseaddr + (uintptr_t)pfunc;
 	
 	symbol_t sym;
-	if (!symtab_func_name(&sym, func->name)) {
-		errx(1, "symtab_func_name(%s) failed", func->name);
+	if (!symtab_func_addr(&sym, func->func_addr)) {
+		errx(1, "symtab_func_addr(0x%08x) failed", func->func_addr);
 	}
-	func->func_addr = dl_baseaddr + sym.addr;
+	
+	func->name = sym.name;
+	func->name_demangled = cplus_demangle(sym.name, DMGL_GNU_V3	|
+		DMGL_TYPES | DMGL_ANSI | DMGL_PARAMS);
 	func->func_size = sym.size;
 	
 	func->has_detour  = false;
@@ -66,16 +67,18 @@ func_t *func_register(const char *name)
 	func->trampoline_addr = (uintptr_t)buf;
 	func->trampoline_size = PAGE_SIZE;
 	
-	pr_info("func_register %s:\n", func->name_demangled);
-	pr_debug("  addr %08x\n  size %08x\n", func->func_addr, func->func_size);
+	//pr_debug("func_register %s:\n", func->name_demangled);
+	//pr_debug("  addr %08x\n  size %08x\n", func->func_addr, func->func_size);
 	/*func_dump(func);*/
 	
 	return func;
 }
 
 
-void func_detour_enable(func_t *func, void *detour)
+void *func_detour(void *pfunc, void *detour)
 {
+	func_t *func = func_register(pfunc);
+	
 	assert(!func->has_detour);
 	
 	/* nop out the entire trampoline page first */
@@ -119,8 +122,11 @@ void func_detour_enable(func_t *func, void *detour)
 		func->func_addr,
 		func->detour_addr,
 		func->trampoline_addr);*/
+	
+	return (void *)func->trampoline_addr;
 }
 
+#if 0
 void func_detour_disable(func_t *func, void *detour)
 {
 	assert(func->has_detour);
@@ -139,6 +145,7 @@ void func_detour_disable(func_t *func, void *detour)
 	
 	func->has_detour = false;
 }
+#endif
 
 
 #if 0

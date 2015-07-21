@@ -12,6 +12,9 @@
 		.setup = &detour_setup, \
 	};
 
+#define DETOUR_CREATE(_func) \
+	trampoline_ ## _func = func_detour(_func, detour_ ## _func)
+
 
 typedef struct {
 	const char *name;
@@ -22,10 +25,11 @@ typedef struct {
 
 void detour_all(void);
 
-func_t *func_register(const char *name);
+func_t *func_register(void *pfunc);
 
-void func_detour_enable(func_t *func, void *detour);
-void func_detour_disable(func_t *func, void *detour);
+void *func_detour(void *pfunc, void *detour);
+//void func_detour_enable(func_t *func, void *detour);
+//void func_detour_disable(func_t *func, void *detour);
 
 
 extern detour_info_t detour_sentryrotate_every_third_tick;
