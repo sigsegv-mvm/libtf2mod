@@ -37,6 +37,7 @@ extern detour_info_t detour_minisentry_quickbuild_health_fix;
 extern detour_info_t detour_pushallplayersaway_disable;
 extern detour_info_t detour_robot_tickle_enable;
 extern detour_info_t detour_robot_gib_normal;
+extern detour_info_t detour_giantsoldier_crit_sound_fix;
 
 extern detour_info_t detour_mini_dispenser;
 

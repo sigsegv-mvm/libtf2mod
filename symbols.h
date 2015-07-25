@@ -35,6 +35,7 @@ typedef void CTFBot;
 typedef void CTFTankBoss;
 
 typedef void CTFWeaponBaseGun;
+typedef void CTFRocketLauncher;
 typedef void CTFSniperRifle;
 typedef void CTFSniperRifleDecap;
 typedef void CTFSniperRifleClassic;
@@ -77,6 +78,8 @@ extern void (*UTIL_ScreenShake)(Vector const*, float, float, float, float, Shake
 
 /* functions: static */
 
+extern void (*CBaseEntity_PrecacheScriptSound)(char const*);
+
 extern int (*CAttributeManager_AttribHookValue_int)(int, char const*, CBaseEntity const*, CUtlVector*, bool);
 
 
@@ -103,6 +106,8 @@ extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
 extern void (*CTFTankBoss_TankBossThink)(CTFTankBoss* this);
 
 extern void (*CTFWeaponBaseGun_PrimaryAttack)(CTFWeaponBaseGun* this);
+
+extern void (*CTFRocketLauncher_Precache)(CTFRocketLauncher* this);
 
 extern void (*CTFSniperRifle_ExplosiveHeadShot)(CTFSniperRifle* this, CTFPlayer*, CTFPlayer*);
 extern void (*CTFSniperRifle_ItemPostFrame)(CTFSniperRifle* this);

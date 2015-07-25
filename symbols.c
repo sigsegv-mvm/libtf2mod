@@ -42,6 +42,8 @@ void symbols_init(void)
 	UTIL_ScreenShake = _sym_func("_Z16UTIL_ScreenShakeRK6Vectorffff14ShakeCommand_tb");
 	
 	
+	CBaseEntity_PrecacheScriptSound = _sym_func("_ZN11CBaseEntity19PrecacheScriptSoundEPKc");
+	
 	CAttributeManager_AttribHookValue_int = _sym_func("_ZN17CAttributeManager15AttribHookValueIiEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
 	
 	
@@ -66,6 +68,8 @@ void symbols_init(void)
 	CTFTankBoss_TankBossThink = _sym_func("_ZN11CTFTankBoss13TankBossThinkEv");
 	
 	CTFWeaponBaseGun_PrimaryAttack = _sym_func("_ZN16CTFWeaponBaseGun13PrimaryAttackEv");
+	
+	CTFRocketLauncher_Precache = _sym_func("_ZN17CTFRocketLauncher8PrecacheEv");
 	
 	CTFSniperRifle_ExplosiveHeadShot = _sym_func("_ZN14CTFSniperRifle17ExplosiveHeadShotEP9CTFPlayerS1_");
 	CTFSniperRifle_ItemPostFrame = _sym_func("_ZN14CTFSniperRifle13ItemPostFrameEv");
