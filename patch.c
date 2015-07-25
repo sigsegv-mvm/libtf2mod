@@ -11,7 +11,7 @@ patch_info_t *patches[] = {
 	&patch_human_deathyell_enable,
 	&patch_sniperrifle_chargerate_uncap_stock,
 	&patch_sniperrifle_chargerate_uncap_classic,
-	&patch_bazaarbargain_head_uncap,
+	//&patch_bazaarbargain_head_uncap,
 	//&patch_nextprimaryattack_unalias,
 	&patch_sentrygun_think_every_tick,
 	&patch_redcredits_unrestrict_weaponid,
