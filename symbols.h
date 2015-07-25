@@ -70,10 +70,12 @@ extern CTFGameRules **g_pGameRules;
 
 /* functions: global */
 
-extern bool (*WeaponID_IsSniperRifle)(int);
-extern bool (*WeaponID_IsSniperRifleOrBow)(int);
+extern int (*ENTINDEX)(CBaseEntity*);
 
 extern void (*UTIL_ScreenShake)(Vector const*, float, float, float, float, ShakeCommand_t, bool);
+
+extern bool (*WeaponID_IsSniperRifle)(int);
+extern bool (*WeaponID_IsSniperRifleOrBow)(int);
 
 
 /* functions: static */

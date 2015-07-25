@@ -36,10 +36,12 @@ void symbols_init(void)
 	g_pGameRules = _sym_obj("g_pGameRules");
 	
 	
-	WeaponID_IsSniperRifle = _sym_func("_Z22WeaponID_IsSniperRiflei");
-	WeaponID_IsSniperRifleOrBow = _sym_func("_Z27WeaponID_IsSniperRifleOrBowi");
+	ENTINDEX = _sym_func("_Z8ENTINDEXP11CBaseEntity");
 	
 	UTIL_ScreenShake = _sym_func("_Z16UTIL_ScreenShakeRK6Vectorffff14ShakeCommand_tb");
+	
+	WeaponID_IsSniperRifle = _sym_func("_Z22WeaponID_IsSniperRiflei");
+	WeaponID_IsSniperRifleOrBow = _sym_func("_Z27WeaponID_IsSniperRifleOrBowi");
 	
 	
 	CBaseEntity_PrecacheScriptSound = _sym_func("_ZN11CBaseEntity19PrecacheScriptSoundEPKc");

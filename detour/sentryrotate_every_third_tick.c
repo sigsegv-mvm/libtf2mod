@@ -11,13 +11,19 @@ static void (*trampoline_CObjectSentrygun_SentryRotate)(CObjectSentrygun* this);
 
 static void detour_CObjectSentrygun_SentryRotate(CObjectSentrygun* this)
 {
+	static uint8_t counts[2048];
+	
+	int entindex = ENTINDEX(this);
+	if (entindex == 0) {
+		pr_debug("%s: ENTINDEX(%08x) = 0\n", __func__, this);
+	}
+	
 	/* only run the function every third time */
-	static int c = 0;
-	if (c == 0) {
+	if (counts[entindex] == 0) {
 		trampoline_CObjectSentrygun_SentryRotate(this);
 	}
-	if (++c == 3) {
-		c = 0;
+	if (++counts[entindex] == 3) {
+		counts[entindex] = 0;
 	}
 }
 
