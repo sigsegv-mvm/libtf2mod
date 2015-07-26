@@ -2,7 +2,8 @@
 
 
 PATCH(disposable_sentry_enable_health_upgrades);
-/* make building health upgrades increase disposable mini-sentry health */
+/* make CBaseObject::GetMaxHealthForLevel always apply attribute
+ * "mult_engy_building_health", even for disposable sentries */
 
 
 PATCH_CHECK

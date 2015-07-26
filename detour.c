@@ -8,6 +8,7 @@ detour_info_t *detours[] = {
 	&detour_robot_tickle_enable,
 	&detour_robot_gib_normal,
 	&detour_giantsoldier_crit_sound_fix,
+	&detour_disposable_sentry_enable_health_upgrades,
 	
 	//&detour_mini_dispenser,
 	

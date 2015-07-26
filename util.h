@@ -16,5 +16,7 @@ void func_dump(const func_t *func);
 
 uintptr_t find_string(const char *str);
 
+uintptr_t datamap_findoffset(datamap_t *map, const char *name);
+
 
 #endif

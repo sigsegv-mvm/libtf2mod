@@ -92,6 +92,7 @@ void symbols_init(void)
 	CObjectDispenser_StartPlacement = _sym_func("_ZN16CObjectDispenser14StartPlacementEP9CTFPlayer");
 	
 	CObjectSentrygun_GetMaxHealthForCurrentLevel = _sym_func("_ZN16CObjectSentrygun27GetMaxHealthForCurrentLevelEv");
+	CObjectSentrygun_MakeDisposableBuilding = _sym_func("_ZN16CObjectSentrygun22MakeDisposableBuildingEP9CTFPlayer");
 	CObjectSentrygun_SentryRotate = _sym_func("_ZN16CObjectSentrygun12SentryRotateEv");
 	CObjectSentrygun_SentryThink = _sym_func("_ZN16CObjectSentrygun11SentryThinkEv");
 	
