@@ -46,6 +46,9 @@ void symbols_init(void)
 	
 	CBaseEntity_PrecacheScriptSound = _sym_func("_ZN11CBaseEntity19PrecacheScriptSoundEPKc");
 	
+	CBaseObject_GetDataDescMap = _sym_func("_ZN11CBaseObject14GetDataDescMapEv");
+	CObjectSentrygun_GetDataDescMap = _sym_func("_ZN16CObjectSentrygun14GetDataDescMapEv");
+	
 	CAttributeManager_AttribHookValue_int = _sym_func("_ZN17CAttributeManager15AttribHookValueIiEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
 	
 	
