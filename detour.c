@@ -153,6 +153,16 @@ void func_detour_disable(func_t *func, void *detour)
 }
 #endif
 
+bool func_owns_addr(void *pfunc, uintptr_t addr)
+{
+	func_t *func = func_register(pfunc);
+	
+	uintptr_t addr_begin = func->func_addr;
+	uintptr_t addr_end   = func->func_addr + func->func_size;
+	
+	return (addr >= addr_begin && addr < addr_end);
+}
+
 
 #if 0
 static void _func_copy(func_t *func)

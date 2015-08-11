@@ -31,6 +31,8 @@ void *func_detour(void *pfunc, void *detour);
 //void func_detour_enable(func_t *func, void *detour);
 //void func_detour_disable(func_t *func, void *detour);
 
+bool func_owns_addr(void *pfunc, uintptr_t addr);
+
 
 extern detour_info_t detour_init;
 
