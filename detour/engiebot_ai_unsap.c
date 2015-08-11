@@ -2,7 +2,8 @@
 
 
 DETOUR(engiebot_ai_unsap);
-/* fix RTR making the teleporter icon stay active on the wave status panel */
+/* trick the engiebot AI into thinking that sapped buildings are damaged so that
+ * he'll actually get up and unsap it */
 
 
 static int (*trampoline_CBaseEntity_GetMaxHealth)(CBaseEntity* this);
