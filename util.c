@@ -89,55 +89,24 @@ void func_dump(const func_t *func)
 }
 
 
-uintptr_t find_string(const char *str)
+uintptr_t find_string(const char *lib_name, const char *str, bool absolute)
 {
-	size_t bin_len = dl_size;
+	library_info_t *lib = lib_find(lib_name);
+	
+	size_t bin_len = lib->size;
 	size_t str_len = strlen(str) + 1;
 	
-	const char *haystack = dl_map;
+	const char *haystack = lib->map;
 	
 	for (int i = 0; i + str_len <= bin_len; ++i) {
 		if (memcmp(haystack + i, str, str_len) == 0) {
-			return i;
+			if (absolute) {
+				return lib->baseaddr + i;
+			} else {
+				return i;
+			}
 		}
 	}
 	
-	return 0;
-}
-
-
-uintptr_t datamap_findoffset(datamap_t *map, const char *name)
-{
-	//pr_debug("%s: name '%s' map %08x\n", __func__, name, map);
-	while (map != NULL) {
-		//mem_dump(map->dataDesc, sizeof(typedescription_t) * map->dataNumFields, false);
-		//pr_debug("%s:  map->dataNumFields %d\n", __func__, map->dataNumFields);
-		for (int i = 0; i < map->dataNumFields; ++i) {
-			//pr_debug("%s:   i %d\n", __func__, i);
-			//pr_debug("%s:   map->dataDesc[i].fieldName %08x\n", __func__, map->dataDesc[i].fieldName);
-			if (map->dataDesc[i].fieldName == NULL) {
-				continue;
-			}
-			//pr_debug("%s:   map->dataDesc[i].fieldName '%s'\n", __func__, map->dataDesc[i].fieldName);
-			if (strcmp(name, map->dataDesc[i].fieldName) == 0) {
-				return map->dataDesc[i].fieldOffset[TD_OFFSET_NORMAL];
-			}
-			//pr_debug("%s:   map->dataDesc[i].td %08x\n", __func__, map->dataDesc[i].td);
-			if (map->dataDesc[i].td != NULL) {
-				uintptr_t offset;
-				if ((offset = datamap_findoffset(map->dataDesc[i].td,
-					name)) != 0) {
-					//pr_debug("%s:    return %04x\n", __func__, offset);
-					return offset;
-				}
-				//pr_debug("%s:    nope\n", __func__);
-			}
-		}
-		
-		//pr_debug("%s: basemap %08x\n", __func__, map->baseMap);
-		map = map->baseMap;
-	}
-	
-	//pr_debug("%s: return 0\n", __func__);
 	return 0;
 }
