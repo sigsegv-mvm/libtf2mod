@@ -20,6 +20,8 @@ void tf2mod_init(void)
 	
 	pr_info("libtf2mod: enabling detours\n");
 	detour_all();
+	
+	convars();
 }
 
 
