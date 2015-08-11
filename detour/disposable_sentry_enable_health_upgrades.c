@@ -8,24 +8,27 @@ DETOUR(disposable_sentry_enable_health_upgrades);
 static void (*trampoline_CObjectSentrygun_MakeDisposableBuilding)(CBaseObject* this, CTFPlayer*);
 
 static uintptr_t off_CObjectSentrygun_m_iMaxHealth;
+static uintptr_t off_CObjectSentrygun_m_bDisposableBuilding;
 
 
 static void detour_CObjectSentrygun_MakeDisposableBuilding(CBaseObject* this, CTFPlayer* player)
 {
 	trampoline_CObjectSentrygun_MakeDisposableBuilding(this, player);
 	
+	int *m_iMaxHealth = (int *)((uintptr_t)this +
+		off_CObjectSentrygun_m_iMaxHealth);
+	bool *m_bDisposableBuilding = (bool *)((uintptr_t)this +
+		off_CObjectSentrygun_m_bDisposableBuilding);
+	
 	/* check if it's a disposable sentry */
-	if (CBaseObject_GetType(this) == 2 &&
-		((uint8_t *)this)[0xa0f] != 0) {
+	if (CBaseObject_GetType(this) == 2 && *m_bDisposableBuilding) {
 		//pr_debug("%s: is a disposable sentry\n",
 		//	__func__);
 		
 		int health = CObjectSentrygun_GetMaxHealthForCurrentLevel(this);
 		
-		int *maxhealth = (int *)((uintptr_t)this +
-			off_CObjectSentrygun_m_iMaxHealth);
-		if (*maxhealth != health) {
-			*maxhealth = health;
+		if (*m_iMaxHealth != health) {
+			*m_iMaxHealth = health;
 			//CBaseEntity_NetworkStateChanged_m_iMaxHealth(this, maxhealth);
 		}
 		
@@ -40,11 +43,22 @@ static void detour_CObjectSentrygun_MakeDisposableBuilding(CBaseObject* this, CT
 DETOUR_SETUP
 {
 	if (off_CObjectSentrygun_m_iMaxHealth == 0) {
-		off_CObjectSentrygun_m_iMaxHealth = datamap_findoffset(
+		off_CObjectSentrygun_m_iMaxHealth = datamap_offset(
 			CObjectSentrygun_GetDataDescMap(), "m_iMaxHealth");
 		
 		if (off_CObjectSentrygun_m_iMaxHealth == 0) {
 			pr_warn("%s: off_CObjectSentrygun_m_iMaxHealth = 0\n", __func__);
+			return;
+		}
+	}
+	
+	if (off_CObjectSentrygun_m_bDisposableBuilding == 0) {
+		off_CObjectSentrygun_m_bDisposableBuilding = sendprop_offset(
+			"CBaseObject", "m_bDisposableBuilding");
+		
+		if (off_CObjectSentrygun_m_bDisposableBuilding == 0) {
+			pr_warn("%s: off_CObjectSentrygun_m_bDisposableBuilding = 0\n",
+				__func__);
 			return;
 		}
 	}

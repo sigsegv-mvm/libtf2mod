@@ -7,14 +7,18 @@ DETOUR(minisentry_quickbuild_health_fix);
 
 static void (*trampoline_CBaseObject_DoQuickBuild)(CBaseObject* this);
 
+static uintptr_t off_CObjectSentrygun_m_bMiniBuilding;
+
 
 static void detour_CBaseObject_DoQuickBuild(CBaseObject* this)
 {
 	trampoline_CBaseObject_DoQuickBuild(this);
 	
+	bool *m_bMiniBuilding = (bool *)((uintptr_t)this +
+		off_CObjectSentrygun_m_bMiniBuilding);
+	
 	/* check if it's a mini sentry */
-	if (CBaseObject_GetType(this) == 2 &&
-		((uint8_t *)this)[0xa0e] != 0) {
+	if (CBaseObject_GetType(this) == 2 && *m_bMiniBuilding) {
 		//pr_debug("%s: is a mini sentry\n",
 		//	__func__);
 		int health = CObjectSentrygun_GetMaxHealthForCurrentLevel(this);
@@ -28,5 +32,16 @@ static void detour_CBaseObject_DoQuickBuild(CBaseObject* this)
 
 DETOUR_SETUP
 {
+	if (off_CObjectSentrygun_m_bMiniBuilding == 0) {
+		off_CObjectSentrygun_m_bMiniBuilding = sendprop_offset(
+			"CBaseObject", "m_bMiniBuilding");
+		
+		if (off_CObjectSentrygun_m_bMiniBuilding == 0) {
+			pr_warn("%s: off_CObjectSentrygun_m_bMiniBuilding = 0\n", __func__);
+			return;
+		}
+	}
+	
+	
 	DETOUR_CREATE(CBaseObject_DoQuickBuild);
 }

@@ -8,12 +8,17 @@ PATCH(disposable_sentry_enable_health_upgrades);
 
 PATCH_CHECK
 {
+	uintptr_t off1 = sendprop_offset("CBaseObject", "m_bDisposableBuilding");
+	
+	uintptr_t off2 = sendprop_offset("CBaseObject", "m_bMiniBuilding");
+	
+	
 	size_t check1_base = 0x0030;
 	uint8_t check1[] = {
-		0x80, 0xbb, 0x0f, 0x0a, 0x00, 0x00, 0x00, // +0030  cmp BYTE PTR [ebx+0xa0f],0x0
-		0x74, 0x27,                               // +0037  je +0x27
-		0x80, 0xbb, 0x0e, 0x0a, 0x00, 0x00, 0x00, // +0039  cmp BYTE PTR [ebx+0xa0e],0x0
-		0x74, 0x58,                               // +0040  je +0x58
+		0x80, 0xbb, CONV_LE(off1) 0x00, // +0030  cmp BYTE PTR [ebx+m_bDisposableBuilding],0x0
+		0x74, 0x27,                     // +0037  je +0x27
+		0x80, 0xbb, CONV_LE(off2) 0x00, // +0039  cmp BYTE PTR [ebx+m_bMiniBuilding],0x0
+		0x74, 0x58,                     // +0040  je +0x58
 	};
 	
 	
