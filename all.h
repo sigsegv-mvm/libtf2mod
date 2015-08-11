@@ -28,7 +28,7 @@
 #include <dlfcn.h>
 
 /* libiberty */
-#include <libiberty/demangle.h>
+#include <demangle.h>
 
 /* libelf */
 #include <libelf.h>
