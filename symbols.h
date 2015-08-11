@@ -66,6 +66,30 @@ enum
 
 /* defined types */
 
+typedef struct {
+	uint8_t pad1[0x30];
+	
+	const char *m_pVarName; // +30
+	
+	uint8_t pad2[0x10];
+	
+	void* m_pDataTable; // +44
+	int   m_Offset;     // +48
+	
+	uint8_t pad3[0x4];
+} SendProp;
+
+typedef struct {
+	SendProp* m_pProps; // +00
+	int m_nProps;       // +04
+} SendTable;
+
+typedef struct {
+	uint8_t pad1[0x4];
+	
+	SendTable* m_pTable; // +04
+} ServerClass;
+
 struct datamap;
 
 typedef struct {
@@ -110,16 +134,33 @@ typedef struct {
 
 typedef struct {
 	// TODO
+} QAngle;
+
+typedef struct {
+	// TODO
 } CTakeDamageInfo;
+
+typedef enum {
+	TFSTAT_UNDEFINED = 0,
+	
+	// TODO
+} TFStatType_t;
 
 typedef uint32_t unknown_t;
 
 
 /* opaque types */
 
+typedef void CServerGameDLL;
+typedef void CGlobalVars;
+
+typedef void ConCommand;
+typedef void CCommand;
+
 typedef void CBaseEntity;
 typedef void CBaseAnimating;
 
+typedef void CBasePlayer;
 typedef void CTFPlayerShared;
 typedef void CTFPlayer;
 typedef void CTFBot;
@@ -137,20 +178,44 @@ typedef void CTFProjectile_Arrow;
 typedef void CBaseObject;
 typedef void CObjectDispenser;
 typedef void CObjectSentrygun;
+typedef void CObjectTeleporter;
+typedef void CObjectSapper;
 
 typedef void CTFGameRules;
+
+typedef void CTFGameStats;
+
+typedef void CMannVsMachineStats;
+
 typedef void CMannVsMachineUpgrades;
 
+typedef void CTFObjectiveResource;
+
 typedef void CTFBotMainAction;
+typedef void CTFBotMvMEngineerIdle;
+
+typedef void CTFReviveMarker;
 
 typedef void CUtlVector;
 
 typedef void CGameTrace;
 
+typedef void Action_CTFBot;
+
+typedef void IRecipientFilter;
+
 typedef void mstudiobbox_t;
 
 typedef unknown_t ETFCond;
 typedef unknown_t ShakeCommand_t;
+
+typedef char const* string_t;
+
+
+/* RTTI */
+
+extern void *typeinfo_for_CBaseEntity;
+extern void *typeinfo_for_CBaseObject;
 
 
 /* globals */
@@ -159,11 +224,41 @@ extern void **gpGlobals;
 
 extern CTFGameRules **g_pGameRules;
 
+extern CTFGameStats *CTF_GameStats;
+
+extern CTFObjectiveResource **g_pObjectiveResource;
+
 
 /* functions: global */
 
+extern ServerClass* (*SV_FindServerClass)(char const*);
+
 extern int (*ENTINDEX)(CBaseEntity*);
 
+extern unknown_t (*UserMessageBegin)(IRecipientFilter*, char const*);
+extern unknown_t (*MessageEnd)(void);
+extern unknown_t (*MessageWriteAngle)(float);
+extern unknown_t (*MessageWriteAngles)(QAngle const*);
+extern unknown_t (*MessageWriteBits)(void const*, int);
+extern unknown_t (*MessageWriteBool)(bool);
+extern unknown_t (*MessageWriteByte)(int);
+extern unknown_t (*MessageWriteChar)(int);
+extern unknown_t (*MessageWriteCoord)(float);
+extern unknown_t (*MessageWriteEHandle)(CBaseEntity*);
+extern unknown_t (*MessageWriteEntity)(int);
+extern unknown_t (*MessageWriteFloat)(float);
+extern unknown_t (*MessageWriteLong)(int);
+extern unknown_t (*MessageWriteSBitLong)(int, int);
+extern unknown_t (*MessageWriteShort)(int);
+extern unknown_t (*MessageWriteString)(char const*);
+extern unknown_t (*MessageWriteUBitLong)(unsigned int, int);
+extern unknown_t (*MessageWriteVec3Coord)(Vector const*);
+extern unknown_t (*MessageWriteVec3Normal)(Vector const*);
+extern unknown_t (*MessageWriteWord)(int);
+
+
+extern unknown_t (*UTIL_LogPrintf)(char const*, ...);
+extern CBasePlayer* (*UTIL_PlayerByIndex)(int);
 extern void (*UTIL_ScreenShake)(Vector const*, float, float, float, float, ShakeCommand_t, bool);
 
 extern bool (*WeaponID_IsSniperRifle)(int);
@@ -182,13 +277,21 @@ extern int (*CAttributeManager_AttribHookValue_int)(int, char const*, CBaseEntit
 
 /* functions: member */
 
+extern unknown_t (*CServerGameDLL_DLLInit)(CServerGameDLL* this, void* (*)(char const*, int*), void* (*)(char const*, int*), void* (*)(char const*, int*), CGlobalVars*);
+
+extern void (*ConCommand_ctor)(ConCommand* this, char const*, void (*)(CCommand const*), char const*, int, int (*)(char const*, char (*) [64]));
+
 extern void (*CBaseEntity_ApplyAbsVelocityImpulse)(CBaseEntity* this, Vector const*);
+extern int (*CBaseEntity_GetMaxHealth)(CBaseEntity* this);
+extern int (*CBaseEntity_GetTeamNumber)(CBaseEntity* this);
+extern bool (*CBaseEntity_IsBaseObject)(CBaseEntity* this);
 
 extern void (*CBaseAnimating_SetModelScale)(CBaseAnimating* this, float, float);
 
 extern void (*CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CBaseEntity*);
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
 
+extern unknown_t (*CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
 extern bool (*CTFPlayer_CanBeForcedToLaugh)(CTFPlayer* this);
 extern int (*CTFPlayer_CanBuild)(CTFPlayer* this, int, int);
 extern void (*CTFPlayer_DeathSound)(CTFPlayer* this, CTakeDamageInfo const*);
@@ -197,6 +300,7 @@ extern bool (*CTFPlayer_IsMiniBoss)(CTFPlayer* this);
 extern bool (*CTFPlayer_IsPlayerClass)(CTFPlayer* this, int);
 extern unknown_t (*CTFPlayer_OnTakeDamage_Alive)(CTFPlayer* this, CTakeDamageInfo const*);
 extern bool (*CTFPlayer_ShouldGib)(CTFPlayer* this, CTakeDamageInfo const*);
+extern unknown_t (*CTFPlayer_TFPlayerThink)(CTFPlayer* this);
 
 extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
 
@@ -215,6 +319,8 @@ extern unknown_t (*CTFProjectile_Arrow_StrikeTarget_clone323)(CTFProjectile_Arro
 
 extern void (*CBaseObject_DoQuickBuild)(CBaseObject* this);
 extern int (*CBaseObject_GetMaxHealthForCurrentLevel)(CBaseObject* this);
+extern float (*CBaseObject_GetReversesBuildingConstructionSpeed)(CBaseObject* this);
+extern CObjectSapper* (*CBaseObject_GetSapper)(CBaseObject* this);
 extern int (*CBaseObject_GetType)(CBaseObject* this);
 extern void (*CBaseObject_MakeDisposableBuilding)(CBaseObject* this, CTFPlayer*);
 extern void (*CBaseObject_SetHealth)(CBaseObject* this, float);
@@ -229,12 +335,37 @@ extern void (*CObjectSentrygun_MakeDisposableBuilding)(CObjectSentrygun* this, C
 extern void (*CObjectSentrygun_SentryRotate)(CObjectSentrygun* this);
 extern void (*CObjectSentrygun_SentryThink)(CObjectSentrygun* this);
 
+extern void (*CObjectTeleporter_FinishedBuilding)(CObjectTeleporter* this);
+
 extern bool (*CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*);
 extern bool (*CTFGameRules_GameModeUsesUpgrades)(CTFGameRules* this);
 extern void (*CTFGameRules_PushAllPlayersAway)(CTFGameRules* this, Vector const*, float, float, int, CUtlVector*);
 
+extern unknown_t (*CTFGameStats_IncrementStat)(CTFGameStats* this, CTFPlayer*, TFStatType_t, int);
+extern unknown_t (*CTFGameStats_ResetPlayerStats)(CTFGameStats* this, CTFPlayer*);
+
+extern unknown_t (*CMannVsMachineStats_ResetPlayerEvents)(CMannVsMachineStats* this, CTFPlayer*);
+extern unknown_t (*CMannVsMachineStats_ResetStats)(CMannVsMachineStats* this);
+
+extern unknown_t (*CTFObjectiveResource_AddMannVsMachineWaveClassFlags)(CTFObjectiveResource* this, int, unsigned int);
+extern unknown_t (*CTFObjectiveResource_ClearMannVsMachineWaveClassFlags)(CTFObjectiveResource* this);
+extern unknown_t (*CTFObjectiveResource_DecrementMannVsMachineWaveClassCount)(CTFObjectiveResource* this, string_t, unsigned int);
+extern unknown_t (*CTFObjectiveResource_DecrementTeleporterCount)(CTFObjectiveResource* this);
+extern int (*CTFObjectiveResource_GetMannVsMachineWaveClassCount)(CTFObjectiveResource* this, int);
+extern unknown_t (*CTFObjectiveResource_IncrementMannVsMachineWaveClassCount)(CTFObjectiveResource* this, string_t, unsigned int);
+extern unknown_t (*CTFObjectiveResource_IncrementTeleporterCount)(CTFObjectiveResource* this);
+extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassActive)(CTFObjectiveResource* this, string_t, bool);
+extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassCount)(CTFObjectiveResource* this, int, int);
+extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassName)(CTFObjectiveResource* this, int, string_t);
+
 extern unknown_t (*CTFBotMainAction_OnContact)(CTFBotMainAction* this, CTFBot*, CBaseEntity*, CGameTrace*);
 extern unknown_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, float);
+
+extern unknown_t (*CTFBotMvMEngineerIdle_Update)(CTFBotMvMEngineerIdle* this, CTFBot*, float);
+
+extern unknown_t (*CTFReviveMarker_AddMarkerHealth)(CTFReviveMarker* this, float);
+
+extern unknown_t (*Action_CTFBot_OnContact)(Action_CTFBot* this, CBaseEntity*, CGameTrace*);
 
 
 #undef extern

@@ -2,107 +2,268 @@
 #include "all.h"
 
 
-static void *_sym_obj(const char *name)
-{
-	pr_debug("obj:  %s\n", name);
-	
-	symbol_t sym;
-	if (!symtab_obj_name(&sym, name)) {
-		pr_warn("could not get address for object symbol '%s'\n", name);
-		return NULL;
-	}
-	
-	uintptr_t addr = dl_baseaddr + sym.addr;
-	return (void *)addr;
-}
-
-static void *_sym_func(const char *name)
-{
-	pr_debug("func: %s\n", name);
-	
-	symbol_t sym;
-	if (!symtab_func_name(&sym, name)) {
-		pr_warn("could not get address for function symbol '%s'\n", name);
-		return NULL;
-	}
-	
-	uintptr_t addr = dl_baseaddr + sym.addr;
-	return (void *)addr;
-}
+#define SYMBOL_OBJ(_var, _mangled) \
+	_var = symtab_obj_absolute(_mangled)
+#define SYMBOL_FUNC(_var, _mangled) \
+	_var = symtab_func_absolute(_mangled)
 
 
 void symbols_init(void)
 {
-	g_pGameRules = _sym_obj("g_pGameRules");
+	/* RTTI */
+	
+	SYMBOL_OBJ(typeinfo_for_CBaseEntity,
+		"_ZTI11CBaseEntity");
+	SYMBOL_OBJ(typeinfo_for_CBaseObject,
+		"_ZTI11CBaseObject");
 	
 	
-	ENTINDEX = _sym_func("_Z8ENTINDEXP11CBaseEntity");
+	/* globals */
 	
-	UTIL_ScreenShake = _sym_func("_Z16UTIL_ScreenShakeRK6Vectorffff14ShakeCommand_tb");
+	SYMBOL_OBJ(gpGlobals,
+		"gpGlobals");
 	
-	WeaponID_IsSniperRifle = _sym_func("_Z22WeaponID_IsSniperRiflei");
-	WeaponID_IsSniperRifleOrBow = _sym_func("_Z27WeaponID_IsSniperRifleOrBowi");
+	SYMBOL_OBJ(g_pGameRules,
+		"g_pGameRules");
+	
+	SYMBOL_OBJ(CTF_GameStats,
+		"CTF_GameStats");
+	
+	SYMBOL_OBJ(g_pObjectiveResource,
+		"g_pObjectiveResource");
 	
 	
-	CBaseEntity_PrecacheScriptSound = _sym_func("_ZN11CBaseEntity19PrecacheScriptSoundEPKc");
+	/* functions: global */
 	
-	CBaseObject_GetDataDescMap = _sym_func("_ZN11CBaseObject14GetDataDescMapEv");
-	CObjectSentrygun_GetDataDescMap = _sym_func("_ZN16CObjectSentrygun14GetDataDescMapEv");
+	SYMBOL_FUNC(SV_FindServerClass,
+		"_Z18SV_FindServerClassPKc");
 	
-	CAttributeManager_AttribHookValue_int = _sym_func("_ZN17CAttributeManager15AttribHookValueIiEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
+	SYMBOL_FUNC(ENTINDEX,
+		"_Z8ENTINDEXP11CBaseEntity");
+	
+	SYMBOL_FUNC(UserMessageBegin,
+		"_Z16UserMessageBeginR16IRecipientFilterPKc");
+	SYMBOL_FUNC(MessageEnd,
+		"_Z10MessageEndv");
+	SYMBOL_FUNC(MessageWriteAngle,
+		"_Z17MessageWriteAnglef");
+	SYMBOL_FUNC(MessageWriteAngles,
+		"_Z18MessageWriteAnglesRK6QAngle");
+	SYMBOL_FUNC(MessageWriteBits,
+		"_Z16MessageWriteBitsPKvi");
+	SYMBOL_FUNC(MessageWriteBool,
+		"_Z16MessageWriteBoolb");
+	SYMBOL_FUNC(MessageWriteByte,
+		"_Z16MessageWriteBytei");
+	SYMBOL_FUNC(MessageWriteChar,
+		"_Z16MessageWriteChari");
+	SYMBOL_FUNC(MessageWriteCoord,
+		"_Z17MessageWriteCoordf");
+	SYMBOL_FUNC(MessageWriteEHandle,
+		"_Z19MessageWriteEHandleP11CBaseEntity");
+	SYMBOL_FUNC(MessageWriteEntity,
+		"_Z18MessageWriteEntityi");
+	SYMBOL_FUNC(MessageWriteFloat,
+		"_Z17MessageWriteFloatf");
+	SYMBOL_FUNC(MessageWriteLong,
+		"_Z16MessageWriteLongi");
+	SYMBOL_FUNC(MessageWriteSBitLong,
+		"_Z20MessageWriteSBitLongii");
+	SYMBOL_FUNC(MessageWriteShort,
+		"_Z17MessageWriteShorti");
+	SYMBOL_FUNC(MessageWriteString,
+		"_Z18MessageWriteStringPKc");
+	SYMBOL_FUNC(MessageWriteUBitLong,
+		"_Z20MessageWriteUBitLongji");
+	SYMBOL_FUNC(MessageWriteVec3Coord,
+		"_Z21MessageWriteVec3CoordRK6Vector");
+	SYMBOL_FUNC(MessageWriteVec3Normal,
+		"_Z22MessageWriteVec3NormalRK6Vector");
+	SYMBOL_FUNC(MessageWriteWord,
+		"_Z16MessageWriteWordi");
+	
+	SYMBOL_FUNC(UTIL_LogPrintf,
+		"_Z14UTIL_LogPrintfPKcz");
+	SYMBOL_FUNC(UTIL_PlayerByIndex,
+		"_Z18UTIL_PlayerByIndexi");
+	SYMBOL_FUNC(UTIL_ScreenShake,
+		"_Z16UTIL_ScreenShakeRK6Vectorffff14ShakeCommand_tb");
+	
+	SYMBOL_FUNC(WeaponID_IsSniperRifle,
+		"_Z22WeaponID_IsSniperRiflei");
+	SYMBOL_FUNC(WeaponID_IsSniperRifleOrBow,
+		"_Z27WeaponID_IsSniperRifleOrBowi");
 	
 	
-	CBaseEntity_ApplyAbsVelocityImpulse = _sym_func("_ZN11CBaseEntity23ApplyAbsVelocityImpulseERK6Vector");
+	/* functions: static */
 	
-	CBaseAnimating_SetModelScale = _sym_func("_ZN14CBaseAnimating13SetModelScaleEff");
+	SYMBOL_FUNC(CBaseEntity_PrecacheScriptSound,
+		"_ZN11CBaseEntity19PrecacheScriptSoundEPKc");
 	
-	CTFPlayerShared_AddCond = _sym_func("_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
-	CTFPlayerShared_RadiusCurrencyCollectionCheck = _sym_func("_ZN15CTFPlayerShared29RadiusCurrencyCollectionCheckEv");
+	SYMBOL_FUNC(CBaseObject_GetDataDescMap,
+		"_ZN11CBaseObject14GetDataDescMapEv");
+	SYMBOL_FUNC(CObjectSentrygun_GetDataDescMap,
+		"_ZN16CObjectSentrygun14GetDataDescMapEv");
 	
-	CTFPlayer_CanBeForcedToLaugh = _sym_func("_ZN9CTFPlayer18CanBeForcedToLaughEv");
-	CTFPlayer_CanBuild = _sym_func("_ZN9CTFPlayer8CanBuildEii");
-	CTFPlayer_DeathSound = _sym_func("_ZN9CTFPlayer10DeathSoundERK15CTakeDamageInfo");
-	CTFPlayer_Event_Killed = _sym_func("_ZN9CTFPlayer12Event_KilledERK15CTakeDamageInfo");
-	CTFPlayer_IsMiniBoss = _sym_func("_ZNK9CTFPlayer10IsMiniBossEv");
-	CTFPlayer_IsPlayerClass = _sym_func("_ZNK9CTFPlayer13IsPlayerClassEi");
-	CTFPlayer_OnTakeDamage_Alive = _sym_func("_ZN9CTFPlayer18OnTakeDamage_AliveERK15CTakeDamageInfo");
-	CTFPlayer_ShouldGib = _sym_func("_ZN9CTFPlayer9ShouldGibERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CAttributeManager_AttribHookValue_int,
+		"_ZN17CAttributeManager15AttribHookValueIiEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
 	
-	CTFBot_ShouldGib = _sym_func("_ZN6CTFBot9ShouldGibERK15CTakeDamageInfo");
 	
-	CTFTankBoss_TankBossThink = _sym_func("_ZN11CTFTankBoss13TankBossThinkEv");
+	/* functions: member */
 	
-	CTFWeaponBaseGun_PrimaryAttack = _sym_func("_ZN16CTFWeaponBaseGun13PrimaryAttackEv");
+	SYMBOL_FUNC(CServerGameDLL_DLLInit,
+		"_ZN14CServerGameDLL7DLLInitEPFPvPKcPiES5_S5_P11CGlobalVars");
 	
-	CTFRocketLauncher_Precache = _sym_func("_ZN17CTFRocketLauncher8PrecacheEv");
+	SYMBOL_FUNC(ConCommand_ctor,
+		"_ZN10ConCommandC1EPKcPFvRK8CCommandES1_iPFiS1_PA64_cE");
 	
-	CTFSniperRifle_ExplosiveHeadShot = _sym_func("_ZN14CTFSniperRifle17ExplosiveHeadShotEP9CTFPlayerS1_");
-	CTFSniperRifle_ItemPostFrame = _sym_func("_ZN14CTFSniperRifle13ItemPostFrameEv");
-	CTFSniperRifleClassic_ItemPostFrame = _sym_func("_ZN21CTFSniperRifleClassic13ItemPostFrameEv");
-	CTFSniperRifleDecap_SniperRifleChargeRateMod = _sym_func("_ZN19CTFSniperRifleDecap24SniperRifleChargeRateModEv");
+	SYMBOL_FUNC(CBaseEntity_ApplyAbsVelocityImpulse,
+		"_ZN11CBaseEntity23ApplyAbsVelocityImpulseERK6Vector");
+	SYMBOL_FUNC(CBaseEntity_GetMaxHealth,
+		"_ZNK11CBaseEntity12GetMaxHealthEv");
+	SYMBOL_FUNC(CBaseEntity_GetTeamNumber,
+		"_ZNK11CBaseEntity13GetTeamNumberEv");
+	SYMBOL_FUNC(CBaseEntity_IsBaseObject,
+		"_ZNK11CBaseEntity12IsBaseObjectEv");
 	
-	CTFProjectile_Arrow_StrikeTarget_clone323 = _sym_func("_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity.part.323");
+	SYMBOL_FUNC(CBaseAnimating_SetModelScale,
+		"_ZN14CBaseAnimating13SetModelScaleEff");
 	
-	CBaseObject_DoQuickBuild = _sym_func("_ZN11CBaseObject12DoQuickBuildEb");
-	CBaseObject_GetMaxHealthForCurrentLevel = _sym_func("_ZN11CBaseObject27GetMaxHealthForCurrentLevelEv");
-	CBaseObject_GetType = _sym_func("_ZNK11CBaseObject7GetTypeEv");
-	CBaseObject_MakeDisposableBuilding = _sym_func("_ZN11CBaseObject22MakeDisposableBuildingEP9CTFPlayer");
-	CBaseObject_SetHealth = _sym_func("_ZN11CBaseObject9SetHealthEf");
-	CBaseObject_ShouldBeMiniBuilding = _sym_func("_ZN11CBaseObject20ShouldBeMiniBuildingEP9CTFPlayer");
+	SYMBOL_FUNC(CTFPlayerShared_AddCond,
+		"_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
+	SYMBOL_FUNC(CTFPlayerShared_RadiusCurrencyCollectionCheck,
+		"_ZN15CTFPlayerShared29RadiusCurrencyCollectionCheckEv");
 	
-	CObjectDispenser_MakeMiniBuilding = _sym_func("_ZN16CObjectDispenser16MakeMiniBuildingEP9CTFPlayer");
-	CObjectDispenser_ShouldBeMiniBuilding = _sym_func("_ZN16CObjectDispenser20ShouldBeMiniBuildingEP9CTFPlayer");
-	CObjectDispenser_StartPlacement = _sym_func("_ZN16CObjectDispenser14StartPlacementEP9CTFPlayer");
+	SYMBOL_FUNC(CTFPlayer_ApplyAbsVelocityImpulse,
+		"_ZN9CTFPlayer23ApplyAbsVelocityImpulseERK6Vector");
+	SYMBOL_FUNC(CTFPlayer_CanBeForcedToLaugh,
+		"_ZN9CTFPlayer18CanBeForcedToLaughEv");
+	SYMBOL_FUNC(CTFPlayer_CanBuild,
+		"_ZN9CTFPlayer8CanBuildEii");
+	SYMBOL_FUNC(CTFPlayer_DeathSound,
+		"_ZN9CTFPlayer10DeathSoundERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFPlayer_Event_Killed,
+		"_ZN9CTFPlayer12Event_KilledERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFPlayer_IsMiniBoss,
+		"_ZNK9CTFPlayer10IsMiniBossEv");
+	SYMBOL_FUNC(CTFPlayer_IsPlayerClass,
+		"_ZNK9CTFPlayer13IsPlayerClassEi");
+	SYMBOL_FUNC(CTFPlayer_OnTakeDamage_Alive,
+		"_ZN9CTFPlayer18OnTakeDamage_AliveERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFPlayer_ShouldGib,
+		"_ZN9CTFPlayer9ShouldGibERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFPlayer_TFPlayerThink,
+		"_ZN9CTFPlayer13TFPlayerThinkEv");
 	
-	CObjectSentrygun_GetMaxHealthForCurrentLevel = _sym_func("_ZN16CObjectSentrygun27GetMaxHealthForCurrentLevelEv");
-	CObjectSentrygun_MakeDisposableBuilding = _sym_func("_ZN16CObjectSentrygun22MakeDisposableBuildingEP9CTFPlayer");
-	CObjectSentrygun_SentryRotate = _sym_func("_ZN16CObjectSentrygun12SentryRotateEv");
-	CObjectSentrygun_SentryThink = _sym_func("_ZN16CObjectSentrygun11SentryThinkEv");
+	SYMBOL_FUNC(CTFBot_ShouldGib,
+		"_ZN6CTFBot9ShouldGibERK15CTakeDamageInfo");
 	
-	CTFGameRules_CanUpgradeWithAttrib = _sym_func("_ZN12CTFGameRules20CanUpgradeWithAttribEP9CTFPlayeritP22CMannVsMachineUpgrades");
-	CTFGameRules_GameModeUsesUpgrades = _sym_func("_ZN12CTFGameRules20GameModeUsesUpgradesEv");
-	CTFGameRules_PushAllPlayersAway = _sym_func("_ZN12CTFGameRules18PushAllPlayersAwayERK6VectorffiP10CUtlVectorIP9CTFPlayer10CUtlMemoryIS5_iEE");
+	SYMBOL_FUNC(CTFTankBoss_TankBossThink,
+		"_ZN11CTFTankBoss13TankBossThinkEv");
 	
-	CTFBotMainAction_OnContact = _sym_func("_ZN16CTFBotMainAction9OnContactEP6CTFBotP11CBaseEntityP10CGameTrace");
-	CTFBotMainAction_Update = _sym_func("_ZN16CTFBotMainAction6UpdateEP6CTFBotf");
+	SYMBOL_FUNC(CTFWeaponBaseGun_PrimaryAttack,
+		"_ZN16CTFWeaponBaseGun13PrimaryAttackEv");
+	
+	SYMBOL_FUNC(CTFRocketLauncher_Precache,
+		"_ZN17CTFRocketLauncher8PrecacheEv");
+	
+	SYMBOL_FUNC(CTFSniperRifle_ExplosiveHeadShot,
+		"_ZN14CTFSniperRifle17ExplosiveHeadShotEP9CTFPlayerS1_");
+	SYMBOL_FUNC(CTFSniperRifle_ItemPostFrame,
+		"_ZN14CTFSniperRifle13ItemPostFrameEv");
+	SYMBOL_FUNC(CTFSniperRifleClassic_ItemPostFrame,
+		"_ZN21CTFSniperRifleClassic13ItemPostFrameEv");
+	SYMBOL_FUNC(CTFSniperRifleDecap_SniperRifleChargeRateMod,
+		"_ZN19CTFSniperRifleDecap24SniperRifleChargeRateModEv");
+	
+	SYMBOL_FUNC(CTFProjectile_Arrow_StrikeTarget_clone323,
+		"_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity.part.323");
+	
+	SYMBOL_FUNC(CBaseObject_DoQuickBuild,
+		"_ZN11CBaseObject12DoQuickBuildEb");
+	SYMBOL_FUNC(CBaseObject_GetMaxHealthForCurrentLevel,
+		"_ZN11CBaseObject27GetMaxHealthForCurrentLevelEv");
+	SYMBOL_FUNC(CBaseObject_GetReversesBuildingConstructionSpeed,
+		"_ZN11CBaseObject36GetReversesBuildingConstructionSpeedEv");
+	SYMBOL_FUNC(CBaseObject_GetSapper,
+		"_ZN11CBaseObject9GetSapperEv");
+	SYMBOL_FUNC(CBaseObject_GetType,
+		"_ZNK11CBaseObject7GetTypeEv");
+	SYMBOL_FUNC(CBaseObject_MakeDisposableBuilding,
+		"_ZN11CBaseObject22MakeDisposableBuildingEP9CTFPlayer");
+	SYMBOL_FUNC(CBaseObject_SetHealth,
+		"_ZN11CBaseObject9SetHealthEf");
+	SYMBOL_FUNC(CBaseObject_ShouldBeMiniBuilding,
+		"_ZN11CBaseObject20ShouldBeMiniBuildingEP9CTFPlayer");
+	
+	SYMBOL_FUNC(CObjectDispenser_MakeMiniBuilding,
+		"_ZN16CObjectDispenser16MakeMiniBuildingEP9CTFPlayer");
+	SYMBOL_FUNC(CObjectDispenser_ShouldBeMiniBuilding,
+		"_ZN16CObjectDispenser20ShouldBeMiniBuildingEP9CTFPlayer");
+	SYMBOL_FUNC(CObjectDispenser_StartPlacement,
+		"_ZN16CObjectDispenser14StartPlacementEP9CTFPlayer");
+	
+	SYMBOL_FUNC(CObjectSentrygun_GetMaxHealthForCurrentLevel,
+		"_ZN16CObjectSentrygun27GetMaxHealthForCurrentLevelEv");
+	SYMBOL_FUNC(CObjectSentrygun_MakeDisposableBuilding,
+		"_ZN16CObjectSentrygun22MakeDisposableBuildingEP9CTFPlayer");
+	SYMBOL_FUNC(CObjectSentrygun_SentryRotate,
+		"_ZN16CObjectSentrygun12SentryRotateEv");
+	SYMBOL_FUNC(CObjectSentrygun_SentryThink,
+		"_ZN16CObjectSentrygun11SentryThinkEv");
+	
+	SYMBOL_FUNC(CObjectTeleporter_FinishedBuilding,
+		"_ZN17CObjectTeleporter16FinishedBuildingEv");
+	
+	SYMBOL_FUNC(CTFGameRules_CanUpgradeWithAttrib,
+		"_ZN12CTFGameRules20CanUpgradeWithAttribEP9CTFPlayeritP22CMannVsMachineUpgrades");
+	SYMBOL_FUNC(CTFGameRules_GameModeUsesUpgrades,
+		"_ZN12CTFGameRules20GameModeUsesUpgradesEv");
+	SYMBOL_FUNC(CTFGameRules_PushAllPlayersAway,
+		"_ZN12CTFGameRules18PushAllPlayersAwayERK6VectorffiP10CUtlVectorIP9CTFPlayer10CUtlMemoryIS5_iEE");
+	
+	SYMBOL_FUNC(CTFGameStats_IncrementStat,
+		"_ZN12CTFGameStats13IncrementStatEP9CTFPlayer12TFStatType_ti");
+	SYMBOL_FUNC(CTFGameStats_ResetPlayerStats,
+		"_ZN12CTFGameStats16ResetPlayerStatsEP9CTFPlayer");
+	
+	SYMBOL_FUNC(CMannVsMachineStats_ResetPlayerEvents,
+		"_ZN19CMannVsMachineStats17ResetPlayerEventsEP9CTFPlayer");
+	SYMBOL_FUNC(CMannVsMachineStats_ResetStats,
+		"_ZN19CMannVsMachineStats10ResetStatsEv");
+	
+	SYMBOL_FUNC(CTFObjectiveResource_AddMannVsMachineWaveClassFlags,
+		"_ZN20CTFObjectiveResource30AddMannVsMachineWaveClassFlagsEij");
+	SYMBOL_FUNC(CTFObjectiveResource_ClearMannVsMachineWaveClassFlags,
+		"_ZN20CTFObjectiveResource32ClearMannVsMachineWaveClassFlagsEv");
+	SYMBOL_FUNC(CTFObjectiveResource_DecrementMannVsMachineWaveClassCount,
+		"_ZN20CTFObjectiveResource36DecrementMannVsMachineWaveClassCountE8string_tj");
+	SYMBOL_FUNC(CTFObjectiveResource_DecrementTeleporterCount,
+		"_ZN20CTFObjectiveResource24DecrementTeleporterCountEv");
+	SYMBOL_FUNC(CTFObjectiveResource_GetMannVsMachineWaveClassCount,
+		"_ZN20CTFObjectiveResource30GetMannVsMachineWaveClassCountEi");
+	SYMBOL_FUNC(CTFObjectiveResource_IncrementMannVsMachineWaveClassCount,
+		"_ZN20CTFObjectiveResource36IncrementMannVsMachineWaveClassCountE8string_tj");
+	SYMBOL_FUNC(CTFObjectiveResource_IncrementTeleporterCount,
+		"_ZN20CTFObjectiveResource24IncrementTeleporterCountEv");
+	SYMBOL_FUNC(CTFObjectiveResource_SetMannVsMachineWaveClassActive,
+		"_ZN20CTFObjectiveResource31SetMannVsMachineWaveClassActiveE8string_tb");
+	SYMBOL_FUNC(CTFObjectiveResource_SetMannVsMachineWaveClassCount,
+		"_ZN20CTFObjectiveResource30SetMannVsMachineWaveClassCountEii");
+	SYMBOL_FUNC(CTFObjectiveResource_SetMannVsMachineWaveClassName,
+		"_ZN20CTFObjectiveResource29SetMannVsMachineWaveClassNameEi8string_t");
+	
+	SYMBOL_FUNC(CTFBotMainAction_OnContact,
+		"_ZN16CTFBotMainAction9OnContactEP6CTFBotP11CBaseEntityP10CGameTrace");
+	SYMBOL_FUNC(CTFBotMainAction_Update,
+		"_ZN16CTFBotMainAction6UpdateEP6CTFBotf");
+	
+	SYMBOL_FUNC(CTFBotMvMEngineerIdle_Update,
+		"_ZN21CTFBotMvMEngineerIdle6UpdateEP6CTFBotf");
+	
+	SYMBOL_FUNC(CTFReviveMarker_AddMarkerHealth,
+		"_ZN15CTFReviveMarker15AddMarkerHealthEf");
+	
+	SYMBOL_FUNC(Action_CTFBot_OnContact,
+		"_ZN6ActionI6CTFBotE9OnContactEP11CBaseEntityP10CGameTrace");
 }
