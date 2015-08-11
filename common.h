@@ -60,15 +60,15 @@ typedef struct {
 
 
 #define pr_debug(_fmt, ...) \
-	fprintf(stderr, "\e[37m" _fmt "\e[0m", ##__VA_ARGS__)
+	fprintf(stderr, "\e[37m" _fmt "\e[0m", ##__VA_ARGS__); fflush(stderr)
 #define pr_info(_fmt, ...) \
-	fprintf(stderr, "\e[97m" _fmt "\e[0m", ##__VA_ARGS__)
+	fprintf(stderr, "\e[97m" _fmt "\e[0m", ##__VA_ARGS__); fflush(stderr)
 #define pr_warn(_fmt, ...) \
-	fprintf(stderr, "\e[93m" _fmt "\e[0m", ##__VA_ARGS__)
+	fprintf(stderr, "\e[93m" _fmt "\e[0m", ##__VA_ARGS__); fflush(stderr)
 #define pr_err(_fmt, ...) \
-	fprintf(stderr, "\e[91m" _fmt "\e[0m", ##__VA_ARGS__)
+	fprintf(stderr, "\e[91m" _fmt "\e[0m", ##__VA_ARGS__); fflush(stderr)
 #define pr_special(_fmt, ...) \
-	fprintf(stderr, "\e[96m" _fmt "\e[0m", ##__VA_ARGS__)
+	fprintf(stderr, "\e[96m" _fmt "\e[0m", ##__VA_ARGS__); fflush(stderr)
 
 #define warn(_fmt, ...) \
 	warn("\e[93m" _fmt "\e[0m", ##__VA_ARGS__)
