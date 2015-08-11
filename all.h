@@ -45,11 +45,15 @@
 #include "common.h"
 #include "symbols.h"
 #include "init.h"
+#include "library.h"
 #include "detour.h"
 #include "symtab.h"
 #include "vtable.h"
 #include "util.h"
 #include "patch.h"
+#include "convar.h"
+#include "sendprop.h"
+#include "datamap.h"
 
 
 #endif
