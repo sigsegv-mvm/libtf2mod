@@ -20,6 +20,9 @@
 #include <sys/stat.h>
 #include <sys/user.h>
 
+/* glibc */
+#include <libgen.h>
+
 /* libbsd */
 #include <err.h>
 #include <bsd/string.h>
@@ -28,6 +31,7 @@
 #include <dlfcn.h>
 
 /* libiberty */
+#define HAVE_DECL_BASENAME 1
 #include <demangle.h>
 
 /* libelf */
