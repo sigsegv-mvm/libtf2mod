@@ -52,7 +52,7 @@ func_t *func_register(void *pfunc)
 	func->func_addr = (uintptr_t)pfunc;
 	
 	symbol_t sym;
-	if (!symtab_func_addr(&sym, (uintptr_t)pfunc - dl_baseaddr)) {
+	if (!symtab_func_addr_abs(&sym, (uintptr_t)pfunc, "server_srv.so")) {
 		errx(1, "symtab_func_addr(0x%08x) failed", func->func_addr);
 	}
 	
@@ -82,6 +82,8 @@ func_t *func_register(void *pfunc)
 void *func_detour(void *pfunc, void *detour)
 {
 	func_t *func = func_register(pfunc);
+	
+	pr_debug("func_detour %08x %s\n", (uintptr_t)pfunc, func->name_demangled);
 	
 	assert(!func->has_detour);
 	

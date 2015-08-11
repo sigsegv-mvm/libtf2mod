@@ -3,9 +3,34 @@
 
 
 typedef struct {
-	uintptr_t   addr;
-	uintptr_t   size;
 	const char *name;
+	const char *path;
+	
+	/* generic file stuff */
+	int         fd;
+	struct stat stat;
+	size_t      size;
+	void       *map;
+	
+	/* libdl stuff */
+	void            *handle;
+	struct link_map *linkmap;
+	uintptr_t        baseaddr;
+	
+	/* elf symtab stuff */
+	Elf        *elf;
+	Elf32_Ehdr *elf_hdr;
+	Elf_Data   *symtab_data;
+	GElf_Shdr   symtab_shdr;
+	int         symtab_count;
+} library_info_t;
+
+
+typedef struct {
+	library_info_t *lib;
+	uintptr_t       addr;
+	uintptr_t       size;
+	const char     *name;
 } symbol_t;
 
 typedef struct {
