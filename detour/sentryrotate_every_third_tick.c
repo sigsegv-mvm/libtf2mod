@@ -15,7 +15,7 @@ static void detour_CObjectSentrygun_SentryRotate(CObjectSentrygun* this)
 	
 	int entindex = ENTINDEX(this);
 	if (entindex == 0) {
-		pr_debug("%s: ENTINDEX(%08x) = 0\n", __func__, this);
+		pr_debug("%s: ENTINDEX(%08x) = 0\n", __func__, (uintptr_t)this);
 	}
 	
 	/* only run the function every third time */
