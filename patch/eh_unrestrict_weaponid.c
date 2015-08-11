@@ -15,7 +15,8 @@ PATCH_CHECK
 	uintptr_t off3 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x1081,
 		CTFGameRules_GameModeUsesUpgrades);
 	
-	uintptr_t off4 = dl_baseaddr + find_string("explosive_sniper_shot");
+	uintptr_t off4 = find_string(
+		"server_srv.so", "explosive_sniper_shot", true);
 	
 	uintptr_t off5 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x10c4,
 		CAttributeManager_AttribHookValue_int);
