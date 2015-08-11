@@ -43,6 +43,9 @@ extern detour_info_t detour_robot_tickle_enable;
 extern detour_info_t detour_robot_gib_normal;
 extern detour_info_t detour_giantsoldier_crit_sound_fix;
 extern detour_info_t detour_disposable_sentry_enable_health_upgrades;
+extern detour_info_t detour_wavestatus_teleporter_rtr_fix;
+extern detour_info_t detour_engiebot_ai_unsap;
+extern detour_info_t detour_robot_headslide_disable;
 
 extern detour_info_t detour_mini_dispenser;
 
@@ -51,6 +54,9 @@ extern detour_info_t detour_disposable_dispenser_part2;
 extern detour_info_t detour_disposable_dispenser_part3;
 extern detour_info_t detour_disposable_dispenser_part4;
 extern detour_info_t detour_disposable_dispenser_part5;
+
+extern detour_info_t detour_diagnostics;
+extern detour_info_t detour_wavecounts_debug;
 
 
 #endif

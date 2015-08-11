@@ -9,6 +9,9 @@ detour_info_t *detours[] = {
 	//&detour_robot_gib_normal,
 	&detour_giantsoldier_crit_sound_fix,
 	&detour_disposable_sentry_enable_health_upgrades,
+	&detour_wavestatus_teleporter_rtr_fix,
+	&detour_engiebot_ai_unsap,
+	&detour_robot_headslide_disable,
 	
 	//&detour_mini_dispenser,
 	
@@ -17,6 +20,9 @@ detour_info_t *detours[] = {
 	&detour_disposable_dispenser_part3,
 	&detour_disposable_dispenser_part4,
 	&detour_disposable_dispenser_part5,*/
+	
+	//&detour_diagnostics,
+	&detour_wavecounts_debug,
 };
 
 
