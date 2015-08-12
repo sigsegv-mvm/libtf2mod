@@ -8,6 +8,8 @@ DETOUR(engiebot_ai_unsap);
 
 static int (*trampoline_CBaseEntity_GetMaxHealth)(CBaseEntity* this);
 
+static uintptr_t off_CBaseObject_m_bBuilding;
+
 
 static int detour_CBaseEntity_GetMaxHealth(CBaseEntity* this)
 {
@@ -31,7 +33,8 @@ static int detour_CBaseEntity_GetMaxHealth(CBaseEntity* this)
 		//pr_debug("building: %s\n",
 		//	(sapper == NULL ? "okay" : "SAPPED"));
 		
-		bool *m_bBuilding = (bool *)((uintptr_t)obj + 0x9fe);
+		bool *m_bBuilding = (bool *)((uintptr_t)obj +
+			off_CBaseObject_m_bBuilding);
 		//pr_debug("m_bBuilding (@ 0x9fe): %s\n",
 		//	(*m_bBuilding ? "TRUE" : "FALSE"));
 		
@@ -48,5 +51,16 @@ static int detour_CBaseEntity_GetMaxHealth(CBaseEntity* this)
 
 DETOUR_SETUP
 {
+	if (off_CBaseObject_m_bBuilding == 0) {
+		off_CBaseObject_m_bBuilding = sendprop_offset(
+			"CBaseObject", "m_bBuilding");
+		
+		if (off_CBaseObject_m_bBuilding == 0) {
+			pr_warn("%s: off_CBaseObject_m_bBuilding = 0\n", __func__);
+			return;
+		}
+	}
+	
+	
 	DETOUR_CREATE(CBaseEntity_GetMaxHealth);
 }
