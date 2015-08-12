@@ -125,6 +125,8 @@ void symbols_init(void)
 		"_ZNK11CBaseEntity13GetTeamNumberEv");
 	SYMBOL_FUNC(CBaseEntity_IsBaseObject,
 		"_ZNK11CBaseEntity12IsBaseObjectEv");
+	SYMBOL_FUNC(CBaseEntity_NetworkStateChanged,
+		"_ZN11CBaseEntity19NetworkStateChangedEPv");
 	
 	SYMBOL_FUNC(CBaseAnimating_SetModelScale,
 		"_ZN14CBaseAnimating13SetModelScaleEff");

@@ -285,6 +285,7 @@ extern void (*CBaseEntity_ApplyAbsVelocityImpulse)(CBaseEntity* this, Vector con
 extern int (*CBaseEntity_GetMaxHealth)(CBaseEntity* this);
 extern int (*CBaseEntity_GetTeamNumber)(CBaseEntity* this);
 extern bool (*CBaseEntity_IsBaseObject)(CBaseEntity* this);
+extern unknown_t (*CBaseEntity_NetworkStateChanged)(CBaseEntity* this, void*);
 
 extern void (*CBaseAnimating_SetModelScale)(CBaseAnimating* this, float, float);
 
