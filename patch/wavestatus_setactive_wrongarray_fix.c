@@ -43,16 +43,16 @@ PATCH_APPLY
 		CBaseEntity_NetworkStateChanged);
 	
 	
-	/*  */
+	/* change this block so it operates on the byte array m_bMannVsMachineWaveClassActive2 */
 	size_t data1_base = 0x0080;
 	uint8_t data1[] = {
-		0x8d, 0x84, 0x1e, CONV_LE(off1)     // +0080  lea eax,[esi+ebx*1+m_bMannVsMachineWaveClassActive2]
-		0x90, 0x90, 0x90, 0x90,             // +0087  nop nop nop nop
-		0x89, 0x34, 0x24,                   // +008B  mov DWORD PTR [esp],esi
-		0x89, 0x44, 0x24, 0x04,             // +008E  mov DWORD PTR [esp+0x4],eax
-		0xe8, CONV_LE(off2)                 // +0092  call CBaseEntity::NetworkStateChanged(void*)
-		0x89, 0xf8,                         // +0097  mov eax,edi
-		0x88, 0x84, 0x1e, CONV_LE(off1)     // +0099  mov BYTE PTR [esi+ebx*1+m_bMannVsMachineWaveClassActive2],al
+		0x8d, 0x84, 0x1e, CONV_LE(off1) // +0080  lea eax,[esi+ebx*1+m_bMannVsMachineWaveClassActive2]
+		0x90, 0x90, 0x90, 0x90,         // +0087  nop nop nop nop
+		0x89, 0x34, 0x24,               // +008B  mov DWORD PTR [esp],esi
+		0x89, 0x44, 0x24, 0x04,         // +008E  mov DWORD PTR [esp+0x4],eax
+		0xe8, CONV_LE(off2)             // +0092  call CBaseEntity::NetworkStateChanged(void*)
+		0x89, 0xf8,                     // +0097  mov eax,edi
+		0x88, 0x84, 0x1e, CONV_LE(off1) // +0099  mov BYTE PTR [esi+ebx*1+m_bMannVsMachineWaveClassActive2],al
 	};
 	
 	
