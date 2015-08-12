@@ -18,7 +18,6 @@ patch_info_t *patches[] = {
 	&patch_redcredits_unrestrict_class,
 	&patch_disposable_sentry_enable_health_upgrades,
 	&patch_giant_stomp_disable,
-	&patch_redcredits_doublecollect_fix,
 	&patch_deploybomb_suppress_output,
 	&patch_engiebot_ai_repair_tele_under_construction,
 	&patch_wavestatus_setactive_wrongarray_fix,

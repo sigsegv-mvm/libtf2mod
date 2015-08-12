@@ -219,6 +219,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFGameRules_CanUpgradeWithAttrib,
 		"_ZN12CTFGameRules20CanUpgradeWithAttribEP9CTFPlayeritP22CMannVsMachineUpgrades");
+	SYMBOL_FUNC(CTFGameRules_DistributeCurrencyAmount,
+		"_ZN12CTFGameRules24DistributeCurrencyAmountEiP9CTFPlayerbbb");
 	SYMBOL_FUNC(CTFGameRules_GameModeUsesUpgrades,
 		"_ZN12CTFGameRules20GameModeUsesUpgradesEv");
 	SYMBOL_FUNC(CTFGameRules_PushAllPlayersAway,
@@ -265,6 +267,9 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFReviveMarker_AddMarkerHealth,
 		"_ZN15CTFReviveMarker15AddMarkerHealthEf");
+	
+	SYMBOL_FUNC(CCurrencyPack_ComeToRest,
+		"_ZN13CCurrencyPack10ComeToRestEv");
 	
 	SYMBOL_FUNC(Action_CTFBot_OnContact,
 		"_ZN6ActionI6CTFBotE9OnContactEP11CBaseEntityP10CGameTrace");

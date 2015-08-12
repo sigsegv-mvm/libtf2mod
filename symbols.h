@@ -196,6 +196,8 @@ typedef void CTFBotMvMEngineerIdle;
 
 typedef void CTFReviveMarker;
 
+typedef void CCurrencyPack;
+
 typedef void CUtlVector;
 
 typedef void CGameTrace;
@@ -339,6 +341,7 @@ extern void (*CObjectSentrygun_SentryThink)(CObjectSentrygun* this);
 extern void (*CObjectTeleporter_FinishedBuilding)(CObjectTeleporter* this);
 
 extern bool (*CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*);
+extern unknown_t (*CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, int, CTFPlayer*, bool, bool, bool);
 extern bool (*CTFGameRules_GameModeUsesUpgrades)(CTFGameRules* this);
 extern void (*CTFGameRules_PushAllPlayersAway)(CTFGameRules* this, Vector const*, float, float, int, CUtlVector*);
 
@@ -365,6 +368,8 @@ extern unknown_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, flo
 extern unknown_t (*CTFBotMvMEngineerIdle_Update)(CTFBotMvMEngineerIdle* this, CTFBot*, float);
 
 extern unknown_t (*CTFReviveMarker_AddMarkerHealth)(CTFReviveMarker* this, float);
+
+extern unknown_t (*CCurrencyPack_ComeToRest)(CCurrencyPack* this);
 
 extern unknown_t (*Action_CTFBot_OnContact)(Action_CTFBot* this, CBaseEntity*, CGameTrace*);
 

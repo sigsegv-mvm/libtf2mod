@@ -46,6 +46,7 @@ extern detour_info_t detour_disposable_sentry_enable_health_upgrades;
 extern detour_info_t detour_wavestatus_teleporter_rtr_fix;
 extern detour_info_t detour_engiebot_ai_unsap;
 extern detour_info_t detour_robot_headslide_disable;
+extern detour_info_t detour_redcredits_doublecollect_fix;
 
 extern detour_info_t detour_mini_dispenser;
 

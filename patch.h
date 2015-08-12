@@ -56,7 +56,6 @@ extern patch_info_t patch_tank_shake_disable;
 extern patch_info_t patch_currencypack_no_pull;
 extern patch_info_t patch_disposable_sentry_enable_health_upgrades;
 extern patch_info_t patch_giant_stomp_disable;
-extern patch_info_t patch_redcredits_doublecollect_fix;
 extern patch_info_t patch_bot_revivemarker_enable;
 extern patch_info_t patch_deploybomb_suppress_output;
 extern patch_info_t patch_engiebot_ai_repair_tele_under_construction;

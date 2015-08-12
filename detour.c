@@ -12,6 +12,7 @@ detour_info_t *detours[] = {
 	&detour_wavestatus_teleporter_rtr_fix,
 	&detour_engiebot_ai_unsap,
 	&detour_robot_headslide_disable,
+	&detour_redcredits_doublecollect_fix,
 	
 	//&detour_mini_dispenser,
 	
