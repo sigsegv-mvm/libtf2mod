@@ -17,10 +17,21 @@ static unknown_t detour_CTFGameRules_DistributeCurrencyAmount(CTFGameRules* this
 		__builtin_return_address(0));
 	uintptr_t caller_frame = (uintptr_t)__builtin_frame_address(1);
 	
+	//pr_info("DistributeCurrencyAmount: i1:%d player:%d b1:%s b2:%s b3:%s\n",
+	//	i1, ENTINDEX(player),
+	//	(b1 ? "TRUE" : "FALSE"),
+	//	(b2 ? "TRUE" : "FALSE"),
+	//	(b3 ? "TRUE" : "FALSE"));
+	
 	if (func_owns_addr(CCurrencyPack_ComeToRest, caller)) {
-		uintptr_t cpack = caller_frame + 0x8;
+		uintptr_t cpack = *(uintptr_t *)(caller_frame + 0x8);
 		bool *m_bDistributed = (bool *)(cpack +
 			off_CCurrencyPack_m_bDistributed);
+		
+		//pr_info("cpack->m_bDistributed = %02x\n",
+		//	*((uint8_t*)m_bDistributed));
+		//pr_info("auto-collect credits: %s\n",
+		//	(*m_bDistributed ? "RED" : "GREEN"));
 		
 		/* if the credits that landed in a trigger_hurt are red credits, then
 		 * don't distribute their value to the players */
