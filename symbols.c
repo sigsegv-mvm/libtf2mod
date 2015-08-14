@@ -142,6 +142,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer18CanBeForcedToLaughEv");
 	SYMBOL_FUNC(CTFPlayer_CanBuild,
 		"_ZN9CTFPlayer8CanBuildEii");
+	SYMBOL_FUNC(CTFPlayer_CanPickupBuilding,
+		"_ZN9CTFPlayer17CanPickupBuildingEP11CBaseObject");
 	SYMBOL_FUNC(CTFPlayer_DeathSound,
 		"_ZN9CTFPlayer10DeathSoundERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_Event_Killed,

@@ -339,6 +339,7 @@ extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* th
 extern unknown_t (*CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
 extern bool (*CTFPlayer_CanBeForcedToLaugh)(CTFPlayer* this);
 extern int (*CTFPlayer_CanBuild)(CTFPlayer* this, int, int);
+extern bool (*CTFPlayer_CanPickupBuilding)(CTFPlayer* this, CBaseObject*);
 extern void (*CTFPlayer_DeathSound)(CTFPlayer* this, CTakeDamageInfo const*);
 extern void (*CTFPlayer_Event_Killed)(CTFPlayer* this, CTakeDamageInfo const*);
 extern bool (*CTFPlayer_IsMiniBoss)(CTFPlayer* this);
