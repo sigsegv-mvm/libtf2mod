@@ -13,6 +13,7 @@ detour_info_t *detours[] = {
 	&detour_engiebot_ai_unsap,
 	&detour_robot_headslide_disable,
 	&detour_redcredits_doublecollect_fix,
+	&detour_spawnprotect_cond51_only,
 	
 	//&detour_mini_dispenser,
 	

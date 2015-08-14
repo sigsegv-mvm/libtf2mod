@@ -7,7 +7,6 @@ patch_info_t *patches[] = {
 	&patch_eh_unrestrict_weaponid,
 	&patch_eh_recursive_fix,
 	&patch_arrow_pen_ignoreuber,
-	&patch_spawnprotect_cond51_only,
 	&patch_human_deathyell_enable,
 	&patch_sniperrifle_chargerate_uncap_stock,
 	&patch_sniperrifle_chargerate_uncap_classic,

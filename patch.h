@@ -43,7 +43,6 @@ extern patch_info_t patch_eh_unrestrict_projtype;
 extern patch_info_t patch_eh_unrestrict_weaponid;
 extern patch_info_t patch_eh_recursive_fix;
 extern patch_info_t patch_arrow_pen_ignoreuber;
-extern patch_info_t patch_spawnprotect_cond51_only;
 extern patch_info_t patch_human_deathyell_enable;
 extern patch_info_t patch_sniperrifle_chargerate_uncap_stock;
 extern patch_info_t patch_sniperrifle_chargerate_uncap_classic;

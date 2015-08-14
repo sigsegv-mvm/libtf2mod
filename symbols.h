@@ -63,6 +63,17 @@ enum
 	TD_OFFSET_COUNT,
 };
 
+typedef enum
+{
+	// ...
+	TFCOND_UBERCHARGED       = 5,
+	// ...
+	TFCOND_UBERCHARGEFADING  = 8,
+	// ...
+	TFCOND_UBERCHARGEDHIDDEN = 51,
+	// ...
+} ETFCond;
+
 
 /* defined types */
 
@@ -208,7 +219,6 @@ typedef void IRecipientFilter;
 
 typedef void mstudiobbox_t;
 
-typedef unknown_t ETFCond;
 typedef unknown_t ShakeCommand_t;
 
 typedef char const* string_t;
