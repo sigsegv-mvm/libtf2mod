@@ -75,7 +75,105 @@ typedef enum
 } ETFCond;
 
 
+/* opaque types */
+
+typedef uint32_t unknown_t;
+
+typedef void CServerGameDLL;
+
+typedef void ConCommand;
+typedef void CCommand;
+
+typedef void CBaseEntity;
+typedef void CBaseAnimating;
+
+typedef void CBasePlayer;
+typedef void CTFPlayerShared;
+typedef void CTFPlayer;
+typedef void CTFBot;
+
+typedef void CTFTankBoss;
+
+typedef void CTFWeaponBaseGun;
+typedef void CTFRocketLauncher;
+typedef void CTFSniperRifle;
+typedef void CTFSniperRifleDecap;
+typedef void CTFSniperRifleClassic;
+
+typedef void CTFProjectile_Arrow;
+
+typedef void CBaseObject;
+typedef void CObjectDispenser;
+typedef void CObjectSentrygun;
+typedef void CObjectTeleporter;
+typedef void CObjectSapper;
+
+typedef void CTFGameRules;
+
+typedef void CTFGameStats;
+
+typedef void CMannVsMachineStats;
+
+typedef void CMannVsMachineUpgrades;
+
+typedef void CTFObjectiveResource;
+
+typedef void CTFBotMainAction;
+typedef void CTFBotMvMEngineerIdle;
+
+typedef void CTFReviveMarker;
+
+typedef void CCurrencyPack;
+
+typedef void CUtlVector;
+
+typedef void CGameTrace;
+
+typedef void Action_CTFBot;
+
+typedef void IRecipientFilter;
+
+typedef void mstudiobbox_t;
+
+typedef unknown_t ShakeCommand_t;
+
+typedef char const* string_t;
+
+
 /* defined types */
+
+typedef struct {
+	float realtime;          // absolute time
+	int framecount;          // absolute frame counter
+	float absoluteframetime; // non-paused frametime
+	float curtime;           // current time
+	float frametime;         // time spent on last frame
+	int maxClients;          // maxplayers
+	int tickcount;           // simulation ticks
+	float interval_per_tick; // simulation tick interval
+	
+	float interpolation_amount;
+	int simTicksThisFrame;
+	int network_protocol;
+	void *pSaveData;
+	
+	bool m_bClient;
+	int nTimestampNetworkingBase;
+	int nTimestampRandomizeWindow;
+	
+	string_t mapname;
+	int mapversion;
+	string_t startspot;
+	/*MapLoadType_t*/int eLoadType;
+	bool bMapLoadFailed;
+	
+	bool deathmatch;
+	bool coop;
+	bool teamplay;
+	
+	int maxEntities;
+	int serverCount;
+} CGlobalVars;
 
 typedef struct {
 	uint8_t pad1[0x30];
@@ -157,72 +255,6 @@ typedef enum {
 	// TODO
 } TFStatType_t;
 
-typedef uint32_t unknown_t;
-
-
-/* opaque types */
-
-typedef void CServerGameDLL;
-typedef void CGlobalVars;
-
-typedef void ConCommand;
-typedef void CCommand;
-
-typedef void CBaseEntity;
-typedef void CBaseAnimating;
-
-typedef void CBasePlayer;
-typedef void CTFPlayerShared;
-typedef void CTFPlayer;
-typedef void CTFBot;
-
-typedef void CTFTankBoss;
-
-typedef void CTFWeaponBaseGun;
-typedef void CTFRocketLauncher;
-typedef void CTFSniperRifle;
-typedef void CTFSniperRifleDecap;
-typedef void CTFSniperRifleClassic;
-
-typedef void CTFProjectile_Arrow;
-
-typedef void CBaseObject;
-typedef void CObjectDispenser;
-typedef void CObjectSentrygun;
-typedef void CObjectTeleporter;
-typedef void CObjectSapper;
-
-typedef void CTFGameRules;
-
-typedef void CTFGameStats;
-
-typedef void CMannVsMachineStats;
-
-typedef void CMannVsMachineUpgrades;
-
-typedef void CTFObjectiveResource;
-
-typedef void CTFBotMainAction;
-typedef void CTFBotMvMEngineerIdle;
-
-typedef void CTFReviveMarker;
-
-typedef void CCurrencyPack;
-
-typedef void CUtlVector;
-
-typedef void CGameTrace;
-
-typedef void Action_CTFBot;
-
-typedef void IRecipientFilter;
-
-typedef void mstudiobbox_t;
-
-typedef unknown_t ShakeCommand_t;
-
-typedef char const* string_t;
-
 
 /* RTTI */
 
@@ -232,7 +264,7 @@ extern void *typeinfo_for_CBaseObject;
 
 /* globals */
 
-extern void **gpGlobals;
+extern CGlobalVars **gpGlobals;
 
 extern CTFGameRules **g_pGameRules;
 
