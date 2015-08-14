@@ -207,14 +207,20 @@ void symbols_init(void)
 	SYMBOL_FUNC(CObjectDispenser_StartPlacement,
 		"_ZN16CObjectDispenser14StartPlacementEP9CTFPlayer");
 	
+	SYMBOL_FUNC(CObjectSentrygun_GetBaseTurnRate,
+		"_ZN16CObjectSentrygun15GetBaseTurnRateEv");
 	SYMBOL_FUNC(CObjectSentrygun_GetMaxHealthForCurrentLevel,
 		"_ZN16CObjectSentrygun27GetMaxHealthForCurrentLevelEv");
 	SYMBOL_FUNC(CObjectSentrygun_MakeDisposableBuilding,
 		"_ZN16CObjectSentrygun22MakeDisposableBuildingEP9CTFPlayer");
+	SYMBOL_FUNC(CObjectSentrygun_MoveTurret,
+		"_ZN16CObjectSentrygun10MoveTurretEv");
 	SYMBOL_FUNC(CObjectSentrygun_SentryRotate,
 		"_ZN16CObjectSentrygun12SentryRotateEv");
 	SYMBOL_FUNC(CObjectSentrygun_SentryThink,
 		"_ZN16CObjectSentrygun11SentryThinkEv");
+	SYMBOL_FUNC(CObjectSentrygun_Spawn,
+		"_ZN16CObjectSentrygun5SpawnEv");
 	
 	SYMBOL_FUNC(CObjectTeleporter_FinishedBuilding,
 		"_ZN17CObjectTeleporter16FinishedBuildingEv");

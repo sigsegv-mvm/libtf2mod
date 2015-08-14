@@ -376,10 +376,13 @@ extern void (*CObjectDispenser_MakeMiniBuilding)(CObjectDispenser* this, CTFPlay
 extern bool (*CObjectDispenser_ShouldBeMiniBuilding)(CObjectDispenser* this, CTFPlayer*);
 extern void (*CObjectDispenser_StartPlacement)(CObjectDispenser* this, CTFPlayer*);
 
+extern int (*CObjectSentrygun_GetBaseTurnRate)(CObjectSentrygun* this);
 extern int (*CObjectSentrygun_GetMaxHealthForCurrentLevel)(CObjectSentrygun* this);
 extern void (*CObjectSentrygun_MakeDisposableBuilding)(CObjectSentrygun* this, CTFPlayer*);
+extern bool (*CObjectSentrygun_MoveTurret)(CObjectSentrygun* this);
 extern void (*CObjectSentrygun_SentryRotate)(CObjectSentrygun* this);
 extern void (*CObjectSentrygun_SentryThink)(CObjectSentrygun* this);
+extern void (*CObjectSentrygun_Spawn)(CObjectSentrygun* this);
 
 extern void (*CObjectTeleporter_FinishedBuilding)(CObjectTeleporter* this);
 

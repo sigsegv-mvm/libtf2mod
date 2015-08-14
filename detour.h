@@ -36,7 +36,7 @@ bool func_owns_addr(void *pfunc, uintptr_t addr);
 
 extern detour_info_t detour_init;
 
-extern detour_info_t detour_sentryrotate_every_third_tick;
+extern detour_info_t detour_sentry_moveturret_decimate;
 extern detour_info_t detour_minisentry_quickbuild_health_fix;
 extern detour_info_t detour_pushallplayersaway_disable;
 extern detour_info_t detour_robot_tickle_enable;
