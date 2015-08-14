@@ -43,11 +43,9 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	/* go back to the regular death sound code instead of jumping to the exit */
-	size_t data1_base = 0x02a7;
-	uint8_t data1[4];
-	*((uintptr_t *)data1) = (0x00a7 - (0x02a6 + 5));
+	uintptr_t target = (0x00a7 - (0x02a6 + 5));
 	
 	
 	func_write(CTFPlayer_DeathSound,
-		data1_base, sizeof(data1), data1);
+		0x02a7, sizeof(target), (uint8_t *)&target);
 }
