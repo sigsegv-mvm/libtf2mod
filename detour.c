@@ -6,7 +6,6 @@ detour_info_t *detours[] = {
 	&detour_minisentry_quickbuild_health_fix,
 	&detour_pushallplayersaway_disable,
 	&detour_robot_tickle_enable,
-	//&detour_robot_gib_normal,
 	&detour_giantsoldier_crit_sound_fix,
 	&detour_disposable_sentry_enable_health_upgrades,
 	&detour_wavestatus_teleporter_rtr_fix,
@@ -14,6 +13,8 @@ detour_info_t *detours[] = {
 	&detour_robot_headslide_disable,
 	&detour_redcredits_doublecollect_fix,
 	&detour_spawnprotect_cond51_only,
+	&detour_robot_gib_improvements,
+	&detour_robot_gib_dissolve_fix,
 	
 	//&detour_mini_dispenser,
 	
