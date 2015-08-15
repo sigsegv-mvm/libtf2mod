@@ -60,30 +60,30 @@ static void detour_CTFPlayer_CreateRagdollEntity(CTFPlayer* this, bool bShouldGi
 		pr_debug("%s: ENTINDEX(%08x) = 0\n", __func__, (uintptr_t)this);
 	}
 	
-	pr_info("CTFPlayer::CreateRagdollEntity\n");
-	pr_debug(
-		"  player entindex: %d\n"
-		"  bShouldGib:      %x\n"
-		"  bBurning:        %x\n"
-		"  bUberDrop:       %x\n"
-		"  bOnGround:       %x\n"
-		"  bYER:            %x\n"
-		"  bGold:           %x\n"
-		"  bIce:            %x\n"
-		"  bAsh:            %x\n"
-		"  m_iDamageCustom: %d\n"
-		"  bClassic:        %x\n",
-		entindex,
-		bShouldGib,
-		bBurning,
-		bUberDrop,
-		bOnGround,
-		bYER,
-		bGold,
-		bIce,
-		bAsh,
-		m_iDamageCustom,
-		bClassic);
+	//pr_info("CTFPlayer::CreateRagdollEntity\n");
+	//pr_debug(
+	//	"  player entindex: %d\n"
+	//	"  bShouldGib:      %x\n"
+	//	"  bBurning:        %x\n"
+	//	"  bUberDrop:       %x\n"
+	//	"  bOnGround:       %x\n"
+	//	"  bYER:            %x\n"
+	//	"  bGold:           %x\n"
+	//	"  bIce:            %x\n"
+	//	"  bAsh:            %x\n"
+	//	"  m_iDamageCustom: %d\n"
+	//	"  bClassic:        %x\n",
+	//	entindex,
+	//	bShouldGib,
+	//	bBurning,
+	//	bUberDrop,
+	//	bOnGround,
+	//	bYER,
+	//	bGold,
+	//	bIce,
+	//	bAsh,
+	//	m_iDamageCustom,
+	//	bClassic);
 	
 	
 	trampoline_CTFPlayer_CreateRagdollEntity(this, bShouldGib, bBurning, bUberDrop, bOnGround, bYER, bGold, bIce, bAsh, m_iDamageCustom, bClassic);
@@ -165,5 +165,5 @@ DETOUR_SETUP
 	
 	DETOUR_CREATE(CTFPlayer_CreateRagdollEntity);
 	
-	DETOUR_CREATE(CTFPlayer_Event_Killed);
+	//DETOUR_CREATE(CTFPlayer_Event_Killed);
 }

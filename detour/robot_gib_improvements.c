@@ -21,18 +21,18 @@ static bool detour_CTFBot_ShouldGib(CTFBot* this, CTakeDamageInfo const* info)
 		float *m_flModelScale = (float *)((uintptr_t)this +
 			off_CTFPlayer_m_flModelScale);
 		
-		pr_info("CTFBot::ShouldGib\n");
-		pr_debug(
-			"  IsMiniBoss:     %s\n"
-			"  m_flModelScale: %.2f\n",
-			(is_miniboss ? "YES" : "NO"),
-			*m_flModelScale);
+		//pr_info("CTFBot::ShouldGib\n");
+		//pr_debug(
+		//	"  IsMiniBoss:     %s\n"
+		//	"  m_flModelScale: %.2f\n",
+		//	(is_miniboss ? "YES" : "NO"),
+		//	*m_flModelScale);
 		
 		
 		/* for giants, always gib, because their ragdolls don't scale up and
 		 * they just look silly */
 		if (is_miniboss || *m_flModelScale > 1.0f) {
-			pr_debug("  is a giant; will ALWAYS gib\n");
+			//pr_debug("  is a giant; will ALWAYS gib\n");
 			return true;
 		}
 		
@@ -45,15 +45,15 @@ static bool detour_CTFBot_ShouldGib(CTFBot* this, CTakeDamageInfo const* info)
 		/* engineer bots have 0 gibs, and medic/sniper/spy have only 1 gib
 		 * (head only); so don't let these classes gib at all */
 		if (is_engie || is_medic || is_sniper || is_spy) {
-			pr_debug("  is a %s robot; will NEVER gib\n",
-				is_engie  ? "engie"  :
-				is_medic  ? "medic"  :
-				is_sniper ? "sniper" : "spy");
+			//pr_debug("  is a %s robot; will NEVER gib\n",
+			//	is_engie  ? "engie"  :
+			//	is_medic  ? "medic"  :
+			//	is_sniper ? "sniper" : "spy");
 			return false;
 		}
 		
 		
-		pr_debug("  is a common robot; will use regular gibbing logic\n");
+		//pr_debug("  is a common robot; will use regular gibbing logic\n");
 		/* fall through */
 	}
 	
