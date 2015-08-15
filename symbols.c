@@ -142,6 +142,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFPlayer_ApplyAbsVelocityImpulse,
 		"_ZN9CTFPlayer23ApplyAbsVelocityImpulseERK6Vector");
+	SYMBOL_FUNC(CTFPlayer_ApplyAirBlastImpulse,
+		"_ZN9CTFPlayer20ApplyAirBlastImpulseERK6Vector");
 	SYMBOL_FUNC(CTFPlayer_CanBeForcedToLaugh,
 		"_ZN9CTFPlayer18CanBeForcedToLaughEv");
 	SYMBOL_FUNC(CTFPlayer_CanBuild,
@@ -191,6 +193,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFProjectile_Arrow_StrikeTarget_clone323,
 		"_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity.part.323");
+	SYMBOL_FUNC(CTFProjectile_Flare_Explode,
+		"_ZN19CTFProjectile_Flare7ExplodeEP10CGameTraceP11CBaseEntity");
 	
 	SYMBOL_FUNC(CBaseObject_DoQuickBuild,
 		"_ZN11CBaseObject12DoQuickBuildEb");

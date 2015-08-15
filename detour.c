@@ -15,6 +15,7 @@ detour_info_t *detours[] = {
 	&detour_spawnprotect_cond51_only,
 	&detour_robot_gib_improvements,
 	&detour_robot_gib_dissolve_fix,
+	&detour_scorchshot_airblast_disable,
 	
 	//&detour_mini_dispenser,
 	

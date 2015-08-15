@@ -49,6 +49,7 @@ extern detour_info_t detour_redcredits_doublecollect_fix;
 extern detour_info_t detour_spawnprotect_cond51_only;
 extern detour_info_t detour_robot_gib_improvements;
 extern detour_info_t detour_robot_gib_dissolve_fix;
+extern detour_info_t detour_scorchshot_airblast_disable;
 
 extern detour_info_t detour_mini_dispenser;
 

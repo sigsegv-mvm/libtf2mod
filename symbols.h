@@ -325,6 +325,7 @@ typedef void CTFSniperRifleDecap;
 typedef void CTFSniperRifleClassic;
 
 typedef void CTFProjectile_Arrow;
+typedef void CTFProjectile_Flare;
 
 typedef void CBaseObject;
 typedef void CObjectDispenser;
@@ -590,6 +591,7 @@ extern void (*CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CB
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
 
 extern unknown_t (*CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
+extern unknown_t (*CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
 extern bool (*CTFPlayer_CanBeForcedToLaugh)(CTFPlayer* this);
 extern int (*CTFPlayer_CanBuild)(CTFPlayer* this, int, int);
 extern bool (*CTFPlayer_CanPickupBuilding)(CTFPlayer* this, CBaseObject*);
@@ -618,6 +620,7 @@ extern void (*CTFSniperRifleClassic_ItemPostFrame)(CTFSniperRifleClassic* this);
 extern float (*CTFSniperRifleDecap_SniperRifleChargeRateMod)(CTFSniperRifleDecap* this);
 
 extern unknown_t (*CTFProjectile_Arrow_StrikeTarget_clone323)(CTFProjectile_Arrow* this, mstudiobbox_t*, CBaseEntity*);
+extern unknown_t (*CTFProjectile_Flare_Explode)(CTFProjectile_Flare* this, CGameTrace*, CBaseEntity*);
 
 extern void (*CBaseObject_DoQuickBuild)(CBaseObject* this);
 extern int (*CBaseObject_GetMaxHealthForCurrentLevel)(CBaseObject* this);
