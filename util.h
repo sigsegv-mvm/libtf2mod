@@ -16,6 +16,12 @@ void func_dump(const func_t *func);
 
 uintptr_t find_string(const char *lib_name, const char *str, bool absolute);
 
+int conv_EHANDLE_to_entindex(EHANDLE handle);
+
+const char *get_string_for_damagebits(uint32_t m_bitsDamageType);
+const char *get_string_for_customkill(int m_iCustomKill);
+const char *get_string_for_weaponid(int id);
+
 
 extern void *__dynamic_cast(const void *__src_ptr,
 	const void *__src_type,
