@@ -16,6 +16,8 @@ void symbols_init(void)
 		"_ZTI11CBaseEntity");
 	SYMBOL_OBJ(typeinfo_for_CBaseObject,
 		"_ZTI11CBaseObject");
+	SYMBOL_OBJ(typeinfo_for_CTFWeaponBase,
+		"_ZTI13CTFWeaponBase");
 	
 	
 	/* globals */
@@ -82,6 +84,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(MessageWriteWord,
 		"_Z16MessageWriteWordi");
 	
+	SYMBOL_FUNC(UTIL_EntityByIndex,
+		"_Z18UTIL_EntityByIndexi");
 	SYMBOL_FUNC(UTIL_LogPrintf,
 		"_Z14UTIL_LogPrintfPKcz");
 	SYMBOL_FUNC(UTIL_PlayerByIndex,
@@ -144,6 +148,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer8CanBuildEii");
 	SYMBOL_FUNC(CTFPlayer_CanPickupBuilding,
 		"_ZN9CTFPlayer17CanPickupBuildingEP11CBaseObject");
+	SYMBOL_FUNC(CTFPlayer_CreateRagdollEntity,
+		"_ZN9CTFPlayer19CreateRagdollEntityEbbbbbbbbib");
 	SYMBOL_FUNC(CTFPlayer_DeathSound,
 		"_ZN9CTFPlayer10DeathSoundERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_Event_Killed,
@@ -164,6 +170,9 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFTankBoss_TankBossThink,
 		"_ZN11CTFTankBoss13TankBossThinkEv");
+	
+	SYMBOL_FUNC(CTFWeaponBase_GetWeaponID,
+		"_ZNK13CTFWeaponBase11GetWeaponIDEv");
 	
 	SYMBOL_FUNC(CTFWeaponBaseGun_PrimaryAttack,
 		"_ZN16CTFWeaponBaseGun13PrimaryAttackEv");
@@ -231,6 +240,8 @@ void symbols_init(void)
 		"_ZN12CTFGameRules24DistributeCurrencyAmountEiP9CTFPlayerbbb");
 	SYMBOL_FUNC(CTFGameRules_GameModeUsesUpgrades,
 		"_ZN12CTFGameRules20GameModeUsesUpgradesEv");
+	SYMBOL_FUNC(CTFGameRules_IsPVEModeActive,
+		"_ZNK12CTFGameRules15IsPVEModeActiveEv");
 	SYMBOL_FUNC(CTFGameRules_PushAllPlayersAway,
 		"_ZN12CTFGameRules18PushAllPlayersAwayERK6VectorffiP10CUtlVectorIP9CTFPlayer10CUtlMemoryIS5_iEE");
 	
