@@ -26,6 +26,7 @@ detour_info_t *detours[] = {
 	//&detour_diagnostics,
 	&detour_wavecounts_debug,
 	//&detour_debug_rescueranger_pickup_range,
+	//&detour_debug_gib_glitch,
 };
 
 

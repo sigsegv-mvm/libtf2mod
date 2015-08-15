@@ -60,6 +60,7 @@ extern detour_info_t detour_disposable_dispenser_part5;
 extern detour_info_t detour_diagnostics;
 extern detour_info_t detour_wavecounts_debug;
 extern detour_info_t detour_debug_rescueranger_pickup_range;
+extern detour_info_t detour_debug_gib_glitch;
 
 
 #endif
