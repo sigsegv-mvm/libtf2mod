@@ -142,7 +142,7 @@ void symtab_obj_absolute(const char *name, void **addr, size_t *size)
 	symbol_t sym;
 	if (!symtab_obj_name(&sym, name)) {
 		pr_warn("%s: failed for '%s'\n", __func__, name);
-		return NULL;
+		return;
 	}
 	
 	if (addr != NULL) {
@@ -158,7 +158,7 @@ void symtab_func_absolute(const char *name, void **addr, size_t *size)
 	symbol_t sym;
 	if (!symtab_func_name(&sym, name)) {
 		pr_warn("%s: failed for '%s'\n", __func__, name);
-		return NULL;
+		return;
 	}
 	
 	if (addr != NULL) {
