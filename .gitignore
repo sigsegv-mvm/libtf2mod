@@ -1,3 +1,4 @@
 *.o
 *.so
 *.sublime-workspace
+sizeof/sizeof
