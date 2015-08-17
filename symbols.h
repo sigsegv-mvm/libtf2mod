@@ -115,12 +115,20 @@ extern bool (*NextBotPlayer_CTFPlayer_IsBot)(NextBotPlayer_CTFPlayer* this);
 
 extern void (*CTFTankBoss_TankBossThink)(CTFTankBoss* this);
 
+extern bool (*CTFWeaponBase_AreRandomCritsEnabled)(CTFWeaponBase* this);
+extern bool (*CTFWeaponBase_CalcIsAttackCritical)(CTFWeaponBase* this);
+extern bool (*CTFWeaponBase_CalcIsAttackCriticalHelper)(CTFWeaponBase* this);
+extern bool (*CTFWeaponBase_CalcIsAttackCriticalHelperNoCrits)(CTFWeaponBase* this);
+extern bool (*CTFWeaponBase_CanBeCritBoosted)(CTFWeaponBase* this);
+extern bool (*CTFWeaponBase_CanFireCriticalShot)(CTFWeaponBase* this, bool);
+extern bool (*CTFWeaponBase_CanFireRandomCriticalShot)(CTFWeaponBase* this, float);
 extern int (*CTFWeaponBase_GetWeaponID)(CTFWeaponBase* this);
 
 extern void (*CTFWeaponBaseGun_PrimaryAttack)(CTFWeaponBaseGun* this);
 
 extern void (*CTFRocketLauncher_Precache)(CTFRocketLauncher* this);
 
+extern bool (*CTFSniperRifle_CanFireCriticalShot)(CTFSniperRifle*, bool);
 extern void (*CTFSniperRifle_ExplosiveHeadShot)(CTFSniperRifle* this, CTFPlayer*, CTFPlayer*);
 extern void (*CTFSniperRifle_ItemPostFrame)(CTFSniperRifle* this);
 extern void (*CTFSniperRifleClassic_ItemPostFrame)(CTFSniperRifleClassic* this);
@@ -159,6 +167,7 @@ extern bool (*CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*,
 extern unknown_t (*CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, int, CTFPlayer*, bool, bool, bool);
 extern bool (*CTFGameRules_GameModeUsesUpgrades)(CTFGameRules* this);
 extern bool (*CTFGameRules_IsPVEModeActive)(CTFGameRules* this);
+extern bool (*CTFGameRules_IsPVEModeControlled)(CTFGameRules* this, CBaseEntity*);
 extern void (*CTFGameRules_PushAllPlayersAway)(CTFGameRules* this, Vector const*, float, float, int, CUtlVector*);
 
 extern unknown_t (*CTFGameStats_IncrementStat)(CTFGameStats* this, CTFPlayer*, TFStatType_t, int);

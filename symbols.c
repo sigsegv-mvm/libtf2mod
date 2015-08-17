@@ -181,6 +181,20 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFTankBoss_TankBossThink,
 		"_ZN11CTFTankBoss13TankBossThinkEv");
 	
+	SYMBOL_FUNC(CTFWeaponBase_AreRandomCritsEnabled,
+		"_ZN13CTFWeaponBase21AreRandomCritsEnabledEv");
+	SYMBOL_FUNC(CTFWeaponBase_CalcIsAttackCritical,
+		"_ZN13CTFWeaponBase20CalcIsAttackCriticalEv");
+	SYMBOL_FUNC(CTFWeaponBase_CalcIsAttackCriticalHelper,
+		"_ZN13CTFWeaponBase26CalcIsAttackCriticalHelperEv");
+	SYMBOL_FUNC(CTFWeaponBase_CalcIsAttackCriticalHelperNoCrits,
+		"_ZN13CTFWeaponBase33CalcIsAttackCriticalHelperNoCritsEv");
+	SYMBOL_FUNC(CTFWeaponBase_CanBeCritBoosted,
+		"_ZN13CTFWeaponBase16CanBeCritBoostedEv");
+	SYMBOL_FUNC(CTFWeaponBase_CanFireCriticalShot,
+		"_ZN13CTFWeaponBase19CanFireCriticalShotEb");
+	SYMBOL_FUNC(CTFWeaponBase_CanFireRandomCriticalShot,
+		"_ZN13CTFWeaponBase25CanFireRandomCriticalShotEf");
 	SYMBOL_FUNC(CTFWeaponBase_GetWeaponID,
 		"_ZNK13CTFWeaponBase11GetWeaponIDEv");
 	
@@ -190,6 +204,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFRocketLauncher_Precache,
 		"_ZN17CTFRocketLauncher8PrecacheEv");
 	
+	SYMBOL_FUNC(CTFSniperRifle_CanFireCriticalShot,
+		"_ZN14CTFSniperRifle19CanFireCriticalShotEb");
 	SYMBOL_FUNC(CTFSniperRifle_ExplosiveHeadShot,
 		"_ZN14CTFSniperRifle17ExplosiveHeadShotEP9CTFPlayerS1_");
 	SYMBOL_FUNC(CTFSniperRifle_ItemPostFrame,
@@ -259,6 +275,8 @@ void symbols_init(void)
 		"_ZN12CTFGameRules20GameModeUsesUpgradesEv");
 	SYMBOL_FUNC(CTFGameRules_IsPVEModeActive,
 		"_ZNK12CTFGameRules15IsPVEModeActiveEv");
+	SYMBOL_FUNC(CTFGameRules_IsPVEModeControlled,
+		"_ZNK12CTFGameRules19IsPVEModeControlledEP11CBaseEntity");
 	SYMBOL_FUNC(CTFGameRules_PushAllPlayersAway,
 		"_ZN12CTFGameRules18PushAllPlayersAwayERK6VectorffiP10CUtlVectorIP9CTFPlayer10CUtlMemoryIS5_iEE");
 	
