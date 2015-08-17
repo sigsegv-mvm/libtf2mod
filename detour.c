@@ -16,6 +16,7 @@ detour_info_t *detours[] = {
 	&detour_robot_gib_improvements,
 	&detour_robot_gib_dissolve_fix,
 	&detour_scorchshot_airblast_disable,
+	&detour_yer_nerf_disable,
 	
 	//&detour_mini_dispenser,
 	

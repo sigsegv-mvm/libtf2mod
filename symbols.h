@@ -89,6 +89,8 @@ extern unknown_t (*CBaseEntity_NetworkStateChanged)(CBaseEntity* this, void*);
 
 extern void (*CBaseAnimating_SetModelScale)(CBaseAnimating* this, float, float);
 
+extern bool (*CBasePlayer_IsBot)(CBasePlayer* this);
+
 extern void (*CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CBaseEntity*);
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
 
@@ -103,10 +105,13 @@ extern void (*CTFPlayer_Event_Killed)(CTFPlayer* this, CTakeDamageInfo const*);
 extern bool (*CTFPlayer_IsMiniBoss)(CTFPlayer* this);
 extern bool (*CTFPlayer_IsPlayerClass)(CTFPlayer* this, int);
 extern unknown_t (*CTFPlayer_OnTakeDamage_Alive)(CTFPlayer* this, CTakeDamageInfo const*);
+extern void (*CTFPlayer_RemoveDisguise)(CTFPlayer* this);
 extern bool (*CTFPlayer_ShouldGib)(CTFPlayer* this, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_TFPlayerThink)(CTFPlayer* this);
 
 extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
+
+extern bool (*NextBotPlayer_CTFPlayer_IsBot)(NextBotPlayer_CTFPlayer* this);
 
 extern void (*CTFTankBoss_TankBossThink)(CTFTankBoss* this);
 
@@ -120,6 +125,9 @@ extern void (*CTFSniperRifle_ExplosiveHeadShot)(CTFSniperRifle* this, CTFPlayer*
 extern void (*CTFSniperRifle_ItemPostFrame)(CTFSniperRifle* this);
 extern void (*CTFSniperRifleClassic_ItemPostFrame)(CTFSniperRifleClassic* this);
 extern float (*CTFSniperRifleDecap_SniperRifleChargeRateMod)(CTFSniperRifleDecap* this);
+
+extern void (*CTFKnife_DisguiseOnKill)(CTFKnife* this);
+extern void (*CTFKnife_PrimaryAttack)(CTFKnife* this);
 
 extern unknown_t (*CTFProjectile_Arrow_StrikeTarget_clone323)(CTFProjectile_Arrow* this, mstudiobbox_t*, CBaseEntity*);
 extern unknown_t (*CTFProjectile_Flare_Explode)(CTFProjectile_Flare* this, CGameTrace*, CBaseEntity*);

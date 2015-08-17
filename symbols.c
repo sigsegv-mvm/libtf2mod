@@ -135,6 +135,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CBaseAnimating_SetModelScale,
 		"_ZN14CBaseAnimating13SetModelScaleEff");
 	
+	SYMBOL_FUNC(CBasePlayer_IsBot,
+		"_ZNK11CBasePlayer5IsBotEv");
+	
 	SYMBOL_FUNC(CTFPlayerShared_AddCond,
 		"_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
 	SYMBOL_FUNC(CTFPlayerShared_RadiusCurrencyCollectionCheck,
@@ -162,6 +165,8 @@ void symbols_init(void)
 		"_ZNK9CTFPlayer13IsPlayerClassEi");
 	SYMBOL_FUNC(CTFPlayer_OnTakeDamage_Alive,
 		"_ZN9CTFPlayer18OnTakeDamage_AliveERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFPlayer_RemoveDisguise,
+		"_ZN9CTFPlayer14RemoveDisguiseEv");
 	SYMBOL_FUNC(CTFPlayer_ShouldGib,
 		"_ZN9CTFPlayer9ShouldGibERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_TFPlayerThink,
@@ -169,6 +174,9 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFBot_ShouldGib,
 		"_ZN6CTFBot9ShouldGibERK15CTakeDamageInfo");
+	
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_IsBot,
+		"_ZNK13NextBotPlayerI9CTFPlayerE5IsBotEv");
 	
 	SYMBOL_FUNC(CTFTankBoss_TankBossThink,
 		"_ZN11CTFTankBoss13TankBossThinkEv");
@@ -190,6 +198,11 @@ void symbols_init(void)
 		"_ZN21CTFSniperRifleClassic13ItemPostFrameEv");
 	SYMBOL_FUNC(CTFSniperRifleDecap_SniperRifleChargeRateMod,
 		"_ZN19CTFSniperRifleDecap24SniperRifleChargeRateModEv");
+	
+	SYMBOL_FUNC(CTFKnife_DisguiseOnKill,
+		"_ZN8CTFKnife14DisguiseOnKillEv");
+	SYMBOL_FUNC(CTFKnife_PrimaryAttack,
+		"_ZN8CTFKnife13PrimaryAttackEv");
 	
 	SYMBOL_FUNC(CTFProjectile_Arrow_StrikeTarget_clone323,
 		"_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity.part.323");
