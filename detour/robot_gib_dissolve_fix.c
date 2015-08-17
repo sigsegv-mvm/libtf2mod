@@ -103,7 +103,7 @@ static unknown_t detour_CTFPlayer_Event_Killed(CTFPlayer* this, CTakeDamageInfo 
 	CTFWeaponBase *weapon;
 	if ((ent = UTIL_EntityByIndex(weapon_entindex)) != NULL) {
 		if ((weapon = DYNAMIC_CAST(ent, CBaseEntity, CTFWeaponBase)) != NULL) {
-			weaponid = CTFWeaponBase_GetWeaponID(weapon);
+			weaponid = vcall_CTFWeaponBase_GetWeaponID(weapon);
 		}
 	}
 	
