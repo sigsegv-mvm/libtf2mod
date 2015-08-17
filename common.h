@@ -80,4 +80,8 @@ typedef struct {
 	errx(_code, "\e[91m" _fmt "\e[0m", ##__VA_ARGS__)
 
 
+#define SIZE_CHECK(_type, _size) \
+	_Static_assert(sizeof(_type) == _size, "bad size: " #_type);
+
+
 #endif

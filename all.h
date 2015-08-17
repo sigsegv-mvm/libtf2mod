@@ -43,7 +43,7 @@
 
 /* this project */
 #include "common.h"
-#include "symbols.h"
+#include "types.h"
 #include "init.h"
 #include "library.h"
 #include "detour.h"
@@ -54,6 +54,7 @@
 #include "convar.h"
 #include "sendprop.h"
 #include "datamap.h"
+#include "symbols.h"
 
 
 #endif
