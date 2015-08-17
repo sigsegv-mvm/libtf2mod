@@ -3,9 +3,9 @@
 
 
 #define SYMBOL_OBJ(_var, _mangled) \
-	_var = symtab_obj_absolute(_mangled)
+	symtab_obj_absolute(_mangled, (void **)&_var, NULL)
 #define SYMBOL_FUNC(_var, _mangled) \
-	_var = symtab_func_absolute(_mangled)
+	symtab_func_absolute(_mangled, (void **)&_var, NULL)
 
 
 void symbols_init(void)

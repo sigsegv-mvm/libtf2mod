@@ -137,7 +137,7 @@ bool symtab_obj_addr_abs(symbol_t *entry, uintptr_t addr, const char *lib_name)
 }
 
 
-void *symtab_obj_absolute(const char *name)
+void symtab_obj_absolute(const char *name, void **addr, size_t *size)
 {
 	symbol_t sym;
 	if (!symtab_obj_name(&sym, name)) {
@@ -145,11 +145,15 @@ void *symtab_obj_absolute(const char *name)
 		return NULL;
 	}
 	
-	uintptr_t abs_addr = sym.lib->baseaddr + sym.addr;
-	return (void *)abs_addr;
+	if (addr != NULL) {
+		*addr = (void *)(sym.lib->baseaddr + sym.addr);
+	}
+	if (size != NULL) {
+		*size = sym.size;
+	}
 }
 
-void *symtab_func_absolute(const char *name)
+void symtab_func_absolute(const char *name, void **addr, size_t *size)
 {
 	symbol_t sym;
 	if (!symtab_func_name(&sym, name)) {
@@ -157,6 +161,10 @@ void *symtab_func_absolute(const char *name)
 		return NULL;
 	}
 	
-	uintptr_t abs_addr = sym.lib->baseaddr + sym.addr;
-	return (void *)abs_addr;
+	if (addr != NULL) {
+		*addr = (void *)(sym.lib->baseaddr + sym.addr);
+	}
+	if (size != NULL) {
+		*size = sym.size;
+	}
 }
