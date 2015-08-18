@@ -185,16 +185,16 @@ static bool detour_CTFWeaponBase_CanFireRandomCriticalShot(CTFWeaponBase* this, 
 
 static bool detour_CTFGameRules_IsPVEModeControlled(CTFGameRules* this, CBaseEntity* ent)
 {
-	int entindex = ENTINDEX(this);
+	int entindex = ENTINDEX(ent);
 	if (entindex == 0) {
-		pr_debug("%s: ENTINDEX(%08x) = 0\n", __func__, (uintptr_t)this);
+		pr_debug("%s: ENTINDEX(%08x) = 0\n", __func__, (uintptr_t)ent);
 	}
 	
 	
 	bool result = trampoline_CTFGameRules_IsPVEModeControlled(this, ent);
 	pr_debug("CTFGameRules::IsPVEModeControlled(e:%d|t:%d): %s\n",
 		entindex,
-		CBaseEntity_GetTeamNumber(this),
+		CBaseEntity_GetTeamNumber(ent),
 		(result ? "TRUE" : "FALSE"));
 	
 	return result;
