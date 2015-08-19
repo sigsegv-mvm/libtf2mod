@@ -140,6 +140,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFPlayerShared_AddCond,
 		"_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
+	SYMBOL_FUNC(CTFPlayerShared_IsInvulnerable,
+		"_ZNK15CTFPlayerShared14IsInvulnerableEv");
 	SYMBOL_FUNC(CTFPlayerShared_RadiusCurrencyCollectionCheck,
 		"_ZN15CTFPlayerShared29RadiusCurrencyCollectionCheckEv");
 	
