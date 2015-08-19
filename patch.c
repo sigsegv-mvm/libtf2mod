@@ -77,7 +77,15 @@ bool func_verify(void *pfunc, size_t off, size_t len, const uint8_t *cmp)
 {
 	func_t *func = func_register(pfunc);
 	
-	assert(off + len <= func->func_size);
+	if (off + len > func->func_size) {
+		pr_err("func_verify failed for func '%s':\n", func->name_demangled);
+		
+		pr_err("bounds check failed: %u + %u > %u\n",
+			off, len, func->func_size);
+		
+		return false;
+	}
+	
 	uintptr_t where = func->func_addr + off;
 	
 	if (memcmp((void *)where, cmp, len) != 0) {
