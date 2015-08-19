@@ -64,6 +64,8 @@ extern void (*UTIL_ScreenShake)(Vector const*, float, float, float, float, Shake
 extern bool (*WeaponID_IsSniperRifle)(int);
 extern bool (*WeaponID_IsSniperRifleOrBow)(int);
 
+extern unknown_t (*FX_FireBullets)(CTFWeaponBase*, int, Vector const*, QAngle const*, int, int, int, float, float, bool);
+
 
 /* functions: static */
 

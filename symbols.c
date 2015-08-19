@@ -98,6 +98,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(WeaponID_IsSniperRifleOrBow,
 		"_Z27WeaponID_IsSniperRifleOrBowi");
 	
+	SYMBOL_FUNC(FX_FireBullets,
+		"_Z14FX_FireBulletsP13CTFWeaponBaseiRK6VectorRK6QAngleiiiffb");
+	
 	
 	/* functions: static */
 	

@@ -16,6 +16,7 @@ static bool (*trampoline_CTFWeaponBase_CanFireRandomCriticalShot)(CTFWeaponBase*
 static bool (*trampoline_CTFGameRules_IsPVEModeControlled)(CTFGameRules* this, CBaseEntity*);
 static unknown_t (*trampoline_CTFPlayer_FireBullet)(CTFPlayer* this, CTFWeaponBase*, FireBulletsInfo_t const*, bool, int, int);
 static unknown_t (*trampoline_CTFPlayer_TraceAttack)(CTFPlayer* this, CTakeDamageInfo const*, Vector const*, CGameTrace*, CDmgAccumulator*);
+static unknown_t (*trampoline_FX_FireBullets)(CTFWeaponBase*, int, Vector const*, QAngle const*, int, int, int, float, float, bool);
 
 
 static bool detour_CTFSniperRifle_CanFireCriticalShot(CTFSniperRifle* this, bool b1)
@@ -362,6 +363,42 @@ static unknown_t detour_CTFPlayer_TraceAttack(CTFPlayer* this, CTakeDamageInfo c
 	return trampoline_CTFPlayer_TraceAttack(this, info, vec, trace, accum);
 }
 
+static unknown_t detour_FX_FireBullets(CTFWeaponBase* weapon, int i1, Vector const* vec, QAngle const* ang, int i2, int i3, int i4, float f1, float f2, bool b1)
+{
+	int weapon_entindex = ENTINDEX(weapon);
+	if (weapon_entindex == 0) {
+		pr_debug("%s: ENTINDEX(%08x) = 0\n", __func__, (uintptr_t)weapon);
+	}
+	int weaponid = vcall_CTFWeaponBase_GetWeaponID(weapon);
+	
+	
+	pr_info("FX_FireBullets\n");
+	pr_debug(
+		"  weapon entindex: %d\n"
+		"  i1:              %08x\n"
+		"  vec:             % .2e % .2e % .2e\n"
+		"  ang:             % .2e % .2e % .2e\n"
+		"  i2:              %08x\n"
+		"  i3:              %08x\n"
+		"  i4:              %08x\n"
+		"  f1:              %.2f\n"
+		"  f2:              %.2f\n"
+		"  b1:              %s\n",
+		weapon_entindex,
+		i1,
+		vec->x, vec->y, vec->z,
+		ang->x, ang->y, ang->z,
+		i2,
+		i3,
+		i4,
+		f1,
+		f2,
+		(b1 ? "TRUE" : "FALSE"));
+	
+	
+	return trampoline_FX_FireBullets(weapon, i1, vec, ang, i2, i3, i4, f1, f2, b1);
+}
+
 
 
 DETOUR_SETUP
@@ -377,6 +414,7 @@ DETOUR_SETUP
 	DETOUR_CREATE(CTFGameRules_IsPVEModeControlled);
 	DETOUR_CREATE(CTFPlayer_FireBullet);
 	DETOUR_CREATE(CTFPlayer_TraceAttack);
+	DETOUR_CREATE(FX_FireBullets);
 }
 
 
