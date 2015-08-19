@@ -161,6 +161,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer10DeathSoundERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_Event_Killed,
 		"_ZN9CTFPlayer12Event_KilledERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFPlayer_FireBullet,
+		"_ZN9CTFPlayer10FireBulletEP13CTFWeaponBaseRK17FireBulletsInfo_tbii");
 	SYMBOL_FUNC(CTFPlayer_IsMiniBoss,
 		"_ZNK9CTFPlayer10IsMiniBossEv");
 	SYMBOL_FUNC(CTFPlayer_IsPlayerClass,
@@ -173,6 +175,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer9ShouldGibERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_TFPlayerThink,
 		"_ZN9CTFPlayer13TFPlayerThinkEv");
+	SYMBOL_FUNC(CTFPlayer_TraceAttack,
+		"_ZN9CTFPlayer11TraceAttackERK15CTakeDamageInfoRK6VectorP10CGameTraceP15CDmgAccumulator");
 	
 	SYMBOL_FUNC(CTFBot_ShouldGib,
 		"_ZN6CTFBot9ShouldGibERK15CTakeDamageInfo");

@@ -289,6 +289,13 @@ enum {
 	TF_WEAPON_PARACHUTE,
 };
 
+enum {
+	FIRE_BULLETS_FIRST_SHOT_ACCURATE         = 0x1,
+	FIRE_BULLETS_DONT_HIT_UNDERWATER         = 0x2,
+	FIRE_BULLETS_ALLOW_WATER_SURFACE_IMPACTS = 0x4,
+	FIRE_BULLETS_TEMPORARY_DANGER_SOUND      = 0x8,
+};
+
 typedef enum {
 	TFSTAT_UNDEFINED = 0,
 	
@@ -349,11 +356,11 @@ typedef void CCurrencyPack;
 
 typedef void CUtlVector;
 
-typedef void CGameTrace;
-
 typedef void Action_CTFBot;
 
 typedef void IRecipientFilter;
+
+typedef void CDmgAccumulator;
 
 typedef void mstudiobbox_t;
 
@@ -434,6 +441,63 @@ typedef struct {
 	bool m_bForceFriendlyFire;
 } CTakeDamageInfo;
 SIZE_CHECK(CTakeDamageInfo, 0x60);
+
+typedef struct {
+	int m_iShots;
+	Vector m_vecSrc;
+	Vector m_vecDirShooting;
+	Vector m_vecSpread;
+	float m_flDistance;
+	int m_iAmmoType;
+	int m_iTracerFreq;
+	float m_flDamage;
+	int m_iPlayerDamage;
+	int m_nFlags;
+	float m_flDamageForceScale;
+	CBaseEntity *m_pAttacker;
+	CBaseEntity *m_pAdditionalIgnoreEnt;
+	bool m_bPrimaryAttack;
+} FireBulletsInfo_t;
+SIZE_CHECK(FireBulletsInfo_t, 0x50);
+
+typedef struct {
+	Vector normal;
+	float dist;
+	uint8_t type;
+	uint8_t signbits;
+	uint8_t pad[2];
+} cplane_t;
+SIZE_CHECK(cplane_t, 0x14);
+
+typedef struct {
+	const char *name;
+	short surfaceProps;
+	unsigned short flags;
+} csurface_t;
+SIZE_CHECK(csurface_t, 0x8);
+
+typedef struct {
+	Vector startpos;
+	Vector endpos;
+	cplane_t plane;
+	float fraction;
+	int contents;
+	unsigned short dispFlags;
+	bool allsolid;
+	bool startsolid;
+} CBaseTrace;
+SIZE_CHECK(CBaseTrace, 0x38);
+
+typedef struct {
+	CBaseTrace base;
+	float fractionleftsolid;
+	csurface_t surface;
+	int hitgroup;
+	short physicsbone;
+	CBaseEntity *m_pEnt;
+	int hitbox;
+} CGameTrace;
+SIZE_CHECK(CGameTrace, 0x54);
 
 
 #endif
