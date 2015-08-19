@@ -7,6 +7,10 @@ PATCH(human_deathyell_enable);
 
 PATCH_CHECK
 {
+	uintptr_t off1 = sendprop_offset("CTFGameRulesProxy",
+		"m_bPlayingMannVsMachine");
+	
+	
 	size_t check1_base = 0x0024;
 	uint8_t check1[] = {
 		0x8b, 0x5d, 0xf4, // +0024  mov ebx,DWORD PTR [ebp-0xc]
@@ -19,8 +23,8 @@ PATCH_CHECK
 	
 	size_t check2_base = 0x009a;
 	uint8_t check2[] = {
-		0x80, 0xba, 0x9a, 0x09, 0x00, 0x00, 0x00, // +009A  cmp BYTE PTR [edx+0x99a],0x0
-		0x0f, 0x85, 0xc1, 0x01, 0x00, 0x00,       // +00A1  jne +0x1c1
+		0x80, 0xba, CONV_LE(off1) 0x00,     // +009A  cmp BYTE PTR [edx+m_bPlayingMannVsMachine],0x0
+		0x0f, 0x85, 0xc1, 0x01, 0x00, 0x00, // +00A1  jne +0x1c1
 	};
 	
 	size_t check3_base = 0x02a6;

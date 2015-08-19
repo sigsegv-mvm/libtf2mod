@@ -21,9 +21,8 @@ PATCH_CHECK
 {
 	uintptr_t off1 = (uintptr_t)g_pGameRules;
 	
-	//uintptr_t off2 = sendprop_offset("CTFGameRules",
-	//	"m_bPlayingMannVsMachine");
-	uintptr_t off2 = 0x99a;
+	uintptr_t off2 = sendprop_offset("CTFGameRulesProxy",
+		"m_bPlayingMannVsMachine");
 	
 	
 	size_t check1_base = 0x008d;
