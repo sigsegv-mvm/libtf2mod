@@ -47,17 +47,21 @@ void lib_hook(const char *path, void *handle)
 	
 	
 	lib->name = name;
-	
-	if (strcmp(path_dir, ".") == 0) {
-		char *fixed_path = malloc(1024);
-		snprintf(fixed_path, 1024, "tf/bin/%s", path_base);
-		lib->path = fixed_path;
-	} else {
-		lib->path = path;
-	}
+	lib->path = path;
 	
 	if ((lib->fd = open(lib->path, O_RDONLY)) == -1) {
-		err(1, "open('%s') failed", name);
+		char *fixed_path = malloc(1024);
+		snprintf(fixed_path, 1024, "bin/%s", path_base);
+		
+		if ((lib->fd = open(fixed_path, O_RDONLY)) == -1) {
+			snprintf(fixed_path, 1024, "tf/bin/%s", path_base);
+			
+			if ((lib->fd = open(fixed_path, O_RDONLY)) == -1) {
+				err(1, "open('%s') failed", name);
+			}
+		}
+		
+		lib->path = fixed_path;
 	}
 	
 	if (fstat(lib->fd, &lib->stat) != 0) {
