@@ -1,7 +1,7 @@
 #include "all.h"
 
 
-int vtable_find_offset(const char *sym_name, void *pfunc)
+static int vtable_find_index(const char *sym_name, void *pfunc)
 {
 	void **vtable;
 	size_t size;
@@ -32,11 +32,23 @@ int vtable_find_offset(const char *sym_name, void *pfunc)
 }
 
 
+int vtable_find_offset(const char *sym_name, void *pfunc)
+{
+	int idx = vtable_find_index(sym_name, pfunc);
+	
+	if (idx != -1) {
+		return 4 * idx;
+	} else {
+		return idx;
+	}
+}
+
+
 bool vcall_CBasePlayer_IsBot(CBasePlayer* this)
 {
 	static int vidx = -1;
 	if (vidx == -1) {
-		vidx = vtable_find_offset("_ZTV11CBasePlayer",
+		vidx = vtable_find_index("_ZTV11CBasePlayer",
 			CBasePlayer_IsBot);
 	}
 	assert(vidx != -1);
@@ -53,7 +65,7 @@ int vcall_CTFWeaponBase_GetWeaponID(CTFWeaponBase* this)
 {
 	static int vidx = -1;
 	if (vidx == -1) {
-		vidx = vtable_find_offset("_ZTV13CTFWeaponBase",
+		vidx = vtable_find_index("_ZTV13CTFWeaponBase",
 			CTFWeaponBase_GetWeaponID);
 	}
 	assert(vidx != -1);
