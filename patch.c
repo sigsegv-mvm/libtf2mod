@@ -19,7 +19,6 @@ patch_info_t *patches[] = {
 	&patch_giant_stomp_disable,
 	&patch_deploybomb_suppress_output,
 	&patch_engiebot_ai_repair_tele_under_construction,
-	&patch_wavestatus_setactive_wrongarray_fix,
 	&patch_mvm_gib_fix,
 	
 	//&patch_tank_shake_disable,
