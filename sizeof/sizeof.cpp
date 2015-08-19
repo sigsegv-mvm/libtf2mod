@@ -2,6 +2,11 @@
 #include <tier1/convar.h>
 #include <datamap.h>
 #include <server_class.h>
+//#include <basecombatweapon_shared.h>
+#include <tier1/utlmap.h>
+#include <shareddefs.h>
+#include <trace.h>
+#include <gametrace.h>
 
 
 #define SIZEOF(_type) \
@@ -41,6 +46,21 @@ int main()
 	
 	SIZEOF(typedescription_t);
 	SIZEOF(datamap_t);
+	puts("");
+	
+	//SIZEOF(CTakeDamageInfo);
+	//SIZEOF(CDmgAccumulator);
+	CUtlMap<int, double>* map;
+	SIZEOF(*map);
+	puts("");
+	
+	SIZEOF(FireBulletsInfo_t);
+	puts("");
+	
+	SIZEOF(cplane_t);
+	SIZEOF(csurface_t);
+	SIZEOF(CBaseTrace);
+	SIZEOF(CGameTrace);
 	puts("");
 	
 	
