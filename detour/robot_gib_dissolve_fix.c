@@ -121,7 +121,8 @@ static unknown_t detour_CTFPlayer_Event_Killed(CTFPlayer* this, CTakeDamageInfo 
 		"  m_flMaxDamage:         %.1f\n"
 		"  m_flBaseDamage:        %.1f\n"
 		"  m_bitsDamageType:      %08x (%s)\n"
-		"  m_iDamageCustom:       %d (%s)\n",
+		"  m_iDamageCustom:       %d (%s)\n"
+		"  m_iDamageStats:        %08x\n",
 		entindex,
 		info->m_vecDamageForce.x,
 		info->m_vecDamageForce.y,
@@ -143,7 +144,8 @@ static unknown_t detour_CTFPlayer_Event_Killed(CTFPlayer* this, CTakeDamageInfo 
 		info->m_bitsDamageType,
 		get_string_for_damagebits(info->m_bitsDamageType),
 		info->m_iDamageCustom,
-		get_string_for_customkill(info->m_iDamageCustom));
+		get_string_for_customkill(info->m_iDamageCustom),
+		info->m_iDamageStats);
 	
 	
 	return trampoline_CTFPlayer_Event_Killed(this, info);
