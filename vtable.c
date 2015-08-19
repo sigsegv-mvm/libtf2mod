@@ -1,7 +1,7 @@
 #include "all.h"
 
 
-static int vtable_find_offset(const char *sym_name, void *pfunc)
+int vtable_find_offset(const char *sym_name, void *pfunc)
 {
 	void **vtable;
 	size_t size;
