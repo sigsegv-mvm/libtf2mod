@@ -7,13 +7,17 @@ PATCH(bot_revivemarker_enable);
 
 PATCH_CHECK
 {
+	uintptr_t off1 = vtable_find_offset("_ZTV11CBasePlayer",
+		CBasePlayer_IsBot);
+	
+	
 	size_t check1_base = 0x0a82;
 	uint8_t check1[] = {
-		0x8b, 0x03,                         // +0A82  mov eax,DWORD PTR [ebx]
-		0x89, 0x1c, 0x24,                   // +0A84  mov DWORD PTR [esp],ebx
-		0xff, 0x90, 0xec, 0x06, 0x00, 0x00, // +0A87  call DWORD PTR [eax+0x6ec] CTFBasePlayer::IsBot() const
-		0x84, 0xc0,                         // +0A8D  test al,al
-		0x75, 0x4f,                         // +0A8F  jne +0x4f
+		0x8b, 0x03,               // +0A82  mov eax,DWORD PTR [ebx]
+		0x89, 0x1c, 0x24,         // +0A84  mov DWORD PTR [esp],ebx
+		0xff, 0x90, CONV_LE(off1) // +0A87  call DWORD PTR [eax+IsBot] CBasePlayer::IsBot() const
+		0x84, 0xc0,               // +0A8D  test al,al
+		0x75, 0x4f,               // +0A8F  jne +0x4f
 	};
 	
 	

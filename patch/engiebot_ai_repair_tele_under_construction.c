@@ -8,8 +8,8 @@ PATCH(engiebot_ai_repair_tele_under_construction);
 
 PATCH_CHECK
 {
-	uintptr_t off1 = sendprop_offset(
-		"CBaseObject", "m_bBuilding");
+	uintptr_t off1 = sendprop_offset("CBaseObject",
+		"m_bBuilding");
 	
 	
 	size_t check1_base = 0x03d8;

@@ -200,6 +200,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFWeaponBase_GetWeaponID,
 		"_ZNK13CTFWeaponBase11GetWeaponIDEv");
 	
+	SYMBOL_FUNC(CTFWeaponBaseGun_GetWeaponProjectileType,
+		"_ZNK16CTFWeaponBaseGun23GetWeaponProjectileTypeEv");
 	SYMBOL_FUNC(CTFWeaponBaseGun_PrimaryAttack,
 		"_ZN16CTFWeaponBaseGun13PrimaryAttackEv");
 	

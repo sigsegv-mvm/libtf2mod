@@ -125,6 +125,7 @@ extern bool (*CTFWeaponBase_CanFireCriticalShot)(CTFWeaponBase* this, bool);
 extern bool (*CTFWeaponBase_CanFireRandomCriticalShot)(CTFWeaponBase* this, float);
 extern int (*CTFWeaponBase_GetWeaponID)(CTFWeaponBase* this);
 
+extern int (*CTFWeaponBaseGun_GetWeaponProjectileType)(CTFWeaponBaseGun* this);
 extern void (*CTFWeaponBaseGun_PrimaryAttack)(CTFWeaponBaseGun* this);
 
 extern void (*CTFRocketLauncher_Precache)(CTFRocketLauncher* this);
