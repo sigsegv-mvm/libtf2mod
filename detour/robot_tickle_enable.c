@@ -2,7 +2,7 @@
 
 
 DETOUR(robot_tickle_enable);
-/* allow robots to be tickled by the Holiday Punch */
+/* allow non-MiniBoss robots to be tickled by the Holiday Punch */
 
 
 static bool (*trampoline_CTFPlayer_CanBeForcedToLaugh)(CTFPlayer* this);
@@ -10,8 +10,10 @@ static bool (*trampoline_CTFPlayer_CanBeForcedToLaugh)(CTFPlayer* this);
 
 static bool detour_CTFPlayer_CanBeForcedToLaugh(CTFPlayer* this)
 {
-	/* always return true */
-	return true;
+	/* only return false if the player is a MiniBoss MvM bot */
+	return !(CTFGameRules_IsPVEModeActive(*g_pGameRules) &&
+		vcall_CBasePlayer_IsBot(this) &&
+		CTFPlayer_IsMiniBoss(this));
 }
 
 
