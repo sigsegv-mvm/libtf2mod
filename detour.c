@@ -31,7 +31,7 @@ detour_info_t *detours[] = {
 	&detour_wavecounts_debug,
 	//&detour_debug_rescueranger_pickup_range,
 	//&detour_debug_gib_glitch,
-	&detour_debug_headshot_bug,
+	//&detour_debug_headshot_bug,
 };
 
 
