@@ -52,6 +52,7 @@ extern detour_info_t detour_robot_gib_dissolve_fix;
 extern detour_info_t detour_scorchshot_airblast_disable;
 extern detour_info_t detour_yer_nerf_disable;
 extern detour_info_t detour_arrow_pen_ignoreuber;
+extern detour_info_t detour_medishield_teamskin_enable;
 
 extern detour_info_t detour_mini_dispenser;
 

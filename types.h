@@ -337,6 +337,8 @@ typedef void CObjectSentrygun;
 typedef void CObjectTeleporter;
 typedef void CObjectSapper;
 
+typedef void CTFMedigunShield;
+
 typedef void CTFGameRules;
 
 typedef void CTFGameStats;

@@ -74,6 +74,8 @@ extern void (*CBaseEntity_PrecacheScriptSound)(char const*);
 extern datamap_t* (*CBaseObject_GetDataDescMap)(void);
 extern datamap_t* (*CObjectSentrygun_GetDataDescMap)(void);
 
+extern CTFMedigunShield* (*CTFMedigunShield_Create)(CTFPlayer*);
+
 extern int (*CAttributeManager_AttribHookValue_int)(int, char const*, CBaseEntity const*, CUtlVector*, bool);
 
 

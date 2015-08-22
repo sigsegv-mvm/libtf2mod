@@ -18,6 +18,7 @@ detour_info_t *detours[] = {
 	&detour_scorchshot_airblast_disable,
 	&detour_yer_nerf_disable,
 	&detour_arrow_pen_ignoreuber,
+	&detour_medishield_teamskin_enable,
 	
 	//&detour_mini_dispenser,
 	

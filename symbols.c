@@ -112,6 +112,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CObjectSentrygun_GetDataDescMap,
 		"_ZN16CObjectSentrygun14GetDataDescMapEv");
 	
+	SYMBOL_FUNC(CTFMedigunShield_Create,
+		"_ZN16CTFMedigunShield6CreateEP9CTFPlayer");
+	
 	SYMBOL_FUNC(CAttributeManager_AttribHookValue_int,
 		"_ZN17CAttributeManager15AttribHookValueIiEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
 	
