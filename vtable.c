@@ -56,7 +56,7 @@ void vtable_init(void)
 	
 	assert((vidx_CTFWeaponBase_GetWeaponID =
 		vtable_find_index("_ZTV13CTFWeaponBase",
-		CBasePlayer_IsBot)) != -1);
+		CTFWeaponBase_GetWeaponID)) != -1);
 }
 
 
