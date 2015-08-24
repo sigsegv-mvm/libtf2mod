@@ -13,6 +13,10 @@ void tf2mod_init(void)
 	pr_info("libtf2mod: initializing\n");
 	
 	
+	pr_info("libtf2mod: getting vtable info\n");
+	vtable_init();
+	
+	
 	pr_info("libtf2mod: applying patches\n");
 	patch_all();
 	
@@ -20,6 +24,7 @@ void tf2mod_init(void)
 	
 	pr_info("libtf2mod: enabling detours\n");
 	detour_all();
+	
 	
 	pr_info("libtf2mod: initializing convars\n");
 	convar_init();
