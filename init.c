@@ -16,6 +16,9 @@ void tf2mod_init(void)
 	pr_info("libtf2mod: getting vtable info\n");
 	vtable_init();
 	
+	pr_info("libtf2mod: getting entprop info\n");
+	entprop_init();
+	
 	
 	pr_info("libtf2mod: applying patches\n");
 	patch_all();

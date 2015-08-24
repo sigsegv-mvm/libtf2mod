@@ -8,8 +8,6 @@ DETOUR(robot_gib_improvements);
 
 static bool (*trampoline_CTFBot_ShouldGib)(CTFBot* this);
 
-static uintptr_t off_CTFPlayer_m_flModelScale;
-
 
 static bool detour_CTFBot_ShouldGib(CTFBot* this, CTakeDamageInfo const* info)
 {
@@ -18,8 +16,7 @@ static bool detour_CTFBot_ShouldGib(CTFBot* this, CTakeDamageInfo const* info)
 		CBaseEntity_GetTeamNumber(this) == TFTEAM_BLUE) {
 		
 		bool is_miniboss = CTFPlayer_IsMiniBoss(this);
-		float *m_flModelScale = (float *)((uintptr_t)this +
-			off_CTFPlayer_m_flModelScale);
+		float *m_flModelScale = prop_CBaseAnimating_m_flModelScale(this);
 		
 		//pr_info("CTFBot::ShouldGib\n");
 		//pr_debug(
@@ -65,16 +62,5 @@ static bool detour_CTFBot_ShouldGib(CTFBot* this, CTakeDamageInfo const* info)
 
 DETOUR_SETUP
 {
-	if (off_CTFPlayer_m_flModelScale == 0) {
-		off_CTFPlayer_m_flModelScale = sendprop_offset(
-			"CTFPlayer", "m_flModelScale");
-		
-		if (off_CTFPlayer_m_flModelScale == 0) {
-			pr_warn("%s: off_CTFPlayer_m_flModelScale = 0\n", __func__);
-			return;
-		}
-	}
-	
-	
 	DETOUR_CREATE(CTFBot_ShouldGib);
 }

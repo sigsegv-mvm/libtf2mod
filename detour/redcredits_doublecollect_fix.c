@@ -8,8 +8,6 @@ DETOUR(redcredits_doublecollect_fix);
 
 static unknown_t (*trampoline_CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, int, CTFPlayer*, bool, bool, bool);
 
-static uintptr_t off_CCurrencyPack_m_bDistributed;
-
 
 static unknown_t detour_CTFGameRules_DistributeCurrencyAmount(CTFGameRules* this, int i1, CTFPlayer* player, bool b1, bool b2, bool b3)
 {
@@ -24,9 +22,8 @@ static unknown_t detour_CTFGameRules_DistributeCurrencyAmount(CTFGameRules* this
 	//	(b3 ? "TRUE" : "FALSE"));
 	
 	if (func_owns_addr(CCurrencyPack_ComeToRest, caller)) {
-		uintptr_t cpack = *(uintptr_t *)(caller_frame + 0x8);
-		bool *m_bDistributed = (bool *)(cpack +
-			off_CCurrencyPack_m_bDistributed);
+		CCurrencyPack* cpack = *(CCurrencyPack **)(caller_frame + 0x8);
+		bool *m_bDistributed = prop_CCurrencyPack_m_bDistributed(cpack);
 		
 		//pr_info("cpack->m_bDistributed = %02x\n",
 		//	*((uint8_t*)m_bDistributed));
@@ -46,16 +43,5 @@ static unknown_t detour_CTFGameRules_DistributeCurrencyAmount(CTFGameRules* this
 
 DETOUR_SETUP
 {
-	if (off_CCurrencyPack_m_bDistributed == 0) {
-		off_CCurrencyPack_m_bDistributed = sendprop_offset(
-			"CCurrencyPack", "m_bDistributed");
-		
-		if (off_CCurrencyPack_m_bDistributed == 0) {
-			pr_warn("%s: off_CCurrencyPack_m_bDistributed = 0\n", __func__);
-			return;
-		}
-	}
-	
-	
 	DETOUR_CREATE(CTFGameRules_DistributeCurrencyAmount);
 }

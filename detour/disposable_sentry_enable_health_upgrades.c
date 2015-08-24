@@ -7,18 +7,13 @@ DETOUR(disposable_sentry_enable_health_upgrades);
 
 static void (*trampoline_CObjectSentrygun_MakeDisposableBuilding)(CBaseObject* this, CTFPlayer*);
 
-static uintptr_t off_CObjectSentrygun_m_iMaxHealth;
-static uintptr_t off_CObjectSentrygun_m_bDisposableBuilding;
-
 
 static void detour_CObjectSentrygun_MakeDisposableBuilding(CBaseObject* this, CTFPlayer* player)
 {
 	trampoline_CObjectSentrygun_MakeDisposableBuilding(this, player);
 	
-	int *m_iMaxHealth = (int *)((uintptr_t)this +
-		off_CObjectSentrygun_m_iMaxHealth);
-	bool *m_bDisposableBuilding = (bool *)((uintptr_t)this +
-		off_CObjectSentrygun_m_bDisposableBuilding);
+	int *m_iMaxHealth = prop_CBaseObject_m_iMaxHealth(this);
+	bool *m_bDisposableBuilding = prop_CBaseObject_m_bDisposableBuilding(this);
 	
 	/* check if it's a disposable sentry */
 	if (CBaseObject_GetType(this) == 2 && *m_bDisposableBuilding) {
@@ -42,27 +37,5 @@ static void detour_CObjectSentrygun_MakeDisposableBuilding(CBaseObject* this, CT
 
 DETOUR_SETUP
 {
-	if (off_CObjectSentrygun_m_iMaxHealth == 0) {
-		off_CObjectSentrygun_m_iMaxHealth = datamap_offset(
-			CObjectSentrygun_GetDataDescMap(), "m_iMaxHealth");
-		
-		if (off_CObjectSentrygun_m_iMaxHealth == 0) {
-			pr_warn("%s: off_CObjectSentrygun_m_iMaxHealth = 0\n", __func__);
-			return;
-		}
-	}
-	
-	if (off_CObjectSentrygun_m_bDisposableBuilding == 0) {
-		off_CObjectSentrygun_m_bDisposableBuilding = sendprop_offset(
-			"CBaseObject", "m_bDisposableBuilding");
-		
-		if (off_CObjectSentrygun_m_bDisposableBuilding == 0) {
-			pr_warn("%s: off_CObjectSentrygun_m_bDisposableBuilding = 0\n",
-				__func__);
-			return;
-		}
-	}
-	
-	
 	DETOUR_CREATE(CObjectSentrygun_MakeDisposableBuilding);
 }

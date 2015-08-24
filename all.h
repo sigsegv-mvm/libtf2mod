@@ -55,6 +55,7 @@
 #include "sendprop.h"
 #include "datamap.h"
 #include "symbols.h"
+#include "entprop.h"
 
 
 #endif

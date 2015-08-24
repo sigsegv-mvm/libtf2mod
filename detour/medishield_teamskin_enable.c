@@ -7,8 +7,6 @@ DETOUR(medishield_teamskin_enable);
 
 static CTFMedigunShield* (*trampoline_CTFMedigunShield_Create)(CTFPlayer*);
 
-static uintptr_t off_CTFMedigunShield_m_nSkin;
-
 
 static CTFMedigunShield* detour_CTFMedigunShield_Create(CTFPlayer* player)
 {
@@ -19,8 +17,7 @@ static CTFMedigunShield* detour_CTFMedigunShield_Create(CTFPlayer* player)
 	//pr_debug("  this = %08x\n", (uintptr_t)this);
 	if (this != NULL) {
 		int teamnum = CBaseEntity_GetTeamNumber(this);
-		int *m_nSkin = (int *)((uintptr_t)this +
-			off_CTFMedigunShield_m_nSkin);
+		int *m_nSkin = prop_CBaseAnimating_m_nSkin(this);
 		
 		//pr_debug("  teamnum = %d\n", teamnum);
 		//pr_debug("  m_nSkin = %d\n", *m_nSkin);
@@ -48,16 +45,5 @@ static CTFMedigunShield* detour_CTFMedigunShield_Create(CTFPlayer* player)
 
 DETOUR_SETUP
 {
-	if (off_CTFMedigunShield_m_nSkin == 0) {
-		off_CTFMedigunShield_m_nSkin = sendprop_offset(
-			"CTFMedigunShield", "m_nSkin");
-		
-		if (off_CTFMedigunShield_m_nSkin == 0) {
-			pr_warn("%s: off_CTFMedigunShield_m_nSkin = 0\n", __func__);
-			return;
-		}
-	}
-	
-	
 	DETOUR_CREATE(CTFMedigunShield_Create);
 }

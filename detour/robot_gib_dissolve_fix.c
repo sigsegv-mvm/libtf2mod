@@ -15,8 +15,6 @@ DETOUR(robot_gib_dissolve_fix);
 static void (*trampoline_CTFPlayer_CreateRagdollEntity)(CTFPlayer* this, bool, bool, bool, bool, bool, bool, bool, bool, int, bool);
 static unknown_t (*trampoline_CTFPlayer_Event_Killed)(CTFPlayer* this, CTakeDamageInfo const*);
 
-static uintptr_t off_CTFPlayer_m_flModelScale;
-
 
 static void detour_CTFPlayer_CreateRagdollEntity(CTFPlayer* this, bool bShouldGib, bool bBurning, bool bUberDrop, bool bOnGround, bool bYER, bool bGold, bool bIce, bool bAsh, int m_iDamageCustom, bool bClassic)
 {
@@ -26,8 +24,7 @@ static void detour_CTFPlayer_CreateRagdollEntity(CTFPlayer* this, bool bShouldGi
 		CTFGameRules_IsPVEModeActive(*g_pGameRules) &&
 		CBaseEntity_GetTeamNumber(this) == TFTEAM_BLUE) {
 		
-		float *m_flModelScale = (float *)((uintptr_t)this +
-			off_CTFPlayer_m_flModelScale);
+		float *m_flModelScale = prop_CBaseAnimating_m_flModelScale(this);
 		bool is_giant = (CTFPlayer_IsMiniBoss(this) || *m_flModelScale > 1.0f);
 		
 		/* for giants:
@@ -154,17 +151,6 @@ static unknown_t detour_CTFPlayer_Event_Killed(CTFPlayer* this, CTakeDamageInfo 
 
 DETOUR_SETUP
 {
-	if (off_CTFPlayer_m_flModelScale == 0) {
-		off_CTFPlayer_m_flModelScale = sendprop_offset(
-			"CTFPlayer", "m_flModelScale");
-		
-		if (off_CTFPlayer_m_flModelScale == 0) {
-			pr_warn("%s: off_CTFPlayer_m_flModelScale = 0\n", __func__);
-			return;
-		}
-	}
-	
-	
 	DETOUR_CREATE(CTFPlayer_CreateRagdollEntity);
 	
 	//DETOUR_CREATE(CTFPlayer_Event_Killed);
