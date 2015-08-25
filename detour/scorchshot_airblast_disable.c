@@ -2,8 +2,8 @@
 
 
 DETOUR(scorchshot_airblast_disable);
-/* remove the new Scorch Shot's annoying new ability to airblast robots
- * (including giants) all over the place with ease */
+/* limit the new Scorch Shot's annoying new ability to airblast robots all over
+ * the place to non-MiniBosses only */
 
 
 static unknown_t (*trampoline_CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
@@ -16,7 +16,10 @@ static unknown_t detour_CTFPlayer_ApplyAirBlastImpulse(CTFPlayer* this, Vector c
 	uintptr_t caller_frame = (uintptr_t)__builtin_frame_address(1);
 	
 	/* when a flare tries to airblast someone, ignore it */
-	if (func_owns_addr(CTFProjectile_Flare_Explode, caller)) {
+	if (func_owns_addr(CTFProjectile_Flare_Explode, caller) &&
+		CTFGameRules_IsPVEModeActive(*g_pGameRules) &&
+		vcall_CBasePlayer_IsBot(this) &&
+		CTFPlayer_IsMiniBoss(this)) {
 		return 0;
 	}
 	
