@@ -320,6 +320,8 @@ typedef void NextBotPlayer_CTFPlayer;
 
 typedef void CTFTankBoss;
 
+typedef void CEconItemView;
+
 typedef void CTFWeaponBase;
 typedef void CTFWeaponBaseGun;
 typedef void CTFRocketLauncher;

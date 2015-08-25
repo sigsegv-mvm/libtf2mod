@@ -67,6 +67,7 @@ extern detour_info_t detour_wavecounts_debug;
 extern detour_info_t detour_debug_rescueranger_pickup_range;
 extern detour_info_t detour_debug_gib_glitch;
 extern detour_info_t detour_debug_headshot_bug;
+extern detour_info_t detour_debug_spawn_without_weapons;
 
 
 #endif

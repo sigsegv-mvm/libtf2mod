@@ -141,6 +141,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CBaseAnimating_SetModelScale,
 		"_ZN14CBaseAnimating13SetModelScaleEff");
 	
+	SYMBOL_FUNC(CBasePlayer_GiveNamedItem,
+		"_ZN11CBasePlayer13GiveNamedItemEPKci");
 	SYMBOL_FUNC(CBasePlayer_IsBot,
 		"_ZNK11CBasePlayer5IsBotEv");
 	
@@ -169,6 +171,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer12Event_KilledERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_FireBullet,
 		"_ZN9CTFPlayer10FireBulletEP13CTFWeaponBaseRK17FireBulletsInfo_tbii");
+	SYMBOL_FUNC(CTFPlayer_GiveNamedItem,
+		"_ZN9CTFPlayer13GiveNamedItemEPKciPK13CEconItemViewb");
 	SYMBOL_FUNC(CTFPlayer_IsMiniBoss,
 		"_ZNK9CTFPlayer10IsMiniBossEv");
 	SYMBOL_FUNC(CTFPlayer_IsPlayerClass,
