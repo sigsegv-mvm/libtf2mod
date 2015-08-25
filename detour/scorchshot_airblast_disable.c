@@ -15,7 +15,7 @@ static unknown_t detour_CTFPlayer_ApplyAirBlastImpulse(CTFPlayer* this, Vector c
 		__builtin_return_address(0));
 	uintptr_t caller_frame = (uintptr_t)__builtin_frame_address(1);
 	
-	/* when a flare tries to airblast someone, ignore it */
+	/* when a flare tries to airblast a MiniBoss robot, do nothing */
 	if (func_owns_addr(CTFProjectile_Flare_Explode, caller) &&
 		CTFGameRules_IsPVEModeActive(*g_pGameRules) &&
 		vcall_CBasePlayer_IsBot(this) &&
