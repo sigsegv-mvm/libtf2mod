@@ -309,6 +309,9 @@ typedef uint32_t unknown_t;
 
 typedef void CServerGameDLL;
 
+typedef void CGameEventManager;
+typedef void IGameEvent;
+
 typedef void CBaseEntity;
 typedef void CBaseAnimating;
 
@@ -342,6 +345,7 @@ typedef void CObjectSapper;
 typedef void CTFMedigunShield;
 
 typedef void CTFGameRules;
+typedef void CTeamplayRoundBasedRules;
 
 typedef void CTFGameStats;
 

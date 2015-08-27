@@ -25,6 +25,9 @@ void symbols_init(void)
 	SYMBOL_OBJ(gpGlobals,
 		"gpGlobals");
 	
+	SYMBOL_OBJ(gameeventmanager,
+		"gameeventmanager");
+	
 	SYMBOL_OBJ(g_pGameRules,
 		"g_pGameRules");
 	
@@ -33,6 +36,9 @@ void symbols_init(void)
 	
 	SYMBOL_OBJ(g_pObjectiveResource,
 		"g_pObjectiveResource");
+	
+	SYMBOL_OBJ(CONVAR_mp_restartgame,
+		"mp_restartgame");
 	
 	
 	/* functions: global */
@@ -124,8 +130,16 @@ void symbols_init(void)
 	SYMBOL_FUNC(CServerGameDLL_DLLInit,
 		"_ZN14CServerGameDLL7DLLInitEPFPvPKcPiES5_S5_P11CGlobalVars");
 	
+	SYMBOL_FUNC(ConVar_SetValue_int,
+		"_ZN6ConVar8SetValueEi");
+	
 	SYMBOL_FUNC(ConCommand_ctor,
 		"_ZN10ConCommandC1EPKcPFvRK8CCommandES1_iPFiS1_PA64_cE");
+	
+	SYMBOL_FUNC(CGameEventManager_CreateEvent,
+		"_ZN17CGameEventManager11CreateEventEPKcb");
+	SYMBOL_FUNC(CGameEventManager_FireEvent,
+		"_ZN17CGameEventManager9FireEventEP10IGameEventb");
 	
 	SYMBOL_FUNC(CBaseEntity_ApplyAbsVelocityImpulse,
 		"_ZN11CBaseEntity23ApplyAbsVelocityImpulseERK6Vector");
@@ -285,6 +299,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CObjectTeleporter_FinishedBuilding,
 		"_ZN17CObjectTeleporter16FinishedBuildingEv");
 	
+	SYMBOL_FUNC(CTFGameRules_BetweenRounds_Think,
+		"_ZN12CTFGameRules19BetweenRounds_ThinkEv");
 	SYMBOL_FUNC(CTFGameRules_CanUpgradeWithAttrib,
 		"_ZN12CTFGameRules20CanUpgradeWithAttribEP9CTFPlayeritP22CMannVsMachineUpgrades");
 	SYMBOL_FUNC(CTFGameRules_DistributeCurrencyAmount,
@@ -295,8 +311,19 @@ void symbols_init(void)
 		"_ZNK12CTFGameRules15IsPVEModeActiveEv");
 	SYMBOL_FUNC(CTFGameRules_IsPVEModeControlled,
 		"_ZNK12CTFGameRules19IsPVEModeControlledEP11CBaseEntity");
+	SYMBOL_FUNC(CTFGameRules_PlayerReadyStatus_HaveMinPlayersToEnable,
+		"_ZN12CTFGameRules40PlayerReadyStatus_HaveMinPlayersToEnableEv");
+	SYMBOL_FUNC(CTFGameRules_PlayerReadyStatus_ShouldStartCountdown,
+		"_ZN12CTFGameRules38PlayerReadyStatus_ShouldStartCountdownEv");
 	SYMBOL_FUNC(CTFGameRules_PushAllPlayersAway,
 		"_ZN12CTFGameRules18PushAllPlayersAwayERK6VectorffiP10CUtlVectorIP9CTFPlayer10CUtlMemoryIS5_iEE");
+	SYMBOL_FUNC(CTFGameRules_UsePlayerReadyStatusMode,
+		"_ZN12CTFGameRules24UsePlayerReadyStatusModeEv");
+	
+	SYMBOL_FUNC(CTeamplayRoundBasedRules_AreLobbyPlayersOnTeamReady,
+		"_ZN24CTeamplayRoundBasedRules26AreLobbyPlayersOnTeamReadyEi");
+	SYMBOL_FUNC(CTeamplayRoundBasedRules_CheckReadyRestart,
+		"_ZN24CTeamplayRoundBasedRules17CheckReadyRestartEv");
 	
 	SYMBOL_FUNC(CTFGameStats_IncrementStat,
 		"_ZN12CTFGameStats13IncrementStatEP9CTFPlayer12TFStatType_ti");

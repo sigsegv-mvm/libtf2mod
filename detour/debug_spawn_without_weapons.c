@@ -23,7 +23,7 @@ static unknown_t detour_CTFPlayer_GiveNamedItem(CTFPlayer* this, char const* s1,
 		(b1 ? "TRUE" : "FALSE"));
 	
 	
-	return NULL;
+	return (unknown_t)NULL;
 	//return trampoline_CTFPlayer_GiveNamedItem(this, s1, i1, view, b1);
 }
 
@@ -39,7 +39,7 @@ static unknown_t detour_CBasePlayer_GiveNamedItem(CBasePlayer* this, char const*
 		i1);
 	
 	
-	return NULL;
+	return (unknown_t)NULL;
 	//return trampoline_CBasePlayer_GiveNamedItem(this, s1, i1);
 }
 

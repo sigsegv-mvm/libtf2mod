@@ -21,11 +21,15 @@ extern void *typeinfo_for_CTFWeaponBase;
 
 extern CGlobalVars **gpGlobals;
 
+extern CGameEventManager **gameeventmanager;
+
 extern CTFGameRules **g_pGameRules;
 
 extern CTFGameStats *CTF_GameStats;
 
 extern CTFObjectiveResource **g_pObjectiveResource;
+
+extern ConVar **CONVAR_mp_restartgame;
 
 
 /* functions: global */
@@ -83,7 +87,12 @@ extern int (*CAttributeManager_AttribHookValue_int)(int, char const*, CBaseEntit
 
 extern unknown_t (*CServerGameDLL_DLLInit)(CServerGameDLL* this, void* (*)(char const*, int*), void* (*)(char const*, int*), void* (*)(char const*, int*), CGlobalVars*);
 
+extern void (*ConVar_SetValue_int)(ConVar* this, int);
+
 extern void (*ConCommand_ctor)(ConCommand* this, char const*, void (*)(CCommand const*), char const*, int, int (*)(char const*, char (*) [64]));
+
+extern IGameEvent* (*CGameEventManager_CreateEvent)(CGameEventManager* this, char const*, bool);
+extern bool (*CGameEventManager_FireEvent)(CGameEventManager* this, IGameEvent*, bool);
 
 extern void (*CBaseEntity_ApplyAbsVelocityImpulse)(CBaseEntity* this, Vector const*);
 extern int (*CBaseEntity_GetMaxHealth)(CBaseEntity* this);
@@ -173,12 +182,19 @@ extern void (*CObjectSentrygun_Spawn)(CObjectSentrygun* this);
 
 extern void (*CObjectTeleporter_FinishedBuilding)(CObjectTeleporter* this);
 
+extern void (*CTFGameRules_BetweenRounds_Think)(CTFGameRules* this);
 extern bool (*CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*);
 extern unknown_t (*CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, int, CTFPlayer*, bool, bool, bool);
 extern bool (*CTFGameRules_GameModeUsesUpgrades)(CTFGameRules* this);
 extern bool (*CTFGameRules_IsPVEModeActive)(CTFGameRules* this);
 extern bool (*CTFGameRules_IsPVEModeControlled)(CTFGameRules* this, CBaseEntity*);
+extern bool (*CTFGameRules_PlayerReadyStatus_HaveMinPlayersToEnable)(CTFGameRules* this);
+extern bool (*CTFGameRules_PlayerReadyStatus_ShouldStartCountdown)(CTFGameRules* this);
 extern void (*CTFGameRules_PushAllPlayersAway)(CTFGameRules* this, Vector const*, float, float, int, CUtlVector*);
+extern bool (*CTFGameRules_UsePlayerReadyStatusMode)(CTFGameRules* this);
+
+extern bool (*CTeamplayRoundBasedRules_AreLobbyPlayersOnTeamReady)(CTeamplayRoundBasedRules* this, int);
+extern void (*CTeamplayRoundBasedRules_CheckReadyRestart)(CTeamplayRoundBasedRules* this);
 
 extern unknown_t (*CTFGameStats_IncrementStat)(CTFGameStats* this, CTFPlayer*, TFStatType_t, int);
 extern unknown_t (*CTFGameStats_ResetPlayerStats)(CTFGameStats* this, CTFPlayer*);

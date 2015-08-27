@@ -1,7 +1,7 @@
 #include "all.h"
 
 
-DETOUR(wavecounts_debug);
+DETOUR(debug_wavecounts);
 /* add debug output for CTFObjectiveResource wave count info changes */
 
 
