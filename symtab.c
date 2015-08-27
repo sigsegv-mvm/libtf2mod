@@ -119,6 +119,20 @@ bool symtab_func_addr_abs(symbol_t *entry, uintptr_t addr, const char *lib_name)
 	return symtab_lookup_addr(entry, STT_FUNC, addr - lib->baseaddr);
 }
 
+bool symtab_func_addr_abs_anylib(symbol_t *entry, uintptr_t addr)
+{
+	library_info_t *lib = lib_first();
+	
+	do
+	{
+		if (symtab_lookup_addr(entry, STT_FUNC, addr - lib->baseaddr)) {
+			return true;
+		}
+	} while ((lib = lib_next(lib)) != NULL);
+	
+	return false;
+}
+
 
 bool symtab_obj_name(symbol_t *entry, const char *name)
 {
@@ -134,6 +148,20 @@ bool symtab_obj_addr_abs(symbol_t *entry, uintptr_t addr, const char *lib_name)
 {
 	library_info_t *lib = lib_find(lib_name);
 	return symtab_lookup_addr(entry, STT_OBJECT, addr - lib->baseaddr);
+}
+
+bool symtab_obj_addr_abs_anylib(symbol_t *entry, uintptr_t addr)
+{
+	library_info_t *lib = lib_first();
+	
+	do
+	{
+		if (symtab_lookup_addr(entry, STT_OBJECT, addr - lib->baseaddr)) {
+			return true;
+		}
+	} while ((lib = lib_next(lib)) != NULL);
+	
+	return false;
 }
 
 

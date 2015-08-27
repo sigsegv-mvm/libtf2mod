@@ -13,11 +13,13 @@ bool symtab_func_name(symbol_t *entry, const char *name);
 bool symtab_func_addr_rel(symbol_t *entry, uintptr_t addr);
 bool symtab_func_addr_abs(symbol_t *entry, uintptr_t addr,
 	const char *lib_name);
+bool symtab_func_addr_abs_anylib(symbol_t *entry, uintptr_t addr);
 
 bool symtab_obj_name(symbol_t *entry, const char *name);
 bool symtab_obj_addr_rel(symbol_t *entry, uintptr_t addr);
 bool symtab_obj_addr_abs(symbol_t *entry, uintptr_t addr,
 	const char *lib_name);
+bool symtab_obj_addr_abs_anylib(symbol_t *entry, uintptr_t addr);
 
 void symtab_obj_absolute(const char *name, void **addr, size_t *size);
 void symtab_func_absolute(const char *name, void **addr, size_t *size);

@@ -69,8 +69,8 @@ func_t *func_register(void *pfunc)
 	func->func_addr = (uintptr_t)pfunc;
 	
 	symbol_t sym;
-	if (!symtab_func_addr_abs(&sym, (uintptr_t)pfunc, "server_srv.so")) {
-		errx(1, "symtab_func_addr(0x%08x) failed", func->func_addr);
+	if (!symtab_func_addr_abs_anylib(&sym, (uintptr_t)pfunc)) {
+		errx(1, "symtab_func_addr_abs_anylib(0x%08x) failed", func->func_addr);
 	}
 	
 	func->name = sym.name;
