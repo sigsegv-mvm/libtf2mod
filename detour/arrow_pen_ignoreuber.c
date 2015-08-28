@@ -15,7 +15,7 @@ static bool detour_CTFPlayerShared_IsInvulnerable(CTFPlayerShared* this)
 	uintptr_t caller_frame = (uintptr_t)__builtin_frame_address(1);
 	
 	/* lie to the arrow projectile that we are never invuln */
-	if (func_owns_addr(CTFProjectile_Arrow_StrikeTarget_clone323, caller)) {
+	if (func_owns_addr(CTFProjectile_Arrow_StrikeTarget_clone321, caller)) {
 		return false;
 	}
 	

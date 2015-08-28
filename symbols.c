@@ -252,8 +252,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFKnife_PrimaryAttack,
 		"_ZN8CTFKnife13PrimaryAttackEv");
 	
-	SYMBOL_FUNC(CTFProjectile_Arrow_StrikeTarget_clone323,
-		"_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity.part.323");
+	SYMBOL_FUNC(CTFProjectile_Arrow_StrikeTarget_clone321,
+		"_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity.part.321");
 	SYMBOL_FUNC(CTFProjectile_Flare_Explode,
 		"_ZN19CTFProjectile_Flare7ExplodeEP10CGameTraceP11CBaseEntity");
 	

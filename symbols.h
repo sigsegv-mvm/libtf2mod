@@ -156,7 +156,7 @@ extern float (*CTFSniperRifleDecap_SniperRifleChargeRateMod)(CTFSniperRifleDecap
 extern void (*CTFKnife_DisguiseOnKill)(CTFKnife* this);
 extern void (*CTFKnife_PrimaryAttack)(CTFKnife* this);
 
-extern unknown_t (*CTFProjectile_Arrow_StrikeTarget_clone323)(CTFProjectile_Arrow* this, mstudiobbox_t*, CBaseEntity*);
+extern unknown_t (*CTFProjectile_Arrow_StrikeTarget_clone321)(CTFProjectile_Arrow* this, mstudiobbox_t*, CBaseEntity*);
 extern unknown_t (*CTFProjectile_Flare_Explode)(CTFProjectile_Flare* this, CGameTrace*, CBaseEntity*);
 
 extern void (*CBaseObject_DoQuickBuild)(CBaseObject* this);
