@@ -58,6 +58,7 @@ extern patch_info_t patch_bot_revivemarker_enable;
 extern patch_info_t patch_deploybomb_suppress_output;
 extern patch_info_t patch_engiebot_ai_repair_tele_under_construction;
 extern patch_info_t patch_mvm_gib_fix;
+extern patch_info_t patch_playerupgrade_sell_fix;
 
 
 #endif
