@@ -35,9 +35,10 @@ detour_info_t *detours[] = {
 	//&detour_debug_headshot_bug,
 	//&detour_debug_spawn_without_weapons,
 	//&detour_debug_readyup_missing_sounds,
-	&detour_debug_usermessage,
+	//&detour_debug_usermessage,
 	//&detour_debug_revive,
 	//&detour_debug_stats,
+	//&detour_debug_upgrades,
 };
 
 

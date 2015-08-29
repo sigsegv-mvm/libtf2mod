@@ -72,6 +72,7 @@ extern detour_info_t detour_debug_readyup_missing_sounds;
 extern detour_info_t detour_debug_usermessage;
 extern detour_info_t detour_debug_revive;
 extern detour_info_t detour_debug_stats;
+extern detour_info_t detour_debug_upgrades;
 
 
 #endif

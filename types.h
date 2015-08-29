@@ -323,6 +323,9 @@ typedef void NextBotPlayer_CTFPlayer;
 
 typedef void CTFTankBoss;
 
+typedef void CEconEntity;
+typedef void CEconItemSchema;
+typedef void CEconItemAttributeDefinition;
 typedef void CEconItemView;
 
 typedef void CTFWeaponBase;
@@ -351,9 +354,11 @@ typedef void CTFGameStats;
 
 typedef void CMannVsMachineStats;
 
-typedef void CMannVsMachineUpgrades;
-
 typedef void CTFObjectiveResource;
+
+typedef void CUpgrades;
+typedef void CMannVsMachineUpgrades;
+typedef void* UpgradeAttribBlock_t;
 
 typedef void CTFBotMainAction;
 typedef void CTFBotMvMEngineerIdle;
@@ -373,6 +378,8 @@ typedef void CDmgAccumulator;
 typedef void mstudiobbox_t;
 
 typedef unknown_t ShakeCommand_t;
+
+typedef void inputdata_t;
 
 typedef char const* string_t;
 

@@ -121,6 +121,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFMedigunShield_Create,
 		"_ZN16CTFMedigunShield6CreateEP9CTFPlayer");
 	
+	SYMBOL_FUNC(CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot,
+		"_ZN20CTFPlayerSharedUtils28GetEconItemViewByLoadoutSlotEP9CTFPlayeriPP11CEconEntity");
+	
 	SYMBOL_FUNC(CAttributeManager_AttribHookValue_int,
 		"_ZN17CAttributeManager15AttribHookValueIiEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
 	
@@ -193,6 +196,12 @@ void symbols_init(void)
 		"_ZNK9CTFPlayer13IsPlayerClassEi");
 	SYMBOL_FUNC(CTFPlayer_OnTakeDamage_Alive,
 		"_ZN9CTFPlayer18OnTakeDamage_AliveERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFPlayer_Regenerate,
+		"_ZN9CTFPlayer10RegenerateEb");
+	SYMBOL_FUNC(CTFPlayer_RememberUpgrade,
+		"_ZN9CTFPlayer15RememberUpgradeEiP13CEconItemViewiib");
+	SYMBOL_FUNC(CTFPlayer_RemoveCurrency,
+		"_ZN9CTFPlayer14RemoveCurrencyEi");
 	SYMBOL_FUNC(CTFPlayer_RemoveDisguise,
 		"_ZN9CTFPlayer14RemoveDisguiseEv");
 	SYMBOL_FUNC(CTFPlayer_ShouldGib,
@@ -210,6 +219,12 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFTankBoss_TankBossThink,
 		"_ZN11CTFTankBoss13TankBossThinkEv");
+	
+	SYMBOL_FUNC(CEconItemSchema_GetAttributeDefinitionByName,
+		"_ZN15CEconItemSchema28GetAttributeDefinitionByNameEPKc");
+	
+	SYMBOL_FUNC(CEconItemView_GetItemDefIndex,
+		"_ZNK13CEconItemView15GetItemDefIndexEv");
 	
 	SYMBOL_FUNC(CTFWeaponBase_AreRandomCritsEnabled,
 		"_ZN13CTFWeaponBase21AreRandomCritsEnabledEv");
@@ -307,10 +322,16 @@ void symbols_init(void)
 		"_ZN12CTFGameRules24DistributeCurrencyAmountEiP9CTFPlayerbbb");
 	SYMBOL_FUNC(CTFGameRules_GameModeUsesUpgrades,
 		"_ZN12CTFGameRules20GameModeUsesUpgradesEv");
+	SYMBOL_FUNC(CTFGameRules_GetCostForUpgrade,
+		"_ZN12CTFGameRules17GetCostForUpgradeEP22CMannVsMachineUpgradesiiP9CTFPlayer");
+	SYMBOL_FUNC(CTFGameRules_GetUpgradeTier,
+		"_ZN12CTFGameRules14GetUpgradeTierEi");
 	SYMBOL_FUNC(CTFGameRules_IsPVEModeActive,
 		"_ZNK12CTFGameRules15IsPVEModeActiveEv");
 	SYMBOL_FUNC(CTFGameRules_IsPVEModeControlled,
 		"_ZNK12CTFGameRules19IsPVEModeControlledEP11CBaseEntity");
+	SYMBOL_FUNC(CTFGameRules_IsUpgradeTierEnabled,
+		"_ZN12CTFGameRules20IsUpgradeTierEnabledEP9CTFPlayerii");
 	SYMBOL_FUNC(CTFGameRules_PlayerReadyStatus_HaveMinPlayersToEnable,
 		"_ZN12CTFGameRules40PlayerReadyStatus_HaveMinPlayersToEnableEv");
 	SYMBOL_FUNC(CTFGameRules_PlayerReadyStatus_ShouldStartCountdown,
@@ -356,6 +377,37 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFObjectiveResource_SetMannVsMachineWaveClassName,
 		"_ZN20CTFObjectiveResource29SetMannVsMachineWaveClassNameEi8string_t");
 	
+	SYMBOL_FUNC(CUpgrades_ApplyUpgradeAttributeBlock,
+		"_ZN9CUpgrades26ApplyUpgradeAttributeBlockEP20UpgradeAttribBlock_tiP9CTFPlayerb");
+	SYMBOL_FUNC(CUpgrades_ApplyUpgradeToItem,
+		"_ZN9CUpgrades18ApplyUpgradeToItemEP9CTFPlayerP13CEconItemViewiibb");
+	SYMBOL_FUNC(CUpgrades_EndTouch,
+		"_ZN9CUpgrades8EndTouchEP11CBaseEntity");
+	SYMBOL_FUNC(CUpgrades_FireGameEvent,
+		"_ZN9CUpgrades13FireGameEventEP10IGameEvent");
+	SYMBOL_FUNC(CUpgrades_GetUpgradeAttributeName,
+		"_ZNK9CUpgrades23GetUpgradeAttributeNameEi");
+	SYMBOL_FUNC(CUpgrades_GrantOrRemoveAllUpgrades,
+		"_ZN9CUpgrades24GrantOrRemoveAllUpgradesEP9CTFPlayerbb");
+	SYMBOL_FUNC(CUpgrades_InputDisable,
+		"_ZN9CUpgrades12InputDisableER11inputdata_t");
+	SYMBOL_FUNC(CUpgrades_InputEnable,
+		"_ZN9CUpgrades11InputEnableER11inputdata_t");
+	SYMBOL_FUNC(CUpgrades_InputReset,
+		"_ZN9CUpgrades10InputResetER11inputdata_t");
+	SYMBOL_FUNC(CUpgrades_NotifyItemOnUpgrade,
+		"_ZN9CUpgrades19NotifyItemOnUpgradeEP9CTFPlayertb");
+	SYMBOL_FUNC(CUpgrades_PlayerPurchasingUpgrade,
+		"_ZN9CUpgrades23PlayerPurchasingUpgradeEP9CTFPlayeriibbb");
+	SYMBOL_FUNC(CUpgrades_ReportUpgrade,
+		"_ZN9CUpgrades13ReportUpgradeEP9CTFPlayeriiiibbb");
+	SYMBOL_FUNC(CUpgrades_RestoreItemAttributeToBaseValue,
+		"_ZN9CUpgrades31RestoreItemAttributeToBaseValueEP28CEconItemAttributeDefinitionP13CEconItemView");
+	SYMBOL_FUNC(CUpgrades_RestorePlayerAttributeToBaseValue,
+		"_ZN9CUpgrades33RestorePlayerAttributeToBaseValueEP28CEconItemAttributeDefinitionP9CTFPlayer");
+	SYMBOL_FUNC(CUpgrades_UpgradeTouch,
+		"_ZN9CUpgrades12UpgradeTouchEP11CBaseEntity");
+	
 	SYMBOL_FUNC(CTFBotMainAction_OnContact,
 		"_ZN16CTFBotMainAction9OnContactEP6CTFBotP11CBaseEntityP10CGameTrace");
 	SYMBOL_FUNC(CTFBotMainAction_Update,
@@ -372,4 +424,15 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(Action_CTFBot_OnContact,
 		"_ZN6ActionI6CTFBotE9OnContactEP11CBaseEntityP10CGameTrace");
+	
+	
+#warning TODO: symbols for these upgrade related functions
+	// CTFPlayer::*
+	// CMannVsMachineStats::*
+	// CPopulationManager::*
+	// CEconEntity::*
+	// CTFPowerupBottle::*
+	// CTFWeaponBase::*
+	// CTFWearable::*
+	// CTFGameRules::*
 }

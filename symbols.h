@@ -80,6 +80,8 @@ extern datamap_t* (*CObjectSentrygun_GetDataDescMap)(void);
 
 extern CTFMedigunShield* (*CTFMedigunShield_Create)(CTFPlayer*);
 
+extern CEconItemView* (*CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot)(CTFPlayer*, int, CEconEntity**);
+
 extern int (*CAttributeManager_AttribHookValue_int)(int, char const*, CBaseEntity const*, CUtlVector*, bool);
 
 
@@ -122,6 +124,9 @@ extern unknown_t (*CTFPlayer_GiveNamedItem)(CTFPlayer* this, char const*, int, C
 extern bool (*CTFPlayer_IsMiniBoss)(CTFPlayer* this);
 extern bool (*CTFPlayer_IsPlayerClass)(CTFPlayer* this, int);
 extern unknown_t (*CTFPlayer_OnTakeDamage_Alive)(CTFPlayer* this, CTakeDamageInfo const*);
+extern void (*CTFPlayer_Regenerate)(CTFPlayer* this, bool);
+extern void (*CTFPlayer_RememberUpgrade)(CTFPlayer* this, int, CEconItemView*, int, int, bool);
+extern void (*CTFPlayer_RemoveCurrency)(CTFPlayer* this, int);
 extern void (*CTFPlayer_RemoveDisguise)(CTFPlayer* this);
 extern bool (*CTFPlayer_ShouldGib)(CTFPlayer* this, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_TFPlayerThink)(CTFPlayer* this);
@@ -132,6 +137,10 @@ extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
 extern bool (*NextBotPlayer_CTFPlayer_IsBot)(NextBotPlayer_CTFPlayer* this);
 
 extern void (*CTFTankBoss_TankBossThink)(CTFTankBoss* this);
+
+extern CEconItemAttributeDefinition* (*CEconItemSchema_GetAttributeDefinitionByName)(CEconItemSchema* this, char const*);
+
+extern int (*CEconItemView_GetItemDefIndex)(CEconItemView* this);
 
 extern bool (*CTFWeaponBase_AreRandomCritsEnabled)(CTFWeaponBase* this);
 extern bool (*CTFWeaponBase_CalcIsAttackCritical)(CTFWeaponBase* this);
@@ -186,8 +195,11 @@ extern void (*CTFGameRules_BetweenRounds_Think)(CTFGameRules* this);
 extern bool (*CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*);
 extern unknown_t (*CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, int, CTFPlayer*, bool, bool, bool);
 extern bool (*CTFGameRules_GameModeUsesUpgrades)(CTFGameRules* this);
+extern int (*CTFGameRules_GetCostForUpgrade)(CTFGameRules* this, CMannVsMachineUpgrades*, int, int, CTFPlayer*);
+extern int (*CTFGameRules_GetUpgradeTier)(CTFGameRules* this, int);
 extern bool (*CTFGameRules_IsPVEModeActive)(CTFGameRules* this);
 extern bool (*CTFGameRules_IsPVEModeControlled)(CTFGameRules* this, CBaseEntity*);
+extern bool (*CTFGameRules_IsUpgradeTierEnabled)(CTFGameRules* this, CTFPlayer*, int, int);
 extern bool (*CTFGameRules_PlayerReadyStatus_HaveMinPlayersToEnable)(CTFGameRules* this);
 extern bool (*CTFGameRules_PlayerReadyStatus_ShouldStartCountdown)(CTFGameRules* this);
 extern void (*CTFGameRules_PushAllPlayersAway)(CTFGameRules* this, Vector const*, float, float, int, CUtlVector*);
@@ -212,6 +224,22 @@ extern unknown_t (*CTFObjectiveResource_IncrementTeleporterCount)(CTFObjectiveRe
 extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassActive)(CTFObjectiveResource* this, string_t, bool);
 extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassCount)(CTFObjectiveResource* this, int, int);
 extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassName)(CTFObjectiveResource* this, int, string_t);
+
+extern unknown_t (*CUpgrades_ApplyUpgradeAttributeBlock)(CUpgrades* this, UpgradeAttribBlock_t, int, CTFPlayer*, bool);
+extern unsigned short (*CUpgrades_ApplyUpgradeToItem)(CUpgrades* this, CTFPlayer*, CEconItemView*, int, int, bool, bool);
+extern unknown_t (*CUpgrades_EndTouch)(CUpgrades* this, CBaseEntity*);
+extern unknown_t (*CUpgrades_FireGameEvent)(CUpgrades* this, IGameEvent*);
+extern unknown_t (*CUpgrades_GetUpgradeAttributeName)(CUpgrades* this, int);
+extern unknown_t (*CUpgrades_GrantOrRemoveAllUpgrades)(CUpgrades* this, CTFPlayer*, bool, bool);
+extern unknown_t (*CUpgrades_InputDisable)(CUpgrades* this, inputdata_t*);
+extern unknown_t (*CUpgrades_InputEnable)(CUpgrades* this, inputdata_t*);
+extern unknown_t (*CUpgrades_InputReset)(CUpgrades* this, inputdata_t*);
+extern void (*CUpgrades_NotifyItemOnUpgrade)(CUpgrades* this, unsigned short, bool);
+extern void (*CUpgrades_PlayerPurchasingUpgrade)(CUpgrades* this, CTFPlayer*, int, int, bool, bool, bool);
+extern unknown_t (*CUpgrades_ReportUpgrade)(CUpgrades* this, CTFPlayer*, int, int, int, int, bool, bool, bool);
+extern unknown_t (*CUpgrades_RestoreItemAttributeToBaseValue)(CUpgrades* this, CEconItemAttributeDefinition*, CEconItemView*);
+extern unknown_t (*CUpgrades_RestorePlayerAttributeToBaseValue)(CUpgrades* this, CEconItemAttributeDefinition*, CTFPlayer*);
+extern unknown_t (*CUpgrades_UpgradeTouch)(CUpgrades* this, CBaseEntity*);
 
 extern unknown_t (*CTFBotMainAction_OnContact)(CTFBotMainAction* this, CTFBot*, CBaseEntity*, CGameTrace*);
 extern unknown_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, float);
