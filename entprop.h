@@ -2,9 +2,6 @@
 #define _LIBTF2MOD_ENTPROP_H
 
 
-void entprop_init(void);
-
-
 float *prop_CBaseAnimating_m_flModelScale(CBaseAnimating* ent);
 int *prop_CBaseAnimating_m_nSkin(CBaseAnimating* ent);
 
@@ -14,6 +11,9 @@ bool *prop_CBaseObject_m_bMiniBuilding(CBaseObject* ent);
 int *prop_CBaseObject_m_iMaxHealth(CBaseObject* ent);
 
 bool *prop_CCurrencyPack_m_bDistributed(CCurrencyPack* ent);
+
+
+void entprop_init(void);
 
 
 #endif

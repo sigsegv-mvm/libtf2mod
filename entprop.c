@@ -1,86 +1,50 @@
 #include "all.h"
 
 
-static uintptr_t off_CBaseAnimating_m_flModelScale;
-static uintptr_t off_CBaseAnimating_m_nSkin;
+#define INIT_SENDPROP(_name, _class, _prop) \
+	off_ ## _name = sendprop_offset(#_class, #_prop); \
+	assert(off_ ## _name != 0); \
+	pr_debug("[netprop] %04x off_" #_name "\n", off_ ## _name);
+#define INIT_DATAMAP(_name, _class, _prop) \
+	off_ ## _name = datamap_offset(_class ## _GetDataDescMap(), #_prop); \
+	assert(off_ ## _name != 0); \
+	pr_debug("[datamap] %04x off_" #_name "\n", off_ ## _name);
 
-static uintptr_t off_CBaseObject_m_bBuilding;
-static uintptr_t off_CBaseObject_m_bDisposableBuilding;
-static uintptr_t off_CBaseObject_m_bMiniBuilding;
-static uintptr_t off_CBaseObject_m_iMaxHealth;
+#define DEFINE_ENTPROP(_type, _class, _prop) \
+	static uintptr_t off_ ## _class ## _ ## _prop; \
+	_type *prop_ ## _class ## _ ## _prop(_class* ent) { \
+		assert(off_ ## _class ## _ ## _prop != 0); \
+		return (_type *)((uintptr_t)ent + off_ ## _class ## _ ## _prop); \
+	}
 
-static uintptr_t off_CCurrencyPack_m_bDistributed;
+
+DEFINE_ENTPROP(float, CBaseAnimating, m_flModelScale);
+DEFINE_ENTPROP(int, CBaseAnimating, m_nSkin);
+
+DEFINE_ENTPROP(bool, CBaseObject, m_bBuilding);
+DEFINE_ENTPROP(bool, CBaseObject, m_bDisposableBuilding);
+DEFINE_ENTPROP(bool, CBaseObject, m_bMiniBuilding);
+DEFINE_ENTPROP(int, CBaseObject, m_iMaxHealth);
+
+DEFINE_ENTPROP(bool, CCurrencyPack, m_bDistributed);
 
 
 void entprop_init(void)
 {
-	assert((off_CBaseAnimating_m_flModelScale =
-		sendprop_offset("CBaseAnimating",
-			"m_flModelScale")) != 0);
-	assert((off_CBaseAnimating_m_nSkin =
-		sendprop_offset("CBaseAnimating",
-			"m_nSkin")) != 0);
+	INIT_SENDPROP(CBaseAnimating_m_flModelScale,
+		CBaseAnimating, m_flModelScale);
+	INIT_SENDPROP(CBaseAnimating_m_nSkin,
+		CBaseAnimating, m_nSkin);
 	
-	assert((off_CBaseObject_m_bBuilding =
-		sendprop_offset("CBaseObject",
-			"m_bBuilding")) != 0);
-	assert((off_CBaseObject_m_bDisposableBuilding =
-		sendprop_offset("CBaseObject",
-			"m_bDisposableBuilding")) != 0);
-	assert((off_CBaseObject_m_bMiniBuilding =
-		sendprop_offset("CBaseObject",
-			"m_bMiniBuilding")) != 0);
-	assert((off_CBaseObject_m_iMaxHealth =
-		datamap_offset(CBaseObject_GetDataDescMap(),
-			"m_iMaxHealth")) != 0);
+	INIT_SENDPROP(CBaseObject_m_bBuilding,
+		CBaseObject, m_bBuilding);
+	INIT_SENDPROP(CBaseObject_m_bDisposableBuilding,
+		CBaseObject, m_bDisposableBuilding);
+	INIT_SENDPROP(CBaseObject_m_bMiniBuilding,
+		CBaseObject, m_bMiniBuilding);
+	INIT_DATAMAP(CBaseObject_m_iMaxHealth,
+		CBaseObject, m_iMaxHealth);
 	
-	assert((off_CCurrencyPack_m_bDistributed =
-		sendprop_offset("CCurrencyPack",
-			"m_bDistributed")) != 0);
+	INIT_SENDPROP(CCurrencyPack_m_bDistributed,
+		CCurrencyPack, m_bDistributed);
 }
-
-
-float *prop_CBaseAnimating_m_flModelScale(CBaseAnimating* ent)
-{
-	assert(off_CBaseAnimating_m_flModelScale != 0);
-	return (float *)((uintptr_t)ent + off_CBaseAnimating_m_flModelScale);
-}
-
-int *prop_CBaseAnimating_m_nSkin(CBaseAnimating* ent)
-{
-	assert(off_CBaseAnimating_m_nSkin != 0);
-	return (int *)((uintptr_t)ent + off_CBaseAnimating_m_nSkin);
-}
-
-
-bool *prop_CBaseObject_m_bBuilding(CBaseObject* ent)
-{
-	assert(off_CBaseObject_m_bBuilding != 0);
-	return (bool *)((uintptr_t)ent + off_CBaseObject_m_bBuilding);
-}
-
-bool *prop_CBaseObject_m_bDisposableBuilding(CBaseObject* ent)
-{
-	assert(off_CBaseObject_m_bDisposableBuilding != 0);
-	return (bool *)((uintptr_t)ent + off_CBaseObject_m_bDisposableBuilding);
-}
-
-bool *prop_CBaseObject_m_bMiniBuilding(CBaseObject* ent)
-{
-	assert(off_CBaseObject_m_bMiniBuilding != 0);
-	return (bool *)((uintptr_t)ent + off_CBaseObject_m_bMiniBuilding);
-}
-
-int *prop_CBaseObject_m_iMaxHealth(CBaseObject* ent)
-{
-	assert(off_CBaseObject_m_iMaxHealth != 0);
-	return (int *)((uintptr_t)ent + off_CBaseObject_m_iMaxHealth);
-}
-
-
-bool *prop_CCurrencyPack_m_bDistributed(CCurrencyPack* ent)
-{
-	assert(off_CCurrencyPack_m_bDistributed != 0);
-	return (bool *)((uintptr_t)ent + off_CCurrencyPack_m_bDistributed);
-}
-
