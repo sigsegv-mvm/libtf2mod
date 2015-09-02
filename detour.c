@@ -19,6 +19,7 @@ detour_info_t *detours[] = {
 	&detour_yer_nerf_disable,
 	&detour_arrow_pen_ignoreuber,
 	&detour_medishield_teamskin_enable,
+	&detour_eh_medieval_disable,
 	
 	//&detour_mini_dispenser,
 	
