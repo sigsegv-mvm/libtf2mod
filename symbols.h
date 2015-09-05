@@ -132,6 +132,7 @@ extern bool (*CTFPlayer_ShouldGib)(CTFPlayer* this, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_TFPlayerThink)(CTFPlayer* this);
 extern unknown_t (*CTFPlayer_TraceAttack)(CTFPlayer* this, CTakeDamageInfo const*, Vector const*, CGameTrace*, CDmgAccumulator*);
 
+extern bool (*CTFBot_EquipRequiredWeapon)(CTFBot* this);
 extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
 
 extern bool (*NextBotPlayer_CTFPlayer_IsBot)(NextBotPlayer_CTFPlayer* this);

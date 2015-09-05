@@ -211,6 +211,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFPlayer_TraceAttack,
 		"_ZN9CTFPlayer11TraceAttackERK15CTakeDamageInfoRK6VectorP10CGameTraceP15CDmgAccumulator");
 	
+	SYMBOL_FUNC(CTFBot_EquipRequiredWeapon,
+		"_ZN6CTFBot19EquipRequiredWeaponEv");
 	SYMBOL_FUNC(CTFBot_ShouldGib,
 		"_ZN6CTFBot9ShouldGibERK15CTakeDamageInfo");
 	
