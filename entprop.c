@@ -5,6 +5,15 @@
 	off_ ## _name = sendprop_offset(#_class, #_prop); \
 	assert(off_ ## _name != 0); \
 	pr_debug("[netprop] %04x off_" #_name "\n", off_ ## _name);
+#define INIT_SENDPROP2(_name, _class, _prop1, _prop2) \
+	{ \
+		uintptr_t off1 = sendprop_offset(#_class, #_prop1); \
+		uintptr_t off2 = sendprop_offset(#_class, #_prop2); \
+		off_ ## _name = off1 + off2; \
+		assert(off1 != 0); \
+		assert(off2 != 0); \
+		pr_debug("[netprop] %04x off_" #_name "\n", off_ ## _name); \
+	}
 #define INIT_DATAMAP(_name, _class, _prop) \
 	off_ ## _name = datamap_offset(_class ## _GetDataDescMap(), #_prop); \
 	assert(off_ ## _name != 0); \
@@ -20,6 +29,8 @@
 
 DEFINE_ENTPROP(float, CBaseAnimating, m_flModelScale);
 DEFINE_ENTPROP(int, CBaseAnimating, m_nSkin);
+
+DEFINE_ENTPROP(int, CTFPlayer, m_iClass);
 
 DEFINE_ENTPROP(bool, CBaseObject, m_bBuilding);
 DEFINE_ENTPROP(bool, CBaseObject, m_bDisposableBuilding);
@@ -37,6 +48,9 @@ void entprop_init(void)
 		CBaseAnimating, m_flModelScale);
 	INIT_SENDPROP(CBaseAnimating_m_nSkin,
 		CBaseAnimating, m_nSkin);
+	
+	INIT_SENDPROP2(CTFPlayer_m_iClass,
+		CTFPlayer, m_PlayerClass, m_iClass);
 	
 	INIT_SENDPROP(CBaseObject_m_bBuilding,
 		CBaseObject, m_bBuilding);
