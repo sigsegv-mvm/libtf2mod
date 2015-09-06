@@ -73,6 +73,7 @@ passthru:
 	return trampoline_CreateEntityByName(name, i1);
 }
 
+
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CreateEntityByName);
