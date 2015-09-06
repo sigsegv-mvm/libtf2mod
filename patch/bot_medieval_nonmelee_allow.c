@@ -17,7 +17,7 @@ PATCH_CHECK
 	size_t check1_base = 0x00b0;
 	uint8_t check1[] = {
 		0xa1, CONV_LE(off1)             // +00B0  mov eax,ds:g_pGameRules
-		0x80, 0xbb, CONV_LE(off2) 0x00, // +00B5  cmp byte ptr [eax+m_bPlayingMedieval],0x0
+		0x80, 0xb8, CONV_LE(off2) 0x00, // +00B5  cmp byte ptr [eax+m_bPlayingMedieval],0x0
 		0x75, 0xbb,                     // +00BC  jnz -0x45
 	};
 	
