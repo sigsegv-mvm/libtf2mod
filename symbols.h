@@ -120,6 +120,7 @@ extern unknown_t (*CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector co
 extern unknown_t (*CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
 extern bool (*CTFPlayer_CanBeForcedToLaugh)(CTFPlayer* this);
 extern int (*CTFPlayer_CanBuild)(CTFPlayer* this, int, int);
+extern bool (*CTFPlayer_CanHearAndReadChatFrom)(CTFPlayer* this, CBasePlayer*);
 extern bool (*CTFPlayer_CanPickupBuilding)(CTFPlayer* this, CBaseObject*);
 extern void (*CTFPlayer_CreateRagdollEntity)(CTFPlayer* this, bool, bool, bool, bool, bool, bool, bool, bool, int, bool);
 extern void (*CTFPlayer_DeathSound)(CTFPlayer* this, CTakeDamageInfo const*);

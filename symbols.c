@@ -188,6 +188,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer18CanBeForcedToLaughEv");
 	SYMBOL_FUNC(CTFPlayer_CanBuild,
 		"_ZN9CTFPlayer8CanBuildEii");
+	SYMBOL_FUNC(CTFPlayer_CanHearAndReadChatFrom,
+		"_ZN9CTFPlayer22CanHearAndReadChatFromEP11CBasePlayer");
 	SYMBOL_FUNC(CTFPlayer_CanPickupBuilding,
 		"_ZN9CTFPlayer17CanPickupBuildingEP11CBaseObject");
 	SYMBOL_FUNC(CTFPlayer_CreateRagdollEntity,
