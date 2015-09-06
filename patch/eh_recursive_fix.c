@@ -46,8 +46,8 @@ PATCH_APPLY
 	
 	size_t data1_base = 0x10d6;
 	uint8_t data1[] = {
-		0xe9, CONV_LE(off1)     // jmp new_func
-		0x90, 0x90, 0x90, 0x90, // nop x 4
+		0xe9, CONV_LE(off1)     // +10D6  jmp new_func
+		0x90, 0x90, 0x90, 0x90, // +10DB  nop x 4
 	};
 	
 	
