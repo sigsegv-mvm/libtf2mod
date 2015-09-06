@@ -25,6 +25,8 @@ patch_info_t *patches[] = {
 	//&patch_tank_shake_disable,
 	//&patch_currencypack_no_pull,
 	//&patch_bot_revivemarker_enable,
+	&patch_medicbot_ai_xbow_heal_part1,
+	&patch_medicbot_ai_xbow_heal_part2,
 };
 
 

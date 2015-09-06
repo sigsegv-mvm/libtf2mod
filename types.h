@@ -336,6 +336,7 @@ typedef void CItemSelectionCriteria;
 
 typedef void CTFWeaponBase;
 typedef void CTFWeaponBaseGun;
+typedef void CWeaponMedigun;
 typedef void CTFRocketLauncher;
 typedef void CTFSniperRifle;
 typedef void CTFSniperRifleDecap;
@@ -367,6 +368,7 @@ typedef void CMannVsMachineUpgrades;
 typedef void* UpgradeAttribBlock_t;
 
 typedef void CTFBotMainAction;
+typedef void CTFBotMedicHeal;
 typedef void CTFBotMvMEngineerIdle;
 
 typedef void CTFReviveMarker;

@@ -60,6 +60,8 @@ extern patch_info_t patch_engiebot_ai_repair_tele_under_construction;
 extern patch_info_t patch_mvm_gib_fix;
 extern patch_info_t patch_playerupgrade_sell_fix;
 extern patch_info_t patch_bot_medieval_nonmelee_allow;
+extern patch_info_t patch_medicbot_ai_xbow_heal_part1;
+extern patch_info_t patch_medicbot_ai_xbow_heal_part2;
 
 
 #endif

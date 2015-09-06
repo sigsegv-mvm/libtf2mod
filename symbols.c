@@ -18,6 +18,10 @@ void symbols_init(void)
 		"_ZTI11CBaseObject");
 	SYMBOL_OBJ(typeinfo_for_CTFWeaponBase,
 		"_ZTI13CTFWeaponBase");
+	SYMBOL_OBJ(typeinfo_for_CWeaponMedigun,
+		"_ZTI14CWeaponMedigun");
+	SYMBOL_OBJ(typeinfo_for_CTFCrossbow,
+		"_ZTI11CTFCrossbow");
 	
 	
 	/* globals */
@@ -266,6 +270,11 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFWeaponBaseGun_PrimaryAttack,
 		"_ZN16CTFWeaponBaseGun13PrimaryAttackEv");
 	
+	SYMBOL_FUNC(CWeaponMedigun_GetTargetRange,
+		"_ZN14CWeaponMedigun14GetTargetRangeEv");
+	SYMBOL_FUNC(CWeaponMedigun_IsAttachedToBuilding,
+		"_ZN14CWeaponMedigun20IsAttachedToBuildingEv");
+	
 	SYMBOL_FUNC(CTFRocketLauncher_Precache,
 		"_ZN17CTFRocketLauncher8PrecacheEv");
 	
@@ -430,6 +439,11 @@ void symbols_init(void)
 		"_ZN16CTFBotMainAction9OnContactEP6CTFBotP11CBaseEntityP10CGameTrace");
 	SYMBOL_FUNC(CTFBotMainAction_Update,
 		"_ZN16CTFBotMainAction6UpdateEP6CTFBotf");
+	
+	SYMBOL_FUNC(CTFBotMedicHeal_IsReadyToDeployUber,
+		"_ZNK15CTFBotMedicHeal19IsReadyToDeployUberEPK14CWeaponMedigun");
+	SYMBOL_FUNC(CTFBotMedicHeal_Update,
+		"_ZN15CTFBotMedicHeal6UpdateEP6CTFBotf");
 	
 	SYMBOL_FUNC(CTFBotMvMEngineerIdle_Update,
 		"_ZN21CTFBotMvMEngineerIdle6UpdateEP6CTFBotf");

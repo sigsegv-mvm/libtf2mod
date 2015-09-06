@@ -30,6 +30,8 @@ detour_info_t *detours[] = {
 	&detour_disposable_dispenser_part4,
 	&detour_disposable_dispenser_part5,*/
 	
+	&detour_medicbot_ai_xbow_heal,
+	
 	//&detour_diagnostics,
 	&detour_debug_wavecounts,
 	//&detour_debug_rescueranger_pickup_range,
