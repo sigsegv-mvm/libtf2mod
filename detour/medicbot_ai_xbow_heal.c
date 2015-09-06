@@ -2,7 +2,8 @@
 
 
 DETOUR(medicbot_ai_xbow_heal);
-/*  */
+/* prevent certain CWeaponMedigun-specific functions from being called with
+ * CTFCrossbow* class instance pointers or null pointers */
 
 
 static bool (*trampoline_CWeaponMedigun_IsAttachedToBuilding)(CWeaponMedigun* this);

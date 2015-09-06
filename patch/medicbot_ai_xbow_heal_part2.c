@@ -2,7 +2,9 @@
 
 
 PATCH(medicbot_ai_xbow_heal_part2);
-/*  */
+/* protect the CWeaponMedigun::GetTargetRange vcall from being invoked on a
+ * CTFCrossbow instance; the CTFCrossbow vtable doesn't even have an entry that
+ * high, so the game would probably crash if we didn't work around this */
 
 
 PATCH_CHECK

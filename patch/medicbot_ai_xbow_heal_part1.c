@@ -2,7 +2,10 @@
 
 
 PATCH(medicbot_ai_xbow_heal_part1);
-/*  */
+/* in CTFBotMedicHeal::Update, if the dynamic cast from CTFWeaponBase to
+ * CWeaponMedigun fails, don't give up; instead, try to dynamic cast to
+ * CTFCrossbow, and if that succeeds, then jump back into the healing code
+ * (skipping some of the earlier medigun-specific code blocks) */
 
 
 PATCH_CHECK
