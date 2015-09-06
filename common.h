@@ -58,6 +58,9 @@ typedef struct {
 	(uint8_t)((uint32_t)(_dword) >> 16), \
 	(uint8_t)((uint32_t)(_dword) >> 24),
 
+#define CALC_RELJMP(_src, _off, _dst) \
+	((uintptr_t)_dst - ((uintptr_t)_src + _off))
+
 
 #define pr_debug(_fmt, ...) \
 	fprintf(stderr, "\e[37m" _fmt "\e[0m", ##__VA_ARGS__); fflush(stderr)

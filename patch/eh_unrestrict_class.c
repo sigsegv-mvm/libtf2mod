@@ -7,8 +7,8 @@ PATCH(eh_unrestrict_class);
 
 PATCH_CHECK
 {
-	uintptr_t off1 = calc_relative_jump(CTFGameRules_CanUpgradeWithAttrib,
-		0x0b0c, CTFPlayer_IsPlayerClass);
+	uintptr_t off1 = CALC_RELJMP(CTFGameRules_CanUpgradeWithAttrib, 0x0b11,
+		CTFPlayer_IsPlayerClass);
 	
 	
 	size_t check1_base = 0x0a68;

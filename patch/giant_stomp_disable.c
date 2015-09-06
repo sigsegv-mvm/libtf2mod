@@ -7,7 +7,7 @@ PATCH(giant_stomp_disable);
 
 PATCH_CHECK
 {
-	uintptr_t off1 = calc_relative_jump(CTFBotMainAction_OnContact, 0x00ab,
+	uintptr_t off1 = CALC_RELJMP(CTFBotMainAction_OnContact, 0x00b0,
 		CTFPlayer_IsMiniBoss);
 	
 	uintptr_t off2 = vtable_find_offset("_ZTV11CBaseEntity",

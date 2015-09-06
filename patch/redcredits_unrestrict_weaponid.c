@@ -7,7 +7,7 @@ PATCH(redcredits_unrestrict_weaponid);
 
 PATCH_CHECK
 {
-	uintptr_t off1 = calc_relative_jump(CTFPlayer_Event_Killed, 0x089c,
+	uintptr_t off1 = CALC_RELJMP(CTFPlayer_Event_Killed, 0x08a1,
 		WeaponID_IsSniperRifleOrBow);
 	
 	
@@ -29,7 +29,7 @@ PATCH_APPLY
 	void *new_func = alloc_func(1);
 	
 	
-	uintptr_t off1 = calc_relative_jump(CTFPlayer_Event_Killed, 0x089c,
+	uintptr_t off1 = CALC_RELJMP(CTFPlayer_Event_Killed, 0x08a1,
 		new_func);
 	
 	uintptr_t off2 = (uintptr_t)WeaponID_IsSniperRifleOrBow -

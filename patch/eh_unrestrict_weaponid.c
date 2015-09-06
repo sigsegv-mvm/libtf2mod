@@ -7,21 +7,21 @@ PATCH(eh_unrestrict_weaponid);
 
 PATCH_CHECK
 {
-	uintptr_t off1 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x0ff3,
+	uintptr_t off1 = CALC_RELJMP(CTFPlayer_OnTakeDamage_Alive, 0x0ff8,
 		WeaponID_IsSniperRifle);
 	
 	uintptr_t off2 = (uintptr_t)g_pGameRules;
 	
-	uintptr_t off3 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x1080,
+	uintptr_t off3 = CALC_RELJMP(CTFPlayer_OnTakeDamage_Alive, 0x1085,
 		CTFGameRules_GameModeUsesUpgrades);
 	
 	uintptr_t off4 = find_string(
 		"server_srv.so", "explosive_sniper_shot", true);
 	
-	uintptr_t off5 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x10c3,
+	uintptr_t off5 = CALC_RELJMP(CTFPlayer_OnTakeDamage_Alive, 0x10c8,
 		CAttributeManager_AttribHookValue_int);
 	
-	uintptr_t off6 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x10f6,
+	uintptr_t off6 = CALC_RELJMP(CTFPlayer_OnTakeDamage_Alive, 0x10fb,
 		CTFSniperRifle_ExplosiveHeadShot);
 	
 	

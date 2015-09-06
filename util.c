@@ -1,12 +1,6 @@
 #include "all.h"
 
 
-uintptr_t calc_relative_jump(void *src, size_t off, void *dst)
-{
-	return ((uintptr_t)dst - (((uintptr_t)src + off) + 5));
-}
-
-
 void mem_unprotect(const void *addr, size_t len)
 {
 	void  *page_addr = (void *)((uintptr_t)addr & ~(PAGE_SIZE - 1));

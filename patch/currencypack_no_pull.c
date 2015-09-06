@@ -7,8 +7,8 @@ PATCH(currencypack_no_pull);
 
 PATCH_CHECK
 {
-	uintptr_t off1 = calc_relative_jump(CTFPlayerShared_RadiusCurrencyCollectionCheck,
-		0x04a0, CBaseEntity_ApplyAbsVelocityImpulse);
+	uintptr_t off1 = CALC_RELJMP(CTFPlayerShared_RadiusCurrencyCollectionCheck,
+		0x04a5, CBaseEntity_ApplyAbsVelocityImpulse);
 	
 	
 	size_t check1_base = 0x04a0;

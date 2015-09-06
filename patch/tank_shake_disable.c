@@ -7,7 +7,7 @@ PATCH(tank_shake_disable);
 
 PATCH_CHECK
 {
-	uintptr_t off1 = calc_relative_jump(CTFTankBoss_TankBossThink, 0x0aac,
+	uintptr_t off1 = CALC_RELJMP(CTFTankBoss_TankBossThink, 0x0aac,
 		UTIL_ScreenShake);
 	
 	
