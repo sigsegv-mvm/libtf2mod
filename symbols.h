@@ -212,6 +212,7 @@ extern unknown_t (*CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, in
 extern bool (*CTFGameRules_GameModeUsesUpgrades)(CTFGameRules* this);
 extern int (*CTFGameRules_GetCostForUpgrade)(CTFGameRules* this, CMannVsMachineUpgrades*, int, int, CTFPlayer*);
 extern int (*CTFGameRules_GetUpgradeTier)(CTFGameRules* this, int);
+extern bool (*CTFGameRules_IsInTraining)(CTFGameRules* this);
 extern bool (*CTFGameRules_IsPVEModeActive)(CTFGameRules* this);
 extern bool (*CTFGameRules_IsPVEModeControlled)(CTFGameRules* this, CBaseEntity*);
 extern bool (*CTFGameRules_IsUpgradeTierEnabled)(CTFGameRules* this, CTFPlayer*, int, int);

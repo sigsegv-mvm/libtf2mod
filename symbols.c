@@ -353,6 +353,8 @@ void symbols_init(void)
 		"_ZN12CTFGameRules17GetCostForUpgradeEP22CMannVsMachineUpgradesiiP9CTFPlayer");
 	SYMBOL_FUNC(CTFGameRules_GetUpgradeTier,
 		"_ZN12CTFGameRules14GetUpgradeTierEi");
+	SYMBOL_FUNC(CTFGameRules_IsInTraining,
+		"_ZN12CTFGameRules12IsInTrainingEv");
 	SYMBOL_FUNC(CTFGameRules_IsPVEModeActive,
 		"_ZNK12CTFGameRules15IsPVEModeActiveEv");
 	SYMBOL_FUNC(CTFGameRules_IsPVEModeControlled,
