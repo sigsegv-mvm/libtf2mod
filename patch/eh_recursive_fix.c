@@ -40,7 +40,7 @@ PATCH_APPLY
 	void *new_func = alloc_func(1);
 	
 	
-	uintptr_t off1 = calc_relative_jump(CTFPlayer_OnTakeDamage_Alive, 0x10d6,
+	uintptr_t off1 = CALC_RELJMP(CTFPlayer_OnTakeDamage_Alive, 0x10db,
 		new_func);
 	
 	
