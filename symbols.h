@@ -59,11 +59,14 @@ extern unknown_t (*MessageWriteVec3Coord)(Vector const*);
 extern unknown_t (*MessageWriteVec3Normal)(Vector const*);
 extern unknown_t (*MessageWriteWord)(int);
 
+extern CBaseEntity* (*CreateEntityByName)(char const*, int);
 
 extern CBaseEntity* (*UTIL_EntityByIndex)(int);
 extern unknown_t (*UTIL_LogPrintf)(char const*, ...);
 extern CBasePlayer* (*UTIL_PlayerByIndex)(int);
 extern void (*UTIL_ScreenShake)(Vector const*, float, float, float, float, ShakeCommand_t, bool);
+
+extern char const* (*TranslateWeaponEntForClass)(char const*, int);
 
 extern bool (*WeaponID_IsSniperRifle)(int);
 extern bool (*WeaponID_IsSniperRifleOrBow)(int);
@@ -132,6 +135,7 @@ extern bool (*CTFPlayer_ShouldGib)(CTFPlayer* this, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_TFPlayerThink)(CTFPlayer* this);
 extern unknown_t (*CTFPlayer_TraceAttack)(CTFPlayer* this, CTakeDamageInfo const*, Vector const*, CGameTrace*, CDmgAccumulator*);
 
+extern void (*CTFBot_AddItem)(CTFBot* this, char const*);
 extern bool (*CTFBot_EquipRequiredWeapon)(CTFBot* this);
 extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
 
@@ -142,6 +146,11 @@ extern void (*CTFTankBoss_TankBossThink)(CTFTankBoss* this);
 extern CEconItemAttributeDefinition* (*CEconItemSchema_GetAttributeDefinitionByName)(CEconItemSchema* this, char const*);
 
 extern int (*CEconItemView_GetItemDefIndex)(CEconItemView* this);
+
+extern void (*CSchemaFieldHandle_CEconItemDefinition_ctor)(CSchemaFieldHandle_CEconItemDefinition* this, char const*);
+
+extern unknown_t (*CItemGeneration_GenerateRandomItem)(CItemGeneration* this, CItemSelectionCriteria*, Vector const*, QAngle const*);
+extern unknown_t (*CItemGeneration_SpawnItem)(CItemGeneration* this, int, Vector const*, QAngle const*, int, int, char const*);
 
 extern bool (*CTFWeaponBase_AreRandomCritsEnabled)(CTFWeaponBase* this);
 extern bool (*CTFWeaponBase_CalcIsAttackCritical)(CTFWeaponBase* this);

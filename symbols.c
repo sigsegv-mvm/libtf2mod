@@ -90,6 +90,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(MessageWriteWord,
 		"_Z16MessageWriteWordi");
 	
+	SYMBOL_FUNC(CreateEntityByName,
+		"_Z18CreateEntityByNamePKci");
+	
 	SYMBOL_FUNC(UTIL_EntityByIndex,
 		"_Z18UTIL_EntityByIndexi");
 	SYMBOL_FUNC(UTIL_LogPrintf,
@@ -98,6 +101,9 @@ void symbols_init(void)
 		"_Z18UTIL_PlayerByIndexi");
 	SYMBOL_FUNC(UTIL_ScreenShake,
 		"_Z16UTIL_ScreenShakeRK6Vectorffff14ShakeCommand_tb");
+	
+	SYMBOL_FUNC(TranslateWeaponEntForClass,
+		"_Z26TranslateWeaponEntForClassPKci");
 	
 	SYMBOL_FUNC(WeaponID_IsSniperRifle,
 		"_Z22WeaponID_IsSniperRiflei");
@@ -211,6 +217,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFPlayer_TraceAttack,
 		"_ZN9CTFPlayer11TraceAttackERK15CTakeDamageInfoRK6VectorP10CGameTraceP15CDmgAccumulator");
 	
+	SYMBOL_FUNC(CTFBot_AddItem,
+		"_ZN6CTFBot7AddItemEPKc");
 	SYMBOL_FUNC(CTFBot_EquipRequiredWeapon,
 		"_ZN6CTFBot19EquipRequiredWeaponEv");
 	SYMBOL_FUNC(CTFBot_ShouldGib,
@@ -227,6 +235,14 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CEconItemView_GetItemDefIndex,
 		"_ZNK13CEconItemView15GetItemDefIndexEv");
+	
+	SYMBOL_FUNC(CSchemaFieldHandle_CEconItemDefinition_ctor,
+		"_ZN18CSchemaFieldHandleI19CEconItemDefinitionEC1EPKc");
+	
+	SYMBOL_FUNC(CItemGeneration_GenerateRandomItem,
+		"_ZN15CItemGeneration18GenerateRandomItemEP22CItemSelectionCriteriaRK6VectorRK6QAngle");
+	SYMBOL_FUNC(CItemGeneration_SpawnItem,
+		"_ZN15CItemGeneration9SpawnItemEiRK6VectorRK6QAngleiiPKc");
 	
 	SYMBOL_FUNC(CTFWeaponBase_AreRandomCritsEnabled,
 		"_ZN13CTFWeaponBase21AreRandomCritsEnabledEv");

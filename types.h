@@ -324,9 +324,15 @@ typedef void NextBotPlayer_CTFPlayer;
 typedef void CTFTankBoss;
 
 typedef void CEconEntity;
-typedef void CEconItemSchema;
 typedef void CEconItemAttributeDefinition;
+typedef void CEconItemDefinition;
+typedef void CEconItemSchema;
 typedef void CEconItemView;
+
+typedef void CSchemaFieldHandle_CEconItemDefinition;
+
+typedef void CItemGeneration;
+typedef void CItemSelectionCriteria;
 
 typedef void CTFWeaponBase;
 typedef void CTFWeaponBaseGun;
