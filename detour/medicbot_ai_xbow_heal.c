@@ -11,18 +11,32 @@ static bool (*trampoline_CTFBotMedicHeal_IsReadyToDeployUber)(CTFBotMedicHeal* t
 
 static bool detour_CWeaponMedigun_IsAttachedToBuilding(CWeaponMedigun* this)
 {
-	if (DYNAMIC_CAST(this, CTFWeaponBase, CWeaponMedigun) == NULL) {
+	//pr_info("CTFWeaponMedigun::IsAttachedToBuilding\n");
+	
+	//pr_debug("  this = %08x\n", (uintptr_t)this);
+	if (this == NULL ||
+		DYNAMIC_CAST(this, CTFWeaponBase, CWeaponMedigun) == NULL) {
+		//pr_debug("  is CWeaponMedigun: FALSE\n");
 		return false;
 	}
+	//pr_debug("  is CWeaponMedigun: TRUE\n");
 	
 	return trampoline_CWeaponMedigun_IsAttachedToBuilding(this);
 }
 
 static bool detour_CTFBotMedicHeal_IsReadyToDeployUber(CTFBotMedicHeal* this, CWeaponMedigun const* medigun)
 {
-	if (DYNAMIC_CAST(medigun, CTFWeaponBase, CWeaponMedigun) == NULL) {
+	//pr_info("CTFWeaponMedigun::IsReadyToDeployUber\n");
+	
+	//pr_debug("  this = %08x\n", (uintptr_t)this);
+	//pr_debug("  medigun = %08x\n", (uintptr_t)medigun);
+	assert(this != NULL);
+	if (medigun == NULL ||
+		DYNAMIC_CAST(medigun, CTFWeaponBase, CWeaponMedigun) == NULL) {
+		//pr_debug("  is CWeaponMedigun: FALSE\n");
 		return false;
 	}
+	//pr_debug("  is CWeaponMedigun: TRUE\n");
 	
 	return trampoline_CTFBotMedicHeal_IsReadyToDeployUber(this, medigun);
 }

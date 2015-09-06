@@ -32,6 +32,8 @@ PATCH_CHECK
 PATCH_APPLY
 {
 	void *new_func = alloc_func(1);
+	//pr_warn("medicbot_ai_xbow_heal_part2 new_func @ %08x\n",
+	//	(uintptr_t)new_func);
 	
 	
 	uintptr_t off1 = CALC_RELJMP(CTFBotMedicHeal_Update, 0x1a5a,
