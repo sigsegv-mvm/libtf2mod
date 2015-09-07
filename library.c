@@ -104,13 +104,22 @@ library_info_t *lib_find(const char *name)
 
 library_info_t *lib_first(void)
 {
-	return libs;
+	library_info_t *lib = libs;
+	while (lib->name == NULL) {
+		lib = lib_next(lib);
+	}
+	
+	return lib;
 }
 
 library_info_t *lib_next(library_info_t *lib)
 {
 	if (++lib != libs + NUM_LIBS) {
-		return lib;
+		if (lib->name == NULL) {
+			return lib_next(lib);
+		} else {
+			return lib;
+		}
 	} else {
 		return NULL;
 	}
