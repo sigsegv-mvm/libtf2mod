@@ -206,6 +206,8 @@ void symbols_init(void)
 		"_ZNK9CTFPlayer10IsMiniBossEv");
 	SYMBOL_FUNC(CTFPlayer_IsPlayerClass,
 		"_ZNK9CTFPlayer13IsPlayerClassEi");
+	SYMBOL_FUNC(CTFPlayer_OnTakeDamage,
+		"_ZN9CTFPlayer12OnTakeDamageERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_OnTakeDamage_Alive,
 		"_ZN9CTFPlayer18OnTakeDamage_AliveERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_Regenerate,

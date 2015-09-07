@@ -129,6 +129,7 @@ extern unknown_t (*CTFPlayer_FireBullet)(CTFPlayer* this, CTFWeaponBase*, FireBu
 extern unknown_t (*CTFPlayer_GiveNamedItem)(CTFPlayer* this, char const*, int, CEconItemView const*, bool);
 extern bool (*CTFPlayer_IsMiniBoss)(CTFPlayer* this);
 extern bool (*CTFPlayer_IsPlayerClass)(CTFPlayer* this, int);
+extern unknown_t (*CTFPlayer_OnTakeDamage)(CTFPlayer* this, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_OnTakeDamage_Alive)(CTFPlayer* this, CTakeDamageInfo const*);
 extern void (*CTFPlayer_Regenerate)(CTFPlayer* this, bool);
 extern void (*CTFPlayer_RememberUpgrade)(CTFPlayer* this, int, CEconItemView*, int, int, bool);
