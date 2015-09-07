@@ -99,6 +99,14 @@ bool func_verify(void *pfunc, size_t off, size_t len, const uint8_t *cmp)
 		pr_err("actual:\n");
 		mem_dump((void *)where, len, false);
 		
+		pr_err("differences at:\n");
+		for (int i = 0; i < len; ++i) {
+			if (((uint8_t *)cmp)[i] != ((uint8_t *)where)[i]) {
+				pr_info("%02x ", i);
+			}
+		}
+		pr_info("\n");
+		
 		return false;
 	}
 	
