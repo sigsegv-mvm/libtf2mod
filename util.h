@@ -13,6 +13,8 @@ void mem_dump(const void *addr, size_t len, bool align);
 void func_dump(const func_t *func);
 
 uintptr_t find_string(const char *lib_name, const char *str, bool absolute);
+uintptr_t find_string_global(const char *lib_name, const char *str,
+	bool absolute);
 
 int conv_EHANDLE_to_entindex(EHANDLE handle);
 

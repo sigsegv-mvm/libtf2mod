@@ -83,26 +83,53 @@ void func_dump(const func_t *func)
 }
 
 
+static bool _find_string_internal(const char *haystack, size_t limit,
+	const char *needle, uintptr_t *result)
+{
+	size_t str_len = strlen(needle) + 1;
+	
+	for (int i = 0; i + str_len <= limit; ++i) {
+		if (memcmp(haystack + i, needle, str_len) == 0) {
+			*result = i;
+			return true;
+		}
+	}
+	
+	return false;
+}
+
 uintptr_t find_string(const char *lib_name, const char *str, bool absolute)
 {
 	library_info_t *lib = lib_find(lib_name);
 	
-	size_t bin_len = lib->size;
-	size_t str_len = strlen(str) + 1;
-	
-	const char *haystack = lib->map;
-	
-	for (int i = 0; i + str_len <= bin_len; ++i) {
-		if (memcmp(haystack + i, str, str_len) == 0) {
-			if (absolute) {
-				return lib->baseaddr + i;
-			} else {
-				return i;
-			}
+	uintptr_t off;
+	if (_find_string_internal(lib->map + lib->rodata_off, lib->rodata_size,
+		str, &off)) {
+		if (absolute) {
+			return lib->baseaddr + off;
+		} else {
+			return off;
 		}
+	} else {
+		return 0;
 	}
+}
+
+uintptr_t find_string_global(const char *lib_name, const char *str,
+	bool absolute)
+{
+	library_info_t *lib = lib_find(lib_name);
 	
-	return 0;
+	uintptr_t off;
+	if (_find_string_internal(lib->map, lib->size, str, &off)) {
+		if (absolute) {
+			return lib->baseaddr + off;
+		} else {
+			return off;
+		}
+	} else {
+		return 0;
+	}
 }
 
 
