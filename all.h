@@ -21,6 +21,7 @@
 #include <sys/user.h>
 
 /* glibc */
+#include <execinfo.h>
 #include <libgen.h>
 
 /* libbsd */
@@ -56,6 +57,7 @@
 #include "datamap.h"
 #include "symbols.h"
 #include "entprop.h"
+#include "backtrace.h"
 
 
 #endif
