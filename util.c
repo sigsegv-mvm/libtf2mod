@@ -105,6 +105,7 @@ uintptr_t find_string(const char *lib_name, const char *str, bool absolute)
 	uintptr_t off;
 	if (_find_string_internal(lib->map + lib->rodata_off, lib->rodata_size,
 		str, &off)) {
+		off += lib->rodata_off;
 		if (absolute) {
 			return lib->baseaddr + off;
 		} else {
