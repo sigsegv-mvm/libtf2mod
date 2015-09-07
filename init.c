@@ -1,6 +1,9 @@
 #include "all.h"
 
 
+void* (*real_dlopen)(char const*, int);
+
+
 void tf2mod_init(void)
 {
 	static bool already_init = false;
@@ -37,7 +40,10 @@ void tf2mod_init(void)
 /* OVERRIDE: dlopen */
 void* dlopen(const char* __file, int __mode)
 {
-	void* (*real_dlopen)(const char*, int) = dlsym(RTLD_NEXT, "dlopen");
+	if (real_dlopen == NULL) {
+		real_dlopen = dlsym(RTLD_NEXT, "dlopen");
+	}
+	
 	void* handle = (*real_dlopen)(__file, __mode);
 	
 	lib_hook(__file, handle);
