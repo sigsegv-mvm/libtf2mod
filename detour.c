@@ -82,7 +82,7 @@ func_t *func_register(void *pfunc)
 	func->func_addr = (uintptr_t)pfunc;
 	
 	symbol_t sym;
-	if (!symtab_func_addr_abs_anylib(&sym, (uintptr_t)pfunc)) {
+	if (!symtab_func_addr_abs(&sym, (uintptr_t)pfunc)) {
 		errx(1, "symtab_func_addr_abs_anylib(0x%08x) failed", func->func_addr);
 	}
 	
