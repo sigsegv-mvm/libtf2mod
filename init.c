@@ -46,7 +46,9 @@ void* dlopen(const char* __file, int __mode)
 	
 	void* handle = (*real_dlopen)(__file, __mode);
 	
-	lib_hook(__file, handle);
+	if (__file != NULL && handle != NULL) {
+		lib_hook(__file, handle);
+	}
 	
 	return handle;
 }
