@@ -41,7 +41,7 @@ void lib_hook(const char *path, void *handle)
 	//	(lib - libs), NUM_LIBS);
 	
 	if (lib->name != NULL) {
-		//warn("%s: path '%s' hooked twice!\n", __func__, path);
+		//pr_warn("%s: path '%s' hooked twice!\n", __func__, path);
 		return;
 	}
 	
