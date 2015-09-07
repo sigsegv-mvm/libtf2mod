@@ -1,4 +1,4 @@
-CFLAGS :=-m32 -I. -I/usr/include/libiberty -shared -fPIC -rdynamic -std=gnu11 -fno-omit-frame-pointer -O2 -g -Wall -fdiagnostics-color=always -Wno-unused-variable -Wno-unused-function -march=native -mtune=native
+CFLAGS :=-m32 -I. -I/usr/include/libiberty -shared -fPIC -rdynamic -std=gnu11 -fno-omit-frame-pointer -O2 -g -Wall -fdiagnostics-color=always -Wno-unused-variable -Wno-unused-function -march=native -mtune=native -maccumulate-outgoing-args
 LDFLAGS:=-Wl,-z,defs -Wl,--no-undefined -lstdc++ -ldl -lbsd -lelf -Wl,-E libiberty.a
 
 SOURCES:=$(shell find . -follow -type f -name '*.c')
