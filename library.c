@@ -94,7 +94,7 @@ void lib_hook(const char *path, void *handle)
 library_info_t *lib_find(const char *name)
 {
 	for (library_info_t *lib = libs; lib != libs + NUM_LIBS; ++lib) {
-		if (strcasecmp(name, lib->name) == 0) {
+		if (lib->name != NULL && strcasecmp(name, lib->name) == 0) {
 			return lib;
 		}
 	}
