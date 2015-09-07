@@ -23,6 +23,18 @@ typedef struct {
 	Elf_Data   *symtab_data;
 	GElf_Shdr   symtab_shdr;
 	int         symtab_count;
+	
+	/* section info */
+	uintptr_t text_off;
+	size_t    text_size;
+	uintptr_t data_off;
+	size_t    data_size;
+	uintptr_t rodata_off;
+	size_t    rodata_size;
+	uintptr_t datarelro_off;
+	size_t    datarelro_size;
+	uintptr_t bss_off;
+	size_t    bss_size;
 } library_info_t;
 
 

@@ -11,12 +11,45 @@ void symtab_init(library_info_t *lib)
 		GElf_Shdr shdr;
 		gelf_getshdr(scn, &shdr);
 		
-		if (shdr.sh_type == SHT_SYMTAB && strcmp(".symtab", elf_strptr(lib->elf,
-			lib->elf_hdr->e_shstrndx, shdr.sh_name)) == 0) {
-			lib->symtab_shdr = shdr;
-			lib->symtab_data = elf_getdata(scn, NULL);
-			lib->symtab_count = shdr.sh_size / shdr.sh_entsize;
-			//pr_debug("symtab_count: %u\n", lib->symtab_count);
+		char *scn_name = elf_strptr(lib->elf, lib->elf_hdr->e_shstrndx,
+			shdr.sh_name);
+		
+		if (shdr.sh_type == SHT_SYMTAB) {
+			if (strcmp(scn_name, ".symtab") == 0) {
+				lib->symtab_shdr = shdr;
+				lib->symtab_data = elf_getdata(scn, NULL);
+				lib->symtab_count = shdr.sh_size / shdr.sh_entsize;
+				//pr_debug("symtab_count: %u\n", lib->symtab_count);
+			}
+		} else if (shdr.sh_type == SHT_PROGBITS) {
+			if (strcmp(scn_name, ".text") == 0) {
+				//pr_debug("%s:%s %08x %08x\n", lib->name, scn_name,
+				//	(uint32_t)shdr.sh_addr, (uint32_t)shdr.sh_size);
+				lib->text_off  = shdr.sh_addr;
+				lib->text_size = shdr.sh_size;
+			} else if (strcmp(scn_name, ".data") == 0) {
+				//pr_debug("%s:%s %08x %08x\n", lib->name, scn_name,
+				//	(uint32_t)shdr.sh_addr, (uint32_t)shdr.sh_size);
+				lib->data_off  = shdr.sh_addr;
+				lib->data_size = shdr.sh_size;
+			} else if (strcmp(scn_name, ".rodata") == 0) {
+				//pr_debug("%s:%s %08x %08x\n", lib->name, scn_name,
+				//	(uint32_t)shdr.sh_addr, (uint32_t)shdr.sh_size);
+				lib->rodata_off  = shdr.sh_addr;
+				lib->rodata_size = shdr.sh_size;
+			} else if (strcmp(scn_name, ".data.rel.ro") == 0) {
+				//pr_debug("%s:%s %08x %08x\n", lib->name, scn_name,
+				//	(uint32_t)shdr.sh_addr, (uint32_t)shdr.sh_size);
+				lib->datarelro_off  = shdr.sh_addr;
+				lib->datarelro_size = shdr.sh_size;
+			}
+		} else if (shdr.sh_type == SHT_NOBITS) {
+			if (strcmp(scn_name, ".bss") == 0) {
+				//pr_debug("%s:%s %08x %08x\n", lib->name, scn_name,
+				//	(uint32_t)shdr.sh_addr, (uint32_t)shdr.sh_size);
+				lib->bss_off  = shdr.sh_addr;
+				lib->bss_size = shdr.sh_size;
+			}
 		}
 		
 		/*pr_debug("type %08x flags %c%c%c%c name '%s'\n",
