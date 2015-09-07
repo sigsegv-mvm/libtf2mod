@@ -31,7 +31,7 @@ static unknown_t detour_CTFObjectiveResource_ClearMannVsMachineWaveClassFlags(CT
 
 static unknown_t detour_CTFObjectiveResource_DecrementMannVsMachineWaveClassCount(CTFObjectiveResource* this, string_t name, unsigned int flags)
 {
-	pr_warn("[WaveCount] -Class      [name:\"%s\" flags:%04x]\n", name, flags);
+	pr_warn("[WaveCount] -Class      [name:\"%s\" flags:%04x]\n", name.pszValue, flags);
 	return trampoline_CTFObjectiveResource_DecrementMannVsMachineWaveClassCount(this, name, flags);
 }
 
@@ -59,7 +59,7 @@ static int detour_CTFObjectiveResource_GetMannVsMachineWaveClassCount(CTFObjecti
 
 static unknown_t detour_CTFObjectiveResource_IncrementMannVsMachineWaveClassCount(CTFObjectiveResource* this, string_t name, unsigned int flags)
 {
-	pr_warn("[WaveCount] +Class      [name:\"%s\" flags:%04x]\n", name, flags);
+	pr_warn("[WaveCount] +Class      [name:\"%s\" flags:%04x]\n", name.pszValue, flags);
 	return trampoline_CTFObjectiveResource_IncrementMannVsMachineWaveClassCount(this, name, flags);
 }
 
@@ -80,7 +80,7 @@ static unknown_t detour_CTFObjectiveResource_IncrementTeleporterCount(CTFObjecti
 
 static unknown_t detour_CTFObjectiveResource_SetMannVsMachineWaveClassActive(CTFObjectiveResource* this, string_t name, bool active)
 {
-	pr_special("[WaveCount] %cActive     [name:\"%s\"]\n", (active ? '+' : '-'), name);
+	pr_special("[WaveCount] %cActive     [name:\"%s\"]\n", (active ? '+' : '-'), name.pszValue);
 	return trampoline_CTFObjectiveResource_SetMannVsMachineWaveClassActive(this, name, active);
 }
 
@@ -92,7 +92,7 @@ static unknown_t detour_CTFObjectiveResource_SetMannVsMachineWaveClassCount(CTFO
 
 static unknown_t detour_CTFObjectiveResource_SetMannVsMachineWaveClassName(CTFObjectiveResource* this, int index, string_t name)
 {
-	pr_special("[WaveCount] SetName     [idx:%d] = \"%s\"\n", index, name);
+	pr_special("[WaveCount] SetName     [idx:%d] = \"%s\"\n", index, name.pszValue);
 	return trampoline_CTFObjectiveResource_SetMannVsMachineWaveClassName(this, index, name);
 }
 

@@ -389,12 +389,14 @@ typedef unknown_t ShakeCommand_t;
 
 typedef void inputdata_t;
 
-typedef char const* string_t;
-
 typedef uint32_t EHANDLE;
 
 
 /* defined types */
+
+typedef struct {
+	const char *pszValue;
+} string_t;
 
 typedef struct {
 	float realtime;          // absolute time
