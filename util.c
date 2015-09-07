@@ -134,6 +134,19 @@ uintptr_t find_string_global(const char *lib_name, const char *str,
 }
 
 
+const char *try_demangle(const char *mangled)
+{
+	const char *demangled = cplus_demangle(mangled,
+		DMGL_GNU_V3 | DMGL_TYPES | DMGL_ANSI | DMGL_PARAMS);
+	
+	if (demangled != NULL) {
+		return demangled;
+	} else {
+		return mangled;
+	}
+}
+
+
 int conv_EHANDLE_to_entindex(EHANDLE handle)
 {
 	/* top    20 bits of EHANDLE: serial number

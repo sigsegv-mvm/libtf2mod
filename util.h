@@ -16,6 +16,8 @@ uintptr_t find_string(const char *lib_name, const char *str, bool absolute);
 uintptr_t find_string_global(const char *lib_name, const char *str,
 	bool absolute);
 
+const char *try_demangle(const char *mangled);
+
 int conv_EHANDLE_to_entindex(EHANDLE handle);
 
 const char *get_string_for_damagebits(uint32_t m_bitsDamageType);

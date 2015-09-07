@@ -86,8 +86,7 @@ func_t *func_register(void *pfunc)
 	}
 	
 	func->name = sym.name;
-	func->name_demangled = cplus_demangle(sym.name, DMGL_GNU_V3	|
-		DMGL_TYPES | DMGL_ANSI | DMGL_PARAMS);
+	func->name_demangled = try_demangle(sym.name);
 	func->func_size = sym.size;
 	
 	func->has_detour  = false;
