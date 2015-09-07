@@ -112,8 +112,9 @@ void print_backtrace(const char *from)
 	
 	pr_warn("BACKTRACE in %s:\n", from);
 	
-	for (int i = 0; i < num_entries; ++i) {
-		pr_info("  #%-2d  ", i + 1);
+	/* start at 1 so we skip this function's frame */
+	for (int i = 1; i < num_entries; ++i) {
+		pr_info("  #%-2d  ", i);
 		pr_debug("%08x  ", entries[i]);
 		
 		symbol_t sym;
