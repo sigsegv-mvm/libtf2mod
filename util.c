@@ -134,6 +134,12 @@ uintptr_t find_string_global(const char *lib_name, const char *str,
 }
 
 
+int64_t conv_timespec_to_nsec(const struct timespec *t)
+{
+	return ((int64_t)t->tv_nsec + (1000000000LL * (int64_t)t->tv_sec));
+}
+
+
 const char *try_demangle(const char *mangled)
 {
 	const char *demangled = cplus_demangle(mangled,

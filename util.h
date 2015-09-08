@@ -18,6 +18,8 @@ uintptr_t find_string_global(const char *lib_name, const char *str,
 
 const char *try_demangle(const char *mangled);
 
+int64_t conv_timespec_to_nsec(const struct timespec *t);
+
 int conv_EHANDLE_to_entindex(EHANDLE handle);
 
 const char *get_string_for_damagebits(uint32_t m_bitsDamageType);

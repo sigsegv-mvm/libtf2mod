@@ -117,6 +117,11 @@ void symbols_init(void)
 	SYMBOL_FUNC(FX_FireBullets,
 		"_Z14FX_FireBulletsP13CTFWeaponBaseiRK6VectorRK6QAngleiiiffb");
 	
+	SYMBOL_FUNC(GlobalAttrModifier_MvMAttribHookMunger,
+		"_ZL38GlobalAttrModifier_MvMAttribHookMungerPKcP19CUtlConstStringBaseIcE");
+	SYMBOL_FUNC(GlobalAttrModifier_TFHalloweenAttribHookMunger,
+		"_ZL46GlobalAttrModifier_TFHalloweenAttribHookMungerPKcP19CUtlConstStringBaseIcE");
+	
 	
 	/* functions: static */
 	
@@ -134,6 +139,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot,
 		"_ZN20CTFPlayerSharedUtils28GetEconItemViewByLoadoutSlotEP9CTFPlayeriPP11CEconEntity");
 	
+	SYMBOL_FUNC(CAttributeManager_AttribHookValue_float,
+		"_ZN17CAttributeManager15AttribHookValueIfEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
 	SYMBOL_FUNC(CAttributeManager_AttribHookValue_int,
 		"_ZN17CAttributeManager15AttribHookValueIiEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
 	

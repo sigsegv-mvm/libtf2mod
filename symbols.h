@@ -75,6 +75,9 @@ extern bool (*WeaponID_IsSniperRifleOrBow)(int);
 
 extern unknown_t (*FX_FireBullets)(CTFWeaponBase*, int, Vector const*, QAngle const*, int, int, int, float, float, bool);
 
+extern void (*GlobalAttrModifier_MvMAttribHookMunger)(char const*, CUtlConstStringBase*);
+extern void (*GlobalAttrModifier_TFHalloweenAttribHookMunger)(char const*, CUtlConstStringBase*);
+
 
 /* functions: static */
 
@@ -87,6 +90,7 @@ extern CTFMedigunShield* (*CTFMedigunShield_Create)(CTFPlayer*);
 
 extern CEconItemView* (*CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot)(CTFPlayer*, int, CEconEntity**);
 
+extern float (*CAttributeManager_AttribHookValue_float)(float, char const*, CBaseEntity const*, CUtlVector*, bool);
 extern int (*CAttributeManager_AttribHookValue_int)(int, char const*, CBaseEntity const*, CUtlVector*, bool);
 
 
@@ -113,6 +117,7 @@ extern unknown_t (*CBasePlayer_GiveNamedItem)(CBasePlayer* this, char const*, in
 extern bool (*CBasePlayer_IsBot)(CBasePlayer* this);
 
 extern void (*CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CBaseEntity*);
+extern unknown_t (*CTFPlayerShared_ConditionGameRulesThink)(CTFPlayerShared* this);
 extern bool (*CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
 

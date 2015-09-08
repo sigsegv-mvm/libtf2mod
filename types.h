@@ -376,6 +376,7 @@ typedef void CTFReviveMarker;
 typedef void CCurrencyPack;
 
 typedef void CUtlVector;
+typedef void CUtlConstStringBase;
 
 typedef void Action_CTFBot;
 
