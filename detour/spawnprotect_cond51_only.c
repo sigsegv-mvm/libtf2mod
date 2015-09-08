@@ -8,6 +8,9 @@ DETOUR(spawnprotect_cond51_only);
 static void (*trampoline_CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CBaseEntity*);
 
 
+static func_t *func_CTFBotMainAction_Update;
+
+
 static void detour_CTFPlayerShared_AddCond(CTFPlayerShared* this, ETFCond cond, float duration, CBaseEntity* ent)
 {
 	uintptr_t caller = (uintptr_t)__builtin_extract_return_addr(
@@ -15,7 +18,8 @@ static void detour_CTFPlayerShared_AddCond(CTFPlayerShared* this, ETFCond cond, 
 	uintptr_t caller_frame = (uintptr_t)__builtin_frame_address(1);
 	
 	/* ignore AddCond(5) and AddCond(8) from CTFBotMainAction::Update */
-	if (func_owns_addr(CTFBotMainAction_Update, caller)) {
+	if (func_owns_addr(caller,
+		func_CTFBotMainAction_Update)) {
 		if (cond == TFCOND_UBERCHARGED ||
 			cond == TFCOND_UBERCHARGEFADING) {
 			return;
@@ -28,5 +32,9 @@ static void detour_CTFPlayerShared_AddCond(CTFPlayerShared* this, ETFCond cond, 
 
 DETOUR_SETUP
 {
+	func_CTFBotMainAction_Update =
+		func_register(CTFBotMainAction_Update);
+	
+	
 	DETOUR_CREATE(CTFPlayerShared_AddCond);
 }

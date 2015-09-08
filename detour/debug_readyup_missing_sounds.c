@@ -16,12 +16,16 @@ static bool (*trampoline_CTeamplayRoundBasedRules_AreLobbyPlayersOnTeamReady)(CT
 static void (*trampoline_CTeamplayRoundBasedRules_CheckReadyRestart)(CTeamplayRoundBasedRules* this);
 
 
+static func_t *func_CTFGameRules_BetweenRounds_Think;
+
+
 static void detour_ConVar_SetValue_int(ConVar* this, int val)
 {
 	uintptr_t caller0 = (uintptr_t)__builtin_extract_return_addr(
 		__builtin_return_address(0));
 	
-	if (func_owns_addr(CTFGameRules_BetweenRounds_Think, caller0) &&
+	if (func_owns_addr(caller0,
+		func_CTFGameRules_BetweenRounds_Think) &&
 		this == *CONVAR_mp_restartgame) {
 		pr_info(" ConVar::SetValue(mp_restartgame): ");
 		pr_debug(" was:%d now:%d\n",
@@ -39,7 +43,8 @@ static IGameEvent* detour_CGameEventManager_CreateEvent(CGameEventManager* this,
 	
 	IGameEvent* result = trampoline_CGameEventManager_CreateEvent(this, s1, b1);
 	
-	/*if (func_owns_addr(CTFGameRules_BetweenRounds_Think, caller0)) {*/
+	/*if (func_owns_addr(caller0,
+		func_CTFGameRules_BetweenRounds_Think)) {*/
 		pr_info(" CGameEventManager::CreateEvent");
 		pr_debug("('%s', %s) = %08x\n",
 			s1,
@@ -59,8 +64,10 @@ static bool detour_CGameEventManager_FireEvent(CGameEventManager* this, IGameEve
 	
 	bool result = trampoline_CGameEventManager_FireEvent(this, e1, b1);
 	
-	/*if (func_owns_addr(CTFGameRules_BetweenRounds_Think, caller0) ||
-		func_owns_addr(CTFGameRules_BetweenRounds_Think, caller1)) {*/
+	/*if (func_owns_addr(caller0,
+		func_CTFGameRules_BetweenRounds_Think) ||
+		func_owns_addr(caller1,
+		func_CTFGameRules_BetweenRounds_Think)) {*/
 		pr_info(" CGameEventManager::FireEvent");
 		pr_debug("(%08x, %s) = %s\n",
 			(uintptr_t)e1,
@@ -89,7 +96,8 @@ static bool detour_CTFGameRules_PlayerReadyStatus_HaveMinPlayersToEnable(CTFGame
 	
 	bool result = trampoline_CTFGameRules_PlayerReadyStatus_HaveMinPlayersToEnable(this);
 	
-	if (func_owns_addr(CTFGameRules_BetweenRounds_Think, caller0)) {
+	if (func_owns_addr(caller0,
+		func_CTFGameRules_BetweenRounds_Think)) {
 		pr_info(" CTFGameRules::PlayerReadyStatus_HaveMinPlayersToEnable");
 		pr_debug(" = %s\n",
 			(result ? "TRUE" : "FALSE"));
@@ -105,7 +113,8 @@ static bool detour_CTFGameRules_PlayerReadyStatus_ShouldStartCountdown(CTFGameRu
 	
 	bool result = trampoline_CTFGameRules_PlayerReadyStatus_ShouldStartCountdown(this);
 	
-	if (func_owns_addr(CTFGameRules_BetweenRounds_Think, caller0)) {
+	if (func_owns_addr(caller0,
+		func_CTFGameRules_BetweenRounds_Think)) {
 		pr_info(" CTFGameRules::PlayerReadyStatus_ShouldStartCountdown");
 		pr_debug(" = %s\n",
 			(result ? "TRUE" : "FALSE"));
@@ -121,7 +130,8 @@ static bool detour_CTFGameRules_UsePlayerReadyStatusMode(CTFGameRules* this)
 	
 	bool result = trampoline_CTFGameRules_UsePlayerReadyStatusMode(this);
 	
-	if (func_owns_addr(CTFGameRules_BetweenRounds_Think, caller0)) {
+	if (func_owns_addr(caller0,
+		func_CTFGameRules_BetweenRounds_Think)) {
 		pr_info(" CTFGameRules::UsePlayerReadyStatusMode");
 		pr_debug(" = %s\n",
 			(result ? "TRUE" : "FALSE"));
@@ -137,7 +147,8 @@ static bool detour_CTeamplayRoundBasedRules_AreLobbyPlayersOnTeamReady(CTeamplay
 	
 	bool result = trampoline_CTeamplayRoundBasedRules_AreLobbyPlayersOnTeamReady(this, i1);
 	
-	if (func_owns_addr(CTFGameRules_BetweenRounds_Think, caller0)) {
+	if (func_owns_addr(caller0,
+		func_CTFGameRules_BetweenRounds_Think)) {
 		pr_info(" CTeamplayRoundBasedRules::AreLobbyPlayersOnTeamReady");
 		pr_debug("(%d) = %s\n",
 			i1,
@@ -152,7 +163,8 @@ static void detour_CTeamplayRoundBasedRules_CheckReadyRestart(CTeamplayRoundBase
 	uintptr_t caller0 = (uintptr_t)__builtin_extract_return_addr(
 		__builtin_return_address(0));
 	
-	if (func_owns_addr(CTFGameRules_BetweenRounds_Think, caller0)) {
+	if (func_owns_addr(caller0,
+		func_CTFGameRules_BetweenRounds_Think)) {
 		pr_info(" CTeamplayRoundBasedRules::CheckReadyRestart\n");
 	}
 	
@@ -160,9 +172,12 @@ static void detour_CTeamplayRoundBasedRules_CheckReadyRestart(CTeamplayRoundBase
 }
 
 
-
 DETOUR_SETUP
 {
+	func_CTFGameRules_BetweenRounds_Think =
+		func_register(CTFGameRules_BetweenRounds_Think);
+	
+	
 	DETOUR_CREATE(ConVar_SetValue_int);
 	DETOUR_CREATE(CGameEventManager_CreateEvent);
 	DETOUR_CREATE(CGameEventManager_FireEvent);

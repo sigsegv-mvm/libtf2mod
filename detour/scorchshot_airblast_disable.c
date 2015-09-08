@@ -9,6 +9,9 @@ DETOUR(scorchshot_airblast_disable);
 static unknown_t (*trampoline_CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
 
 
+static func_t *func_CTFProjectile_Flare_Explode;
+
+
 static unknown_t detour_CTFPlayer_ApplyAirBlastImpulse(CTFPlayer* this, Vector const* vec)
 {
 	uintptr_t caller = (uintptr_t)__builtin_extract_return_addr(
@@ -16,7 +19,8 @@ static unknown_t detour_CTFPlayer_ApplyAirBlastImpulse(CTFPlayer* this, Vector c
 	uintptr_t caller_frame = (uintptr_t)__builtin_frame_address(1);
 	
 	/* when a flare tries to airblast a MiniBoss robot, do nothing */
-	if (func_owns_addr(CTFProjectile_Flare_Explode, caller) &&
+	if (func_owns_addr(caller,
+		func_CTFProjectile_Flare_Explode) &&
 		CTFGameRules_IsPVEModeActive(*g_pGameRules) &&
 		vcall_CBasePlayer_IsBot(this) &&
 		CTFPlayer_IsMiniBoss(this)) {
@@ -29,5 +33,9 @@ static unknown_t detour_CTFPlayer_ApplyAirBlastImpulse(CTFPlayer* this, Vector c
 
 DETOUR_SETUP
 {
+	func_CTFProjectile_Flare_Explode =
+		func_register(func_CTFProjectile_Flare_Explode);
+	
+	
 	DETOUR_CREATE(CTFPlayer_ApplyAirBlastImpulse);
 }

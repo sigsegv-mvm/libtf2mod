@@ -8,6 +8,9 @@ DETOUR(arrow_pen_ignoreuber);
 static bool (*trampoline_CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
 
 
+static func_t *func_CTFProjectile_Arrow_StrikeTarget_clone321;
+
+
 static bool detour_CTFPlayerShared_IsInvulnerable(CTFPlayerShared* this)
 {
 	uintptr_t caller = (uintptr_t)__builtin_extract_return_addr(
@@ -15,7 +18,8 @@ static bool detour_CTFPlayerShared_IsInvulnerable(CTFPlayerShared* this)
 	uintptr_t caller_frame = (uintptr_t)__builtin_frame_address(1);
 	
 	/* lie to the arrow projectile that we are never invuln */
-	if (func_owns_addr(CTFProjectile_Arrow_StrikeTarget_clone321, caller)) {
+	if (func_owns_addr(caller,
+		func_CTFProjectile_Arrow_StrikeTarget_clone321)) {
 		return false;
 	}
 	
@@ -25,5 +29,9 @@ static bool detour_CTFPlayerShared_IsInvulnerable(CTFPlayerShared* this)
 
 DETOUR_SETUP
 {
+	func_CTFProjectile_Arrow_StrikeTarget_clone321 =
+		func_register(CTFProjectile_Arrow_StrikeTarget_clone321);
+	
+	
 	DETOUR_CREATE(CTFPlayerShared_IsInvulnerable);
 }

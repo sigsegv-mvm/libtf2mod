@@ -9,6 +9,9 @@ DETOUR(redcredits_doublecollect_fix);
 static unknown_t (*trampoline_CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, int, CTFPlayer*, bool, bool, bool);
 
 
+static func_t *func_CCurrencyPack_ComeToRest;
+
+
 static unknown_t detour_CTFGameRules_DistributeCurrencyAmount(CTFGameRules* this, int i1, CTFPlayer* player, bool b1, bool b2, bool b3)
 {
 	uintptr_t caller = (uintptr_t)__builtin_extract_return_addr(
@@ -21,7 +24,8 @@ static unknown_t detour_CTFGameRules_DistributeCurrencyAmount(CTFGameRules* this
 	//	(b2 ? "TRUE" : "FALSE"),
 	//	(b3 ? "TRUE" : "FALSE"));
 	
-	if (func_owns_addr(CCurrencyPack_ComeToRest, caller)) {
+	if (func_owns_addr(caller,
+		func_CCurrencyPack_ComeToRest)) {
 		CCurrencyPack* cpack = *(CCurrencyPack **)(caller_frame + 0x8);
 		bool *m_bDistributed = prop_CCurrencyPack_m_bDistributed(cpack);
 		
@@ -43,5 +47,9 @@ static unknown_t detour_CTFGameRules_DistributeCurrencyAmount(CTFGameRules* this
 
 DETOUR_SETUP
 {
+	func_CCurrencyPack_ComeToRest =
+		func_register(CCurrencyPack_ComeToRest);
+	
+	
 	DETOUR_CREATE(CTFGameRules_DistributeCurrencyAmount);
 }

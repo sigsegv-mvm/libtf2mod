@@ -9,6 +9,9 @@ DETOUR(engiebot_ai_unsap);
 static int (*trampoline_CBaseEntity_GetMaxHealth)(CBaseEntity* this);
 
 
+static func_t *func_CTFBotMvMEngineerIdle_Update;
+
+
 static int detour_CBaseEntity_GetMaxHealth(CBaseEntity* this)
 {
 	uintptr_t caller = (uintptr_t)__builtin_extract_return_addr(
@@ -18,13 +21,15 @@ static int detour_CBaseEntity_GetMaxHealth(CBaseEntity* this)
 	//pr_info("CBaseEntity::GetMaxHealth\n");
 	//pr_debug("caller: %08x\n", caller);
 	//pr_debug("caller is CTFBotMvmEngineerIdle_Update: %s\n",
-	//	(func_owns_addr(CTFBotMvMEngineerIdle_Update, caller) ? "YES" : "NO"));
+	//	(func_owns_addr(caller,
+	//	func_CTFBotMvMEngineerIdle_Update) ? "YES" : "NO"));
 	
 	CBaseObject *obj = DYNAMIC_CAST(this, CBaseEntity, CBaseObject);
 	//pr_debug("DYNAMIC_CAST this -> CBaseObject: %s\n",
 	//	(obj != NULL ? "YES" : "NO"));
 	
-	if (func_owns_addr(CTFBotMvMEngineerIdle_Update, caller) &&
+	if (func_owns_addr(caller,
+		func_CTFBotMvMEngineerIdle_Update) &&
 		obj != NULL) {
 		CObjectSapper* sapper = CBaseObject_GetSapper(obj);
 		
@@ -48,5 +53,9 @@ static int detour_CBaseEntity_GetMaxHealth(CBaseEntity* this)
 
 DETOUR_SETUP
 {
+	func_CTFBotMvMEngineerIdle_Update =
+		func_register(CTFBotMvMEngineerIdle_Update);
+	
+	
 	DETOUR_CREATE(CBaseEntity_GetMaxHealth);
 }

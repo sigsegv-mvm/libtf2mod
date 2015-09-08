@@ -8,6 +8,9 @@ DETOUR(robot_headslide_disable);
 static unknown_t (*trampoline_CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
 
 
+static func_t *func_CTFPlayer_TFPlayerThink;
+
+
 static unknown_t detour_CTFPlayer_ApplyAbsVelocityImpulse(CTFPlayer* this, Vector const* vec)
 {
 	uintptr_t caller = (uintptr_t)__builtin_extract_return_addr(
@@ -16,7 +19,8 @@ static unknown_t detour_CTFPlayer_ApplyAbsVelocityImpulse(CTFPlayer* this, Vecto
 	
 	/* CTFPlayer::TFPlayerThink only calls this function for MvM robot head
 	 * sliding purposes, so we can safely ignore its calls */
-	if (func_owns_addr(CTFPlayer_TFPlayerThink, caller)) {
+	if (func_owns_addr(caller,
+		func_CTFPlayer_TFPlayerThink)) {
 		return 0;
 	}
 	
@@ -26,5 +30,9 @@ static unknown_t detour_CTFPlayer_ApplyAbsVelocityImpulse(CTFPlayer* this, Vecto
 
 DETOUR_SETUP
 {
+	func_CTFPlayer_TFPlayerThink =
+		func_register(CTFPlayer_TFPlayerThink);
+	
+	
 	DETOUR_CREATE(CTFPlayer_ApplyAbsVelocityImpulse);
 }

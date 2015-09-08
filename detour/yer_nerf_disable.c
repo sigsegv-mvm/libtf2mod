@@ -9,6 +9,9 @@ static bool (*trampoline_CBasePlayer_IsBot)(CBasePlayer* this);
 static bool (*trampoline_NextBotPlayer_CTFPlayer_IsBot)(CBasePlayer* this);
 
 
+static func_t *func_CTFKnife_PrimaryAttack;
+
+
 static bool detour_CBasePlayer_IsBot(CBasePlayer* this)
 {
 	uintptr_t caller = (uintptr_t)__builtin_extract_return_addr(
@@ -17,7 +20,8 @@ static bool detour_CBasePlayer_IsBot(CBasePlayer* this)
 	
 	
 	/* lie to CTFKnife::PrimaryAttack saying the victim is never a bot */
-	if (func_owns_addr(CTFKnife_PrimaryAttack, caller)) {
+	if (func_owns_addr(caller,
+		func_CTFKnife_PrimaryAttack)) {
 		//pr_debug("CBasePlayer::IsBot called by CTFKnife::PrimaryAttack; "
 		//	"returning FALSE\n");
 		return false;
@@ -35,7 +39,8 @@ static bool detour_NextBotPlayer_CTFPlayer_IsBot(CBasePlayer* this)
 	
 	
 	/* lie to CTFKnife::PrimaryAttack saying the victim is never a bot */
-	if (func_owns_addr(CTFKnife_PrimaryAttack, caller)) {
+	if (func_owns_addr(caller,
+		func_CTFKnife_PrimaryAttack)) {
 		//pr_debug("NextBotPlayer<CTFPlayer>::IsBot "
 		//	"called by CTFKnife::PrimaryAttack; returning FALSE\n");
 		return false;
@@ -48,6 +53,10 @@ static bool detour_NextBotPlayer_CTFPlayer_IsBot(CBasePlayer* this)
 
 DETOUR_SETUP
 {
+	func_CTFKnife_PrimaryAttack =
+		func_register(CTFKnife_PrimaryAttack);
+	
+	
 	DETOUR_CREATE(CBasePlayer_IsBot);
 	DETOUR_CREATE(NextBotPlayer_CTFPlayer_IsBot);
 }

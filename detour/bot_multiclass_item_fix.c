@@ -9,6 +9,11 @@ DETOUR(bot_multiclass_item_fix);
 static CBaseEntity* (*trampoline_CreateEntityByName)(char const*, int);
 
 
+static func_t *func_CItemGeneration_SpawnItem;
+static func_t *func_CItemGeneration_GenerateRandomItem;
+static func_t *func_CTFBot_AddItem;
+
+
 static CBaseEntity* detour_CreateEntityByName(char const* name, int i1)
 {
 	/* CTFBot::AddItem only knows how to deal with human-readable item names,
@@ -32,21 +37,24 @@ static CBaseEntity* detour_CreateEntityByName(char const* name, int i1)
 	
 	uintptr_t caller1 = (uintptr_t)__builtin_extract_return_addr(
 		__builtin_return_address(0));
-	if (!func_owns_addr(CItemGeneration_SpawnItem, caller1)) {
+	if (!func_owns_addr(caller1,
+		func_CItemGeneration_SpawnItem)) {
 		//pr_debug("%s: fail caller1\n", __func__);
 		goto passthru;
 	}
 	
 	uintptr_t caller2 = (uintptr_t)__builtin_extract_return_addr(
 		__builtin_return_address(1));
-	if (!func_owns_addr(CItemGeneration_GenerateRandomItem, caller2)) {
+	if (!func_owns_addr(caller2,
+		func_CItemGeneration_GenerateRandomItem)) {
 		//pr_debug("%s: fail caller2\n", __func__);
 		goto passthru;
 	}
 	
 	uintptr_t caller3 = (uintptr_t)__builtin_extract_return_addr(
 		__builtin_return_address(2));
-	if (!func_owns_addr(CTFBot_AddItem, caller3)) {
+	if (!func_owns_addr(caller3,
+		func_CTFBot_AddItem)) {
 		//pr_debug("%s: fail caller3\n", __func__);
 		goto passthru;
 	}
@@ -76,5 +84,13 @@ passthru:
 
 DETOUR_SETUP
 {
+	func_CItemGeneration_SpawnItem =
+		func_register(func_CItemGeneration_SpawnItem);
+	func_CItemGeneration_GenerateRandomItem =
+		func_register(func_CItemGeneration_GenerateRandomItem);
+	func_CTFBot_AddItem =
+		func_register(func_CTFBot_AddItem);
+	
+	
 	DETOUR_CREATE(CreateEntityByName);
 }
