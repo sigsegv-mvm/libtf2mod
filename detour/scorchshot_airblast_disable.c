@@ -34,7 +34,7 @@ static unknown_t detour_CTFPlayer_ApplyAirBlastImpulse(CTFPlayer* this, Vector c
 DETOUR_SETUP
 {
 	func_CTFProjectile_Flare_Explode =
-		func_register(func_CTFProjectile_Flare_Explode);
+		func_register(CTFProjectile_Flare_Explode);
 	
 	
 	DETOUR_CREATE(CTFPlayer_ApplyAirBlastImpulse);
