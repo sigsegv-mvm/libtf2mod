@@ -62,6 +62,8 @@ extern patch_info_t patch_playerupgrade_sell_fix;
 extern patch_info_t patch_bot_medieval_nonmelee_allow;
 extern patch_info_t patch_medicbot_ai_xbow_heal_part1;
 extern patch_info_t patch_medicbot_ai_xbow_heal_part2;
+extern patch_info_t patch_perf_attr_premunge_mvm;
+extern patch_info_t patch_perf_attr_premunge_halloween;
 
 
 #endif

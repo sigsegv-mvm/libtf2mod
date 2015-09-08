@@ -68,6 +68,9 @@ extern unknown_t (*UTIL_LogPrintf)(char const*, ...);
 extern CBasePlayer* (*UTIL_PlayerByIndex)(int);
 extern void (*UTIL_ScreenShake)(Vector const*, float, float, float, float, ShakeCommand_t, bool);
 
+extern string_t (*AllocPooledString)(char const*);
+extern string_t (*AllocPooledString_StaticConstantStringPointer)(char const*);
+
 extern char const* (*TranslateWeaponEntForClass)(char const*, int);
 
 extern bool (*WeaponID_IsSniperRifle)(int);
@@ -92,6 +95,7 @@ extern CEconItemView* (*CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot)(CTFPl
 
 extern float (*CAttributeManager_AttribHookValue_float)(float, char const*, CBaseEntity const*, CUtlVector*, bool);
 extern int (*CAttributeManager_AttribHookValue_int)(int, char const*, CBaseEntity const*, CUtlVector*, bool);
+extern void (*CAttributeManager_RegisterGlobalAttributeModifier)(bool (*)(void), void (*)(char const*, CUtlConstStringBase*));
 
 
 /* functions: member */
@@ -130,6 +134,7 @@ extern bool (*CTFPlayer_CanPickupBuilding)(CTFPlayer* this, CBaseObject*);
 extern void (*CTFPlayer_CreateRagdollEntity)(CTFPlayer* this, bool, bool, bool, bool, bool, bool, bool, bool, int, bool);
 extern void (*CTFPlayer_DeathSound)(CTFPlayer* this, CTakeDamageInfo const*);
 extern void (*CTFPlayer_Event_Killed)(CTFPlayer* this, CTakeDamageInfo const*);
+extern unknown_t (*CTFPlayer_Event_KilledOther)(CTFPlayer* this, CBaseEntity*, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_FireBullet)(CTFPlayer* this, CTFWeaponBase*, FireBulletsInfo_t const*, bool, int, int);
 extern unknown_t (*CTFPlayer_GiveNamedItem)(CTFPlayer* this, char const*, int, CEconItemView const*, bool);
 extern bool (*CTFPlayer_IsMiniBoss)(CTFPlayer* this);
@@ -186,6 +191,14 @@ extern float (*CTFSniperRifleDecap_SniperRifleChargeRateMod)(CTFSniperRifleDecap
 
 extern void (*CTFKnife_DisguiseOnKill)(CTFKnife* this);
 extern void (*CTFKnife_PrimaryAttack)(CTFKnife* this);
+
+extern unknown_t (*CTFWearableDemoShield_EndSpecialAction)(CTFWearableDemoShield* this, CTFPlayer*);
+
+extern unknown_t (*CTFStickBomb_Smack)(CTFStickBomb* this);
+
+extern unknown_t (*CTFBaseRocket_Explode)(CTFBaseRocket* this, CGameTrace*, CBaseEntity*);
+
+extern unknown_t (*CTFWeaponBaseGrenadeProj_Explode)(CTFWeaponBaseGrenadeProj* this, CGameTrace*, int);
 
 extern unknown_t (*CTFProjectile_Arrow_StrikeTarget_clone321)(CTFProjectile_Arrow* this, mstudiobbox_t*, CBaseEntity*);
 extern unknown_t (*CTFProjectile_Flare_Explode)(CTFProjectile_Flare* this, CGameTrace*, CBaseEntity*);
@@ -263,6 +276,8 @@ extern unknown_t (*CUpgrades_ReportUpgrade)(CUpgrades* this, CTFPlayer*, int, in
 extern unknown_t (*CUpgrades_RestoreItemAttributeToBaseValue)(CUpgrades* this, CEconItemAttributeDefinition*, CEconItemView*);
 extern unknown_t (*CUpgrades_RestorePlayerAttributeToBaseValue)(CUpgrades* this, CEconItemAttributeDefinition*, CTFPlayer*);
 extern unknown_t (*CUpgrades_UpgradeTouch)(CUpgrades* this, CBaseEntity*);
+
+extern unknown_t (*CTFBotLocomotion_Jump)(CTFBotLocomotion* this);
 
 extern unknown_t (*CTFBotMainAction_OnContact)(CTFBotMainAction* this, CTFBot*, CBaseEntity*, CGameTrace*);
 extern unknown_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, float);

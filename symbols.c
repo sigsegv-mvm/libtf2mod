@@ -106,6 +106,11 @@ void symbols_init(void)
 	SYMBOL_FUNC(UTIL_ScreenShake,
 		"_Z16UTIL_ScreenShakeRK6Vectorffff14ShakeCommand_tb");
 	
+	SYMBOL_FUNC(AllocPooledString,
+		"_Z17AllocPooledStringPKc");
+	SYMBOL_FUNC(AllocPooledString_StaticConstantStringPointer,
+		"_Z45AllocPooledString_StaticConstantStringPointerPKc");
+	
 	SYMBOL_FUNC(TranslateWeaponEntForClass,
 		"_Z26TranslateWeaponEntForClassPKci");
 	
@@ -143,6 +148,8 @@ void symbols_init(void)
 		"_ZN17CAttributeManager15AttribHookValueIfEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
 	SYMBOL_FUNC(CAttributeManager_AttribHookValue_int,
 		"_ZN17CAttributeManager15AttribHookValueIiEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
+	SYMBOL_FUNC(CAttributeManager_RegisterGlobalAttributeModifier,
+		"_ZN17CAttributeManager31RegisterGlobalAttributeModifierEPFbvEPFvPKcP19CUtlConstStringBaseIcEE");
 	
 	
 	/* functions: member */
@@ -182,6 +189,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFPlayerShared_AddCond,
 		"_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
+	SYMBOL_FUNC(CTFPlayerShared_ConditionGameRulesThink,
+		"_ZN15CTFPlayerShared23ConditionGameRulesThinkEv");
 	SYMBOL_FUNC(CTFPlayerShared_IsInvulnerable,
 		"_ZNK15CTFPlayerShared14IsInvulnerableEv");
 	SYMBOL_FUNC(CTFPlayerShared_RadiusCurrencyCollectionCheck,
@@ -205,6 +214,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer10DeathSoundERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_Event_Killed,
 		"_ZN9CTFPlayer12Event_KilledERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFPlayer_Event_KilledOther,
+		"_ZN9CTFPlayer17Event_KilledOtherEP11CBaseEntityRK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_FireBullet,
 		"_ZN9CTFPlayer10FireBulletEP13CTFWeaponBaseRK17FireBulletsInfo_tbii");
 	SYMBOL_FUNC(CTFPlayer_GiveNamedItem,
@@ -304,6 +315,18 @@ void symbols_init(void)
 		"_ZN8CTFKnife14DisguiseOnKillEv");
 	SYMBOL_FUNC(CTFKnife_PrimaryAttack,
 		"_ZN8CTFKnife13PrimaryAttackEv");
+	
+	SYMBOL_FUNC(CTFWearableDemoShield_EndSpecialAction,
+		"_ZN21CTFWearableDemoShield16EndSpecialActionEP9CTFPlayer");
+	
+	SYMBOL_FUNC(CTFStickBomb_Smack,
+		"_ZN12CTFStickBomb5SmackEv");
+	
+	SYMBOL_FUNC(CTFBaseRocket_Explode,
+		"_ZN13CTFBaseRocket7ExplodeEP10CGameTraceP11CBaseEntity");
+	
+	SYMBOL_FUNC(CTFWeaponBaseGrenadeProj_Explode,
+		"_ZN24CTFWeaponBaseGrenadeProj7ExplodeEP10CGameTracei");
 	
 	SYMBOL_FUNC(CTFProjectile_Arrow_StrikeTarget_clone321,
 		"_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity.part.321");
@@ -447,6 +470,9 @@ void symbols_init(void)
 		"_ZN9CUpgrades33RestorePlayerAttributeToBaseValueEP28CEconItemAttributeDefinitionP9CTFPlayer");
 	SYMBOL_FUNC(CUpgrades_UpgradeTouch,
 		"_ZN9CUpgrades12UpgradeTouchEP11CBaseEntity");
+	
+	SYMBOL_FUNC(CTFBotLocomotion_Jump,
+		"_ZN16CTFBotLocomotion4JumpEv");
 	
 	SYMBOL_FUNC(CTFBotMainAction_OnContact,
 		"_ZN16CTFBotMainAction9OnContactEP6CTFBotP11CBaseEntityP10CGameTrace");

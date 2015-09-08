@@ -27,6 +27,9 @@ patch_info_t *patches[] = {
 	//&patch_bot_revivemarker_enable,
 	&patch_medicbot_ai_xbow_heal_part1,
 	&patch_medicbot_ai_xbow_heal_part2,
+	
+	&patch_perf_attr_premunge_mvm,
+	&patch_perf_attr_premunge_halloween,
 };
 
 

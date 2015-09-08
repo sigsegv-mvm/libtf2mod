@@ -342,7 +342,11 @@ typedef void CTFSniperRifle;
 typedef void CTFSniperRifleDecap;
 typedef void CTFSniperRifleClassic;
 typedef void CTFKnife;
+typedef void CTFWearableDemoShield;
+typedef void CTFStickBomb;
 
+typedef void CTFBaseRocket;
+typedef void CTFWeaponBaseGrenadeProj;
 typedef void CTFProjectile_Arrow;
 typedef void CTFProjectile_Flare;
 
@@ -367,6 +371,7 @@ typedef void CUpgrades;
 typedef void CMannVsMachineUpgrades;
 typedef void* UpgradeAttribBlock_t;
 
+typedef void CTFBotLocomotion;
 typedef void CTFBotMainAction;
 typedef void CTFBotMedicHeal;
 typedef void CTFBotMvMEngineerIdle;

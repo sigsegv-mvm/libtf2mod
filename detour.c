@@ -33,6 +33,8 @@ detour_info_t *detours[] = {
 	
 	&detour_medicbot_ai_xbow_heal,
 	
+	&detour_perf_attr_nomunge,
+	
 	//&detour_diagnostics,
 	&detour_debug_wavecounts,
 	//&detour_debug_rescueranger_pickup_range,
