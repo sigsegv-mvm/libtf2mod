@@ -85,11 +85,11 @@ passthru:
 DETOUR_SETUP
 {
 	func_CItemGeneration_SpawnItem =
-		func_register(func_CItemGeneration_SpawnItem);
+		func_register(CItemGeneration_SpawnItem);
 	func_CItemGeneration_GenerateRandomItem =
-		func_register(func_CItemGeneration_GenerateRandomItem);
+		func_register(CItemGeneration_GenerateRandomItem);
 	func_CTFBot_AddItem =
-		func_register(func_CTFBot_AddItem);
+		func_register(CTFBot_AddItem);
 	
 	
 	DETOUR_CREATE(CreateEntityByName);
