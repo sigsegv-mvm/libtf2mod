@@ -6,7 +6,7 @@ DETOUR(mvm_chat_unrestrict);
  * mode (but hide chat messages coming from actual bots) */
 
 
-static bool (*trampoline_CTFPlayer_CanHearAndReadChatFrom)(CTFPlayer* this, CBasePlayer* them);
+static bool (*trampoline_CTFPlayer_CanHearAndReadChatFrom)(CTFPlayer* this, CBasePlayer*);
 
 
 static bool detour_CTFPlayer_CanHearAndReadChatFrom(CTFPlayer* this, CBasePlayer* them)
