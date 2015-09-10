@@ -202,7 +202,7 @@ extern unknown_t (*CTFBaseRocket_Explode)(CTFBaseRocket* this, CGameTrace*, CBas
 
 extern unknown_t (*CTFWeaponBaseGrenadeProj_Explode)(CTFWeaponBaseGrenadeProj* this, CGameTrace*, int);
 
-extern unknown_t (*CTFProjectile_Arrow_StrikeTarget_clone321)(CTFProjectile_Arrow* this, mstudiobbox_t*, CBaseEntity*);
+extern unknown_t (*CTFProjectile_Arrow_StrikeTarget)(CTFProjectile_Arrow* this, mstudiobbox_t*, CBaseEntity*);
 extern unknown_t (*CTFProjectile_Flare_Explode)(CTFProjectile_Flare* this, CGameTrace*, CBaseEntity*);
 
 extern void (*CBaseObject_DoQuickBuild)(CBaseObject* this);

@@ -332,8 +332,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFWeaponBaseGrenadeProj_Explode,
 		"_ZN24CTFWeaponBaseGrenadeProj7ExplodeEP10CGameTracei");
 	
-	SYMBOL_FUNC(CTFProjectile_Arrow_StrikeTarget_clone321,
-		"_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity.part.321");
+	SYMBOL_FUNC(CTFProjectile_Arrow_StrikeTarget,
+		"_ZN19CTFProjectile_Arrow12StrikeTargetEP13mstudiobbox_tP11CBaseEntity");
 	SYMBOL_FUNC(CTFProjectile_Flare_Explode,
 		"_ZN19CTFProjectile_Flare7ExplodeEP10CGameTraceP11CBaseEntity");
 	
