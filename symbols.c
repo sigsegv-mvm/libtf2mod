@@ -22,6 +22,8 @@ void symbols_init(void)
 		"_ZTI14CWeaponMedigun");
 	SYMBOL_OBJ(typeinfo_for_CTFCrossbow,
 		"_ZTI11CTFCrossbow");
+	SYMBOL_OBJ(typeinfo_for_CTFTankBoss,
+		"_ZTI11CTFTankBoss");
 	
 	
 	/* globals */
@@ -174,6 +176,8 @@ void symbols_init(void)
 		"_ZNK11CBaseEntity12GetMaxHealthEv");
 	SYMBOL_FUNC(CBaseEntity_GetTeamNumber,
 		"_ZNK11CBaseEntity13GetTeamNumberEv");
+	SYMBOL_FUNC(CBaseEntity_InSameTeam,
+		"_ZNK11CBaseEntity10InSameTeamEPS_");
 	SYMBOL_FUNC(CBaseEntity_IsBaseObject,
 		"_ZNK11CBaseEntity12IsBaseObjectEv");
 	SYMBOL_FUNC(CBaseEntity_NetworkStateChanged,
@@ -345,6 +349,8 @@ void symbols_init(void)
 		"_ZNK11CBaseObject7GetTypeEv");
 	SYMBOL_FUNC(CBaseObject_MakeDisposableBuilding,
 		"_ZN11CBaseObject22MakeDisposableBuildingEP9CTFPlayer");
+	SYMBOL_FUNC(CBaseObject_OnTakeDamage,
+		"_ZN11CBaseObject12OnTakeDamageERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CBaseObject_SetHealth,
 		"_ZN11CBaseObject9SetHealthEf");
 	SYMBOL_FUNC(CBaseObject_ShouldBeMiniBuilding,

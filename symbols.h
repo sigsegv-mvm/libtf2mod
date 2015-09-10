@@ -17,6 +17,7 @@ extern void *typeinfo_for_CBaseObject;
 extern void *typeinfo_for_CTFWeaponBase;
 extern void *typeinfo_for_CWeaponMedigun;
 extern void *typeinfo_for_CTFCrossbow;
+extern void *typeinfo_for_CTFTankBoss;
 
 
 /* globals */
@@ -112,6 +113,7 @@ extern bool (*CGameEventManager_FireEvent)(CGameEventManager* this, IGameEvent*,
 extern void (*CBaseEntity_ApplyAbsVelocityImpulse)(CBaseEntity* this, Vector const*);
 extern int (*CBaseEntity_GetMaxHealth)(CBaseEntity* this);
 extern int (*CBaseEntity_GetTeamNumber)(CBaseEntity* this);
+extern bool (*CBaseEntity_InSameTeam)(CBaseEntity* this, CBaseEntity*);
 extern bool (*CBaseEntity_IsBaseObject)(CBaseEntity* this);
 extern unknown_t (*CBaseEntity_NetworkStateChanged)(CBaseEntity* this, void*);
 
@@ -209,6 +211,7 @@ extern float (*CBaseObject_GetReversesBuildingConstructionSpeed)(CBaseObject* th
 extern CObjectSapper* (*CBaseObject_GetSapper)(CBaseObject* this);
 extern int (*CBaseObject_GetType)(CBaseObject* this);
 extern void (*CBaseObject_MakeDisposableBuilding)(CBaseObject* this, CTFPlayer*);
+extern unknown_t (*CBaseObject_OnTakeDamage)(CBaseObject* this, CTakeDamageInfo const*);
 extern void (*CBaseObject_SetHealth)(CBaseObject* this, float);
 extern bool (*CBaseObject_ShouldBeMiniBuilding)(CBaseObject* this, CTFPlayer*);
 
