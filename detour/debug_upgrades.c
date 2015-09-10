@@ -178,7 +178,7 @@ static CEconItemView* detour_CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot(C
 	pr_debug("(player:%d, i1:%d, item:%08x) = %08x\n",
 		ENTINDEX(player),
 		i1,
-		(uintptr_t)(*item),
+		(item != NULL ? (uintptr_t)(*item) : 0),
 		(uintptr_t)result);
 	
 	return result;
