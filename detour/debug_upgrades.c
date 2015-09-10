@@ -20,164 +20,158 @@ static CEconItemAttributeDefinition* (*trampoline_CEconItemSchema_GetAttributeDe
 static int (*trampoline_CEconItemView_GetItemDefIndex)(CEconItemView* this);
 
 
-static void detour_CTFPlayer_RememberUpgrade(CTFPlayer* this, int i1, CEconItemView* item, int i2, int i3, bool b1)
+static void detour_CTFPlayer_RememberUpgrade(CTFPlayer* this, int class, CEconItemView* item, int upgrade, int cost, bool sell)
 {
 	pr_info("CTFPlayer::RememberUpgrade");
-	pr_debug("(player:%d, i1:%d, item:%08x, i2:%d, i3:%d, b1:%s)\n",
+	pr_debug("(player:%d, class:%d, item:%08x, upgrade:%d, cost:%d, sell:%s)\n",
 		ENTINDEX(this),
-		i1,
+		class,
 		(uintptr_t)item,
-		i2,
-		i3,
-		(b1 ? "TRUE" : "FALSE"));
+		upgrade,
+		cost,
+		(sell ? "TRUE" : "FALSE"));
 	
 	
-	trampoline_CTFPlayer_RememberUpgrade(this, i1, item, i2, i3, b1);
+	trampoline_CTFPlayer_RememberUpgrade(this, class, item, upgrade, cost, sell);
 }
 
-static unsigned short detour_CUpgrades_ApplyUpgradeToItem(CUpgrades* this, CTFPlayer* player, CEconItemView* item, int i1, int i2, bool b1, bool b2)
+static unsigned short detour_CUpgrades_ApplyUpgradeToItem(CUpgrades* this, CTFPlayer* player, CEconItemView* item, int upgrade, int cost, bool sell, bool b2)
 {
+	unsigned short result = trampoline_CUpgrades_ApplyUpgradeToItem(this, player, item, upgrade, cost, sell, b2);
+	
+	
 	pr_info("CUpgrades::ApplyUpgradeToItem");
-	
-	unsigned short result = trampoline_CUpgrades_ApplyUpgradeToItem(this, player, item, i1, i2, b1, b2);
-	
-	
-	pr_debug("(player:%d, item:%08x, i1:%d, i2:%d, b1:%s, b2:%s) = %04x\n",
+	pr_debug("(player:%d, item:%08x, upgrade:%d, cost:%d, sell:%s, b2:%s) = %04x\n",
 		ENTINDEX(player),
 		(uintptr_t)item,
-		i1,
-		i2,
-		(b1 ? "TRUE" : "FALSE"),
+		upgrade,
+		cost,
+		(sell ? "TRUE" : "FALSE"),
 		(b2 ? "TRUE" : "FALSE"),
 		result);
 	
 	return result;
 }
 
-static void detour_CUpgrades_NotifyItemOnUpgrade(CUpgrades* this, CTFPlayer* player, unsigned short i1, bool b1)
+static void detour_CUpgrades_NotifyItemOnUpgrade(CUpgrades* this, CTFPlayer* player, unsigned short attr, bool sell)
 {
 	pr_info("CUpgrades::NotifyItemOnUpgrade");
-	pr_debug("(player:%d, i1:%d, b1:%s)\n",
+	pr_debug("(player:%d, attr:%d, sell:%s)\n",
 		ENTINDEX(player),
-		i1,
-		(b1 ? "TRUE" : "FALSE"));
+		attr,
+		(sell ? "TRUE" : "FALSE"));
 	
 	
-	trampoline_CUpgrades_NotifyItemOnUpgrade(this, player, i1, b1);
+	trampoline_CUpgrades_NotifyItemOnUpgrade(this, player, attr, sell);
 }
 
-static void detour_CUpgrades_PlayerPurchasingUpgrade(CUpgrades* this, CTFPlayer* player, int i1, int i2, bool b1, bool b2, bool b3)
+static void detour_CUpgrades_PlayerPurchasingUpgrade(CUpgrades* this, CTFPlayer* player, int slot, int upgrade, bool sell, bool b2, bool b3)
 {
 	pr_info("CUpgrades::PlayerPurchasingUpgrade");
-	pr_debug("(player:%d, i1:%d, i2:%d, b1:%s, b2:%s, b3:%s)\n",
+	pr_debug("(player:%d, slot:%d, upgrade:%d, sell:%s, b2:%s, b3:%s)\n",
 		ENTINDEX(player),
-		i1,
-		i2,
-		(b1 ? "TRUE" : "FALSE"),
+		slot,
+		upgrade,
+		(sell ? "TRUE" : "FALSE"),
 		(b2 ? "TRUE" : "FALSE"),
 		(b3 ? "TRUE" : "FALSE"));
 	
 	
-	trampoline_CUpgrades_PlayerPurchasingUpgrade(this, player, i1, i2, b1, b2, b3);
+	trampoline_CUpgrades_PlayerPurchasingUpgrade(this, player, slot, upgrade, sell, b2, b3);
 }
 
-static int detour_CTFGameRules_GetCostForUpgrade(CTFGameRules* this, CMannVsMachineUpgrades* upgrades, int i1, int i2, CTFPlayer* player)
+static int detour_CTFGameRules_GetCostForUpgrade(CTFGameRules* this, CMannVsMachineUpgrades* upgrades, int slot, int class, CTFPlayer* player)
 {
+	int result = trampoline_CTFGameRules_GetCostForUpgrade(this, upgrades, slot, class, player);
+	
+	
 	pr_info("CTFGameRules::GetCostForUpgrade");
-	
-	int result = trampoline_CTFGameRules_GetCostForUpgrade(this, upgrades, i1, i2, player);
-	
-	
-	pr_debug("(player:%d, upgrades:%08x, i1:%d, i2:%d) = %d\n",
+	pr_debug("(player:%d, upgrades:%08x, slot:%d, class:%d) = %d\n",
 		ENTINDEX(player),
 		(uintptr_t)upgrades,
-		i1,
-		i2,
+		slot,
+		class,
 		result);
 	
 	return result;
 }
 
-static bool detour_CTFGameRules_CanUpgradeWithAttrib(CTFGameRules* this, CTFPlayer* player, int i1, unsigned short i2, CMannVsMachineUpgrades* upgrades)
+static bool detour_CTFGameRules_CanUpgradeWithAttrib(CTFGameRules* this, CTFPlayer* player, int slot, unsigned short attr, CMannVsMachineUpgrades* upgrades)
 {
+	bool result = trampoline_CTFGameRules_CanUpgradeWithAttrib(this, player, slot, attr, upgrades);
+	
+	
 	pr_info("CTFGameRules::CanUpgradeWithAttrib");
-	
-	bool result = trampoline_CTFGameRules_CanUpgradeWithAttrib(this, player, i1, i2, upgrades);
-	
-	
-	pr_debug("(player:%d, upgrades:%08x, i1:%d, i2:%d) = %s\n",
+	pr_debug("(player:%d, upgrades:%08x, slot:%d, attr:%d) = %s\n",
 		ENTINDEX(player),
 		(uintptr_t)upgrades,
-		i1,
-		i2,
+		slot,
+		attr,
 		(result ? "TRUE" : "FALSE"));
 	
 	return result;
 }
 
-static void detour_CTFPlayer_Regenerate(CTFPlayer* this, bool b1)
+static void detour_CTFPlayer_Regenerate(CTFPlayer* this, bool ammo)
 {
 	pr_info("CTFPlayer::Regenerate");
-	pr_debug("(this:%d, b1:%s)\n",
+	pr_debug("(this:%d, ammo:%s)\n",
 		ENTINDEX(this),
-		(b1 ? "TRUE" : "FALSE"));
+		(ammo ? "TRUE" : "FALSE"));
 	
 	
-	trampoline_CTFPlayer_Regenerate(this, b1);
+	trampoline_CTFPlayer_Regenerate(this, ammo);
 }
 
-static void detour_CTFPlayer_RemoveCurrency(CTFPlayer* this, int i1)
+static void detour_CTFPlayer_RemoveCurrency(CTFPlayer* this, int amount)
 {
 	pr_info("CTFPlayer::RemoveCurrency");
-	pr_debug("(this:%d, i1:%d)\n",
+	pr_debug("(this:%d, amount:%d)\n",
 		ENTINDEX(this),
-		i1);
+		amount);
 	
 	
-	trampoline_CTFPlayer_RemoveCurrency(this, i1);
+	trampoline_CTFPlayer_RemoveCurrency(this, amount);
 }
 
-static bool detour_CTFGameRules_IsUpgradeTierEnabled(CTFGameRules* this, CTFPlayer* player, int i1, int i2)
+static bool detour_CTFGameRules_IsUpgradeTierEnabled(CTFGameRules* this, CTFPlayer* player, int attr, int upgrade)
 {
+	bool result = trampoline_CTFGameRules_IsUpgradeTierEnabled(this, player, attr, upgrade);
+	
+	
 	pr_info("CTFGameRules::IsUpgradeTierEnabled");
-	
-	bool result = trampoline_CTFGameRules_IsUpgradeTierEnabled(this, player, i1, i2);
-	
-	
-	pr_debug("(player:%d, i1:%d, i2:%d) = %s\n",
+	pr_debug("(player:%d, attr:%d, upgrade:%d) = %s\n",
 		ENTINDEX(player),
-		i1,
-		i2,
+		attr,
+		upgrade,
 		(result ? "TRUE" : "FALSE"));
 	
 	return result;
 }
 
-static int detour_CTFGameRules_GetUpgradeTier(CTFGameRules* this, int i1)
+static int detour_CTFGameRules_GetUpgradeTier(CTFGameRules* this, int upgrade)
 {
+	int result = trampoline_CTFGameRules_GetUpgradeTier(this, upgrade);
+	
+	
 	pr_info("CTFGameRules::GetUpgradeTier");
-	
-	int result = trampoline_CTFGameRules_GetUpgradeTier(this, i1);
-	
-	
-	pr_debug("(i1:%d) = %d\n",
-		i1,
+	pr_debug("(upgrade:%d) = %d\n",
+		upgrade,
 		result);
 	
 	return result;
 }
 
-static CEconItemView* detour_CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot(CTFPlayer* player, int i1, CEconEntity** item)
+static CEconItemView* detour_CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot(CTFPlayer* player, int slot, CEconEntity** item)
 {
-	pr_info("CTFPlayerSharedUtils::GetEconItemViewByLoadoutSlot");
-	
 	CEconItemView* result =
-		trampoline_CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot(player, i1, item);
+		trampoline_CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot(player, slot, item);
 	
 	
-	pr_debug("(player:%d, i1:%d, item:%08x) = %08x\n",
+	pr_info("CTFPlayerSharedUtils::GetEconItemViewByLoadoutSlot");
+	pr_debug("(player:%d, slot:%d, item:%08x) = %08x\n",
 		ENTINDEX(player),
-		i1,
+		slot,
 		(item != NULL ? (uintptr_t)(*item) : 0),
 		(uintptr_t)result);
 	
@@ -186,12 +180,11 @@ static CEconItemView* detour_CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot(C
 
 static CEconItemAttributeDefinition* detour_CEconItemSchema_GetAttributeDefinitionByName(CEconItemSchema* this, char const* name)
 {
-	pr_info("CEconItemSchema::GetAttributeDefinitionByName");
-	
 	CEconItemAttributeDefinition* result =
 		trampoline_CEconItemSchema_GetAttributeDefinitionByName(this, name);
 	
 	
+	pr_info("CEconItemSchema::GetAttributeDefinitionByName");
 	pr_debug("(name:'%s') = %08x\n",
 		name,
 		(uintptr_t)result);
@@ -201,11 +194,10 @@ static CEconItemAttributeDefinition* detour_CEconItemSchema_GetAttributeDefiniti
 
 static int detour_CEconItemView_GetItemDefIndex(CEconItemView* this)
 {
-	pr_info("CEconItemView::GetItemDefIndex");
-	
 	int result = trampoline_CEconItemView_GetItemDefIndex(this);
 	
 	
+	pr_info("CEconItemView::GetItemDefIndex");
 	pr_debug("(this:%08x) = %d\n",
 		(uintptr_t)this,
 		result);

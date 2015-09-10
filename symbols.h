@@ -273,7 +273,7 @@ extern unknown_t (*CUpgrades_GrantOrRemoveAllUpgrades)(CUpgrades* this, CTFPlaye
 extern unknown_t (*CUpgrades_InputDisable)(CUpgrades* this, inputdata_t*);
 extern unknown_t (*CUpgrades_InputEnable)(CUpgrades* this, inputdata_t*);
 extern unknown_t (*CUpgrades_InputReset)(CUpgrades* this, inputdata_t*);
-extern void (*CUpgrades_NotifyItemOnUpgrade)(CUpgrades* this, unsigned short, bool);
+extern void (*CUpgrades_NotifyItemOnUpgrade)(CUpgrades* this, CTFPlayer*, unsigned short, bool);
 extern void (*CUpgrades_PlayerPurchasingUpgrade)(CUpgrades* this, CTFPlayer*, int, int, bool, bool, bool);
 extern unknown_t (*CUpgrades_ReportUpgrade)(CUpgrades* this, CTFPlayer*, int, int, int, int, bool, bool, bool);
 extern unknown_t (*CUpgrades_RestoreItemAttributeToBaseValue)(CUpgrades* this, CEconItemAttributeDefinition*, CEconItemView*);
