@@ -30,7 +30,7 @@ static unknown_struct_t detour_CTFBotMedicHeal_Update(CTFBotMedicHeal* this, CTF
 	if (CAttributeManager_AttribHookValue_int(0, "generate_rage_on_heal",
 		medigun, NULL, true) <= 0) {
 		//pr_debug("  medigun doesn't have shield attribute\n");
-		goto skip_shield);
+		goto skip_shield;
 	}
 	
 	//pr_debug("  calling CWeaponMedigun::CreateMedigunShield\n");
