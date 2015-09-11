@@ -13,6 +13,8 @@ void symbols_init(void);
 /* RTTI */
 
 extern void *typeinfo_for_CBaseEntity;
+extern void *typeinfo_for_CBasePlayer;
+extern void *typeinfo_for_CTFBot;
 extern void *typeinfo_for_CBaseObject;
 extern void *typeinfo_for_CTFWeaponBase;
 extern void *typeinfo_for_CWeaponMedigun;
@@ -87,7 +89,10 @@ extern void (*GlobalAttrModifier_TFHalloweenAttribHookMunger)(char const*, CUtlC
 
 extern void (*CBaseEntity_PrecacheScriptSound)(char const*);
 
+extern datamap_t* (*CBasePlayer_GetDataDescMap)(void);
+
 extern datamap_t* (*CBaseObject_GetDataDescMap)(void);
+
 extern datamap_t* (*CObjectSentrygun_GetDataDescMap)(void);
 
 extern CTFMedigunShield* (*CTFMedigunShield_Create)(CTFPlayer*);
@@ -124,6 +129,7 @@ extern bool (*CBasePlayer_IsBot)(CBasePlayer* this);
 
 extern void (*CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CBaseEntity*);
 extern unknown_t (*CTFPlayerShared_ConditionGameRulesThink)(CTFPlayerShared* this);
+extern CTFWeaponBase* (*CTFPlayerShared_GetActiveTFWeapon)(CTFPlayerShared* this);
 extern bool (*CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
 
@@ -180,6 +186,7 @@ extern int (*CTFWeaponBase_GetWeaponID)(CTFWeaponBase* this);
 extern int (*CTFWeaponBaseGun_GetWeaponProjectileType)(CTFWeaponBaseGun* this);
 extern void (*CTFWeaponBaseGun_PrimaryAttack)(CTFWeaponBaseGun* this);
 
+extern void (*CWeaponMedigun_CreateMedigunShield)(CWeaponMedigun* this);
 extern float (*CWeaponMedigun_GetTargetRange)(CWeaponMedigun* this);
 extern bool (*CWeaponMedigun_IsAttachedToBuilding)(CWeaponMedigun* this);
 
@@ -282,13 +289,13 @@ extern unknown_t (*CUpgrades_UpgradeTouch)(CUpgrades* this, CBaseEntity*);
 
 extern unknown_t (*CTFBotLocomotion_Jump)(CTFBotLocomotion* this);
 
-extern unknown_t (*CTFBotMainAction_OnContact)(CTFBotMainAction* this, CTFBot*, CBaseEntity*, CGameTrace*);
-extern unknown_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, float);
+extern unknown_struct_t (*CTFBotMainAction_OnContact)(CTFBotMainAction* this, CTFBot*, CBaseEntity*, CGameTrace*);
+extern unknown_struct_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, float);
 
 extern bool (*CTFBotMedicHeal_IsReadyToDeployUber)(CTFBotMedicHeal* this, CWeaponMedigun const*);
-extern unknown_t (*CTFBotMedicHeal_Update)(CTFBotMedicHeal* this, CTFBot*, float);
+extern unknown_struct_t (*CTFBotMedicHeal_Update)(CTFBotMedicHeal* this, CTFBot*, float);
 
-extern unknown_t (*CTFBotMvMEngineerIdle_Update)(CTFBotMvMEngineerIdle* this, CTFBot*, float);
+extern unknown_struct_t (*CTFBotMvMEngineerIdle_Update)(CTFBotMvMEngineerIdle* this, CTFBot*, float);
 
 extern unknown_t (*CTFReviveMarker_AddMarkerHealth)(CTFReviveMarker* this, float);
 

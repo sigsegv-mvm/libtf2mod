@@ -74,6 +74,7 @@ extern detour_info_t detour_disposable_dispenser_part4;
 extern detour_info_t detour_disposable_dispenser_part5;
 
 extern detour_info_t detour_medicbot_ai_xbow_heal;
+extern detour_info_t detour_medicbot_ai_shield;
 
 extern detour_info_t detour_perf_attr_nomunge;
 

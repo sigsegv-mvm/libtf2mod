@@ -30,6 +30,8 @@
 DEFINE_ENTPROP(float, CBaseAnimating, m_flModelScale);
 DEFINE_ENTPROP(int, CBaseAnimating, m_nSkin);
 
+DEFINE_ENTPROP(unsigned int, CBasePlayer, m_nButtons);
+
 DEFINE_ENTPROP(int, CTFPlayer, m_iClass);
 
 DEFINE_ENTPROP(bool, CBaseObject, m_bBuilding);
@@ -48,6 +50,9 @@ void entprop_init(void)
 		CBaseAnimating, m_flModelScale);
 	INIT_SENDPROP(CBaseAnimating_m_nSkin,
 		CBaseAnimating, m_nSkin);
+	
+	INIT_DATAMAP(CBasePlayer_m_nButtons,
+		CBasePlayer, m_nButtons);
 	
 	INIT_SENDPROP2(CTFPlayer_m_iClass,
 		CTFPlayer, m_PlayerClass, m_iClass);

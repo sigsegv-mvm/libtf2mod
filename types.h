@@ -401,6 +401,10 @@ typedef uint32_t EHANDLE;
 /* defined types */
 
 typedef struct {
+	
+} unknown_struct_t;
+
+typedef struct {
 	const char *pszValue;
 } string_t;
 

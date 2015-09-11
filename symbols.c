@@ -14,6 +14,10 @@ void symbols_init(void)
 	
 	SYMBOL_OBJ(typeinfo_for_CBaseEntity,
 		"_ZTI11CBaseEntity");
+	SYMBOL_OBJ(typeinfo_for_CBasePlayer,
+		"_ZTI11CBasePlayer");
+	SYMBOL_OBJ(typeinfo_for_CTFBot,
+		"_ZTI6CTFBot");
 	SYMBOL_OBJ(typeinfo_for_CBaseObject,
 		"_ZTI11CBaseObject");
 	SYMBOL_OBJ(typeinfo_for_CTFWeaponBase,
@@ -135,8 +139,12 @@ void symbols_init(void)
 	SYMBOL_FUNC(CBaseEntity_PrecacheScriptSound,
 		"_ZN11CBaseEntity19PrecacheScriptSoundEPKc");
 	
+	SYMBOL_FUNC(CBasePlayer_GetDataDescMap,
+		"_ZN11CBasePlayer14GetDataDescMapEv");
+	
 	SYMBOL_FUNC(CBaseObject_GetDataDescMap,
 		"_ZN11CBaseObject14GetDataDescMapEv");
+	
 	SYMBOL_FUNC(CObjectSentrygun_GetDataDescMap,
 		"_ZN16CObjectSentrygun14GetDataDescMapEv");
 	
@@ -195,6 +203,8 @@ void symbols_init(void)
 		"_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
 	SYMBOL_FUNC(CTFPlayerShared_ConditionGameRulesThink,
 		"_ZN15CTFPlayerShared23ConditionGameRulesThinkEv");
+	SYMBOL_FUNC(CTFPlayerShared_GetActiveTFWeapon,
+		"_ZNK15CTFPlayerShared17GetActiveTFWeaponEv");
 	SYMBOL_FUNC(CTFPlayerShared_IsInvulnerable,
 		"_ZNK15CTFPlayerShared14IsInvulnerableEv");
 	SYMBOL_FUNC(CTFPlayerShared_RadiusCurrencyCollectionCheck,
@@ -222,6 +232,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer17Event_KilledOtherEP11CBaseEntityRK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_FireBullet,
 		"_ZN9CTFPlayer10FireBulletEP13CTFWeaponBaseRK17FireBulletsInfo_tbii");
+	SYMBOL_FUNC(CTFPlayer_GetActiveTFWeapon,
+		"_ZNK9CTFPlayer17GetActiveTFWeaponEv");
 	SYMBOL_FUNC(CTFPlayer_GiveNamedItem,
 		"_ZN9CTFPlayer13GiveNamedItemEPKciPK13CEconItemViewb");
 	SYMBOL_FUNC(CTFPlayer_IsMiniBoss,
@@ -296,6 +308,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFWeaponBaseGun_PrimaryAttack,
 		"_ZN16CTFWeaponBaseGun13PrimaryAttackEv");
 	
+	SYMBOL_FUNC(CWeaponMedigun_CreateMedigunShield,
+		"_ZN14CWeaponMedigun19CreateMedigunShieldEv");
 	SYMBOL_FUNC(CWeaponMedigun_GetTargetRange,
 		"_ZN14CWeaponMedigun14GetTargetRangeEv");
 	SYMBOL_FUNC(CWeaponMedigun_IsAttachedToBuilding,
