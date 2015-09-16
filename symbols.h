@@ -160,6 +160,8 @@ extern unknown_t (*CTFPlayer_TraceAttack)(CTFPlayer* this, CTakeDamageInfo const
 
 extern void (*CTFBot_AddItem)(CTFBot* this, char const*);
 extern bool (*CTFBot_EquipRequiredWeapon)(CTFBot* this);
+extern bool (*CTFBot_IsAllowedToPickUpFlag)(CTFBot* this);
+extern unknown_t (*CTFBot_SetMission)(CTFBot* this, CTFBot_MissionType, bool);
 extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
 
 extern bool (*NextBotPlayer_CTFPlayer_IsBot)(NextBotPlayer_CTFPlayer* this);
@@ -272,6 +274,9 @@ extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassActive)(CTFObje
 extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassCount)(CTFObjectiveResource* this, int, int);
 extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassName)(CTFObjectiveResource* this, int, string_t);
 
+extern unknown_t (*CMissionPopulator_UpdateMission)(CMissionPopulator* this, CTFBot_MissionType);
+extern unknown_t (*CMissionPopulator_UpdateMissionDestroySentries)(CMissionPopulator* this);
+
 extern unknown_t (*CUpgrades_ApplyUpgradeAttributeBlock)(CUpgrades* this, UpgradeAttribBlock_t, int, CTFPlayer*, bool);
 extern unsigned short (*CUpgrades_ApplyUpgradeToItem)(CUpgrades* this, CTFPlayer*, CEconItemView*, int, int, bool, bool);
 extern unknown_t (*CUpgrades_EndTouch)(CUpgrades* this, CBaseEntity*);
@@ -293,6 +298,8 @@ extern unknown_t (*CTFBotLocomotion_Jump)(CTFBotLocomotion* this);
 extern unknown_struct_t (*CTFBotMainAction_OnContact)(CTFBotMainAction* this, CTFBot*, CBaseEntity*, CGameTrace*);
 extern unknown_struct_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, float);
 
+extern unknown_t (*CTFBotScenarioMonitor_DesiredScenarioAndClassAction)(CTFBotScenarioMonitor* this, CTFBot*);
+
 extern bool (*CTFBotMedicHeal_IsReadyToDeployUber)(CTFBotMedicHeal* this, CWeaponMedigun const*);
 extern unknown_struct_t (*CTFBotMedicHeal_Update)(CTFBotMedicHeal* this, CTFBot*, float);
 
@@ -302,7 +309,12 @@ extern unknown_t (*CTFReviveMarker_AddMarkerHealth)(CTFReviveMarker* this, float
 
 extern unknown_t (*CCurrencyPack_ComeToRest)(CCurrencyPack* this);
 
+extern unknown_t (*CFuncNavCost_HasTag)(CFuncNavCost* this, char const*);
+extern unknown_t (*CFuncNavCost_IsApplicableTo)(CFuncNavCost* this, CBaseCombatCharacter*);
+
 extern unknown_t (*Action_CTFBot_OnContact)(Action_CTFBot* this, CBaseEntity*, CGameTrace*);
+
+extern unknown_t (*CTraceFilterObject_ShouldHitEntity)(CTraceFilterObject* this, IHandleEntity*, int);
 
 
 #undef extern

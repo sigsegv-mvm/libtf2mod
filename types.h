@@ -302,10 +302,22 @@ typedef enum {
 	// TODO
 } TFStatType_t;
 
+typedef enum {
+	// 0: ???
+	// 1: ???
+	TFBOT_MISSION_SENTRY_BUSTER = 2,
+	TFBOT_MISSION_SNIPER        = 3,
+	TFBOT_MISSION_SPY           = 4,
+	// 5: ???
+	// 6: ???
+} CTFBot_MissionType;
+
 
 /* opaque types */
 
 typedef uint32_t unknown_t;
+
+typedef void IHandleEntity;
 
 typedef void CServerGameDLL;
 
@@ -315,6 +327,7 @@ typedef void IGameEvent;
 typedef void CBaseEntity;
 typedef void CBaseAnimating;
 
+typedef void CBaseCombatCharacter;
 typedef void CBasePlayer;
 typedef void CTFPlayerShared;
 typedef void CTFPlayer;
@@ -367,18 +380,24 @@ typedef void CMannVsMachineStats;
 
 typedef void CTFObjectiveResource;
 
+typedef void CMissionPopulator;
+
 typedef void CUpgrades;
 typedef void CMannVsMachineUpgrades;
 typedef void* UpgradeAttribBlock_t;
 
 typedef void CTFBotLocomotion;
 typedef void CTFBotMainAction;
+typedef void CTFBotScenarioMonitor;
 typedef void CTFBotMedicHeal;
 typedef void CTFBotMvMEngineerIdle;
+typedef void CTFBotMissionSuicideBomber;
 
 typedef void CTFReviveMarker;
 
 typedef void CCurrencyPack;
+
+typedef void CFuncNavCost;
 
 typedef void CUtlVector;
 typedef void CUtlConstStringBase;
@@ -392,6 +411,8 @@ typedef void CDmgAccumulator;
 typedef void mstudiobbox_t;
 
 typedef unknown_t ShakeCommand_t;
+
+typedef void CTraceFilterObject;
 
 typedef void inputdata_t;
 

@@ -263,6 +263,10 @@ void symbols_init(void)
 		"_ZN6CTFBot7AddItemEPKc");
 	SYMBOL_FUNC(CTFBot_EquipRequiredWeapon,
 		"_ZN6CTFBot19EquipRequiredWeaponEv");
+	SYMBOL_FUNC(CTFBot_IsAllowedToPickUpFlag,
+		"_ZNK6CTFBot21IsAllowedToPickUpFlagEv");
+	SYMBOL_FUNC(CTFBot_SetMission,
+		"_ZN6CTFBot10SetMissionENS_11MissionTypeEb");
 	SYMBOL_FUNC(CTFBot_ShouldGib,
 		"_ZN6CTFBot9ShouldGibERK15CTakeDamageInfo");
 	
@@ -460,6 +464,11 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFObjectiveResource_SetMannVsMachineWaveClassName,
 		"_ZN20CTFObjectiveResource29SetMannVsMachineWaveClassNameEi8string_t");
 	
+	SYMBOL_FUNC(CMissionPopulator_UpdateMission,
+		"_ZN17CMissionPopulator13UpdateMissionEN6CTFBot11MissionTypeE");
+	SYMBOL_FUNC(CMissionPopulator_UpdateMissionDestroySentries,
+		"_ZN17CMissionPopulator28UpdateMissionDestroySentriesEv");
+	
 	SYMBOL_FUNC(CUpgrades_ApplyUpgradeAttributeBlock,
 		"_ZN9CUpgrades26ApplyUpgradeAttributeBlockEP20UpgradeAttribBlock_tiP9CTFPlayerb");
 	SYMBOL_FUNC(CUpgrades_ApplyUpgradeToItem,
@@ -499,6 +508,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFBotMainAction_Update,
 		"_ZN16CTFBotMainAction6UpdateEP6CTFBotf");
 	
+	SYMBOL_FUNC(CTFBotScenarioMonitor_DesiredScenarioAndClassAction,
+		"_ZN21CTFBotScenarioMonitor29DesiredScenarioAndClassActionEP6CTFBot");
+	
 	SYMBOL_FUNC(CTFBotMedicHeal_IsReadyToDeployUber,
 		"_ZNK15CTFBotMedicHeal19IsReadyToDeployUberEPK14CWeaponMedigun");
 	SYMBOL_FUNC(CTFBotMedicHeal_Update,
@@ -507,14 +519,25 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFBotMvMEngineerIdle_Update,
 		"_ZN21CTFBotMvMEngineerIdle6UpdateEP6CTFBotf");
 	
+	SYMBOL_FUNC(CTFBotMissionSuicideBomber_OnStart,
+		"_ZN26CTFBotMissionSuicideBomber7OnStartEP6CTFBotP6ActionIS0_E");
+	
 	SYMBOL_FUNC(CTFReviveMarker_AddMarkerHealth,
 		"_ZN15CTFReviveMarker15AddMarkerHealthEf");
 	
 	SYMBOL_FUNC(CCurrencyPack_ComeToRest,
 		"_ZN13CCurrencyPack10ComeToRestEv");
 	
+	SYMBOL_FUNC(CFuncNavCost_HasTag,
+		"_ZNK12CFuncNavCost6HasTagEPKc");
+	SYMBOL_FUNC(CFuncNavCost_IsApplicableTo,
+		"_ZNK12CFuncNavCost14IsApplicableToEP20CBaseCombatCharacter");
+	
 	SYMBOL_FUNC(Action_CTFBot_OnContact,
 		"_ZN6ActionI6CTFBotE9OnContactEP11CBaseEntityP10CGameTrace");
+	
+	SYMBOL_FUNC(CTraceFilterObject_ShouldHitEntity,
+		"_ZN18CTraceFilterObject15ShouldHitEntityEP13IHandleEntityi");
 	
 	
 #warning TODO: symbols for these upgrade related functions

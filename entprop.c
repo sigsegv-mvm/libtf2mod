@@ -1,6 +1,12 @@
 #include "all.h"
 
 
+#define DEFINE_ENTPROP(_type, _class, _prop) \
+	static uintptr_t off_ ## _class ## _ ## _prop; \
+	_type *prop_ ## _class ## _ ## _prop(_class* ent) { \
+		assert(off_ ## _class ## _ ## _prop != 0); \
+		return (_type *)((uintptr_t)ent + off_ ## _class ## _ ## _prop); \
+	}
 #define INIT_SENDPROP(_name, _class, _prop) \
 	off_ ## _name = sendprop_offset(#_class, #_prop); \
 	assert(off_ ## _name != 0); \
@@ -19,13 +25,17 @@
 	assert(off_ ## _name != 0); \
 	pr_debug("[datamap] %04x off_" #_name "\n", off_ ## _name);
 
-#define DEFINE_ENTPROP(_type, _class, _prop) \
-	static uintptr_t off_ ## _class ## _ ## _prop; \
-	_type *prop_ ## _class ## _ ## _prop(_class* ent) { \
-		assert(off_ ## _class ## _ ## _prop != 0); \
-		return (_type *)((uintptr_t)ent + off_ ## _class ## _ ## _prop); \
-	}
 
+#define DEFINE_EXTRACTED(_type, _class, _prop) \
+	DEFINE_ENTPROP(_type, _class, _prop) \
+	extern uintptr_t entprop_extract_ ## _class ## _ ## _prop(void);
+#define INIT_EXTRACTED(_name) \
+	off_ ## _name = entprop_extract_ ## _name(); \
+	assert(off_ ## _name != 0); \
+	pr_debug("[extract] %04x off_" #_name "\n", off_ ## _name);
+
+
+/* known entprops */
 
 DEFINE_ENTPROP(float, CBaseAnimating, m_flModelScale);
 DEFINE_ENTPROP(int, CBaseAnimating, m_nSkin);
@@ -42,6 +52,11 @@ DEFINE_ENTPROP(int, CBaseObject, m_iMaxHealth);
 DEFINE_ENTPROP(bool, CTFGameRules, m_bPlayingMedieval);
 
 DEFINE_ENTPROP(bool, CCurrencyPack, m_bDistributed);
+
+
+/* extracted entprops */
+
+DEFINE_EXTRACTED(int, CTFBot, m_nMission);
 
 
 void entprop_init(void)
@@ -71,4 +86,7 @@ void entprop_init(void)
 	
 	INIT_SENDPROP(CCurrencyPack_m_bDistributed,
 		CCurrencyPack, m_bDistributed);
+	
+	
+	INIT_EXTRACTED(CTFBot_m_nMission);
 }
