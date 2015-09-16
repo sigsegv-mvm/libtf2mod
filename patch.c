@@ -68,7 +68,7 @@ void patch_all(void)
 }
 
 
-void func_read(void *pfunc, size_t off, size_t len, uint8_t *dst)
+void func_read(void *pfunc, size_t off, size_t len, void *dst)
 {
 	func_t *func = func_register(pfunc);
 	
@@ -78,7 +78,7 @@ void func_read(void *pfunc, size_t off, size_t len, uint8_t *dst)
 	memcpy(dst, (void *)where, len);
 }
 
-bool func_verify(void *pfunc, size_t off, size_t len, const uint8_t *cmp)
+bool func_verify(void *pfunc, size_t off, size_t len, const void *cmp)
 {
 	func_t *func = func_register(pfunc);
 	
@@ -117,7 +117,7 @@ bool func_verify(void *pfunc, size_t off, size_t len, const uint8_t *cmp)
 }
 
 
-void func_write(void *pfunc, size_t off, size_t len, const uint8_t *src)
+void func_write(void *pfunc, size_t off, size_t len, const void *src)
 {
 	func_t *func = func_register(pfunc);
 	

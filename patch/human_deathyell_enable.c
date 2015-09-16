@@ -51,5 +51,5 @@ PATCH_APPLY
 	
 	
 	func_write(CTFPlayer_DeathSound,
-		0x02a7, sizeof(target), (uint8_t *)&target);
+		0x02a7, sizeof(target), &target);
 }

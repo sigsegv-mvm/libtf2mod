@@ -29,10 +29,10 @@ typedef struct {
 
 void patch_all(void);
 
-void func_read(void *pfunc, size_t off, size_t len, uint8_t *dst);
-bool func_verify(void *pfunc, size_t off, size_t len, const uint8_t *cmp);
+void func_read(void *pfunc, size_t off, size_t len, void *dst);
+bool func_verify(void *pfunc, size_t off, size_t len, const void *cmp);
 
-void func_write(void *pfunc, size_t off, size_t len, const uint8_t *src);
+void func_write(void *pfunc, size_t off, size_t len, const void *src);
 void func_write_nop(void *pfunc, size_t off, size_t count);
 
 void *alloc_func(size_t pages);
