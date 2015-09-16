@@ -113,6 +113,7 @@ extern void (*CAttributeManager_RegisterGlobalAttributeModifier)(bool (*)(void),
 
 extern unknown_t (*CServerGameDLL_DLLInit)(CServerGameDLL* this, void* (*)(char const*, int*), void* (*)(char const*, int*), void* (*)(char const*, int*), CGlobalVars*);
 
+extern void (*ConVar_ctor)(ConVar* this, char const*, char const*, int, char const*);
 extern void (*ConVar_SetValue_int)(ConVar* this, int);
 
 extern void (*ConCommand_ctor)(ConCommand* this, char const*, void (*)(CCommand const*), char const*, int, int (*)(char const*, char (*) [64]));

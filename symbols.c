@@ -175,6 +175,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CServerGameDLL_DLLInit,
 		"_ZN14CServerGameDLL7DLLInitEPFPvPKcPiES5_S5_P11CGlobalVars");
 	
+	SYMBOL_FUNC(ConVar_ctor,
+		"_ZN6ConVarC2EPKcS1_iS1_");
 	SYMBOL_FUNC(ConVar_SetValue_int,
 		"_ZN6ConVar8SetValueEi");
 	
