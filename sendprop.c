@@ -18,9 +18,9 @@ static const char *SendProp_GetName(SendProp* this)
 	return this->m_pVarName;
 }
 
-static SendTable *SendProp_GetDataTable(SendProp* this)
+static SendTable* SendProp_GetDataTable(SendProp* this)
 {
-	return (SendTable *)this->m_pDataTable;
+	return (SendTable*)this->m_pDataTable;
 }
 
 static int SendProp_GetOffset(SendProp* this)
@@ -29,7 +29,7 @@ static int SendProp_GetOffset(SendProp* this)
 }
 
 
-static SendProp *_sendprop_offset_internal(SendTable* table, const char *name)
+static SendProp* _sendprop_find_internal(SendTable* table, const char *name)
 {
 	int count = SendTable_GetNumProps(table);
 	for (int i = 0; i < count; ++i) {
@@ -40,7 +40,7 @@ static SendProp *_sendprop_offset_internal(SendTable* table, const char *name)
 		}
 		
 		if (SendProp_GetDataTable(prop) != NULL) {
-			if ((prop = _sendprop_offset_internal(SendProp_GetDataTable(prop),
+			if ((prop = _sendprop_find_internal(SendProp_GetDataTable(prop),
 				name)) != NULL) {
 				return prop;
 			}
@@ -50,16 +50,22 @@ static SendProp *_sendprop_offset_internal(SendTable* table, const char *name)
 	return NULL;
 }
 
-uintptr_t sendprop_offset(const char *class_name, const char *name)
+SendProp* sendprop_find(const char *class_name, const char *name)
 {
-	ServerClass *sv_class = SV_FindServerClass(class_name);
+	ServerClass* sv_class = SV_FindServerClass(class_name);
 	if (sv_class == NULL) {
 		pr_warn("%s: SV_FindServerClass('%s') returned NULL\n",
 			__func__, class_name);
-		return 0;
+		return NULL;
 	}
 	
-	SendProp* prop = _sendprop_offset_internal(sv_class->m_pTable, name);
+	return _sendprop_find_internal(sv_class->m_pTable, name);
+}
+
+
+uintptr_t sendprop_offset(const char *class_name, const char *name)
+{
+	SendProp* prop = sendprop_find(class_name, name);
 	if (prop == NULL) {
 		pr_warn("%s: could not find '%s' in '%s'",
 			__func__, name, class_name);
