@@ -347,6 +347,9 @@ typedef void CSchemaFieldHandle_CEconItemDefinition;
 typedef void CItemGeneration;
 typedef void CItemSelectionCriteria;
 
+typedef void CAttribute_String;
+typedef void CAttributeList;
+
 typedef void CTFWeaponBase;
 typedef void CTFWeaponBaseGun;
 typedef void CWeaponMedigun;
@@ -385,6 +388,7 @@ typedef void CMissionPopulator;
 typedef void CUpgrades;
 typedef void CMannVsMachineUpgrades;
 typedef void* UpgradeAttribBlock_t;
+typedef void CMannVsMachineUpgradeManager;
 
 typedef void CTFBotLocomotion;
 typedef void CTFBotMainAction;

@@ -71,6 +71,8 @@ extern unknown_t (*UTIL_LogPrintf)(char const*, ...);
 extern CBasePlayer* (*UTIL_PlayerByIndex)(int);
 extern void (*UTIL_ScreenShake)(Vector const*, float, float, float, float, ShakeCommand_t, bool);
 
+extern int (*V_stricmp)(char const*, char const*);
+
 extern string_t (*AllocPooledString)(char const*);
 extern string_t (*AllocPooledString_StaticConstantStringPointer)(char const*);
 
@@ -99,6 +101,7 @@ extern CTFMedigunShield* (*CTFMedigunShield_Create)(CTFPlayer*);
 
 extern CEconItemView* (*CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot)(CTFPlayer*, int, CEconEntity**);
 
+extern CAttribute_String* (*CAttributeManager_AttribHookValue_CAttribute_String)(CAttribute_String*, CAttribute_String*, char const*, CBaseEntity const*, CUtlVector*, bool);
 extern float (*CAttributeManager_AttribHookValue_float)(float, char const*, CBaseEntity const*, CUtlVector*, bool);
 extern int (*CAttributeManager_AttribHookValue_int)(int, char const*, CBaseEntity const*, CUtlVector*, bool);
 extern void (*CAttributeManager_RegisterGlobalAttributeModifier)(bool (*)(void), void (*)(char const*, CUtlConstStringBase*));
@@ -169,6 +172,7 @@ extern bool (*NextBotPlayer_CTFPlayer_IsBot)(NextBotPlayer_CTFPlayer* this);
 extern void (*CTFTankBoss_TankBossThink)(CTFTankBoss* this);
 
 extern CEconItemAttributeDefinition* (*CEconItemSchema_GetAttributeDefinitionByName)(CEconItemSchema* this, char const*);
+extern CEconItemDefinition* (*CEconItemSchema_GetItemDefinitionByName)(CEconItemSchema* this, char const*);
 
 extern int (*CEconItemView_GetItemDefIndex)(CEconItemView* this);
 
@@ -292,6 +296,8 @@ extern unknown_t (*CUpgrades_ReportUpgrade)(CUpgrades* this, CTFPlayer*, int, in
 extern unknown_t (*CUpgrades_RestoreItemAttributeToBaseValue)(CUpgrades* this, CEconItemAttributeDefinition*, CEconItemView*);
 extern unknown_t (*CUpgrades_RestorePlayerAttributeToBaseValue)(CUpgrades* this, CEconItemAttributeDefinition*, CTFPlayer*);
 extern unknown_t (*CUpgrades_UpgradeTouch)(CUpgrades* this, CBaseEntity*);
+
+extern unknown_t (*CMannVsMachineUpgradeManager_GetAttributeIndexByName)(CMannVsMachineUpgradeManager* this, char const*);
 
 extern unknown_t (*CTFBotLocomotion_Jump)(CTFBotLocomotion* this);
 

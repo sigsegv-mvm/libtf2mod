@@ -6,8 +6,14 @@ DETOUR(profile_attributes);
 
 
 static float (*trampoline_CAttributeManager_AttribHookValue_float)(float, char const*, CBaseEntity const*, CUtlVector*, bool);
+
 static void (*trampoline_GlobalAttrModifier_MvMAttribHookMunger)(char const*, CUtlConstStringBase*);
 static void (*trampoline_GlobalAttrModifier_TFHalloweenAttribHookMunger)(char const*, CUtlConstStringBase*);
+
+static CEconItemAttributeDefinition* (*trampoline_CEconItemSchema_GetAttributeDefinitionByName)(CEconItemSchema* this, char const*);
+static CEconItemDefinition* (*trampoline_CEconItemSchema_GetItemDefinitionByName)(CEconItemSchema* this, char const*);
+
+static unknown_t (*trampoline_CMannVsMachineUpgradeManager_GetAttributeIndexByName)(CMannVsMachineUpgradeManager* this, char const*);
 
 
 static FILE *prof_log;
@@ -163,6 +169,137 @@ static void detour_GlobalAttrModifier_TFHalloweenAttribHookMunger(char const* s1
 }
 
 
+static CEconItemAttributeDefinition* detour_CEconItemSchema_GetAttributeDefinitionByName(CEconItemSchema* this, char const* name)
+{
+	static uint64_t callnum = 0;
+	struct timespec t0, t1;
+	bool fail = false;
+	
+	
+	if (clock_gettime(CLOCK_THREAD_CPUTIME_ID, &t0) != 0) {
+		warn("clock_gettime failed for t0 in %s\n", __func__);
+		fail = true;
+	}
+	CEconItemAttributeDefinition* result =
+		trampoline_CEconItemSchema_GetAttributeDefinitionByName(this, name);
+	if (clock_gettime(CLOCK_THREAD_CPUTIME_ID, &t1) != 0) {
+		warn("clock_gettime failed for t1 in %s\n", __func__);
+		fail = true;
+	}
+	
+	
+	if (!fail) {
+		/* delta-T in nanoseconds */
+		int64_t dt = conv_timespec_to_nsec(&t1) - conv_timespec_to_nsec(&t0);
+		
+		/* delta-T in microseconds and nanoseconds */
+		int64_t dt_usec = dt / 1000;
+		int64_t dt_nsec = dt % 1000;
+		
+		pr_debug("[PROF:GetAttributeDefinitionByName('%s')] %lld.%03lld us\n",
+			name, dt_usec, dt_nsec);
+		
+		fprintf(prof_log, "GetAttributeDefinitionByName,%llu,%lld,,%s\n",
+			callnum, dt, name);
+		fflush(prof_log);
+	} else {
+		pr_warn("[PROF:GetAttributeDefinitionByName('%s')] FAILED\n",
+			name);
+	}
+	++callnum;
+	
+	
+	return result;
+}
+
+
+static CEconItemDefinition* detour_CEconItemSchema_GetItemDefinitionByName(CEconItemSchema* this, char const* name)
+{
+	static uint64_t callnum = 0;
+	struct timespec t0, t1;
+	bool fail = false;
+	
+	
+	if (clock_gettime(CLOCK_THREAD_CPUTIME_ID, &t0) != 0) {
+		warn("clock_gettime failed for t0 in %s\n", __func__);
+		fail = true;
+	}
+	CEconItemDefinition* result =
+		trampoline_CEconItemSchema_GetItemDefinitionByName(this, name);
+	if (clock_gettime(CLOCK_THREAD_CPUTIME_ID, &t1) != 0) {
+		warn("clock_gettime failed for t1 in %s\n", __func__);
+		fail = true;
+	}
+	
+	
+	if (!fail) {
+		/* delta-T in nanoseconds */
+		int64_t dt = conv_timespec_to_nsec(&t1) - conv_timespec_to_nsec(&t0);
+		
+		/* delta-T in microseconds and nanoseconds */
+		int64_t dt_usec = dt / 1000;
+		int64_t dt_nsec = dt % 1000;
+		
+		pr_debug("[PROF:GetItemDefinitionByName('%s')] %lld.%03lld us\n",
+			name, dt_usec, dt_nsec);
+		
+		fprintf(prof_log, "GetItemDefinitionByName,%llu,%lld,,%s\n",
+			callnum, dt, name);
+		fflush(prof_log);
+	} else {
+		pr_warn("[PROF:GetItemDefinitionByName('%s')] FAILED\n",
+			name);
+	}
+	++callnum;
+	
+	
+	return result;
+}
+
+
+static unknown_t detour_CMannVsMachineUpgradeManager_GetAttributeIndexByName(CMannVsMachineUpgradeManager* this, char const* name)
+{
+	static uint64_t callnum = 0;
+	struct timespec t0, t1;
+	bool fail = false;
+	
+	
+	if (clock_gettime(CLOCK_THREAD_CPUTIME_ID, &t0) != 0) {
+		warn("clock_gettime failed for t0 in %s\n", __func__);
+		fail = true;
+	}
+	unknown_t result = trampoline_CMannVsMachineUpgradeManager_GetAttributeIndexByName(this, name);
+	if (clock_gettime(CLOCK_THREAD_CPUTIME_ID, &t1) != 0) {
+		warn("clock_gettime failed for t1 in %s\n", __func__);
+		fail = true;
+	}
+	
+	
+	if (!fail) {
+		/* delta-T in nanoseconds */
+		int64_t dt = conv_timespec_to_nsec(&t1) - conv_timespec_to_nsec(&t0);
+		
+		/* delta-T in microseconds and nanoseconds */
+		int64_t dt_usec = dt / 1000;
+		int64_t dt_nsec = dt % 1000;
+		
+		pr_debug("[PROF:GetAttributeIndexByName('%s')] %lld.%03lld us\n",
+			name, dt_usec, dt_nsec);
+		
+		fprintf(prof_log, "GetAttributeIndexByName,%llu,%lld,,%s\n",
+			callnum, dt, name);
+		fflush(prof_log);
+	} else {
+		pr_warn("[PROF:GetAttributeIndexByName('%s')] FAILED\n",
+			name);
+	}
+	++callnum;
+	
+	
+	return result;
+}
+
+
 DETOUR_SETUP
 {
 	if ((prof_log = fopen("prof.csv", "w")) == NULL) {
@@ -173,9 +310,14 @@ DETOUR_SETUP
 	fflush(prof_log);
 	
 	
-	DETOUR_CREATE(CAttributeManager_AttribHookValue_float);
+	//DETOUR_CREATE(CAttributeManager_AttribHookValue_float);
+	
 	//DETOUR_CREATE(GlobalAttrModifier_MvMAttribHookMunger);
 	//DETOUR_CREATE(GlobalAttrModifier_TFHalloweenAttribHookMunger);
+	
+	DETOUR_CREATE(CEconItemSchema_GetAttributeDefinitionByName);
+	DETOUR_CREATE(CEconItemSchema_GetItemDefinitionByName);
+	DETOUR_CREATE(CMannVsMachineUpgradeManager_GetAttributeIndexByName);
 }
 
 

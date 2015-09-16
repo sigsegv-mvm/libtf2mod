@@ -112,6 +112,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(UTIL_ScreenShake,
 		"_Z16UTIL_ScreenShakeRK6Vectorffff14ShakeCommand_tb");
 	
+	SYMBOL_FUNC(V_stricmp,
+		"_Z9V_stricmpPKcS0_");
+	
 	SYMBOL_FUNC(AllocPooledString,
 		"_Z17AllocPooledStringPKc");
 	SYMBOL_FUNC(AllocPooledString_StaticConstantStringPointer,
@@ -154,6 +157,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot,
 		"_ZN20CTFPlayerSharedUtils28GetEconItemViewByLoadoutSlotEP9CTFPlayeriPP11CEconEntity");
 	
+	SYMBOL_FUNC(CAttributeManager_AttribHookValue_CAttribute_String,
+		"_ZN17CAttributeManager15AttribHookValueI17CAttribute_StringEET_S2_PKcPK11CBaseEntityP10CUtlVectorIPS5_10CUtlMemoryIS9_iEEb");
 	SYMBOL_FUNC(CAttributeManager_AttribHookValue_float,
 		"_ZN17CAttributeManager15AttribHookValueIfEET_S1_PKcPK11CBaseEntityP10CUtlVectorIPS4_10CUtlMemoryIS8_iEEb");
 	SYMBOL_FUNC(CAttributeManager_AttribHookValue_int,
@@ -278,6 +283,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CEconItemSchema_GetAttributeDefinitionByName,
 		"_ZN15CEconItemSchema28GetAttributeDefinitionByNameEPKc");
+	SYMBOL_FUNC(CEconItemSchema_GetItemDefinitionByName,
+		"_ZN15CEconItemSchema23GetItemDefinitionByNameEPKc");
 	
 	SYMBOL_FUNC(CEconItemView_GetItemDefIndex,
 		"_ZNK13CEconItemView15GetItemDefIndexEv");
@@ -499,6 +506,9 @@ void symbols_init(void)
 		"_ZN9CUpgrades33RestorePlayerAttributeToBaseValueEP28CEconItemAttributeDefinitionP9CTFPlayer");
 	SYMBOL_FUNC(CUpgrades_UpgradeTouch,
 		"_ZN9CUpgrades12UpgradeTouchEP11CBaseEntity");
+	
+	SYMBOL_FUNC(CMannVsMachineUpgradeManager_GetAttributeIndexByName,
+		"_ZN28CMannVsMachineUpgradeManager23GetAttributeIndexByNameEPKc");
 	
 	SYMBOL_FUNC(CTFBotLocomotion_Jump,
 		"_ZN16CTFBotLocomotion4JumpEv");
