@@ -2,6 +2,8 @@
 #define _LIBTF2MOD_ENTPROP_H
 
 
+/* known entprops */
+
 float *prop_CBaseAnimating_m_flModelScale(CBaseAnimating* ent);
 int *prop_CBaseAnimating_m_nSkin(CBaseAnimating* ent);
 
@@ -17,6 +19,11 @@ int *prop_CBaseObject_m_iMaxHealth(CBaseObject* ent);
 bool *prop_CTFGameRules_m_bPlayingMedieval(CTFGameRules* ent);
 
 bool *prop_CCurrencyPack_m_bDistributed(CCurrencyPack* ent);
+
+
+/* extracted entprops */
+
+int *prop_CTFBot_m_nMission(CTFBot* ent);
 
 
 void entprop_init(void);
