@@ -18,6 +18,7 @@ int *prop_CBaseObject_m_iMaxHealth(CBaseObject* ent);
 
 bool *prop_CTFGameRules_m_bPlayingMedieval(CTFGameRules* ent);
 float *prop_CTFGameRules_m_flRestartRoundTime(CTFGameRules* ent);
+int *prop_CTFGameRules_m_iRoundState(CTFGameRules* ent);
 
 bool *prop_CCurrencyPack_m_bDistributed(CCurrencyPack* ent);
 

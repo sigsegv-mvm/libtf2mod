@@ -312,6 +312,20 @@ typedef enum {
 	// 6: ???
 } CTFBot_MissionType;
 
+typedef enum {
+	ROUNDSTATE_INIT          = 0,
+	ROUNDSTATE_PREGAME       = 1,
+	ROUNDSTATE_STARTGAME     = 2,
+	ROUNDSTATE_PREROUND      = 3,
+	ROUNDSTATE_ROUNDRUNNING  = 4,
+	ROUNDSTATE_TEAMWIN       = 5,
+	ROUNDSTATE_RESTART       = 6,
+	ROUNDSTATE_STALEMATE     = 7,
+	ROUNDSTATE_GAMEOVER      = 8,
+	ROUNDSTATE_BONUS         = 9,
+	ROUNDSTATE_BETWEENROUNDS = 10,
+} gamerules_roundstate_t;
+
 
 /* opaque types */
 
@@ -397,6 +411,7 @@ typedef void CMannVsMachineUpgradeManager;
 typedef void CTFBotLocomotion;
 typedef void CTFBotMainAction;
 typedef void CTFBotScenarioMonitor;
+typedef void CTFBotTacticalMonitor;
 typedef void CTFBotMedicHeal;
 typedef void CTFBotMvMEngineerIdle;
 typedef void CTFBotMissionSuicideBomber;

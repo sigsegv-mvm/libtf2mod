@@ -532,6 +532,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFBotScenarioMonitor_DesiredScenarioAndClassAction,
 		"_ZN21CTFBotScenarioMonitor29DesiredScenarioAndClassActionEP6CTFBot");
 	
+	SYMBOL_FUNC(CTFBotTacticalMonitor_Update,
+		"_ZN21CTFBotTacticalMonitor6UpdateEP6CTFBotf");
+	
 	SYMBOL_FUNC(CTFBotMedicHeal_IsReadyToDeployUber,
 		"_ZNK15CTFBotMedicHeal19IsReadyToDeployUberEPK14CWeaponMedigun");
 	SYMBOL_FUNC(CTFBotMedicHeal_Update,

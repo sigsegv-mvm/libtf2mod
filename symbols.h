@@ -313,6 +313,8 @@ extern nextbot_event_response_t (*CTFBotMainAction_Update)(CTFBotMainAction* thi
 
 extern unknown_t (*CTFBotScenarioMonitor_DesiredScenarioAndClassAction)(CTFBotScenarioMonitor* this, CTFBot*);
 
+extern nextbot_event_response_t (*CTFBotTacticalMonitor_Update)(CTFBotTacticalMonitor* this, CTFBot*, float);
+
 extern bool (*CTFBotMedicHeal_IsReadyToDeployUber)(CTFBotMedicHeal* this, CWeaponMedigun const*);
 extern nextbot_event_response_t (*CTFBotMedicHeal_Update)(CTFBotMedicHeal* this, CTFBot*, float);
 
