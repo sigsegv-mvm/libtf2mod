@@ -414,6 +414,8 @@ void symbols_init(void)
 		"_ZN12CTFGameRules24DistributeCurrencyAmountEiP9CTFPlayerbbb");
 	SYMBOL_FUNC(CTFGameRules_GameModeUsesUpgrades,
 		"_ZN12CTFGameRules20GameModeUsesUpgradesEv");
+	SYMBOL_FUNC(CTFGameRules_GetBonusRoundTime,
+		"_ZN12CTFGameRules17GetBonusRoundTimeEb");
 	SYMBOL_FUNC(CTFGameRules_GetCostForUpgrade,
 		"_ZN12CTFGameRules17GetCostForUpgradeEP22CMannVsMachineUpgradesiiP9CTFPlayer");
 	SYMBOL_FUNC(CTFGameRules_GetUpgradeTier,

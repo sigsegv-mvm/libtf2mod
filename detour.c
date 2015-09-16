@@ -23,7 +23,10 @@ detour_info_t *detours[] = {
 	&detour_bot_multiclass_item_fix,
 	&detour_mvm_chat_unrestrict,
 	&detour_tank_destroy_blu_buildings,
+	&detour_wave_reset_countdown_fix,
+	&detour_sentrybuster_roundwin_behavior_fix,
 	//&detour_upgrade_reapply_buff_duration,
+	&detour_sentrybuster_glow,
 	
 	//&detour_mini_dispenser,
 	
@@ -32,6 +35,8 @@ detour_info_t *detours[] = {
 	&detour_disposable_dispenser_part3,
 	&detour_disposable_dispenser_part4,
 	&detour_disposable_dispenser_part5,*/
+	
+	//&detour_mvm_extended_waveloss_time,
 	
 	&detour_medicbot_ai_xbow_heal,
 	&detour_medicbot_ai_shield,

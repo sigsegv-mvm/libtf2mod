@@ -247,6 +247,7 @@ extern void (*CTFGameRules_BetweenRounds_Think)(CTFGameRules* this);
 extern bool (*CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*);
 extern unknown_t (*CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, int, CTFPlayer*, bool, bool, bool);
 extern bool (*CTFGameRules_GameModeUsesUpgrades)(CTFGameRules* this);
+extern int (*CTFGameRules_GetBonusRoundTime)(CTFGameRules* this, bool);
 extern int (*CTFGameRules_GetCostForUpgrade)(CTFGameRules* this, CMannVsMachineUpgrades*, int, int, CTFPlayer*);
 extern int (*CTFGameRules_GetUpgradeTier)(CTFGameRules* this, int);
 extern bool (*CTFGameRules_IsInTraining)(CTFGameRules* this);
