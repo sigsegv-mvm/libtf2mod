@@ -434,6 +434,13 @@ typedef struct {
 } string_t;
 
 typedef struct {
+	int         status;
+	void       *p_newbehavior;
+	const char *p_comment;
+	int         unknown1;
+} nextbot_event_response_t;
+
+typedef struct {
 	float realtime;          // absolute time
 	int framecount;          // absolute frame counter
 	float absoluteframetime; // non-paused frametime

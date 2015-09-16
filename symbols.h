@@ -301,15 +301,16 @@ extern unknown_t (*CMannVsMachineUpgradeManager_GetAttributeIndexByName)(CMannVs
 
 extern unknown_t (*CTFBotLocomotion_Jump)(CTFBotLocomotion* this);
 
-extern unknown_struct_t (*CTFBotMainAction_OnContact)(CTFBotMainAction* this, CTFBot*, CBaseEntity*, CGameTrace*);
-extern unknown_struct_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, float);
+extern nextbot_event_response_t (*CTFBotMainAction_OnContact)(CTFBotMainAction* this, CTFBot*, CBaseEntity*, CGameTrace*);
+extern nextbot_event_response_t (*CTFBotMainAction_Update)(CTFBotMainAction* this, CTFBot*, float);
 
 extern unknown_t (*CTFBotScenarioMonitor_DesiredScenarioAndClassAction)(CTFBotScenarioMonitor* this, CTFBot*);
 
 extern bool (*CTFBotMedicHeal_IsReadyToDeployUber)(CTFBotMedicHeal* this, CWeaponMedigun const*);
-extern unknown_struct_t (*CTFBotMedicHeal_Update)(CTFBotMedicHeal* this, CTFBot*, float);
+extern nextbot_event_response_t (*CTFBotMedicHeal_Update)(CTFBotMedicHeal* this, CTFBot*, float);
 
-extern unknown_struct_t (*CTFBotMvMEngineerIdle_Update)(CTFBotMvMEngineerIdle* this, CTFBot*, float);
+extern nextbot_event_response_t (*CTFBotMvMEngineerIdle_Update)(CTFBotMvMEngineerIdle* this, CTFBot*, float);
+
 
 extern unknown_t (*CTFReviveMarker_AddMarkerHealth)(CTFReviveMarker* this, float);
 

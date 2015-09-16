@@ -5,10 +5,10 @@ DETOUR(medicbot_ai_shield);
 /* make the medicbot AI manually attempt to enable their medigun shield */
 
 
-static unknown_struct_t (*trampoline_CTFBotMedicHeal_Update)(CTFBotMedicHeal* this, CTFBot*, float);
+static nextbot_event_response_t (*trampoline_CTFBotMedicHeal_Update)(CTFBotMedicHeal* this, CTFBot*, float);
 
 
-static unknown_struct_t detour_CTFBotMedicHeal_Update(CTFBotMedicHeal* this, CTFBot* bot, float f1)
+static nextbot_event_response_t detour_CTFBotMedicHeal_Update(CTFBotMedicHeal* this, CTFBot* bot, float f1)
 {
 	//pr_info("CTFBotMedicHeal::Update\n");
 	
