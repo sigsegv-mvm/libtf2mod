@@ -12,15 +12,15 @@ static nextbot_event_response_t (*trampoline_CTFBotTacticalMonitor_Update)(CTFBo
 
 static nextbot_event_response_t detour_CTFBotTacticalMonitor_Update(CTFBotTacticalMonitor* this, CTFBot* bot, float f1)
 {
-	pr_info("CTFBotTacticalMonitor::Update");
-	pr_debug("(bot #%d)\n"
-		"  g_pGameRules->m_bPlayingMannVsMachine = %s\n"
-		"  g_pGameRules->m_iRoundState = %d\n"
-		"  bot->m_nMission = %d\n",
-		ENTINDEX(bot),
-		CTFGameRules_IsPVEModeActive(*g_pGameRules) ? "TRUE" : "FALSE",
-		*prop_CTFGameRules_m_iRoundState(*g_pGameRules),
-		*prop_CTFBot_m_nMission(bot));
+	//pr_info("CTFBotTacticalMonitor::Update");
+	//pr_debug("(bot #%d)\n"
+	//	"  g_pGameRules->m_bPlayingMannVsMachine = %s\n"
+	//	"  g_pGameRules->m_iRoundState = %d\n"
+	//	"  bot->m_nMission = %d\n",
+	//	ENTINDEX(bot),
+	//	CTFGameRules_IsPVEModeActive(*g_pGameRules) ? "TRUE" : "FALSE",
+	//	*prop_CTFGameRules_m_iRoundState(*g_pGameRules),
+	//	*prop_CTFBot_m_nMission(bot));
 	
 	
 	if (CTFGameRules_IsPVEModeActive(*g_pGameRules) &&
