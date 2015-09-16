@@ -151,6 +151,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CObjectSentrygun_GetDataDescMap,
 		"_ZN16CObjectSentrygun14GetDataDescMapEv");
 	
+	SYMBOL_FUNC(CGameRulesProxy_NotifyNetworkStateChanged,
+		"_ZN15CGameRulesProxy25NotifyNetworkStateChangedEv");
+	
 	SYMBOL_FUNC(CTFMedigunShield_Create,
 		"_ZN16CTFMedigunShield6CreateEP9CTFPlayer");
 	
@@ -473,10 +476,16 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFObjectiveResource_SetMannVsMachineWaveClassName,
 		"_ZN20CTFObjectiveResource29SetMannVsMachineWaveClassNameEi8string_t");
 	
+	SYMBOL_FUNC(CPopulationManager_JumpToWave,
+		"_ZN18CPopulationManager10JumpToWaveEjf");
+	
 	SYMBOL_FUNC(CMissionPopulator_UpdateMission,
 		"_ZN17CMissionPopulator13UpdateMissionEN6CTFBot11MissionTypeE");
 	SYMBOL_FUNC(CMissionPopulator_UpdateMissionDestroySentries,
 		"_ZN17CMissionPopulator28UpdateMissionDestroySentriesEv");
+	
+	SYMBOL_FUNC(CWave_ForceFinish,
+		"_ZN5CWave11ForceFinishEv");
 	
 	SYMBOL_FUNC(CUpgrades_ApplyUpgradeAttributeBlock,
 		"_ZN9CUpgrades26ApplyUpgradeAttributeBlockEP20UpgradeAttribBlock_tiP9CTFPlayerb");

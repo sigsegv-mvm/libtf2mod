@@ -64,6 +64,7 @@ extern detour_info_t detour_eh_medieval_disable;
 extern detour_info_t detour_bot_multiclass_item_fix;
 extern detour_info_t detour_mvm_chat_unrestrict;
 extern detour_info_t detour_tank_destroy_blu_buildings;
+extern detour_info_t detour_wave_reset_countdown_fix;
 
 extern detour_info_t detour_mini_dispenser;
 

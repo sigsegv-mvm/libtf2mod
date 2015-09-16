@@ -383,7 +383,11 @@ typedef void CMannVsMachineStats;
 
 typedef void CTFObjectiveResource;
 
+typedef void CPopulationManager;
+
 typedef void CMissionPopulator;
+
+typedef void CWave;
 
 typedef void CUpgrades;
 typedef void CMannVsMachineUpgrades;

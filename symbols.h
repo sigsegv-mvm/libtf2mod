@@ -97,6 +97,8 @@ extern datamap_t* (*CBaseObject_GetDataDescMap)(void);
 
 extern datamap_t* (*CObjectSentrygun_GetDataDescMap)(void);
 
+extern void (*CGameRulesProxy_NotifyNetworkStateChanged)(void);
+
 extern CTFMedigunShield* (*CTFMedigunShield_Create)(CTFPlayer*);
 
 extern CEconItemView* (*CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot)(CTFPlayer*, int, CEconEntity**);
@@ -279,8 +281,12 @@ extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassActive)(CTFObje
 extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassCount)(CTFObjectiveResource* this, int, int);
 extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassName)(CTFObjectiveResource* this, int, string_t);
 
+extern void (*CPopulationManager_JumpToWave)(CPopulationManager* this, unsigned int, float);
+
 extern unknown_t (*CMissionPopulator_UpdateMission)(CMissionPopulator* this, CTFBot_MissionType);
 extern unknown_t (*CMissionPopulator_UpdateMissionDestroySentries)(CMissionPopulator* this);
+
+extern void (*CWave_ForceFinish)(CWave* this);
 
 extern unknown_t (*CUpgrades_ApplyUpgradeAttributeBlock)(CUpgrades* this, UpgradeAttribBlock_t, int, CTFPlayer*, bool);
 extern unsigned short (*CUpgrades_ApplyUpgradeToItem)(CUpgrades* this, CTFPlayer*, CEconItemView*, int, int, bool, bool);

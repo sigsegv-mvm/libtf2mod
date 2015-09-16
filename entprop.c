@@ -50,6 +50,7 @@ DEFINE_ENTPROP(bool, CBaseObject, m_bMiniBuilding);
 DEFINE_ENTPROP(int, CBaseObject, m_iMaxHealth);
 
 DEFINE_ENTPROP(bool, CTFGameRules, m_bPlayingMedieval);
+DEFINE_ENTPROP(float, CTFGameRules, m_flRestartRoundTime);
 
 DEFINE_ENTPROP(bool, CCurrencyPack, m_bDistributed);
 
@@ -83,6 +84,8 @@ void entprop_init(void)
 	
 	INIT_SENDPROP(CTFGameRules_m_bPlayingMedieval,
 		CTFGameRulesProxy, m_bPlayingMedieval);
+	INIT_SENDPROP(CTFGameRules_m_flRestartRoundTime,
+		CTFGameRulesProxy, m_flRestartRoundTime);
 	
 	INIT_SENDPROP(CCurrencyPack_m_bDistributed,
 		CCurrencyPack, m_bDistributed);
