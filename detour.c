@@ -25,8 +25,6 @@ detour_info_t *detours[] = {
 	&detour_tank_destroy_blu_buildings,
 	&detour_wave_reset_countdown_fix,
 	&detour_sentrybuster_roundwin_behavior_fix,
-	//&detour_upgrade_reapply_buff_duration,
-	&detour_sentrybuster_glow,
 	
 	//&detour_mini_dispenser,
 	
