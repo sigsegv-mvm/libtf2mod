@@ -86,7 +86,7 @@ PATCH_APPLY
 	// L_medi:
 		0x89, 0xc3,                                     // +0028  mov ebx,eax
 		0x8b, 0x03,                                     // +002A  mov eax,DWORD PTR [ebx]
-		0x89, 0x04, 0x24,                               // +002C  mov DWORD PTR [esp],eax
+		0x89, 0x1c, 0x24,                               // +002C  mov DWORD PTR [esp],ebx
 		0xff, 0x90, CONV_LE(off6)                       // +002F  call DWORD PTR [eax+GetTargetRange] CWeaponMedigun::GetTargetRange()
 		0x8b, 0x55, 0x10,                               // +0035  mov edx,DWORD PTR [ebp+0x10]
 		0x89, 0xf9,                                     // +0038  mov ecx,edi
