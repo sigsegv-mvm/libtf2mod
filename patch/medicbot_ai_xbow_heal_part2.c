@@ -58,15 +58,15 @@ PATCH_APPLY
 	uintptr_t off4 = CALC_RELJMP(new_func, 0x0020,
 		__dynamic_cast_NULL_safe);
 	
-	uintptr_t off5 = 0x0043 - 0x0028;
+	uintptr_t off5 = 0x0046 - 0x0028;
 	
 	uintptr_t off6 = vtable_find_offset("_ZTV14CWeaponMedigun",
 		CWeaponMedigun_GetTargetRange);
 	
-	uintptr_t off7 = CALC_RELJMP(new_func, 0x0043,
+	uintptr_t off7 = CALC_RELJMP(new_func, 0x0046,
 		(void *)((uintptr_t)CTFBotMedicHeal_Update + 0x1a6b));
 	
-	uintptr_t off8 = CALC_RELJMP(new_func, 0x004d,
+	uintptr_t off8 = CALC_RELJMP(new_func, 0x0050,
 		(void *)((uintptr_t)CTFBotMedicHeal_Update + 0x1a6b));
 	
 	
@@ -77,25 +77,26 @@ PATCH_APPLY
 		0xc7, 0x44, 0x24, 0x0c, 0x00, 0x00, 0x00, 0x00, // +0000  mov DWORD PTR [esp+0xc],0x0
 		0xc7, 0x44, 0x24, 0x08, CONV_LE(off2)           // +0008  mov DWORD PTR [esp+0x8],ds:typeinfo_for_CWeaponMedigun
 		0xc7, 0x44, 0x24, 0x04, CONV_LE(off3)           // +0010  mov DWORD PTR [esp+0x4],ds:typeinfo_for_CTFWeaponBase
-		0x89, 0x04, 0x24,                               // +0018  mov DWORD PTR [esp],eax
+		0x89, 0x1c, 0x24,                               // +0018  mov DWORD PTR [esp],ebx
 		0xe8, CONV_LE(off4)                             // +001B  call __dynamic_cast_NULL_safe
 		
 		0x85, 0xc0,                                     // +0020  test eax,eax
 		0x0f, 0x84, CONV_LE(off5)                       // +0022  je L_xbow
 		
 	// L_medi:
-		0x8b, 0x03,                                     // +0028  mov eax,DWORD PTR [ebx]
-		0x89, 0x1c, 0x24,                               // +002A  mov DWORD PTR [esp],ebx
-		0xff, 0x90, CONV_LE(off6)                       // +002D  call DWORD PTR [eax+GetTargetRange] CWeaponMedigun::GetTargetRange()
-		0x8b, 0x55, 0x10,                               // +0033  mov edx,DWORD PTR [ebp+0x10]
-		0x89, 0xf9,                                     // +0036  mov ecx,edi
-		0xd9, 0x9d, 0x34, 0xff, 0xff, 0xff,             // +0038  fstp DWORD PTR [ebp-0xcc]
-		0xe9, CONV_LE(off7)                             // +003E  jmp L_resume
+		0x89, 0xc3,                                     // +0028  mov ebx,eax
+		0x8b, 0x03,                                     // +002A  mov eax,DWORD PTR [ebx]
+		0x89, 0x04, 0x24,                               // +002C  mov DWORD PTR [esp],eax
+		0xff, 0x90, CONV_LE(off6)                       // +002F  call DWORD PTR [eax+GetTargetRange] CWeaponMedigun::GetTargetRange()
+		0x8b, 0x55, 0x10,                               // +0035  mov edx,DWORD PTR [ebp+0x10]
+		0x89, 0xf9,                                     // +0038  mov ecx,edi
+		0xd9, 0x9d, 0x34, 0xff, 0xff, 0xff,             // +003A  fstp DWORD PTR [ebp-0xcc]
+		0xe9, CONV_LE(off7)                             // +0040  jmp L_resume
 		
 	// L_xbow:
-		0x8b, 0x55, 0x10,                               // +0043  mov edx,DWORD PTR [ebp+0x10]
-		0x89, 0xf9,                                     // +0046  mov ecx,edi
-		0xe9, CONV_LE(off8)                             // +0048  jmp L_resume
+		0x8b, 0x55, 0x10,                               // +0046  mov edx,DWORD PTR [ebp+0x10]
+		0x89, 0xf9,                                     // +0049  mov ecx,edi
+		0xe9, CONV_LE(off8)                             // +004B  jmp L_resume
 	};
 	
 	
