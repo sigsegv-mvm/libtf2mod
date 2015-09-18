@@ -99,14 +99,14 @@ PATCH_APPLY
 	uintptr_t off3 = (uintptr_t)typeinfo_for_CTFWeaponBase;
 	
 	uintptr_t off4 = CALC_RELJMP(new_func, 0x0030,
-		__dynamic_cast);
+		__dynamic_cast_NULL_safe);
 	
 	uintptr_t off5 = dest_medi - ((uintptr_t)new_func + 0x003b);
 	
 	uintptr_t off6 = (uintptr_t)typeinfo_for_CTFCrossbow;
 	
 	uintptr_t off7 = CALC_RELJMP(new_func, 0x005d,
-		__dynamic_cast);
+		__dynamic_cast_NULL_safe);
 	
 	uintptr_t off8 = dest_xbow - ((uintptr_t)new_func + 0x0067);
 	
@@ -125,7 +125,7 @@ PATCH_APPLY
 		0xc7, 0x44, 0x24, 0x08, CONV_LE(off2)           // +0018  mov DWORD PTR [esp+0x8],ds:typeinfo_for_CWeaponMedigun
 		0xc7, 0x44, 0x24, 0x04, CONV_LE(off3)           // +0020  mov DWORD PTR [esp+0x4],ds:typeinfo_for_CTFWeaponBase
 		0x89, 0x04, 0x24,                               // +0028  mov DWORD PTR [esp],eax
-		0xe8, CONV_LE(off4)                             // +002B  call __dynamic_cast
+		0xe8, CONV_LE(off4)                             // +002B  call __dynamic_cast_NULL_safe
 		
 		0x85, 0xc0,                                     // +0030  test eax,eax
 		0x0f, 0x45, 0xd8,                               // +0032  cmovne ebx,eax
@@ -136,7 +136,7 @@ PATCH_APPLY
 		0xc7, 0x44, 0x24, 0x08, CONV_LE(off6)           // +0045  mov DWORD PTR [esp+0x8],ds:typeinfo_for_CTFCrossbow
 		0xc7, 0x44, 0x24, 0x04, CONV_LE(off3)           // +004D  mov DWORD PTR [esp+0x4],ds:typeinfo_for_CTFWeaponBase
 		0x89, 0x04, 0x24,                               // +0055  mov DWORD PTR [esp],eax
-		0xe8, CONV_LE(off7)                             // +0058  call __dynamic_cast
+		0xe8, CONV_LE(off7)                             // +0058  call __dynamic_cast_NULL_safe
 		
 		0x85, 0xc0,                                     // +005D  test eax,eax
 		0x89, 0xc3,                                     // +005F  mov ebx,eax
