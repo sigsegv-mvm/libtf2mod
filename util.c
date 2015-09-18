@@ -407,3 +407,14 @@ const char *get_string_for_weaponid(int id)
 		return lut[id];
 	}
 }
+
+
+void *__dynamic_cast_NULL_safe(const void *__src_ptr,
+	const void *__src_type, const void *__dst_type, ptrdiff_t __src2dst)
+{
+	if (__src_ptr == NULL) {
+		return NULL;
+	}
+	
+	return __dynamic_cast(__src_ptr, __src_type, __dst_type, __src2dst);
+}
