@@ -63,6 +63,7 @@ extern patch_info_t patch_medicbot_ai_xbow_heal_part1;
 extern patch_info_t patch_medicbot_ai_xbow_heal_part2;
 extern patch_info_t patch_perf_attr_premunge_mvm;
 extern patch_info_t patch_perf_attr_premunge_halloween;
+extern patch_info_t patch_eyelander_overheal_decay_fix;
 
 
 #endif

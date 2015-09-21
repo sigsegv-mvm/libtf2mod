@@ -374,6 +374,7 @@ typedef void CTFSniperRifleClassic;
 typedef void CTFKnife;
 typedef void CTFWearableDemoShield;
 typedef void CTFStickBomb;
+typedef void CTFSword;
 
 typedef void CTFBaseRocket;
 typedef void CTFWeaponBaseGrenadeProj;

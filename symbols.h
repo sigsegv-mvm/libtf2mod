@@ -215,6 +215,8 @@ extern unknown_t (*CTFWearableDemoShield_EndSpecialAction)(CTFWearableDemoShield
 
 extern unknown_t (*CTFStickBomb_Smack)(CTFStickBomb* this);
 
+extern unknown_t (*CTFSword_OnDecapitation)(CTFSword* this, CTFPlayer*);
+
 extern unknown_t (*CTFBaseRocket_Explode)(CTFBaseRocket* this, CGameTrace*, CBaseEntity*);
 
 extern unknown_t (*CTFWeaponBaseGrenadeProj_Explode)(CTFWeaponBaseGrenadeProj* this, CGameTrace*, int);

@@ -43,6 +43,7 @@ DEFINE_ENTPROP(int, CBaseAnimating, m_nSkin);
 DEFINE_ENTPROP(unsigned int, CBasePlayer, m_nButtons);
 
 DEFINE_ENTPROP(int, CTFPlayer, m_iClass);
+DEFINE_ENTPROP(CTFPlayerShared, CTFPlayer, m_Shared);
 
 DEFINE_ENTPROP(bool, CBaseObject, m_bBuilding);
 DEFINE_ENTPROP(bool, CBaseObject, m_bDisposableBuilding);
@@ -73,6 +74,8 @@ void entprop_init(void)
 	
 	INIT_SENDPROP2(CTFPlayer_m_iClass,
 		CTFPlayer, m_PlayerClass, m_iClass);
+	INIT_SENDPROP(CTFPlayer_m_Shared,
+		CTFPlayer, m_Shared);
 	
 	INIT_SENDPROP(CBaseObject_m_bBuilding,
 		CBaseObject, m_bBuilding);

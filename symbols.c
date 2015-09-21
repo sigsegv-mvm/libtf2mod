@@ -356,6 +356,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFStickBomb_Smack,
 		"_ZN12CTFStickBomb5SmackEv");
 	
+	SYMBOL_FUNC(CTFSword_OnDecapitation,
+		"_ZN8CTFSword14OnDecapitationEP9CTFPlayer");
+	
 	SYMBOL_FUNC(CTFBaseRocket_Explode,
 		"_ZN13CTFBaseRocket7ExplodeEP10CGameTraceP11CBaseEntity");
 	
