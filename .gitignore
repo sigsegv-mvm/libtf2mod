@@ -1,4 +1,5 @@
 *.o
 *.so
+*.lst
 *.sublime-workspace
 sizeof/sizeof
