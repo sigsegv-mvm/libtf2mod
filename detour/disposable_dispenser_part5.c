@@ -23,4 +23,6 @@ static unknown_t detour_CBaseObject_MakeDisposableBuilding(CBaseObject* this, CT
 DETOUR_SETUP
 {
 	//DETOUR_CREATE(CBaseObject_MakeDisposableBuilding);
+	
+	return true;
 }

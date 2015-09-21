@@ -50,6 +50,7 @@ DETOUR_SETUP
 	func_CCurrencyPack_ComeToRest =
 		func_register(CCurrencyPack_ComeToRest);
 	
-	
 	DETOUR_CREATE(CTFGameRules_DistributeCurrencyAmount);
+	
+	return true;
 }

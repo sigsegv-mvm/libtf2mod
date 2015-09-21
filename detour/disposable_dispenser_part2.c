@@ -20,4 +20,6 @@ static unknown_t detour_CObjectDispenser_StartPlacement(CObjectDispenser* this, 
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CObjectDispenser_StartPlacement);
+	
+	return true;
 }

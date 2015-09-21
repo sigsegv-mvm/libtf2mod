@@ -170,4 +170,6 @@ DETOUR_SETUP
 	DETOUR_CREATE(MessageWriteVec3Coord);
 	DETOUR_CREATE(MessageWriteVec3Normal);
 	DETOUR_CREATE(MessageWriteWord);
+	
+	return true;
 }

@@ -61,4 +61,6 @@ static int detour_CTFPlayer_CanBuild(CTFPlayer* this, int type, int subtype)
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFPlayer_CanBuild);
+	
+	return true;
 }

@@ -38,4 +38,6 @@ static void detour_CObjectSentrygun_MakeDisposableBuilding(CBaseObject* this, CT
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CObjectSentrygun_MakeDisposableBuilding);
+	
+	return true;
 }

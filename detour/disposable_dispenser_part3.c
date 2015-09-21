@@ -8,4 +8,6 @@ DETOUR(disposable_dispenser_part3);
 DETOUR_SETUP
 {
 	// TODO
+	
+	return true;
 }

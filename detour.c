@@ -68,7 +68,10 @@ void detour_all(void)
 		detour_info_t *detour = detours[i];
 		
 		pr_special("SETUP: %s\n", detour->name);
-		detour->setup();
+		
+		if (detour->setup()) {
+			detour->ok = true;
+		}
 	}
 }
 

@@ -35,6 +35,7 @@ DETOUR_SETUP
 	func_CTFBotMainAction_Update =
 		func_register(CTFBotMainAction_Update);
 	
-	
 	DETOUR_CREATE(CTFPlayerShared_AddCond);
+	
+	return true;
 }

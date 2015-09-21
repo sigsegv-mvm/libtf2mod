@@ -39,4 +39,6 @@ DETOUR_SETUP
 	DETOUR_CREATE(CBaseObject_ShouldBeMiniBuilding);
 	DETOUR_CREATE(CObjectDispenser_ShouldBeMiniBuilding);
 	DETOUR_CREATE(CObjectDispenser_MakeMiniBuilding);
+	
+	return true;
 }

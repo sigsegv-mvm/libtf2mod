@@ -87,4 +87,6 @@ DETOUR_SETUP
 	DETOUR_CREATE(CObjectTeleporter_FinishedBuilding);
 	DETOUR_CREATE(CTFObjectiveResource_IncrementTeleporterCount);
 	DETOUR_CREATE(CTFObjectiveResource_DecrementTeleporterCount);
+	
+	return true;
 }

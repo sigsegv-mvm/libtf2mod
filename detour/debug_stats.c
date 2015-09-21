@@ -116,4 +116,6 @@ DETOUR_SETUP
 	
 	//DETOUR_CREATE(CTFGameStats_IncrementStat);
 	DETOUR_CREATE(CTFGameStats_ResetPlayerStats);
+	
+	return true;
 }

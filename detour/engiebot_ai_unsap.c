@@ -56,6 +56,7 @@ DETOUR_SETUP
 	func_CTFBotMvMEngineerIdle_Update =
 		func_register(CTFBotMvMEngineerIdle_Update);
 	
-	
 	DETOUR_CREATE(CBaseEntity_GetMaxHealth);
+	
+	return true;
 }

@@ -51,4 +51,6 @@ static void detour_CTFPlayer_CreateRagdollEntity(CTFPlayer* this,
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFPlayer_CreateRagdollEntity);
+	
+	return true;
 }

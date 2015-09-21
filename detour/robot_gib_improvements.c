@@ -63,4 +63,6 @@ static bool detour_CTFBot_ShouldGib(CTFBot* this, CTakeDamageInfo const* info)
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFBot_ShouldGib);
+	
+	return true;
 }

@@ -48,4 +48,6 @@ DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFPlayer_GiveNamedItem);
 	DETOUR_CREATE(CBasePlayer_GiveNamedItem);
+	
+	return true;
 }

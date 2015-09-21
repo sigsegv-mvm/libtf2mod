@@ -46,4 +46,6 @@ static CTFMedigunShield* detour_CTFMedigunShield_Create(CTFPlayer* player)
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFMedigunShield_Create);
+	
+	return true;
 }

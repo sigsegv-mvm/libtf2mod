@@ -30,4 +30,6 @@ static void detour_CBaseObject_DoQuickBuild(CBaseObject* this)
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CBaseObject_DoQuickBuild);
+	
+	return true;
 }

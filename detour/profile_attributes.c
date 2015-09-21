@@ -304,7 +304,7 @@ DETOUR_SETUP
 {
 	if ((prof_log = fopen("prof.csv", "w")) == NULL) {
 		warn("fopen('prof.csv') failed");
-		return;
+		return false;
 	}
 	fprintf(prof_log, "FUNC,CALLNUM,DT_NS,T_SUM_NS,ARG\n");
 	fflush(prof_log);
@@ -318,6 +318,8 @@ DETOUR_SETUP
 	DETOUR_CREATE(CEconItemSchema_GetAttributeDefinitionByName);
 	DETOUR_CREATE(CEconItemSchema_GetItemDefinitionByName);
 	DETOUR_CREATE(CMannVsMachineUpgradeManager_GetAttributeIndexByName);
+	
+	return true;
 }
 
 

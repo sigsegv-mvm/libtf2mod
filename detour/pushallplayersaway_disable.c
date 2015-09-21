@@ -18,4 +18,6 @@ static void detour_CTFGameRules_PushAllPlayersAway(CTFGameRules* this, Vector co
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFGameRules_PushAllPlayersAway);
+	
+	return true;
 }

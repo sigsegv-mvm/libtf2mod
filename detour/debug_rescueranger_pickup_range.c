@@ -20,4 +20,6 @@ static bool detour_CTFPlayer_CanPickupBuilding(CTFPlayer* this, CBaseObject* bld
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFPlayer_CanPickupBuilding);
+	
+	return true;
 }

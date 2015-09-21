@@ -48,4 +48,6 @@ DETOUR_SETUP
 {
 	DETOUR_CREATE(CWeaponMedigun_IsAttachedToBuilding);
 	DETOUR_CREATE(CTFBotMedicHeal_IsReadyToDeployUber);
+	
+	return true;
 }

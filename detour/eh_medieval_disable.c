@@ -21,4 +21,6 @@ static void detour_CTFSniperRifle_ExplosiveHeadShot(CTFSniperRifle* this, CTFPla
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFSniperRifle_ExplosiveHeadShot);
+	
+	return true;
 }

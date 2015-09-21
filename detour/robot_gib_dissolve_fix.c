@@ -154,4 +154,6 @@ DETOUR_SETUP
 	DETOUR_CREATE(CTFPlayer_CreateRagdollEntity);
 	
 	//DETOUR_CREATE(CTFPlayer_Event_Killed);
+	
+	return true;
 }

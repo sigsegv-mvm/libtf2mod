@@ -8,4 +8,6 @@ DETOUR(diagnostics);
 DETOUR_SETUP
 {
 	
+	
+	return true;
 }

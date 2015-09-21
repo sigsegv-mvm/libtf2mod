@@ -19,4 +19,6 @@ static bool detour_CObjectDispenser_ShouldBeMiniBuilding(CObjectDispenser* this,
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CObjectDispenser_ShouldBeMiniBuilding);
+	
+	return true;
 }

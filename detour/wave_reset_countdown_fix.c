@@ -39,6 +39,7 @@ DETOUR_SETUP
 	func_CPopulationManager_JumpToWave =
 		func_register(CPopulationManager_JumpToWave);
 	
-	
 	DETOUR_CREATE(CWave_ForceFinish);
+	
+	return true;
 }

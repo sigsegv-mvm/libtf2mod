@@ -73,4 +73,6 @@ static unknown_t detour_CTFPlayer_OnTakeDamage(CTFPlayer* this, CTakeDamageInfo 
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFPlayer_OnTakeDamage);
+	
+	return true;
 }

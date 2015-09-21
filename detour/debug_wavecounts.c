@@ -109,4 +109,6 @@ DETOUR_SETUP
 	DETOUR_CREATE(CTFObjectiveResource_SetMannVsMachineWaveClassActive);
 	DETOUR_CREATE(CTFObjectiveResource_SetMannVsMachineWaveClassCount);
 	DETOUR_CREATE(CTFObjectiveResource_SetMannVsMachineWaveClassName);
+	
+	return true;
 }

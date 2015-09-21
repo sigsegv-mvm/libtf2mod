@@ -177,7 +177,6 @@ DETOUR_SETUP
 	func_CTFGameRules_BetweenRounds_Think =
 		func_register(CTFGameRules_BetweenRounds_Think);
 	
-	
 	DETOUR_CREATE(ConVar_SetValue_int);
 	DETOUR_CREATE(CGameEventManager_CreateEvent);
 	DETOUR_CREATE(CGameEventManager_FireEvent);
@@ -187,4 +186,6 @@ DETOUR_SETUP
 	DETOUR_CREATE(CTFGameRules_UsePlayerReadyStatusMode);
 	DETOUR_CREATE(CTeamplayRoundBasedRules_AreLobbyPlayersOnTeamReady);
 	DETOUR_CREATE(CTeamplayRoundBasedRules_CheckReadyRestart);
+	
+	return true;
 }

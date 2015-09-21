@@ -91,6 +91,7 @@ DETOUR_SETUP
 	func_CTFBot_AddItem =
 		func_register(CTFBot_AddItem);
 	
-	
 	DETOUR_CREATE(CreateEntityByName);
+	
+	return true;
 }

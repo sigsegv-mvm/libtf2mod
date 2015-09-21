@@ -43,4 +43,6 @@ static nextbot_event_response_t detour_CTFBotTacticalMonitor_Update(CTFBotTactic
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFBotTacticalMonitor_Update);
+	
+	return true;
 }

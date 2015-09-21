@@ -29,4 +29,6 @@ static bool detour_CTFPlayer_CanHearAndReadChatFrom(CTFPlayer* this, CBasePlayer
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFPlayer_CanHearAndReadChatFrom);
+	
+	return true;
 }

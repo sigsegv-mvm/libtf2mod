@@ -33,6 +33,7 @@ DETOUR_SETUP
 	func_CBaseObject_OnTakeDamage =
 		func_register(CBaseObject_OnTakeDamage);
 	
-	
 	DETOUR_CREATE(CBaseEntity_InSameTeam);
+	
+	return true;
 }

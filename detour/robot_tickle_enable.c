@@ -20,4 +20,6 @@ static bool detour_CTFPlayer_CanBeForcedToLaugh(CTFPlayer* this)
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFPlayer_CanBeForcedToLaugh);
+	
+	return true;
 }

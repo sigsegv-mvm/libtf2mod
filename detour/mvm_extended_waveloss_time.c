@@ -24,4 +24,6 @@ static int detour_CTFGameRules_GetBonusRoundTime(CTFGameRules* this, bool b1)
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFGameRules_GetBonusRoundTime);
+	
+	return true;
 }

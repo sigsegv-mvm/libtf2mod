@@ -415,6 +415,8 @@ DETOUR_SETUP
 	DETOUR_CREATE(CTFPlayer_FireBullet);
 	DETOUR_CREATE(CTFPlayer_TraceAttack);
 	DETOUR_CREATE(FX_FireBullets);
+	
+	return true;
 }
 
 

@@ -36,6 +36,7 @@ DETOUR_SETUP
 	func_CTFProjectile_Arrow_StrikeTarget =
 		func_register(CTFProjectile_Arrow_StrikeTarget);
 	
-	
 	DETOUR_CREATE(CTFPlayerShared_IsInvulnerable);
+	
+	return true;
 }

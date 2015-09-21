@@ -66,9 +66,11 @@ DETOUR_SETUP
 	}
 	
 	if (!block_mvm && !block_halloween) {
-		return;
+		return false;
 	}
 	
 	
 	DETOUR_CREATE(CAttributeManager_RegisterGlobalAttributeModifier);
+	
+	return true;
 }

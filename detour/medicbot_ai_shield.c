@@ -45,4 +45,6 @@ skip_shield:
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFBotMedicHeal_Update);
+	
+	return true;
 }

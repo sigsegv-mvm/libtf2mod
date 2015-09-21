@@ -222,4 +222,6 @@ DETOUR_SETUP
 	DETOUR_CREATE(CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot);
 	DETOUR_CREATE(CEconItemSchema_GetAttributeDefinitionByName);
 	DETOUR_CREATE(CEconItemView_GetItemDefIndex);
+	
+	return true;
 }

@@ -21,4 +21,6 @@ static unknown_t detour_CServerGameDLL_DLLInit(CServerGameDLL* this, void* (*f1)
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CServerGameDLL_DLLInit);
+	
+	return true;
 }

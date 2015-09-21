@@ -18,4 +18,6 @@ static unknown_t detour_CTFReviveMarker_AddMarkerHealth(CTFReviveMarker* this, f
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFReviveMarker_AddMarkerHealth);
+	
+	return true;
 }

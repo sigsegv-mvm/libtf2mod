@@ -56,4 +56,6 @@ DETOUR_SETUP
 	//DETOUR_CREATE(CObjectSentrygun_SentryThink);
 	
 	DETOUR_CREATE(CObjectSentrygun_MoveTurret);
+	
+	return true;
 }

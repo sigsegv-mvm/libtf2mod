@@ -19,4 +19,6 @@ static void detour_CTFRocketLauncher_Precache(CTFRocketLauncher* this)
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CTFRocketLauncher_Precache);
+	
+	return true;
 }

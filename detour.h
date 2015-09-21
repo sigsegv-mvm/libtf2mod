@@ -3,7 +3,7 @@
 
 
 #define DETOUR_SETUP \
-	static void detour_setup(void)
+	static bool detour_setup(void)
 
 #define DETOUR(_name) \
 	DETOUR_SETUP; \
@@ -19,7 +19,9 @@
 typedef struct {
 	const char *name;
 	
-	void (*setup)(void);
+	bool (*setup)(void);
+	
+	bool ok;
 } detour_info_t;
 
 

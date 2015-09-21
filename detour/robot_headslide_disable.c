@@ -33,6 +33,7 @@ DETOUR_SETUP
 	func_CTFPlayer_TFPlayerThink =
 		func_register(CTFPlayer_TFPlayerThink);
 	
-	
 	DETOUR_CREATE(CTFPlayer_ApplyAbsVelocityImpulse);
+	
+	return true;
 }

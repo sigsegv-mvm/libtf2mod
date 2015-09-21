@@ -36,6 +36,7 @@ DETOUR_SETUP
 	func_CTFProjectile_Flare_Explode =
 		func_register(CTFProjectile_Flare_Explode);
 	
-	
 	DETOUR_CREATE(CTFPlayer_ApplyAirBlastImpulse);
+	
+	return true;
 }

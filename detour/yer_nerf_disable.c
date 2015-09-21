@@ -56,7 +56,8 @@ DETOUR_SETUP
 	func_CTFKnife_PrimaryAttack =
 		func_register(CTFKnife_PrimaryAttack);
 	
-	
 	DETOUR_CREATE(CBasePlayer_IsBot);
 	DETOUR_CREATE(NextBotPlayer_CTFPlayer_IsBot);
+	
+	return true;
 }
