@@ -1,8 +1,8 @@
 #include "all.h"
 
 
-DETOUR(eh_medieval_disable);
-/* disallow explosive headshot in Medieval Mode */
+DETOUR(eh_recursive_fix);
+/* check for bleed damage and disallow it from causing explosive headshots */
 
 
 DETOUR_SETUP

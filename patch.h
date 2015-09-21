@@ -41,7 +41,6 @@ void *alloc_func(size_t pages);
 extern patch_info_t patch_eh_unrestrict_class;
 extern patch_info_t patch_eh_unrestrict_projtype;
 extern patch_info_t patch_eh_unrestrict_weaponid;
-extern patch_info_t patch_eh_recursive_fix;
 extern patch_info_t patch_human_deathyell_enable;
 extern patch_info_t patch_sniperrifle_chargerate_uncap_stock;
 extern patch_info_t patch_sniperrifle_chargerate_uncap_classic;

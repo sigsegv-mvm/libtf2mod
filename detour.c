@@ -2,6 +2,8 @@
 
 
 detour_info_t *detours[] = {
+	&detour_shared_CTFSniperRifle_ExplosiveHeadShot,
+	
 	&detour_sentry_moveturret_decimate,
 	&detour_minisentry_quickbuild_health_fix,
 	&detour_pushallplayersaway_disable,
@@ -25,6 +27,7 @@ detour_info_t *detours[] = {
 	&detour_tank_destroy_blu_buildings,
 	&detour_wave_reset_countdown_fix,
 	&detour_sentrybuster_roundwin_behavior_fix,
+	&detour_eh_recursive_fix,
 	
 	//&detour_mini_dispenser,
 	

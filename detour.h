@@ -45,6 +45,8 @@ static inline bool func_owns_addr(uintptr_t addr, const func_t *func)
 
 extern detour_info_t detour_init;
 
+extern detour_info_t detour_shared_CTFSniperRifle_ExplosiveHeadShot;
+
 extern detour_info_t detour_sentry_moveturret_decimate;
 extern detour_info_t detour_minisentry_quickbuild_health_fix;
 extern detour_info_t detour_pushallplayersaway_disable;
@@ -68,6 +70,7 @@ extern detour_info_t detour_mvm_chat_unrestrict;
 extern detour_info_t detour_tank_destroy_blu_buildings;
 extern detour_info_t detour_wave_reset_countdown_fix;
 extern detour_info_t detour_sentrybuster_roundwin_behavior_fix;
+extern detour_info_t detour_eh_recursive_fix;
 
 extern detour_info_t detour_mini_dispenser;
 
