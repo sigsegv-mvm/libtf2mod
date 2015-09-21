@@ -2,7 +2,7 @@
 
 
 PATCH(eyelander_overheal_decay_fix);
-/* don't allow CTFSword::OnDecapiration to set the overheal decay duration
+/* don't allow CTFSword::OnDecapitation to set the overheal decay duration
  * multiplier to 0.25 */
 
 
