@@ -478,6 +478,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFObjectiveResource_SetMannVsMachineWaveClassName,
 		"_ZN20CTFObjectiveResource29SetMannVsMachineWaveClassNameEi8string_t");
 	
+	SYMBOL_FUNC(CPopulationManager_IsValidMvMMap,
+		"_ZN18CPopulationManager13IsValidMvMMapEPKc");
 	SYMBOL_FUNC(CPopulationManager_JumpToWave,
 		"_ZN18CPopulationManager10JumpToWaveEjf");
 	

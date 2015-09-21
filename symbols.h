@@ -282,6 +282,7 @@ extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassActive)(CTFObje
 extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassCount)(CTFObjectiveResource* this, int, int);
 extern unknown_t (*CTFObjectiveResource_SetMannVsMachineWaveClassName)(CTFObjectiveResource* this, int, string_t);
 
+extern bool (*CPopulationManager_IsValidMvMMap)(CPopulationManager* this, char const*);
 extern void (*CPopulationManager_JumpToWave)(CPopulationManager* this, unsigned int, float);
 
 extern unknown_t (*CMissionPopulator_UpdateMission)(CMissionPopulator* this, CTFBot_MissionType);

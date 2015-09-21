@@ -56,6 +56,7 @@ detour_info_t *detours[] = {
 	//&detour_debug_stats,
 	//&detour_debug_upgrades,
 	//&detour_debug_damageinfo,
+	//&detour_debug_changelevel,
 	
 	//&detour_profile_attributes,
 };
