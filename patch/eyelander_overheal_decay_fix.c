@@ -9,7 +9,7 @@ PATCH(eyelander_overheal_decay_fix);
 PATCH_CHECK
 {
 	/* sadly this offset isn't totally public */
-	uintptr_t off1 = sendprop_offset("CTFPlayer", "m_Shared") + 0x0844;
+	uintptr_t off1 = sendprop_offset("CTFPlayer", "m_Shared") + 0x0854;
 	
 	union {
 		float    f;
@@ -19,7 +19,7 @@ PATCH_CHECK
 	
 	size_t check1_base = 0x0140;
 	uint8_t check1[] = {
-		0xc7, 0x83, CONV_LE(off1) CONV_LE(mult.dw) // +0140 mov DWORD PTR [ebx+m_Shared+0x844],0.25f
+		0xc7, 0x83, CONV_LE(off1) CONV_LE(mult.dw) // +0140 mov DWORD PTR [ebx+m_Shared+0x854],0.25f
 	};
 	
 	
