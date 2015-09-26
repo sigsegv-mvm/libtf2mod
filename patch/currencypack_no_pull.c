@@ -76,9 +76,6 @@ PATCH_APPLY
 	size_t data2_base = 0x033c;
 	const float *data2 = &delay_scout;
 	
-	pr_warn("delay_scout @ %08x\ndelay_scout = %08x\n",
-		(uintptr_t)&delay_scout, *((uint32_t *)&delay_scout));
-	
 	func_write(CTFPlayerShared_RadiusCurrencyCollectionCheck,
 		data2_base, sizeof(data2), &data2);
 }
