@@ -43,7 +43,6 @@ static bool detour_CTFBotMedicHeal_IsReadyToDeployUber(CTFBotMedicHeal* this, CW
 }
 
 
-
 DETOUR_SETUP
 {
 	DETOUR_CREATE(CWeaponMedigun_IsAttachedToBuilding);
