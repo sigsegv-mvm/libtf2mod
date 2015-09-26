@@ -367,6 +367,7 @@ typedef void CAttributeList;
 typedef void CTFWeaponBase;
 typedef void CTFWeaponBaseGun;
 typedef void CWeaponMedigun;
+typedef void CTFMinigun;
 typedef void CTFRocketLauncher;
 typedef void CTFSniperRifle;
 typedef void CTFSniperRifleDecap;

@@ -22,8 +22,12 @@ void symbols_init(void)
 		"_ZTI11CBaseObject");
 	SYMBOL_OBJ(typeinfo_for_CTFWeaponBase,
 		"_ZTI13CTFWeaponBase");
+	SYMBOL_OBJ(typeinfo_for_CTFWeaponBaseGun,
+		"_ZTV16CTFWeaponBaseGun");
 	SYMBOL_OBJ(typeinfo_for_CWeaponMedigun,
 		"_ZTI14CWeaponMedigun");
+	SYMBOL_OBJ(typeinfo_for_CTFMinigun,
+		"_ZTV10CTFMinigun");
 	SYMBOL_OBJ(typeinfo_for_CTFCrossbow,
 		"_ZTI11CTFCrossbow");
 	SYMBOL_OBJ(typeinfo_for_CTFTankBoss,

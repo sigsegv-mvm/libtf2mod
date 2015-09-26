@@ -45,7 +45,6 @@ extern patch_info_t patch_human_deathyell_enable;
 extern patch_info_t patch_sniperrifle_chargerate_uncap_stock;
 extern patch_info_t patch_sniperrifle_chargerate_uncap_classic;
 extern patch_info_t patch_bazaarbargain_head_uncap;
-extern patch_info_t patch_nextprimaryattack_unalias;
 extern patch_info_t patch_sentrygun_think_every_tick;
 extern patch_info_t patch_redcredits_unrestrict_weaponid;
 extern patch_info_t patch_redcredits_unrestrict_class;

@@ -45,6 +45,8 @@ DEFINE_ENTPROP(unsigned int, CBasePlayer, m_nButtons);
 DEFINE_ENTPROP(int, CTFPlayer, m_iClass);
 DEFINE_ENTPROP(CTFPlayerShared, CTFPlayer, m_Shared);
 
+DEFINE_ENTPROP(float, CTFWeaponBaseGun, m_flNextPrimaryAttack);
+
 DEFINE_ENTPROP(bool, CBaseObject, m_bBuilding);
 DEFINE_ENTPROP(bool, CBaseObject, m_bDisposableBuilding);
 DEFINE_ENTPROP(bool, CBaseObject, m_bMiniBuilding);
@@ -76,6 +78,9 @@ void entprop_init(void)
 		CTFPlayer, m_PlayerClass, m_iClass);
 	INIT_SENDPROP(CTFPlayer_m_Shared,
 		CTFPlayer, m_Shared);
+	
+	INIT_SENDPROP(CTFWeaponBaseGun_m_flNextPrimaryAttack,
+		CTFWeaponBaseGun, m_flNextPrimaryAttack);
 	
 	INIT_SENDPROP(CBaseObject_m_bBuilding,
 		CBaseObject, m_bBuilding);

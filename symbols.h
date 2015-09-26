@@ -17,7 +17,9 @@ extern void *typeinfo_for_CBasePlayer;
 extern void *typeinfo_for_CTFBot;
 extern void *typeinfo_for_CBaseObject;
 extern void *typeinfo_for_CTFWeaponBase;
+extern void *typeinfo_for_CTFWeaponBaseGun;
 extern void *typeinfo_for_CWeaponMedigun;
+extern void *typeinfo_for_CTFMinigun;
 extern void *typeinfo_for_CTFCrossbow;
 extern void *typeinfo_for_CTFTankBoss;
 

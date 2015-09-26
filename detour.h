@@ -71,6 +71,7 @@ extern detour_info_t detour_tank_destroy_blu_buildings;
 extern detour_info_t detour_wave_reset_countdown_fix;
 extern detour_info_t detour_sentrybuster_roundwin_behavior_fix;
 extern detour_info_t detour_eh_recursive_fix;
+extern detour_info_t detour_nextprimaryattack_unalias;
 
 extern detour_info_t detour_mini_dispenser;
 
