@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <link.h>
+#include <math.h>
 
 /* posix */
 #include <unistd.h>
