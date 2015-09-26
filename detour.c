@@ -17,7 +17,7 @@ detour_info_t *detours[] = {
 	&detour_spawnprotect_cond51_only,
 	&detour_robot_gib_improvements,
 	&detour_robot_gib_dissolve_fix,
-	&detour_scorchshot_airblast_disable,
+	//&detour_scorchshot_airblast_disable,
 	&detour_yer_nerf_disable,
 	&detour_arrow_pen_ignoreuber,
 	&detour_medishield_teamskin_enable,
@@ -57,6 +57,7 @@ detour_info_t *detours[] = {
 	//&detour_debug_upgrades,
 	//&detour_debug_damageinfo,
 	//&detour_debug_changelevel,
+	//&detour_debug_airblast,
 	
 	//&detour_profile_attributes,
 };

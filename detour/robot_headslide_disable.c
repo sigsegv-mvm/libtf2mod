@@ -5,13 +5,13 @@ DETOUR(robot_headslide_disable);
 /* remove the push force imparted on you when standing on a robot's head */
 
 
-static unknown_t (*trampoline_CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
+static void (*trampoline_CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
 
 
 static func_t *func_CTFPlayer_TFPlayerThink;
 
 
-static unknown_t detour_CTFPlayer_ApplyAbsVelocityImpulse(CTFPlayer* this, Vector const* vec)
+static void detour_CTFPlayer_ApplyAbsVelocityImpulse(CTFPlayer* this, Vector const* vec)
 {
 	uintptr_t caller = (uintptr_t)__builtin_extract_return_addr(
 		__builtin_return_address(0));
@@ -21,10 +21,10 @@ static unknown_t detour_CTFPlayer_ApplyAbsVelocityImpulse(CTFPlayer* this, Vecto
 	 * sliding purposes, so we can safely ignore its calls */
 	if (func_owns_addr(caller,
 		func_CTFPlayer_TFPlayerThink)) {
-		return 0;
+		return;
 	}
 	
-	return trampoline_CTFPlayer_ApplyAbsVelocityImpulse(this, vec);
+	trampoline_CTFPlayer_ApplyAbsVelocityImpulse(this, vec);
 }
 
 

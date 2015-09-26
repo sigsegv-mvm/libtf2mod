@@ -139,8 +139,8 @@ extern CTFWeaponBase* (*CTFPlayerShared_GetActiveTFWeapon)(CTFPlayerShared* this
 extern bool (*CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
 
-extern unknown_t (*CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
-extern unknown_t (*CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
+extern void (*CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
+extern void (*CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
 extern bool (*CTFPlayer_CanBeForcedToLaugh)(CTFPlayer* this);
 extern int (*CTFPlayer_CanBuild)(CTFPlayer* this, int, int);
 extern bool (*CTFPlayer_CanHearAndReadChatFrom)(CTFPlayer* this, CBasePlayer*);

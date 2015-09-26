@@ -6,13 +6,13 @@ DETOUR(scorchshot_airblast_disable);
  * the place to non-MiniBosses only */
 
 
-static unknown_t (*trampoline_CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
+static void (*trampoline_CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
 
 
 static func_t *func_CTFProjectile_Flare_Explode;
 
 
-static unknown_t detour_CTFPlayer_ApplyAirBlastImpulse(CTFPlayer* this, Vector const* vec)
+static void detour_CTFPlayer_ApplyAirBlastImpulse(CTFPlayer* this, Vector const* vec)
 {
 	uintptr_t caller = (uintptr_t)__builtin_extract_return_addr(
 		__builtin_return_address(0));
@@ -24,10 +24,10 @@ static unknown_t detour_CTFPlayer_ApplyAirBlastImpulse(CTFPlayer* this, Vector c
 		CTFGameRules_IsPVEModeActive(*g_pGameRules) &&
 		vcall_CBasePlayer_IsBot(this) &&
 		CTFPlayer_IsMiniBoss(this)) {
-		return 0;
+		return;
 	}
 	
-	return trampoline_CTFPlayer_ApplyAirBlastImpulse(this, vec);
+	trampoline_CTFPlayer_ApplyAirBlastImpulse(this, vec);
 }
 
 
