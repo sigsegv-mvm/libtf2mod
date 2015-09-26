@@ -36,10 +36,10 @@ PATCH_CHECK
 
 PATCH_APPLY
 {
-	pr_err("CTFBotMedicHeal::Update patch #2 @ %08x\n",
-		(uintptr_t)CTFBotMedicHeal_Update + 0xa155);
-	pr_err("asm_CTFBotMedicHeal_Update_GetTargetRange @ %08x\n",
-		(uintptr_t)asm_CTFBotMedicHeal_Update_GetTargetRange);
+	//pr_debug("CTFBotMedicHeal::Update patch #2 @ %08x\n",
+	//	(uintptr_t)CTFBotMedicHeal_Update + 0xa155);
+	//pr_debug("asm_CTFBotMedicHeal_Update_GetTargetRange @ %08x\n",
+	//	(uintptr_t)asm_CTFBotMedicHeal_Update_GetTargetRange);
 	
 	
 	uintptr_t voff_GetTargetRange = vtable_find_offset("_ZTV14CWeaponMedigun",

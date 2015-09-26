@@ -69,10 +69,10 @@ PATCH_CHECK
 
 PATCH_APPLY
 {
-	pr_err("CTFBotMedicHeal::Update patch #1 @ %08x\n",
-		(uintptr_t)CTFBotMedicHeal_Update + 0x08c1);
-	pr_err("asm_CTFBotMedicHeal_Update_EnableXbow @ %08x\n",
-		(uintptr_t)asm_CTFBotMedicHeal_Update_EnableXbow);
+	//pr_debug("CTFBotMedicHeal::Update patch #1 @ %08x\n",
+	//	(uintptr_t)CTFBotMedicHeal_Update + 0x08c1);
+	//pr_debug("asm_CTFBotMedicHeal_Update_EnableXbow @ %08x\n",
+	//	(uintptr_t)asm_CTFBotMedicHeal_Update_EnableXbow);
 	
 	
 	uintptr_t dst_medi = (uintptr_t)CTFBotMedicHeal_Update + 0x08f9;
