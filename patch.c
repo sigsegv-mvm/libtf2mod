@@ -21,9 +21,9 @@ patch_info_t *patches[] = {
 	&patch_playerupgrade_sell_fix,
 	&patch_bot_medieval_nonmelee_allow,
 	&patch_eyelander_overheal_decay_fix,
+	&patch_currencypack_no_pull,
 	
 	//&patch_tank_shake_disable,
-	//&patch_currencypack_no_pull,
 	//&patch_bot_revivemarker_enable,
 	&patch_medicbot_ai_xbow_heal_part1,
 	&patch_medicbot_ai_xbow_heal_part2,
