@@ -3,6 +3,7 @@
 
 detour_info_t *detours[] = {
 	&detour_shared_CTFSniperRifle_ExplosiveHeadShot,
+	&detour_shared_CBasePlayer_IsBot,
 	
 	&detour_sentry_moveturret_decimate,
 	&detour_minisentry_quickbuild_health_fix,
@@ -31,6 +32,7 @@ detour_info_t *detours[] = {
 	&detour_nextprimaryattack_unalias,
 	&detour_soundemitter_override_force_precache,
 	&detour_sapper_use_response_lines,
+	&detour_sapper_allow_multiple_active,
 	
 	//&detour_mini_dispenser,
 	

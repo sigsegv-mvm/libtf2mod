@@ -250,6 +250,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer10FireBulletEP13CTFWeaponBaseRK17FireBulletsInfo_tbii");
 	SYMBOL_FUNC(CTFPlayer_GetActiveTFWeapon,
 		"_ZNK9CTFPlayer17GetActiveTFWeaponEv");
+	SYMBOL_FUNC(CTFPlayer_GetNumObjects,
+		"_ZN9CTFPlayer13GetNumObjectsEii");
 	SYMBOL_FUNC(CTFPlayer_GiveNamedItem,
 		"_ZN9CTFPlayer13GiveNamedItemEPKciPK13CEconItemViewb");
 	SYMBOL_FUNC(CTFPlayer_IsMiniBoss,
@@ -433,6 +435,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CObjectSapper_ApplyRoboSapperEffects,
 		"_ZN13CObjectSapper22ApplyRoboSapperEffectsEP9CTFPlayerf");
+	SYMBOL_FUNC(CObjectSapper_Spawn,
+		"_ZN13CObjectSapper5SpawnEv");
 	
 	SYMBOL_FUNC(CTFGameRules_BetweenRounds_Think,
 		"_ZN12CTFGameRules19BetweenRounds_ThinkEv");
