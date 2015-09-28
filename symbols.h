@@ -176,6 +176,7 @@ extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
 
 extern bool (*NextBotPlayer_CTFPlayer_IsBot)(NextBotPlayer_CTFPlayer* this);
 
+extern void (*CTFTankBoss_ModifyDamage)(CTFTankBoss* this, CTakeDamageInfo*);
 extern void (*CTFTankBoss_TankBossThink)(CTFTankBoss* this);
 
 extern CEconItemAttributeDefinition* (*CEconItemSchema_GetAttributeDefinitionByName)(CEconItemSchema* this, char const*);

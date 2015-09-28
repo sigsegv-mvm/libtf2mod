@@ -40,6 +40,7 @@ detour_info_t *detours[] = {
 	&detour_disposable_dispenser_part5,*/
 	
 	//&detour_mvm_extended_waveloss_time,
+	//&detour_tank_minigun_resistance_disable,
 	
 	&detour_medicbot_ai_xbow_heal,
 	&detour_medicbot_ai_shield,

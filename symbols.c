@@ -293,6 +293,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_IsBot,
 		"_ZNK13NextBotPlayerI9CTFPlayerE5IsBotEv");
 	
+	SYMBOL_FUNC(CTFTankBoss_ModifyDamage,
+		"_ZNK11CTFTankBoss12ModifyDamageEP15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFTankBoss_TankBossThink,
 		"_ZN11CTFTankBoss13TankBossThinkEv");
 	
