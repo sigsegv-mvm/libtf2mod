@@ -223,6 +223,8 @@ void symbols_init(void)
 		"_ZNK15CTFPlayerShared14IsInvulnerableEv");
 	SYMBOL_FUNC(CTFPlayerShared_RadiusCurrencyCollectionCheck,
 		"_ZN15CTFPlayerShared29RadiusCurrencyCollectionCheckEv");
+	SYMBOL_FUNC(CTFPlayerShared_StunPlayer,
+		"_ZN15CTFPlayerShared10StunPlayerEffiP9CTFPlayer");
 	
 	SYMBOL_FUNC(CTFPlayer_ApplyAbsVelocityImpulse,
 		"_ZN9CTFPlayer23ApplyAbsVelocityImpulseERK6Vector");
@@ -262,12 +264,16 @@ void symbols_init(void)
 		"_ZN9CTFPlayer10RegenerateEb");
 	SYMBOL_FUNC(CTFPlayer_RememberUpgrade,
 		"_ZN9CTFPlayer15RememberUpgradeEiP13CEconItemViewiib");
+	SYMBOL_FUNC(CTFPlayer_RemoveAmmo,
+		"_ZN9CTFPlayer10RemoveAmmoEii");
 	SYMBOL_FUNC(CTFPlayer_RemoveCurrency,
 		"_ZN9CTFPlayer14RemoveCurrencyEi");
 	SYMBOL_FUNC(CTFPlayer_RemoveDisguise,
 		"_ZN9CTFPlayer14RemoveDisguiseEv");
 	SYMBOL_FUNC(CTFPlayer_ShouldGib,
 		"_ZN9CTFPlayer9ShouldGibERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFPlayer_SpeakConceptIfAllowed,
+		"_ZN9CTFPlayer21SpeakConceptIfAllowedEiPKcPcjP16IRecipientFilter");
 	SYMBOL_FUNC(CTFPlayer_TFPlayerThink,
 		"_ZN9CTFPlayer13TFPlayerThinkEv");
 	SYMBOL_FUNC(CTFPlayer_TraceAttack,
@@ -417,6 +423,9 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CObjectTeleporter_FinishedBuilding,
 		"_ZN17CObjectTeleporter16FinishedBuildingEv");
+	
+	SYMBOL_FUNC(CObjectSapper_ApplyRoboSapperEffects,
+		"_ZN13CObjectSapper22ApplyRoboSapperEffectsEP9CTFPlayerf");
 	
 	SYMBOL_FUNC(CTFGameRules_BetweenRounds_Think,
 		"_ZN12CTFGameRules19BetweenRounds_ThinkEv");

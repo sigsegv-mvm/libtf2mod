@@ -29,6 +29,7 @@ detour_info_t *detours[] = {
 	&detour_sentrybuster_roundwin_behavior_fix,
 	&detour_eh_recursive_fix,
 	&detour_nextprimaryattack_unalias,
+	&detour_sapper_use_response_lines,
 	
 	//&detour_mini_dispenser,
 	

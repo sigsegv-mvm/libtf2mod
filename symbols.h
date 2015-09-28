@@ -140,6 +140,7 @@ extern unknown_t (*CTFPlayerShared_ConditionGameRulesThink)(CTFPlayerShared* thi
 extern CTFWeaponBase* (*CTFPlayerShared_GetActiveTFWeapon)(CTFPlayerShared* this);
 extern bool (*CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_StunPlayer)(CTFPlayerShared* this, float, float, int, CTFPlayer*);
 
 extern void (*CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
 extern void (*CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
@@ -163,6 +164,7 @@ extern void (*CTFPlayer_RememberUpgrade)(CTFPlayer* this, int, CEconItemView*, i
 extern void (*CTFPlayer_RemoveCurrency)(CTFPlayer* this, int);
 extern void (*CTFPlayer_RemoveDisguise)(CTFPlayer* this);
 extern bool (*CTFPlayer_ShouldGib)(CTFPlayer* this, CTakeDamageInfo const*);
+extern unknown_t (*CTFPlayer_SpeakConceptIfAllowed)(CTFPlayer* this, int, char const*, char*, unsigned int, IRecipientFilter*);
 extern unknown_t (*CTFPlayer_TFPlayerThink)(CTFPlayer* this);
 extern unknown_t (*CTFPlayer_TraceAttack)(CTFPlayer* this, CTakeDamageInfo const*, Vector const*, CGameTrace*, CDmgAccumulator*);
 
@@ -250,6 +252,8 @@ extern void (*CObjectSentrygun_Spawn)(CObjectSentrygun* this);
 
 extern void (*CObjectTeleporter_FinishedBuilding)(CObjectTeleporter* this);
 
+extern unknown_t (*CObjectSapper_ApplyRoboSapperEffects)(CObjectSapper* this, CTFPlayer*, float);
+
 extern void (*CTFGameRules_BetweenRounds_Think)(CTFGameRules* this);
 extern bool (*CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*);
 extern unknown_t (*CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, int, CTFPlayer*, bool, bool, bool);
@@ -325,7 +329,6 @@ extern bool (*CTFBotMedicHeal_IsReadyToDeployUber)(CTFBotMedicHeal* this, CWeapo
 extern nextbot_event_response_t (*CTFBotMedicHeal_Update)(CTFBotMedicHeal* this, CTFBot*, float);
 
 extern nextbot_event_response_t (*CTFBotMvMEngineerIdle_Update)(CTFBotMvMEngineerIdle* this, CTFBot*, float);
-
 
 extern unknown_t (*CTFReviveMarker_AddMarkerHealth)(CTFReviveMarker* this, float);
 
