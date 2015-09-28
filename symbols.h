@@ -342,6 +342,8 @@ extern unknown_t (*Action_CTFBot_OnContact)(Action_CTFBot* this, CBaseEntity*, C
 
 extern unknown_t (*CTraceFilterObject_ShouldHitEntity)(CTraceFilterObject* this, IHandleEntity*, int);
 
+extern void (*CSoundEmitterSystemBase_AddSoundOverrides)(CSoundEmitterSystemBase* this, char const*, bool);
+
 
 #undef extern
 

@@ -582,6 +582,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTraceFilterObject_ShouldHitEntity,
 		"_ZN18CTraceFilterObject15ShouldHitEntityEP13IHandleEntityi");
 	
+	SYMBOL_FUNC(CSoundEmitterSystemBase_AddSoundOverrides,
+		"_ZN23CSoundEmitterSystemBase17AddSoundOverridesEPKcb");
+	
 	
 #warning TODO: symbols for these upgrade related functions
 	// CTFPlayer::*

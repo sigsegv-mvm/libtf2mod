@@ -685,6 +685,8 @@ typedef void CTraceFilterObject;
 
 typedef void inputdata_t;
 
+typedef void CSoundEmitterSystemBase;
+
 typedef uint32_t EHANDLE;
 
 

@@ -5,6 +5,7 @@ static const char *libs_wanted[] = {
 	"engine_srv.so",
 	"server_srv.so",
 	"libtier0_srv.so",
+	"soundemittersystem_srv.so",
 };
 
 #define NUM_LIBS (sizeof(libs_wanted) / sizeof(*libs_wanted))
