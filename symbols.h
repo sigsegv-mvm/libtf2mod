@@ -161,6 +161,7 @@ extern unknown_t (*CTFPlayer_OnTakeDamage)(CTFPlayer* this, CTakeDamageInfo cons
 extern unknown_t (*CTFPlayer_OnTakeDamage_Alive)(CTFPlayer* this, CTakeDamageInfo const*);
 extern void (*CTFPlayer_Regenerate)(CTFPlayer* this, bool);
 extern void (*CTFPlayer_RememberUpgrade)(CTFPlayer* this, int, CEconItemView*, int, int, bool);
+extern void (*CTFPlayer_RemoveAmmo)(CTFPlayer* this, int, int);
 extern void (*CTFPlayer_RemoveCurrency)(CTFPlayer* this, int);
 extern void (*CTFPlayer_RemoveDisguise)(CTFPlayer* this);
 extern bool (*CTFPlayer_ShouldGib)(CTFPlayer* this, CTakeDamageInfo const*);
@@ -197,6 +198,7 @@ extern bool (*CTFWeaponBase_CanBeCritBoosted)(CTFWeaponBase* this);
 extern bool (*CTFWeaponBase_CanFireCriticalShot)(CTFWeaponBase* this, bool);
 extern bool (*CTFWeaponBase_CanFireRandomCriticalShot)(CTFWeaponBase* this, float);
 extern int (*CTFWeaponBase_GetWeaponID)(CTFWeaponBase* this);
+extern void (*CTFWeaponBase_StartEffectBarRegen)(CTFWeaponBase* this);
 
 extern int (*CTFWeaponBaseGun_GetWeaponProjectileType)(CTFWeaponBaseGun* this);
 extern void (*CTFWeaponBaseGun_PrimaryAttack)(CTFWeaponBaseGun* this);
@@ -221,6 +223,8 @@ extern unknown_t (*CTFWearableDemoShield_EndSpecialAction)(CTFWearableDemoShield
 extern unknown_t (*CTFStickBomb_Smack)(CTFStickBomb* this);
 
 extern unknown_t (*CTFSword_OnDecapitation)(CTFSword* this, CTFPlayer*);
+
+extern bool (*CTFWeaponBuilder_StartBuilding)(CTFWeaponBuilder* this);
 
 extern unknown_t (*CTFBaseRocket_Explode)(CTFBaseRocket* this, CGameTrace*, CBaseEntity*);
 

@@ -330,6 +330,8 @@ void symbols_init(void)
 		"_ZN13CTFWeaponBase25CanFireRandomCriticalShotEf");
 	SYMBOL_FUNC(CTFWeaponBase_GetWeaponID,
 		"_ZNK13CTFWeaponBase11GetWeaponIDEv");
+	SYMBOL_FUNC(CTFWeaponBase_StartEffectBarRegen,
+		"_ZN13CTFWeaponBase19StartEffectBarRegenEv");
 	
 	SYMBOL_FUNC(CTFWeaponBaseGun_GetWeaponProjectileType,
 		"_ZNK16CTFWeaponBaseGun23GetWeaponProjectileTypeEv");
@@ -370,6 +372,9 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFSword_OnDecapitation,
 		"_ZN8CTFSword14OnDecapitationEP9CTFPlayer");
+	
+	SYMBOL_FUNC(CTFWeaponBuilder_StartBuilding,
+		"_ZN16CTFWeaponBuilder13StartBuildingEv");
 	
 	SYMBOL_FUNC(CTFBaseRocket_Explode,
 		"_ZN13CTFBaseRocket7ExplodeEP10CGameTraceP11CBaseEntity");
