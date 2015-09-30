@@ -29,7 +29,7 @@ detour_info_t *detours[] = {
 	&detour_wave_reset_countdown_fix,
 	&detour_sentrybuster_roundwin_behavior_fix,
 	&detour_eh_recursive_fix,
-	&detour_nextprimaryattack_unalias,
+	//&detour_nextprimaryattack_unalias,
 	&detour_soundemitter_override_force_precache,
 	&detour_sapper_use_response_lines,
 	&detour_sapper_allow_multiple_active,
