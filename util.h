@@ -26,9 +26,6 @@ const char *get_string_for_damagebits(uint32_t m_bitsDamageType);
 const char *get_string_for_customkill(int m_iCustomKill);
 const char *get_string_for_weaponid(int id);
 
-void *__dynamic_cast_NULL_safe(const void *__src_ptr,
-	const void *__src_type, const void *__dst_type, ptrdiff_t __src2dst);
-
 
 extern void *__dynamic_cast(const void *__src_ptr,
 	const void *__src_type,
@@ -36,7 +33,7 @@ extern void *__dynamic_cast(const void *__src_ptr,
 	ptrdiff_t __src2dst);
 
 #define DYNAMIC_CAST(_src, _src_type, _dst_type) \
-	__dynamic_cast_NULL_safe(_src, typeinfo_for_ ## _src_type, typeinfo_for_ ## _dst_type, 0)
+	__dynamic_cast(_src, typeinfo_for_ ## _src_type, typeinfo_for_ ## _dst_type, 0)
 
 
 #endif
