@@ -17,13 +17,12 @@ static bool WeaponID_IsSniperRifleOrBowOrRevolver(int id)
 
 PATCH_CHECK
 {
-	uintptr_t off1 = CALC_RELJMP(CTFPlayer_Event_Killed, 0x08a1,
+	uintptr_t off1 = CALC_RELJMP(CTFPlayer_Event_Killed, 0x08c9,
 		WeaponID_IsSniperRifleOrBow);
 	
-	
-	size_t check1_base = 0x089c;
+	size_t check1_base = 0x08c4;
 	uint8_t check1[] = {
-		0xe8, CONV_LE(off1) // +089C  call WeaponID_IsSniperRifleOrBow
+		0xe8, CONV_LE(off1) // +08C4  call WeaponID_IsSniperRifleOrBow
 	};
 	
 	
@@ -36,13 +35,13 @@ PATCH_CHECK
 
 PATCH_APPLY
 {
-	uintptr_t off1 = CALC_RELJMP(CTFPlayer_Event_Killed, 0x08a1,
+	uintptr_t off1 = CALC_RELJMP(CTFPlayer_Event_Killed, 0x08c9,
 		WeaponID_IsSniperRifleOrBowOrRevolver);
 	
 	
-	size_t data1_base = 0x089c;
+	size_t data1_base = 0x08c4;
 	uint8_t data1[] = {
-		0xe8, CONV_LE(off1) // +089C  call WeaponID_IsSniperRifleOrBowOrRevolver
+		0xe8, CONV_LE(off1) // +08C4  call WeaponID_IsSniperRifleOrBowOrRevolver
 	};
 	
 	
