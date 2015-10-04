@@ -570,6 +570,21 @@ typedef enum {
 	ROUNDSTATE_BETWEENROUNDS = 10,
 } gamerules_roundstate_t;
 
+typedef enum {
+	SLOT_PRIMARY   = 0,
+	SLOT_SECONDARY = 1,
+	SLOT_MELEE     = 2,
+	SLOT_UTILITY   = 3,
+	SLOT_BUILDING  = 4, // sapper
+	SLOT_PDA       = 5, // engie build pda, disguise kit
+	SLOT_PDA2      = 6, // engie destroy pda, invis watch
+	SLOT_HEAD      = 7,
+	SLOT_MISC      = 8,
+	SLOT_ACTION    = 9, // canteens
+	/* slot 10 unknown */
+	SLOT_TAUNT     = 11,
+} LoadoutSlot;
+
 
 /* opaque types */
 
