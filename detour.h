@@ -109,6 +109,8 @@ extern detour_info_t detour_debug_damageinfo;
 extern detour_info_t detour_debug_changelevel;
 extern detour_info_t detour_debug_airblast;
 
+extern detour_info_t detour_debug_spawn_item_fail_trace;
+
 extern detour_info_t detour_profile_attributes;
 
 
