@@ -585,6 +585,56 @@ typedef enum {
 	SLOT_TAUNT     = 11,
 } LoadoutSlot;
 
+typedef enum {
+	TAUNTATK_NONE                          = 0,
+	TAUNTATK_PYRO_HADOUKEN                 = 1,
+	TAUNTATK_HEAVY_EAT                     = 2,
+	TAUNTATK_HEAVY_RADIAL_BUFF             = 3,
+	TAUNTATK_HEAVY_HIGH_NOON               = 4,
+	TAUNTATK_SCOUT_DRINK                   = 5,
+	TAUNTATK_SCOUT_GRAND_SLAM              = 6,
+	TAUNTATK_MEDIC_INHALE                  = 7,
+	TAUNTATK_SPY_FENCING_SLASH_A           = 8,
+	TAUNTATK_SPY_FENCING_SLASH_B           = 9,
+	TAUNTATK_SPY_FENCING_STAB              = 10,
+	TAUNTATK_RPS_KILL                      = 11,
+	TAUNTATK_SNIPER_ARROW_STAB_IMPALE      = 12,
+	TAUNTATK_SNIPER_ARROW_STAB_KILL        = 13,
+	TAUNTATK_SOLDIER_GRENADE_KILL          = 14,
+	TAUNTATK_DEMOMAN_BARBARIAN_SWING       = 15,
+	TAUNTATK_MEDIC_UBERSLICE_IMPALE        = 16,
+	TAUNTATK_MEDIC_UBERSLICE_KILL          = 17,
+	TAUNTATK_FLIP_LAND_PARTICLE            = 18,
+	TAUNTATK_RPS_PARTICLE                  = 19,
+	TAUNTATK_HIGHFIVE_PARTICLE             = 20,
+	TAUNTATK_ENGINEER_GUITAR_SMASH         = 21,
+	TAUNTATK_ENGINEER_ARM_IMPALE           = 22,
+	TAUNTATK_ENGINEER_ARM_KILL             = 23,
+	TAUNTATK_ENGINEER_ARM_BLEND            = 24,
+	TAUNTATK_SOLDIER_GRENADE_KILL_WORMSIGN = 25,
+	TAUNTATK_SHOW_ITEM                     = 26,
+	TAUNTATK_MEDIC_RELEASE_DOVES           = 27,
+	TAUNTATK_PYRO_ARMAGEDDON               = 28,
+	TAUNTATK_PYRO_SCORCHSHOT               = 29,
+	TAUNTATK_ALLCLASS_GUITAR_RIFF          = 30,
+	TAUNTATK_MEDIC_HEROIC_TAUNT            = 31,
+} TauntAttack;
+
+typedef enum {
+	HOLIDAY_NOHOLIDAY                       = 0,
+	HOLIDAY_TF2BIRTHDAY                     = 1,
+	HOLIDAY_HALLOWEEN                       = 2,
+	HOLIDAY_CHRISTMAS                       = 3,
+	HOLIDAY_ENDOFTHELINE                    = 4,
+	HOLIDAY_VALENTINESDAY                   = 5,
+	HOLIDAY_MEETTHEPYRO                     = 6,
+	HOLIDAY_SPYVSENGYWAR                    = 7,
+	HOLIDAY_FULLMOON                        = 8,
+	HOLIDAY_HALLOWEENORFULLMOON             = 9,
+	HOLIDAY_HALLOWEENORFULLMOONORVALENTINES = 10,
+	HOLIDAY_APRILFOOLS                      = 11,
+} TFHoliday;
+
 
 /* opaque types */
 
