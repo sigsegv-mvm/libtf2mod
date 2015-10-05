@@ -109,6 +109,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(UTIL_EntityByIndex,
 		"_Z18UTIL_EntityByIndexi");
+	SYMBOL_FUNC(UTIL_GetHolidayForString,
+		"_Z24UTIL_GetHolidayForStringPKc");
 	SYMBOL_FUNC(UTIL_LogPrintf,
 		"_Z14UTIL_LogPrintfPKcz");
 	SYMBOL_FUNC(UTIL_PlayerByIndex,

@@ -69,6 +69,7 @@ extern unknown_t (*MessageWriteWord)(int);
 extern CBaseEntity* (*CreateEntityByName)(char const*, int);
 
 extern CBaseEntity* (*UTIL_EntityByIndex)(int);
+extern int (*UTIL_GetHolidayForString)(char const*);
 extern unknown_t (*UTIL_LogPrintf)(char const*, ...);
 extern CBasePlayer* (*UTIL_PlayerByIndex)(int);
 extern void (*UTIL_ScreenShake)(Vector const*, float, float, float, float, ShakeCommand_t, bool);

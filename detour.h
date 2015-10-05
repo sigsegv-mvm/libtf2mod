@@ -76,6 +76,7 @@ extern detour_info_t detour_nextprimaryattack_unalias;
 extern detour_info_t detour_soundemitter_override_force_precache;
 extern detour_info_t detour_sapper_use_response_lines;
 extern detour_info_t detour_sapper_allow_multiple_active;
+extern detour_info_t detour_loadout_allow_holiday_items;
 
 extern detour_info_t detour_mini_dispenser;
 
