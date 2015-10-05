@@ -39,7 +39,9 @@ asm_CTFBotMedicHeal_Update_GetTargetRange:
 	mov eax,[esi+typeinfo_for_CTFWeaponBase wrt ..got]
 		push dword [eax]
 	push ebx
+	xchg ebx,esi
 	call __dynamic_cast wrt ..plt
+	xchg ebx,esi
 	lea esp,[esp+16]
 	
 	test eax,eax
