@@ -132,7 +132,7 @@ extern unknown_t (*CBaseEntity_NetworkStateChanged)(CBaseEntity* this, void*);
 
 extern void (*CBaseAnimating_SetModelScale)(CBaseAnimating* this, float, float);
 
-extern unknown_t (*CBasePlayer_GiveNamedItem)(CBasePlayer* this, char const*, int);
+extern CBaseEntity* (*CBasePlayer_GiveNamedItem)(CBasePlayer* this, char const*, int);
 extern bool (*CBasePlayer_IsBot)(CBasePlayer* this);
 
 extern void (*CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CBaseEntity*);
@@ -155,7 +155,7 @@ extern unknown_t (*CTFPlayer_Event_KilledOther)(CTFPlayer* this, CBaseEntity*, C
 extern unknown_t (*CTFPlayer_FireBullet)(CTFPlayer* this, CTFWeaponBase*, FireBulletsInfo_t const*, bool, int, int);
 extern CTFWeaponBase* (*CTFPlayer_GetActiveTFWeapon)(CTFPlayer* this);
 extern int (*CTFPlayer_GetNumObjects)(CTFPlayer* this, int, int);
-extern unknown_t (*CTFPlayer_GiveNamedItem)(CTFPlayer* this, char const*, int, CEconItemView const*, bool);
+extern CBaseEntity* (*CTFPlayer_GiveNamedItem)(CTFPlayer* this, char const*, int, CEconItemView const*, bool);
 extern bool (*CTFPlayer_IsMiniBoss)(CTFPlayer* this);
 extern bool (*CTFPlayer_IsPlayerClass)(CTFPlayer* this, int);
 extern unknown_t (*CTFPlayer_OnTakeDamage)(CTFPlayer* this, CTakeDamageInfo const*);
