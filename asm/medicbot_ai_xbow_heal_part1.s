@@ -33,11 +33,11 @@ asm_CTFBotMedicHeal_Update_EnableXbow:
 	mov byte [ebp-0xa8],0
 	mov byte [ebp-0xa0],1
 	
-	push esi
-	call get_GOT_esi
-	
 	push ebp
 	mov ebp,esp
+	
+	push esi
+	call get_GOT_esi
 	
 	; attempt dynamic_cast<CWeaponMedigun>
 	mov ebx,eax

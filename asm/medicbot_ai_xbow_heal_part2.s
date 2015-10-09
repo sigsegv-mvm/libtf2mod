@@ -25,11 +25,11 @@ get_GOT_esi:
 ; st(0): the target range, or possibly zero
 global asm_CTFBotMedicHeal_Update_GetTargetRange:function
 asm_CTFBotMedicHeal_Update_GetTargetRange:
-	push esi
-	call get_GOT_esi
-	
 	push ebp
 	mov ebp,esp
+	
+	push esi
+	call get_GOT_esi
 	
 	push eax
 	
