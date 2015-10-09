@@ -38,7 +38,7 @@ void *__dynamic_cast_NULL_safe(const void *__src_ptr,
 	ptrdiff_t __src2dst);
 
 #define DYNAMIC_CAST(_src, _src_type, _dst_type) \
-	__dynamic_cast(_src, typeinfo_for_ ## _src_type, typeinfo_for_ ## _dst_type, 0)
+	__dynamic_cast_NULL_safe(_src, typeinfo_for_ ## _src_type, typeinfo_for_ ## _dst_type, -1)
 
 
 #endif
