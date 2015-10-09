@@ -32,6 +32,11 @@ extern void *__dynamic_cast(const void *__src_ptr,
 	const void *__dst_type,
 	ptrdiff_t __src2dst);
 
+void *__dynamic_cast_NULL_safe(const void *__src_ptr,
+	const void *__src_type,
+	const void *__dst_type,
+	ptrdiff_t __src2dst);
+
 #define DYNAMIC_CAST(_src, _src_type, _dst_type) \
 	__dynamic_cast(_src, typeinfo_for_ ## _src_type, typeinfo_for_ ## _dst_type, 0)
 

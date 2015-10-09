@@ -1,11 +1,10 @@
 section .text
 
 
-extern __dynamic_cast
-
 extern typeinfo_for_CTFWeaponBase
 extern typeinfo_for_CWeaponMedigun
 extern typeinfo_for_CTFCrossbow
+extern __dynamic_cast_NULL_safe
 
 
 extern _GLOBAL_OFFSET_TABLE_
@@ -47,9 +46,7 @@ asm_CTFBotMedicHeal_Update_EnableXbow:
 	mov eax,[esi+typeinfo_for_CTFWeaponBase wrt ..got]
 		push dword [eax]
 	push ebx
-	xchg ebx,esi
-	call __dynamic_cast wrt ..plt
-	xchg ebx,esi
+	call [esi+__dynamic_cast_NULL_safe wrt ..got]
 	lea esp,[esp+16]
 	
 	test eax,eax
@@ -64,9 +61,7 @@ asm_CTFBotMedicHeal_Update_EnableXbow:
 	mov eax,[esi+typeinfo_for_CTFWeaponBase wrt ..got]
 		push dword [eax]
 	push ebx
-	xchg ebx,esi
-	call __dynamic_cast wrt ..plt
-	xchg ebx,esi
+	call [esi+__dynamic_cast_NULL_safe wrt ..got]
 	lea esp,[esp+16]
 	
 	test eax,eax
