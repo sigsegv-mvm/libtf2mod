@@ -2,7 +2,7 @@
 
 
 DETOUR(sniperdot_nodestroy);
-/*  */
+/* don't remove the sniper dot/laser when unscoping */
 
 
 static void (*trampoline_CTFSniperRifle_DestroySniperDot)(CTFSniperRifle* this);
