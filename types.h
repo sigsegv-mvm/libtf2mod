@@ -758,6 +758,8 @@ typedef void inputdata_t;
 
 typedef void CSoundEmitterSystemBase;
 
+typedef void IEntityFindFilter;
+
 typedef uint32_t EHANDLE;
 
 
