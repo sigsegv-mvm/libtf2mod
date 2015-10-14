@@ -32,6 +32,7 @@ detour_info_t *detours[] = {
 	&detour_soundemitter_override_force_precache,
 	&detour_sapper_use_response_lines,
 	&detour_sapper_allow_multiple_active,
+	&detour_eh_sydney_check_uber,
 	&detour_loadout_allow_holiday_items,
 	
 	//&detour_mini_dispenser,

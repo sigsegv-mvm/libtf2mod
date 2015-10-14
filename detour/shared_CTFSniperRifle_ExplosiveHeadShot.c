@@ -11,7 +11,7 @@ static void (*trampoline_CTFSniperRifle_ExplosiveHeadShot)(CTFSniperRifle* this,
 static func_t *func_CTFPlayer_OnTakeDamage_Alive;
 
 
-static void detour_CTFSniperRifle_ExplosiveHeadShot(CTFSniperRifle* this, CTFPlayer* p1, CTFPlayer* p2)
+static void detour_CTFSniperRifle_ExplosiveHeadShot(CTFSniperRifle* this, CTFPlayer* sniper, CTFPlayer* victim)
 {
 	if (detour_eh_medieval_disable.ok) {
 		/* only call CTFSniperRifle::ExplosiveHeadShot if
@@ -41,7 +41,24 @@ static void detour_CTFSniperRifle_ExplosiveHeadShot(CTFSniperRifle* this, CTFPla
 	}
 	
 	
-	trampoline_CTFSniperRifle_ExplosiveHeadShot(this, p1, p2);
+	if (detour_eh_sydney_check_uber.ok) {
+		uintptr_t caller1 = (uintptr_t)__builtin_extract_return_addr(
+			__builtin_return_address(0));
+		
+		if (func_owns_addr(caller1,
+			func_CTFPlayer_OnTakeDamage_Alive)) {
+			CTFPlayerShared* shared = prop_CTFPlayer_m_Shared(victim);
+			
+			/* don't allow CTFSniperRifle::ExplosiveHeadShot to be triggered by
+			 * the Sydney Sleeper if the primary target is invulnerable */
+			if (CTFPlayerShared_IsInvulnerable(shared)) {
+				return;
+			}
+		}
+	}
+	
+	
+	trampoline_CTFSniperRifle_ExplosiveHeadShot(this, sniper, victim);
 }
 
 
