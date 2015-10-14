@@ -114,7 +114,7 @@ extern void (*CAttributeManager_RegisterGlobalAttributeModifier)(bool (*)(void),
 
 /* functions: member */
 
-extern unknown_t (*CServerGameDLL_DLLInit)(CServerGameDLL* this, void* (*)(char const*, int*), void* (*)(char const*, int*), void* (*)(char const*, int*), CGlobalVars*);
+extern bool (*CServerGameDLL_DLLInit)(CServerGameDLL* this, void* (*)(char const*, int*), void* (*)(char const*, int*), void* (*)(char const*, int*), CGlobalVars*);
 
 extern void (*ConVar_ctor)(ConVar* this, char const*, char const*, int, char const*);
 extern void (*ConVar_SetValue_int)(ConVar* this, int);
