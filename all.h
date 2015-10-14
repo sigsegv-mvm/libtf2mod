@@ -55,12 +55,12 @@
 #include "detour.h"
 #include "symtab.h"
 #include "vtable.h"
-#include "util.h"
 #include "patch.h"
 #include "convar.h"
 #include "sendprop.h"
 #include "datamap.h"
 #include "symbols.h"
+#include "util.h"
 #include "entprop.h"
 #include "backtrace.h"
 
