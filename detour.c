@@ -34,6 +34,7 @@ detour_info_t *detours[] = {
 	&detour_sapper_allow_multiple_active,
 	&detour_eh_sydney_check_uber,
 	&detour_loadout_allow_holiday_items,
+	&detour_tank_widowmaker_metal,
 	
 	//&detour_mini_dispenser,
 	

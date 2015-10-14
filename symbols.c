@@ -16,6 +16,8 @@ void symbols_init(void)
 		"_ZTI11CBaseEntity");
 	SYMBOL_OBJ(typeinfo_for_CBasePlayer,
 		"_ZTI11CBasePlayer");
+	SYMBOL_OBJ(typeinfo_for_CTFPlayer,
+		"_ZTI9CTFPlayer");
 	SYMBOL_OBJ(typeinfo_for_CTFBot,
 		"_ZTI6CTFBot");
 	SYMBOL_OBJ(typeinfo_for_CBaseObject,
@@ -242,6 +244,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFPlayerShared_StunPlayer,
 		"_ZN15CTFPlayerShared10StunPlayerEffiP9CTFPlayer");
 	
+	SYMBOL_FUNC(CTFPlayer_AddBuildResources,
+		"_ZN9CTFPlayer17AddBuildResourcesEi");
 	SYMBOL_FUNC(CTFPlayer_ApplyAbsVelocityImpulse,
 		"_ZN9CTFPlayer23ApplyAbsVelocityImpulseERK6Vector");
 	SYMBOL_FUNC(CTFPlayer_ApplyAirBlastImpulse,
@@ -313,6 +317,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFTankBoss_ModifyDamage,
 		"_ZNK11CTFTankBoss12ModifyDamageEP15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFTankBoss_OnTakeDamage_Alive,
+		"_ZN11CTFTankBoss18OnTakeDamage_AliveERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFTankBoss_TankBossThink,
 		"_ZN11CTFTankBoss13TankBossThinkEv");
 	

@@ -14,6 +14,7 @@ void symbols_init(void);
 
 extern void *typeinfo_for_CBaseEntity;
 extern void *typeinfo_for_CBasePlayer;
+extern void *typeinfo_for_CTFPlayer;
 extern void *typeinfo_for_CTFBot;
 extern void *typeinfo_for_CBaseObject;
 extern void *typeinfo_for_CTFWeaponBase;
@@ -152,6 +153,7 @@ extern bool (*CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_StunPlayer)(CTFPlayerShared* this, float, float, int, CTFPlayer*);
 
+extern unknown_t (*CTFPlayer_AddBuildResources)(CTFPlayer* this, int);
 extern void (*CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
 extern void (*CTFPlayer_ApplyAirBlastImpulse)(CTFPlayer* this, Vector const*);
 extern bool (*CTFPlayer_CanBeForcedToLaugh)(CTFPlayer* this);
@@ -189,6 +191,7 @@ extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
 extern bool (*NextBotPlayer_CTFPlayer_IsBot)(NextBotPlayer_CTFPlayer* this);
 
 extern void (*CTFTankBoss_ModifyDamage)(CTFTankBoss* this, CTakeDamageInfo*);
+extern unknown_t (*CTFTankBoss_OnTakeDamage_Alive)(CTFTankBoss* this, CTakeDamageInfo const*);
 extern void (*CTFTankBoss_TankBossThink)(CTFTankBoss* this);
 
 extern CEconItemAttributeDefinition* (*CEconItemSchema_GetAttributeDefinitionByName)(CEconItemSchema* this, char const*);
