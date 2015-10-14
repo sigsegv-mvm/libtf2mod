@@ -600,6 +600,19 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFBotMvMEngineerIdle_Update,
 		"_ZN21CTFBotMvMEngineerIdle6UpdateEP6CTFBotf");
 	
+	SYMBOL_FUNC(INextBotComponent_GetBot,
+		"_ZNK17INextBotComponent6GetBotEv");
+	
+	SYMBOL_FUNC(IBody_AimHeadTowards_ent,
+		"_ZN5IBody14AimHeadTowardsEP11CBaseEntityNS_18LookAtPriorityTypeEfP13INextBotReplyPKc");
+	SYMBOL_FUNC(IBody_AimHeadTowards_vec,
+		"_ZN5IBody14AimHeadTowardsERK6VectorNS_18LookAtPriorityTypeEfP13INextBotReplyPKc");
+	
+	SYMBOL_FUNC(PlayerBody_AimHeadTowards_ent,
+		"_ZN10PlayerBody14AimHeadTowardsEP11CBaseEntityN5IBody18LookAtPriorityTypeEfP13INextBotReplyPKc");
+	SYMBOL_FUNC(PlayerBody_AimHeadTowards_vec,
+		"_ZN10PlayerBody14AimHeadTowardsERK6VectorN5IBody18LookAtPriorityTypeEfP13INextBotReplyPKc");
+	
 	SYMBOL_FUNC(CTFReviveMarker_AddMarkerHealth,
 		"_ZN15CTFReviveMarker15AddMarkerHealthEf");
 	

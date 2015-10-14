@@ -4,6 +4,7 @@
 static int vidx_CBaseEntity_GetBaseEntity          = -1;
 static int vidx_CBasePlayer_IsBot                  = -1;
 static int vidx_CTFWeaponBase_GetWeaponID          = -1;
+static int vidx_INextBotComponent_GetBot           = -1;
 
 
 static int vtable_find_index_mem(void **vtable, size_t size, void *pfunc)
@@ -66,6 +67,10 @@ void vtable_init(void)
 	assert((vidx_CTFWeaponBase_GetWeaponID =
 		vtable_find_index_sym("_ZTV13CTFWeaponBase",
 		CTFWeaponBase_GetWeaponID)) != -1);
+	
+	assert((vidx_INextBotComponent_GetBot =
+		vtable_find_index_sym("_ZTV17INextBotComponent",
+		INextBotComponent_GetBot)) != -1);
 }
 
 
@@ -98,5 +103,16 @@ int vcall_CTFWeaponBase_GetWeaponID(CTFWeaponBase* this)
 	assert(vidx != -1);
 	
 	int (*vfunc)(CTFWeaponBase*) = vtable[vidx];
+	return vfunc(this);
+}
+
+
+INextBot* vcall_INextBotComponent_GetBot(INextBotComponent* this)
+{
+	void **vtable = *((void ***)this);
+	int vidx = vidx_INextBotComponent_GetBot;
+	assert(vidx != -1);
+	
+	INextBot* (*vfunc)(INextBotComponent*) = vtable[vidx];
 	return vfunc(this);
 }

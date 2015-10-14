@@ -635,6 +635,13 @@ typedef enum {
 	HOLIDAY_APRILFOOLS                      = 11,
 } TFHoliday;
 
+typedef enum {
+	LOOKPRI_BORING      = 0,
+	LOOKPRI_INTERESTING = 1,
+	LOOKPRI_IMPORTANT   = 2,
+	LOOKPRI_CRITICAL    = 3,
+} IBody_LookAtPriorityType;
+
 
 /* opaque types */
 
@@ -733,6 +740,18 @@ typedef void CTFBotMedicHeal;
 typedef void CTFBotMvMEngineerIdle;
 typedef void CTFBotMissionSuicideBomber;
 
+typedef void INextBot;
+
+typedef void INextBotComponent;
+
+typedef void IVision;
+
+typedef void IBody;
+typedef void PlayerBody;
+
+typedef void ILocomotion;
+typedef void PlayerLocomotion;
+
 typedef void CTFReviveMarker;
 
 typedef void CCurrencyPack;
@@ -759,6 +778,8 @@ typedef void inputdata_t;
 typedef void CSoundEmitterSystemBase;
 
 typedef void IEntityFindFilter;
+
+typedef void INextBotReply;
 
 typedef uint32_t EHANDLE;
 

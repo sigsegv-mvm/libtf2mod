@@ -352,6 +352,14 @@ extern nextbot_event_response_t (*CTFBotMedicHeal_Update)(CTFBotMedicHeal* this,
 
 extern nextbot_event_response_t (*CTFBotMvMEngineerIdle_Update)(CTFBotMvMEngineerIdle* this, CTFBot*, float);
 
+extern INextBot* (*INextBotComponent_GetBot)(INextBotComponent* this);
+
+extern void (*IBody_AimHeadTowards_ent)(IBody* this, CBaseEntity*, IBody_LookAtPriorityType, float, INextBotReply*, char const*);
+extern void (*IBody_AimHeadTowards_vec)(IBody* this, Vector const*, IBody_LookAtPriorityType, float, INextBotReply*, char const*);
+
+extern void (*PlayerBody_AimHeadTowards_ent)(PlayerBody* this, CBaseEntity*, IBody_LookAtPriorityType, float, INextBotReply*, char const*);
+extern void (*PlayerBody_AimHeadTowards_vec)(PlayerBody* this, Vector const*, IBody_LookAtPriorityType, float, INextBotReply*, char const*);
+
 extern unknown_t (*CTFReviveMarker_AddMarkerHealth)(CTFReviveMarker* this, float);
 
 extern unknown_t (*CCurrencyPack_ComeToRest)(CCurrencyPack* this);
