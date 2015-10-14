@@ -94,6 +94,33 @@ typedef struct {
 SIZE_CHECK(ConCommand, 0x24);
 
 
+static inline float ConVar_GetFloat(const ConVar* this)
+{
+	ConVar* parent = (ConVar*)this->m_pParent;
+	return parent->m_fValue;
+}
+
+static inline int ConVar_GetInt(const ConVar* this)
+{
+	ConVar* parent = (ConVar*)this->m_pParent;
+	return parent->m_nValue;
+}
+
+static inline char const* ConVar_GetString(const ConVar* this)
+{
+	if ((this->base.m_nFlags & FCVAR_NEVER_AS_STRING) != 0) {
+		return "FCVAR_NEVER_AS_STRING";
+	}
+	
+	ConVar* parent = (ConVar*)this->m_pParent;
+	if (parent->m_pszString != NULL) {
+		return parent->m_pszString;
+	} else {
+		return "";
+	}
+}
+
+
 void convar_init(void);
 
 
