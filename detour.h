@@ -47,6 +47,7 @@ extern detour_info_t detour_init;
 
 extern detour_info_t detour_shared_CTFSniperRifle_ExplosiveHeadShot;
 extern detour_info_t detour_shared_CBasePlayer_IsBot;
+extern detour_info_t detour_shared_CTFPlayer_SpeakConceptIfAllowed;
 
 extern detour_info_t detour_sentry_moveturret_decimate;
 extern detour_info_t detour_minisentry_quickbuild_health_fix;
@@ -73,11 +74,12 @@ extern detour_info_t detour_sentrybuster_roundwin_behavior_fix;
 extern detour_info_t detour_eh_recursive_fix;
 extern detour_info_t detour_nextprimaryattack_unalias;
 extern detour_info_t detour_soundemitter_override_force_precache;
-extern detour_info_t detour_sapper_use_response_lines;
 extern detour_info_t detour_sapper_allow_multiple_active;
 extern detour_info_t detour_eh_sydney_check_uber;
 extern detour_info_t detour_loadout_allow_holiday_items;
 extern detour_info_t detour_tank_widowmaker_metal;
+extern detour_info_t detour_responses_sapper;
+extern detour_info_t detour_responses_credits;
 
 extern detour_info_t detour_mini_dispenser;
 

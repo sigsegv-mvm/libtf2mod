@@ -4,6 +4,7 @@
 detour_info_t *detours[] = {
 	&detour_shared_CTFSniperRifle_ExplosiveHeadShot,
 	&detour_shared_CBasePlayer_IsBot,
+	&detour_shared_CTFPlayer_SpeakConceptIfAllowed,
 	
 	&detour_sentry_moveturret_decimate,
 	&detour_minisentry_quickbuild_health_fix,
@@ -30,11 +31,12 @@ detour_info_t *detours[] = {
 	&detour_eh_recursive_fix,
 	//&detour_nextprimaryattack_unalias,
 	&detour_soundemitter_override_force_precache,
-	&detour_sapper_use_response_lines,
 	&detour_sapper_allow_multiple_active,
 	&detour_eh_sydney_check_uber,
 	&detour_loadout_allow_holiday_items,
 	&detour_tank_widowmaker_metal,
+	&detour_responses_sapper,
+	&detour_responses_credits,
 	
 	//&detour_mini_dispenser,
 	

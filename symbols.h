@@ -366,6 +366,7 @@ extern void (*PlayerBody_AimHeadTowards_vec)(PlayerBody* this, Vector const*, IB
 extern unknown_t (*CTFReviveMarker_AddMarkerHealth)(CTFReviveMarker* this, float);
 
 extern unknown_t (*CCurrencyPack_ComeToRest)(CCurrencyPack* this);
+extern unknown_t (*CCurrencyPack_MyTouch)(CCurrencyPack* this, CBasePlayer*);
 
 extern unknown_t (*CFuncNavCost_HasTag)(CFuncNavCost* this, char const*);
 extern unknown_t (*CFuncNavCost_IsApplicableTo)(CFuncNavCost* this, CBaseCombatCharacter*);

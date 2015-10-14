@@ -624,6 +624,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CCurrencyPack_ComeToRest,
 		"_ZN13CCurrencyPack10ComeToRestEv");
+	SYMBOL_FUNC(CCurrencyPack_MyTouch,
+		"_ZN13CCurrencyPack7MyTouchEP11CBasePlayer");
 	
 	SYMBOL_FUNC(CFuncNavCost_HasTag,
 		"_ZNK12CFuncNavCost6HasTagEPKc");
