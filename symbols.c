@@ -36,8 +36,14 @@ void symbols_init(void)
 	
 	/* globals */
 	
+	SYMBOL_OBJ(engine,
+		"engine");
+	
 	SYMBOL_OBJ(gpGlobals,
 		"gpGlobals");
+	
+	SYMBOL_OBJ(gEntList,
+		"gEntList");
 	
 	SYMBOL_OBJ(gameeventmanager,
 		"gameeventmanager");
@@ -181,6 +187,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CServerGameDLL_DLLInit,
 		"_ZN14CServerGameDLL7DLLInitEPFPvPKcPiES5_S5_P11CGlobalVars");
 	
+	SYMBOL_FUNC(CVEngineServer_PEntityOfEntIndex,
+		"_ZN14CVEngineServer17PEntityOfEntIndexEi");
+	
 	SYMBOL_FUNC(ConVar_ctor,
 		"_ZN6ConVarC2EPKcS1_iS1_");
 	SYMBOL_FUNC(ConVar_SetValue_int,
@@ -194,8 +203,13 @@ void symbols_init(void)
 	SYMBOL_FUNC(CGameEventManager_FireEvent,
 		"_ZN17CGameEventManager9FireEventEP10IGameEventb");
 	
+	SYMBOL_FUNC(CGlobalEntityList_FindEntityByName,
+		"_ZN17CGlobalEntityList16FindEntityByNameEP11CBaseEntityPKcS1_S1_S1_P17IEntityFindFilter");
+	
 	SYMBOL_FUNC(CBaseEntity_ApplyAbsVelocityImpulse,
 		"_ZN11CBaseEntity23ApplyAbsVelocityImpulseERK6Vector");
+	SYMBOL_FUNC(CBaseEntity_GetBaseEntity,
+		"_ZN11CBaseEntity13GetBaseEntityEv");
 	SYMBOL_FUNC(CBaseEntity_GetMaxHealth,
 		"_ZNK11CBaseEntity12GetMaxHealthEv");
 	SYMBOL_FUNC(CBaseEntity_GetTeamNumber,

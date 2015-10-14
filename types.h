@@ -640,12 +640,17 @@ typedef enum {
 
 typedef uint32_t unknown_t;
 
+typedef void IServerNetworkable;
 typedef void IHandleEntity;
+typedef void IServerUnknown;
 
 typedef void CServerGameDLL;
+typedef void CVEngineServer;
 
 typedef void CGameEventManager;
 typedef void IGameEvent;
+
+typedef void CGlobalEntityList;
 
 typedef void CBaseEntity;
 typedef void CBaseAnimating;
@@ -898,6 +903,21 @@ typedef struct {
 	int hitbox;
 } CGameTrace;
 SIZE_CHECK(CGameTrace, 0x54);
+
+typedef struct {
+	int m_fStateFlags;
+	short m_NetworkSerialNumber;
+	short m_EdictIndex;
+	IServerNetworkable *m_pNetworkable;
+	IServerUnknown *m_pUnk;
+} CBaseEdict;
+SIZE_CHECK(CBaseEdict, 0x10);
+
+typedef struct {
+	CBaseEdict base;
+	float freetime;
+} edict_t;
+SIZE_CHECK(edict_t, 0x14);
 
 
 #endif

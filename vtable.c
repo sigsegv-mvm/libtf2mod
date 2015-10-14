@@ -1,8 +1,9 @@
 #include "all.h"
 
 
-static int vidx_CBasePlayer_IsBot         = -1;
-static int vidx_CTFWeaponBase_GetWeaponID = -1;
+static int vidx_CBaseEntity_GetBaseEntity          = -1;
+static int vidx_CBasePlayer_IsBot                  = -1;
+static int vidx_CTFWeaponBase_GetWeaponID          = -1;
 
 
 static int vtable_find_index(const char *sym_name, void *pfunc)
@@ -50,6 +51,10 @@ int vtable_find_offset(const char *sym_name, void *pfunc)
 
 void vtable_init(void)
 {
+	assert((vidx_CBaseEntity_GetBaseEntity =
+		vtable_find_index("_ZTV11CBaseEntity",
+		CBaseEntity_GetBaseEntity)) != -1);
+	
 	assert((vidx_CBasePlayer_IsBot =
 		vtable_find_index("_ZTV11CBasePlayer",
 		CBasePlayer_IsBot)) != -1);
@@ -57,6 +62,17 @@ void vtable_init(void)
 	assert((vidx_CTFWeaponBase_GetWeaponID =
 		vtable_find_index("_ZTV13CTFWeaponBase",
 		CTFWeaponBase_GetWeaponID)) != -1);
+}
+
+
+CBaseEntity* vcall_IServerUnknown_GetBaseEntity(IServerUnknown* this)
+{
+	void **vtable = *((void ***)this);
+	int vidx = vidx_CBaseEntity_GetBaseEntity;
+	assert(vidx != -1);
+	
+	CBaseEntity* (*vfunc)(IServerUnknown*) = vtable[vidx];
+	return vfunc(this);
 }
 
 

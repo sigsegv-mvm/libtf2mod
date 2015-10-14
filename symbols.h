@@ -26,7 +26,11 @@ extern void *typeinfo_for_CTFTankBoss;
 
 /* globals */
 
+extern CVEngineServer **engine;
+
 extern CGlobalVars **gpGlobals;
+
+extern CGlobalEntityList *gEntList;
 
 extern CGameEventManager **gameeventmanager;
 
@@ -116,6 +120,8 @@ extern void (*CAttributeManager_RegisterGlobalAttributeModifier)(bool (*)(void),
 
 extern bool (*CServerGameDLL_DLLInit)(CServerGameDLL* this, void* (*)(char const*, int*), void* (*)(char const*, int*), void* (*)(char const*, int*), CGlobalVars*);
 
+extern edict_t* (*CVEngineServer_PEntityOfEntIndex)(CVEngineServer* this, int);
+
 extern void (*ConVar_ctor)(ConVar* this, char const*, char const*, int, char const*);
 extern void (*ConVar_SetValue_int)(ConVar* this, int);
 
@@ -124,7 +130,10 @@ extern void (*ConCommand_ctor)(ConCommand* this, char const*, void (*)(CCommand 
 extern IGameEvent* (*CGameEventManager_CreateEvent)(CGameEventManager* this, char const*, bool);
 extern bool (*CGameEventManager_FireEvent)(CGameEventManager* this, IGameEvent*, bool);
 
+extern CBaseEntity* (*CGlobalEntityList_FindEntityByName)(CGlobalEntityList* this, CBaseEntity*, char const*, CBaseEntity*, CBaseEntity*, CBaseEntity*, IEntityFindFilter*);
+
 extern void (*CBaseEntity_ApplyAbsVelocityImpulse)(CBaseEntity* this, Vector const*);
+extern CBaseEntity* (*CBaseEntity_GetBaseEntity)(CBaseEntity* this);
 extern int (*CBaseEntity_GetMaxHealth)(CBaseEntity* this);
 extern int (*CBaseEntity_GetTeamNumber)(CBaseEntity* this);
 extern bool (*CBaseEntity_InSameTeam)(CBaseEntity* this, CBaseEntity*);

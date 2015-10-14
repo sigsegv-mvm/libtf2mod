@@ -27,6 +27,30 @@ const char *get_string_for_customkill(int m_iCustomKill);
 const char *get_string_for_weaponid(int id);
 
 
+static inline edict_t* INDEXENT(int iEdictNum)
+{
+	return CVEngineServer_PEntityOfEntIndex(*engine, iEdictNum);
+}
+
+static inline CBaseEntity* GetContainingEntity(edict_t* pent)
+{
+	if (pent != NULL && pent->base.m_pUnk != NULL) {
+		return vcall_IServerUnknown_GetBaseEntity(pent->base.m_pUnk);
+	}
+	
+	return NULL;
+}
+
+static inline CBaseEntity* CBaseEntity_Instance(edict_t* pent)
+{
+	if (pent == NULL) {
+		pent = INDEXENT(0);
+	}
+	
+	return GetContainingEntity(pent);
+}
+
+
 extern void *__dynamic_cast(const void *__src_ptr,
 	const void *__src_type,
 	const void *__dst_type,
