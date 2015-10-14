@@ -211,7 +211,8 @@ extern bool (*CWeaponMedigun_IsAttachedToBuilding)(CWeaponMedigun* this);
 
 extern void (*CTFRocketLauncher_Precache)(CTFRocketLauncher* this);
 
-extern bool (*CTFSniperRifle_CanFireCriticalShot)(CTFSniperRifle*, bool);
+extern bool (*CTFSniperRifle_CanFireCriticalShot)(CTFSniperRifle* this, bool);
+extern void (*CTFSniperRifle_DestroySniperDot)(CTFSniperRifle* this);
 extern void (*CTFSniperRifle_ExplosiveHeadShot)(CTFSniperRifle* this, CTFPlayer*, CTFPlayer*);
 extern void (*CTFSniperRifle_ItemPostFrame)(CTFSniperRifle* this);
 extern void (*CTFSniperRifleClassic_ItemPostFrame)(CTFSniperRifleClassic* this);

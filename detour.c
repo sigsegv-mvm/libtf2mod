@@ -47,6 +47,7 @@ detour_info_t *detours[] = {
 	//&detour_tank_minigun_resistance_disable,
 	//&detour_sapper_cooldown_disable,
 	//&detour_sapper_extended_duration,
+	//&detour_sniperdot_nodestroy,
 	
 	&detour_medicbot_ai_xbow_heal,
 	&detour_medicbot_ai_shield,

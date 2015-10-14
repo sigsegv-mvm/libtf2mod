@@ -354,6 +354,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFSniperRifle_CanFireCriticalShot,
 		"_ZN14CTFSniperRifle19CanFireCriticalShotEb");
+	SYMBOL_FUNC(CTFSniperRifle_DestroySniperDot,
+		"_ZN14CTFSniperRifle16DestroySniperDotEv");
 	SYMBOL_FUNC(CTFSniperRifle_ExplosiveHeadShot,
 		"_ZN14CTFSniperRifle17ExplosiveHeadShotEP9CTFPlayerS1_");
 	SYMBOL_FUNC(CTFSniperRifle_ItemPostFrame,
