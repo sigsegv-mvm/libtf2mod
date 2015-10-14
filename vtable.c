@@ -6,13 +6,8 @@ static int vidx_CBasePlayer_IsBot                  = -1;
 static int vidx_CTFWeaponBase_GetWeaponID          = -1;
 
 
-static int vtable_find_index(const char *sym_name, void *pfunc)
+static int vtable_find_index_mem(void **vtable, size_t size, void *pfunc)
 {
-	void **vtable;
-	size_t size;
-	
-	symtab_obj_absolute(sym_name, (void **)&vtable, &size);
-	
 	vtable += 2;
 	size -= 2 * sizeof(*vtable);
 	
@@ -36,10 +31,19 @@ static int vtable_find_index(const char *sym_name, void *pfunc)
 	return -1;
 }
 
+static int vtable_find_index_sym(const char *sym_name, void *pfunc)
+{
+	void **vtable;
+	size_t size;
+	symtab_obj_absolute(sym_name, (void **)&vtable, &size);
+	
+	return vtable_find_index_mem(vtable, size, pfunc);
+}
+
 
 int vtable_find_offset(const char *sym_name, void *pfunc)
 {
-	int idx = vtable_find_index(sym_name, pfunc);
+	int idx = vtable_find_index_sym(sym_name, pfunc);
 	
 	if (idx != -1) {
 		return 4 * idx;
@@ -52,15 +56,15 @@ int vtable_find_offset(const char *sym_name, void *pfunc)
 void vtable_init(void)
 {
 	assert((vidx_CBaseEntity_GetBaseEntity =
-		vtable_find_index("_ZTV11CBaseEntity",
+		vtable_find_index_sym("_ZTV11CBaseEntity",
 		CBaseEntity_GetBaseEntity)) != -1);
 	
 	assert((vidx_CBasePlayer_IsBot =
-		vtable_find_index("_ZTV11CBasePlayer",
+		vtable_find_index_sym("_ZTV11CBasePlayer",
 		CBasePlayer_IsBot)) != -1);
 	
 	assert((vidx_CTFWeaponBase_GetWeaponID =
-		vtable_find_index("_ZTV13CTFWeaponBase",
+		vtable_find_index_sym("_ZTV13CTFWeaponBase",
 		CTFWeaponBase_GetWeaponID)) != -1);
 }
 
