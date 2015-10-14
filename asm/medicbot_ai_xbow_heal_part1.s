@@ -46,7 +46,9 @@ asm_CTFBotMedicHeal_Update_EnableXbow:
 	mov eax,[esi+typeinfo_for_CTFWeaponBase wrt ..got]
 		push dword [eax]
 	push ebx
-	call [esi+__dynamic_cast_NULL_safe wrt ..got]
+	xchg ebx,esi
+	call __dynamic_cast_NULL_safe wrt ..plt
+	xchg ebx,esi
 	lea esp,[esp+16]
 	
 	test eax,eax
@@ -61,7 +63,9 @@ asm_CTFBotMedicHeal_Update_EnableXbow:
 	mov eax,[esi+typeinfo_for_CTFWeaponBase wrt ..got]
 		push dword [eax]
 	push ebx
-	call [esi+__dynamic_cast_NULL_safe wrt ..got]
+	xchg ebx,esi
+	call __dynamic_cast_NULL_safe wrt ..plt
+	xchg ebx,esi
 	lea esp,[esp+16]
 	
 	test eax,eax
