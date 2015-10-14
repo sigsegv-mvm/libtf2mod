@@ -435,6 +435,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CObjectTeleporter_FinishedBuilding,
 		"_ZN17CObjectTeleporter16FinishedBuildingEv");
 	
+	SYMBOL_FUNC(CObjectSapper_ApplyRoboSapper,
+		"_ZN13CObjectSapper15ApplyRoboSapperEP9CTFPlayerfi");
 	SYMBOL_FUNC(CObjectSapper_ApplyRoboSapperEffects,
 		"_ZN13CObjectSapper22ApplyRoboSapperEffectsEP9CTFPlayerf");
 	SYMBOL_FUNC(CObjectSapper_Spawn,

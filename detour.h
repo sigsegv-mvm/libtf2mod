@@ -89,6 +89,7 @@ extern detour_info_t detour_disposable_dispenser_part5;
 extern detour_info_t detour_mvm_extended_waveloss_time;
 extern detour_info_t detour_tank_minigun_resistance_disable;
 extern detour_info_t detour_sapper_cooldown_disable;
+extern detour_info_t detour_sapper_extended_duration;
 
 extern detour_info_t detour_medicbot_ai_xbow_heal;
 extern detour_info_t detour_medicbot_ai_shield;

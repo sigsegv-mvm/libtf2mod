@@ -259,6 +259,7 @@ extern void (*CObjectSentrygun_Spawn)(CObjectSentrygun* this);
 
 extern void (*CObjectTeleporter_FinishedBuilding)(CObjectTeleporter* this);
 
+extern void (*CObjectSapper_ApplyRoboSapper)(CObjectSapper* this, CTFPlayer*, float, int);
 extern unknown_t (*CObjectSapper_ApplyRoboSapperEffects)(CObjectSapper* this, CTFPlayer*, float);
 extern void (*CObjectSapper_Spawn)(CObjectSapper* this);
 
