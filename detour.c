@@ -74,6 +74,8 @@ detour_info_t *detours[] = {
 	&detour_debug_spawn_item_fail_trace,
 	
 	//&detour_profile_attributes,
+	
+	//&detour_reimplement_sv_showhitboxes,
 };
 
 

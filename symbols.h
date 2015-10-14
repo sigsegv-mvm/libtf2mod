@@ -13,6 +13,7 @@ void symbols_init(void);
 /* RTTI */
 
 extern void *typeinfo_for_CBaseEntity;
+extern void *typeinfo_for_CBaseAnimating;
 extern void *typeinfo_for_CBasePlayer;
 extern void *typeinfo_for_CTFPlayer;
 extern void *typeinfo_for_CTFBot;
@@ -120,6 +121,7 @@ extern void (*CAttributeManager_RegisterGlobalAttributeModifier)(bool (*)(void),
 /* functions: member */
 
 extern bool (*CServerGameDLL_DLLInit)(CServerGameDLL* this, void* (*)(char const*, int*), void* (*)(char const*, int*), void* (*)(char const*, int*), CGlobalVars*);
+extern void (*CServerGameDLL_PreClientUpdate)(CServerGameDLL* this, bool);
 
 extern edict_t* (*CVEngineServer_PEntityOfEntIndex)(CVEngineServer* this, int);
 
@@ -141,6 +143,7 @@ extern bool (*CBaseEntity_InSameTeam)(CBaseEntity* this, CBaseEntity*);
 extern bool (*CBaseEntity_IsBaseObject)(CBaseEntity* this);
 extern unknown_t (*CBaseEntity_NetworkStateChanged)(CBaseEntity* this, void*);
 
+extern void (*CBaseAnimating_DrawServerHitboxes)(CBaseAnimating* this, float, bool);
 extern void (*CBaseAnimating_SetModelScale)(CBaseAnimating* this, float, float);
 
 extern CBaseEntity* (*CBasePlayer_GiveNamedItem)(CBasePlayer* this, char const*, int);

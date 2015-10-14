@@ -118,5 +118,7 @@ extern detour_info_t detour_debug_spawn_item_fail_trace;
 
 extern detour_info_t detour_profile_attributes;
 
+extern detour_info_t detour_reimplement_sv_showhitboxes;
+
 
 #endif

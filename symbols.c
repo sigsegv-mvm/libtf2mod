@@ -14,6 +14,8 @@ void symbols_init(void)
 	
 	SYMBOL_OBJ(typeinfo_for_CBaseEntity,
 		"_ZTI11CBaseEntity");
+	SYMBOL_OBJ(typeinfo_for_CBaseAnimating,
+		"_ZTI14CBaseAnimating");
 	SYMBOL_OBJ(typeinfo_for_CBasePlayer,
 		"_ZTI11CBasePlayer");
 	SYMBOL_OBJ(typeinfo_for_CTFPlayer,
@@ -188,6 +190,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CServerGameDLL_DLLInit,
 		"_ZN14CServerGameDLL7DLLInitEPFPvPKcPiES5_S5_P11CGlobalVars");
+	SYMBOL_FUNC(CServerGameDLL_PreClientUpdate,
+		"_ZN14CServerGameDLL15PreClientUpdateEb");
 	
 	SYMBOL_FUNC(CVEngineServer_PEntityOfEntIndex,
 		"_ZN14CVEngineServer17PEntityOfEntIndexEi");
@@ -223,6 +227,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CBaseEntity_NetworkStateChanged,
 		"_ZN11CBaseEntity19NetworkStateChangedEPv");
 	
+	SYMBOL_FUNC(CBaseAnimating_DrawServerHitboxes,
+		"_ZN14CBaseAnimating18DrawServerHitboxesEfb");
 	SYMBOL_FUNC(CBaseAnimating_SetModelScale,
 		"_ZN14CBaseAnimating13SetModelScaleEff");
 	
