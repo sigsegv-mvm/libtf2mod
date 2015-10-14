@@ -11,10 +11,10 @@ PATCH_CHECK
 		sendprop_offset("CTFPlayer", "m_iClass");
 	
 	
-	size_t check1_base = 0x085f;
+	size_t check1_base = 0x0877;
 	uint8_t check1[] = {
-		0x83, 0xb9, CONV_LE(off1) 0x02,     // +085F  cmp DWORD PTR [ecx+m_PlayerClass+m_iClass],TFCLASS_SNIPER
-		0x0f, 0x85, 0xfb, 0x00, 0x00, 0x00, // +0866  jne +0xfb
+		0x83, 0xb9, CONV_LE(off1) 0x02,     // +0877  cmp DWORD PTR [ecx+m_PlayerClass+m_iClass],TFCLASS_SNIPER
+		0x0f, 0x85, 0xfb, 0x00, 0x00, 0x00, // +087E  jne +0xfb
 	};
 	
 	
@@ -29,5 +29,5 @@ PATCH_APPLY
 {
 	/* NOP out the jump */
 	func_write_nop(CTFPlayer_Event_Killed,
-		0x0866, 6);
+		0x087e, 6);
 }
