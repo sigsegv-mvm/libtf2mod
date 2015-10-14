@@ -68,10 +68,10 @@ asm_CTFBotMedicHeal_Update_GetTargetRange:
 	
 	
 .done:
+	pop esi
+	
 	mov esp,ebp
 	pop ebp
-	
-	pop esi
 	
 	mov edx,[ebp+0x10]
 	mov ecx,edi

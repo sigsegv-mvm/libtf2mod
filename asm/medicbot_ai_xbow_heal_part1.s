@@ -75,10 +75,10 @@ asm_CTFBotMedicHeal_Update_EnableXbow:
 	
 	; both dynamic casts failed; return to L_fail
 .ret_fail:
+	pop esi
+	
 	mov esp,ebp
 	pop ebp
-	
-	pop esi
 	
 	add esp,4
 	ret 8
@@ -86,10 +86,10 @@ asm_CTFBotMedicHeal_Update_EnableXbow:
 	
 	; the CTFCrossbow dynamic cast worked; return to L_xbow
 .ret_xbow:
+	pop esi
+	
 	mov esp,ebp
 	pop ebp
-	
-	pop esi
 	
 	add esp,8
 	ret 4
@@ -97,10 +97,10 @@ asm_CTFBotMedicHeal_Update_EnableXbow:
 	
 	; the CWeaponMedigun dynamic cast worked; return to L_medi
 .ret_medi:
+	pop esi
+	
 	mov esp,ebp
 	pop ebp
-	
-	pop esi
 	
 	add esp,12
 	ret
