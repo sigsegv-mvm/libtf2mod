@@ -20,8 +20,8 @@ static void detour_CTFPlayerShared_AddCond(CTFPlayerShared* this, ETFCond cond, 
 	/* ignore AddCond(5) and AddCond(8) from CTFBotMainAction::Update */
 	if (func_owns_addr(caller,
 		func_CTFBotMainAction_Update)) {
-		if (cond == TFCOND_UBERCHARGED ||
-			cond == TFCOND_UBERCHARGEFADING) {
+		if (cond == TF_COND_INVULNERABLE ||
+			cond == TF_COND_INVULNERABLE_WEARINGOFF) {
 			return;
 		}
 	}
