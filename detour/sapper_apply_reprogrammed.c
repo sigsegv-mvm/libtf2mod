@@ -14,9 +14,9 @@ static bool detour_CObjectSapper_IsValidRoboSapperTarget(CObjectSapper* this, CT
 {
 	bool result = trampoline_CObjectSapper_IsValidRoboSapperTarget(this, victim);
 	
-	if (result && CTFPlayer_IsMiniBoss(victim)) {
-		return false;
-	}
+	//if (result && CTFPlayer_IsMiniBoss(victim)) {
+	//	return false;
+	//}
 	
 	return result;
 }
