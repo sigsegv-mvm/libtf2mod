@@ -300,6 +300,59 @@ uintptr_t entprop_extract_CTFPlayerShared_m_pOuter(void)
 {
 	uintptr_t off = 0;
 	
+#ifdef TEST_ENTPROP_EXTRACT
+	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
+		CTFPlayerShared_OnAddSpeedBoost)) {
+		pr_special("%s: PASS #1a\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #1a\n", __func__);
+	}
+	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
+		CTFPlayerShared_OnAddDisguisedAsDispenser)) {
+		pr_special("%s: PASS #1b\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #1b\n", __func__);
+	}
+	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
+		CTFPlayerShared_OnRemoveSpeedBoost)) {
+		pr_special("%s: PASS #1c\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #1c\n", __func__);
+	}
+	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
+		CTFPlayerShared_OnRemoveDisguisedAsDispenser)) {
+		pr_special("%s: PASS #1d\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #1d\n", __func__);
+	}
+	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
+		CTFPlayerShared_GetActiveTFWeapon)) {
+		pr_special("%s: PASS #1e\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #1e\n", __func__);
+	}
+	if (_entprop_extract_CTFPlayerShared_m_pOuter_func2(&off)) {
+		pr_special("%s: PASS #2\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #2\n", __func__);
+	}
+	if (_entprop_extract_CTFPlayerShared_m_pOuter_func3(&off)) {
+		pr_special("%s: PASS #3\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #3\n", __func__);
+	}
+	if (_entprop_extract_CTFPlayerShared_m_pOuter_func4(&off)) {
+		pr_special("%s: PASS #4\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #4\n", __func__);
+	}
+	if (_entprop_extract_CTFPlayerShared_m_pOuter_func5(&off)) {
+		pr_special("%s: PASS #5\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #5\n", __func__);
+	}
+#endif
+	
 	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
 		CTFPlayerShared_OnAddSpeedBoost)) goto done;
 	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,

@@ -531,6 +531,44 @@ uintptr_t entprop_extract_CTFBot_m_nMission(void)
 {
 	uintptr_t off = 0;
 	
+#ifdef TEST_ENTPROP_EXTRACT
+	if (_entprop_extract_CTFBot_m_nMission_func1(&off)) {
+		pr_special("%s: PASS #1\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #1\n", __func__);
+	}
+	if (_entprop_extract_CTFBot_m_nMission_func2(&off)) {
+		pr_special("%s: PASS #2\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #2\n", __func__);
+	}
+	if (_entprop_extract_CTFBot_m_nMission_func3(&off)) {
+		pr_special("%s: PASS #3\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #3\n", __func__);
+	}
+	if (_entprop_extract_CTFBot_m_nMission_func4(&off)) {
+		pr_special("%s: PASS #4\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #4\n", __func__);
+	}
+	if (_entprop_extract_CTFBot_m_nMission_func5(&off)) {
+		pr_special("%s: PASS #5\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #5\n", __func__);
+	}
+	if (_entprop_extract_CTFBot_m_nMission_func6(&off)) {
+		pr_special("%s: PASS #6\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #6\n", __func__);
+	}
+	if (_entprop_extract_CTFBot_m_nMission_func7(&off)) {
+		pr_special("%s: PASS #7\n", __func__);
+	} else {
+		pr_warn("%s: FAIL #7\n", __func__);
+	}
+#endif
+	
 	if (_entprop_extract_CTFBot_m_nMission_func1(&off)) goto done;
 	if (_entprop_extract_CTFBot_m_nMission_func2(&off)) goto done;
 	if (_entprop_extract_CTFBot_m_nMission_func3(&off)) goto done;
