@@ -36,7 +36,7 @@ PATCH_CHECK
 	uintptr_t off2_call1 = CALC_RELJMP(check2_func, 0x010b,
 		CAttributeManager_AttribHookValue_int);
 	
-	uintptr_t off3_call1 = CALC_RELJMP(check3_func, 0x0145,
+	uintptr_t off3_call1 = CALC_RELJMP(check3_func, 0x013b,
 		CAttributeManager_AttribHookValue_int);
 	
 	uintptr_t off4_call1 = CALC_RELJMP(check4_func, 0x2402,
@@ -66,14 +66,14 @@ PATCH_CHECK
 		0xe8, CONV_LE(off2_call1)                       // +0106  call CAttributeManager::AttribHookValue<int>
 	};
 	
-	size_t check3_base = 0x011d;
+	size_t check3_base = 0x0113;
 	uint8_t check3[] = {
-		0xc7, 0x44, 0x24, 0x10, 0x01, 0x00, 0x00, 0x00, // +011D  mov DWORD PTR [esp+0x10],0x1
-		0xc7, 0x44, 0x24, 0x0c, 0x00, 0x00, 0x00, 0x00, // +0125  mov DWORD PTR [esp+0xc],0x0
-		0x89, 0x5c, 0x24, 0x08,                         // +012D  mov DWORD PTR [esp+0x8],ebx
-		0xc7, 0x44, 0x24, 0x04, CONV_LE(off_str1)       // +0131  mov DWORD PTR [esp+0x4],str "halloween_pumpkin_explosions"
-		0xc7, 0x04, 0x24, 0x00, 0x00, 0x00, 0x00,       // +0139  mov DWORD PTR [esp],0x0
-		0xe8, CONV_LE(off3_call1)                       // +0140  call CAttributeManager::AttribHookValue<int>
+		0xc7, 0x44, 0x24, 0x10, 0x01, 0x00, 0x00, 0x00, // +0113  mov DWORD PTR [esp+0x10],0x1
+		0xc7, 0x44, 0x24, 0x0c, 0x00, 0x00, 0x00, 0x00, // +011B  mov DWORD PTR [esp+0xc],0x0
+		0x89, 0x5c, 0x24, 0x08,                         // +0123  mov DWORD PTR [esp+0x8],ebx
+		0xc7, 0x44, 0x24, 0x04, CONV_LE(off_str1)       // +0127  mov DWORD PTR [esp+0x4],str "halloween_pumpkin_explosions"
+		0xc7, 0x04, 0x24, 0x00, 0x00, 0x00, 0x00,       // +012F  mov DWORD PTR [esp],0x0
+		0xe8, CONV_LE(off3_call1)                       // +0136  call CAttributeManager::AttribHookValue<int>
 	};
 	
 	size_t check4_base = 0x23da;
@@ -123,7 +123,7 @@ PATCH_APPLY
 	str.ptr = premunged_attrs_halloween[0];
 	func_write(CTFWeaponBaseGrenadeProj_Explode, 0x015b, 4, str.bytes);
 	func_write(CTFBaseRocket_Explode,            0x00fb, 4, str.bytes);
-	func_write(CTFStickBomb_Smack,               0x0135, 4, str.bytes);
+	func_write(CTFStickBomb_Smack,               0x012b, 4, str.bytes);
 	
 	str.ptr = premunged_attrs_halloween[1];
 	func_write(CTFPlayerShared_ConditionGameRulesThink, 0x23f2, 4, str.bytes);
