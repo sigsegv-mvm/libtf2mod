@@ -243,8 +243,24 @@ void symbols_init(void)
 		"_ZN15CTFPlayerShared23ConditionGameRulesThinkEv");
 	SYMBOL_FUNC(CTFPlayerShared_GetActiveTFWeapon,
 		"_ZNK15CTFPlayerShared17GetActiveTFWeaponEv");
+	SYMBOL_FUNC(CTFPlayerShared_HasDemoShieldEquipped,
+		"_ZNK15CTFPlayerShared21HasDemoShieldEquippedEv");
+	SYMBOL_FUNC(CTFPlayerShared_IsAlly,
+		"_ZN15CTFPlayerShared6IsAllyEP11CBaseEntity");
 	SYMBOL_FUNC(CTFPlayerShared_IsInvulnerable,
 		"_ZNK15CTFPlayerShared14IsInvulnerableEv");
+	SYMBOL_FUNC(CTFPlayerShared_OnAddBurning,
+		"_ZN15CTFPlayerShared12OnAddBurningEv");
+	SYMBOL_FUNC(CTFPlayerShared_OnAddSpeedBoost,
+		"_ZN15CTFPlayerShared15OnAddSpeedBoostEb");
+	SYMBOL_FUNC(CTFPlayerShared_OnAddDisguisedAsDispenser,
+		"_ZN15CTFPlayerShared25OnAddDisguisedAsDispenserEv");
+	SYMBOL_FUNC(CTFPlayerShared_OnRemoveDisguisedAsDispenser,
+		"_ZN15CTFPlayerShared28OnRemoveDisguisedAsDispenserEv");
+	SYMBOL_FUNC(CTFPlayerShared_OnRemoveSpeedBoost,
+		"_ZN15CTFPlayerShared18OnRemoveSpeedBoostEb");
+	SYMBOL_FUNC(CTFPlayerShared_OnRemoveStunned,
+		"_ZN15CTFPlayerShared15OnRemoveStunnedEv");
 	SYMBOL_FUNC(CTFPlayerShared_RadiusCurrencyCollectionCheck,
 		"_ZN15CTFPlayerShared29RadiusCurrencyCollectionCheckEv");
 	SYMBOL_FUNC(CTFPlayerShared_StunPlayer,

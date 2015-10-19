@@ -150,9 +150,18 @@ extern CBaseEntity* (*CBasePlayer_GiveNamedItem)(CBasePlayer* this, char const*,
 extern bool (*CBasePlayer_IsBot)(CBasePlayer* this);
 
 extern void (*CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CBaseEntity*);
+extern void (*CTFPlayerShared_Burn)(CTFPlayerShared* this, CTFPlayer*, CTFWeaponBase*, float);
 extern unknown_t (*CTFPlayerShared_ConditionGameRulesThink)(CTFPlayerShared* this);
 extern CTFWeaponBase* (*CTFPlayerShared_GetActiveTFWeapon)(CTFPlayerShared* this);
+extern bool (*CTFPlayerShared_HasDemoShieldEquipped)(CTFPlayerShared* this);
+extern bool (*CTFPlayerShared_IsAlly)(CTFPlayerShared* this, CBaseEntity*);
 extern bool (*CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnAddBurning)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnAddDisguisedAsDispenser)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnAddSpeedBoost)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnRemoveDisguisedAsDispenser)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnRemoveSpeedBoost)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnRemoveStunned)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_StunPlayer)(CTFPlayerShared* this, float, float, int, CTFPlayer*);
 

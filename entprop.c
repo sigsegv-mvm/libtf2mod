@@ -64,6 +64,7 @@ DEFINE_ENTPROP(bool, CCurrencyPack, m_bDistributed);
 
 /* extracted entprops */
 
+DEFINE_EXTRACTED(CTFPlayer*, CTFPlayerShared, m_pOuter);
 DEFINE_EXTRACTED(int, CTFBot, m_nMission);
 
 
@@ -109,6 +110,8 @@ void entprop_init(void)
 	INIT_SENDPROP(CCurrencyPack_m_bDistributed,
 		CCurrencyPack, m_bDistributed);
 	
+	
+	INIT_EXTRACTED(CTFPlayerShared_m_pOuter);
 	
 	INIT_EXTRACTED(CTFBot_m_nMission);
 }
