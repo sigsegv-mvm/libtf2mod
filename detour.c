@@ -82,7 +82,7 @@ detour_info_t *detours[] = {
 
 
 static int num_funcs = 0;
-static func_t funcs[1024];
+static func_t funcs[4096];
 
 
 void detour_all(void)
