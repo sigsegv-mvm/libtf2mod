@@ -94,6 +94,7 @@ extern detour_info_t detour_tank_minigun_resistance_disable;
 extern detour_info_t detour_sapper_cooldown_disable;
 extern detour_info_t detour_sapper_extended_duration;
 extern detour_info_t detour_sniperdot_nodestroy;
+extern detour_info_t detour_sapper_apply_reprogrammed;
 
 extern detour_info_t detour_medicbot_ai_xbow_heal;
 extern detour_info_t detour_medicbot_ai_shield;
@@ -121,6 +122,7 @@ extern detour_info_t detour_debug_spawn_item_fail_trace;
 extern detour_info_t detour_profile_attributes;
 
 extern detour_info_t detour_reimplement_sv_showhitboxes;
+extern detour_info_t detour_reimplement_cond_reprogrammed;
 
 
 #endif

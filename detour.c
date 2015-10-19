@@ -51,6 +51,7 @@ detour_info_t *detours[] = {
 	//&detour_sapper_cooldown_disable,
 	//&detour_sapper_extended_duration,
 	//&detour_sniperdot_nodestroy,
+	//&detour_sapper_apply_reprogrammed,
 	
 	&detour_medicbot_ai_xbow_heal,
 	&detour_medicbot_ai_shield,
@@ -78,6 +79,7 @@ detour_info_t *detours[] = {
 	//&detour_profile_attributes,
 	
 	//&detour_reimplement_sv_showhitboxes,
+	&detour_reimplement_cond_reprogrammed,
 };
 
 

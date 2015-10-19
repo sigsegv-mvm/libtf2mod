@@ -241,6 +241,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFPlayerShared_AddCond,
 		"_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
+	SYMBOL_FUNC(CTFPlayerShared_Burn,
+		"_ZN15CTFPlayerShared4BurnEP9CTFPlayerP13CTFWeaponBasef");
 	SYMBOL_FUNC(CTFPlayerShared_ConditionGameRulesThink,
 		"_ZN15CTFPlayerShared23ConditionGameRulesThinkEv");
 	SYMBOL_FUNC(CTFPlayerShared_GetActiveTFWeapon,
@@ -253,12 +255,20 @@ void symbols_init(void)
 		"_ZNK15CTFPlayerShared14IsInvulnerableEv");
 	SYMBOL_FUNC(CTFPlayerShared_OnAddBurning,
 		"_ZN15CTFPlayerShared12OnAddBurningEv");
+	SYMBOL_FUNC(CTFPlayerShared_OnAddReprogrammed,
+		"_ZN15CTFPlayerShared17OnAddReprogrammedEv");
 	SYMBOL_FUNC(CTFPlayerShared_OnAddSpeedBoost,
 		"_ZN15CTFPlayerShared15OnAddSpeedBoostEb");
 	SYMBOL_FUNC(CTFPlayerShared_OnAddDisguisedAsDispenser,
 		"_ZN15CTFPlayerShared25OnAddDisguisedAsDispenserEv");
+	SYMBOL_FUNC(CTFPlayerShared_OnConditionAdded,
+		"_ZN15CTFPlayerShared16OnConditionAddedE7ETFCond");
+	SYMBOL_FUNC(CTFPlayerShared_OnConditionRemoved,
+		"_ZN15CTFPlayerShared18OnConditionRemovedE7ETFCond");
 	SYMBOL_FUNC(CTFPlayerShared_OnRemoveDisguisedAsDispenser,
 		"_ZN15CTFPlayerShared28OnRemoveDisguisedAsDispenserEv");
+	SYMBOL_FUNC(CTFPlayerShared_OnRemoveReprogrammed,
+		"_ZN15CTFPlayerShared20OnRemoveReprogrammedEv");
 	SYMBOL_FUNC(CTFPlayerShared_OnRemoveSpeedBoost,
 		"_ZN15CTFPlayerShared18OnRemoveSpeedBoostEb");
 	SYMBOL_FUNC(CTFPlayerShared_OnRemoveStunned,
@@ -292,6 +302,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer17Event_KilledOtherEP11CBaseEntityRK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_FireBullet,
 		"_ZN9CTFPlayer10FireBulletEP13CTFWeaponBaseRK17FireBulletsInfo_tbii");
+	SYMBOL_FUNC(CTFPlayer_ForceChangeTeam,
+		"_ZN9CTFPlayer15ForceChangeTeamEib");
 	SYMBOL_FUNC(CTFPlayer_GetActiveTFWeapon,
 		"_ZNK9CTFPlayer17GetActiveTFWeaponEv");
 	SYMBOL_FUNC(CTFPlayer_GetNumObjects,
@@ -439,6 +451,8 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CBaseObject_DoQuickBuild,
 		"_ZN11CBaseObject12DoQuickBuildEb");
+	SYMBOL_FUNC(CBaseObject_GetBuilder,
+		"_ZNK11CBaseObject10GetBuilderEv");
 	SYMBOL_FUNC(CBaseObject_GetMaxHealthForCurrentLevel,
 		"_ZN11CBaseObject27GetMaxHealthForCurrentLevelEv");
 	SYMBOL_FUNC(CBaseObject_GetReversesBuildingConstructionSpeed,
@@ -485,6 +499,8 @@ void symbols_init(void)
 		"_ZN13CObjectSapper15ApplyRoboSapperEP9CTFPlayerfi");
 	SYMBOL_FUNC(CObjectSapper_ApplyRoboSapperEffects,
 		"_ZN13CObjectSapper22ApplyRoboSapperEffectsEP9CTFPlayerf");
+	SYMBOL_FUNC(CObjectSapper_IsValidRoboSapperTarget,
+		"_ZN13CObjectSapper23IsValidRoboSapperTargetEP9CTFPlayer");
 	SYMBOL_FUNC(CObjectSapper_Spawn,
 		"_ZN13CObjectSapper5SpawnEv");
 	

@@ -159,8 +159,12 @@ extern bool (*CTFPlayerShared_IsAlly)(CTFPlayerShared* this, CBaseEntity*);
 extern bool (*CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_OnAddBurning)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_OnAddDisguisedAsDispenser)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnAddReprogrammed)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_OnAddSpeedBoost)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnConditionAdded)(CTFPlayerShared* this, ETFCond);
+extern void (*CTFPlayerShared_OnConditionRemoved)(CTFPlayerShared* this, ETFCond);
 extern void (*CTFPlayerShared_OnRemoveDisguisedAsDispenser)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnRemoveReprogrammed)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_OnRemoveSpeedBoost)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_OnRemoveStunned)(CTFPlayerShared* this);
 extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
@@ -178,6 +182,7 @@ extern void (*CTFPlayer_DeathSound)(CTFPlayer* this, CTakeDamageInfo const*);
 extern void (*CTFPlayer_Event_Killed)(CTFPlayer* this, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_Event_KilledOther)(CTFPlayer* this, CBaseEntity*, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_FireBullet)(CTFPlayer* this, CTFWeaponBase*, FireBulletsInfo_t const*, bool, int, int);
+extern void (*CTFPlayer_ForceChangeTeam)(CTFPlayer* this, int, bool);
 extern CTFWeaponBase* (*CTFPlayer_GetActiveTFWeapon)(CTFPlayer* this);
 extern int (*CTFPlayer_GetNumObjects)(CTFPlayer* this, int, int);
 extern CBaseEntity* (*CTFPlayer_GiveNamedItem)(CTFPlayer* this, char const*, int, CEconItemView const*, bool);
@@ -262,6 +267,7 @@ extern unknown_t (*CTFProjectile_Arrow_StrikeTarget)(CTFProjectile_Arrow* this, 
 extern unknown_t (*CTFProjectile_Flare_Explode)(CTFProjectile_Flare* this, CGameTrace*, CBaseEntity*);
 
 extern void (*CBaseObject_DoQuickBuild)(CBaseObject* this);
+extern CBaseEntity* (*CBaseObject_GetBuilder)(CBaseObject* this);
 extern int (*CBaseObject_GetMaxHealthForCurrentLevel)(CBaseObject* this);
 extern float (*CBaseObject_GetReversesBuildingConstructionSpeed)(CBaseObject* this);
 extern CObjectSapper* (*CBaseObject_GetSapper)(CBaseObject* this);
@@ -286,7 +292,8 @@ extern void (*CObjectSentrygun_Spawn)(CObjectSentrygun* this);
 extern void (*CObjectTeleporter_FinishedBuilding)(CObjectTeleporter* this);
 
 extern void (*CObjectSapper_ApplyRoboSapper)(CObjectSapper* this, CTFPlayer*, float, int);
-extern unknown_t (*CObjectSapper_ApplyRoboSapperEffects)(CObjectSapper* this, CTFPlayer*, float);
+extern bool (*CObjectSapper_ApplyRoboSapperEffects)(CObjectSapper* this, CTFPlayer*, float);
+extern bool (*CObjectSapper_IsValidRoboSapperTarget)(CObjectSapper* this, CTFPlayer*);
 extern void (*CObjectSapper_Spawn)(CObjectSapper* this);
 
 extern void (*CTFGameRules_BetweenRounds_Think)(CTFGameRules* this);
