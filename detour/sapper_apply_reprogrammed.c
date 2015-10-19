@@ -27,9 +27,9 @@ static bool detour_CObjectSapper_ApplyRoboSapperEffects(CObjectSapper* this, CTF
 		return false;
 	}
 	
-	if (CTFPlayer_IsMiniBoss(victim)) {
-		return false;
-	}
+	//if (CTFPlayer_IsMiniBoss(victim)) {
+	//	return false;
+	//}
 	
 	
 	CTFPlayer* builder = CBaseObject_GetBuilder(this);
