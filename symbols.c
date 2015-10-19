@@ -224,6 +224,8 @@ void symbols_init(void)
 		"_ZNK11CBaseEntity10InSameTeamEPS_");
 	SYMBOL_FUNC(CBaseEntity_IsBaseObject,
 		"_ZNK11CBaseEntity12IsBaseObjectEv");
+	SYMBOL_FUNC(CBaseEntity_IsPlayer,
+		"_ZNK11CBaseEntity8IsPlayerEv");
 	SYMBOL_FUNC(CBaseEntity_NetworkStateChanged,
 		"_ZN11CBaseEntity19NetworkStateChangedEPv");
 	

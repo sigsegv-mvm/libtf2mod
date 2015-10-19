@@ -141,6 +141,7 @@ extern int (*CBaseEntity_GetMaxHealth)(CBaseEntity* this);
 extern int (*CBaseEntity_GetTeamNumber)(CBaseEntity* this);
 extern bool (*CBaseEntity_InSameTeam)(CBaseEntity* this, CBaseEntity*);
 extern bool (*CBaseEntity_IsBaseObject)(CBaseEntity* this);
+extern bool (*CBaseEntity_IsPlayer)(CBaseEntity* this);
 extern unknown_t (*CBaseEntity_NetworkStateChanged)(CBaseEntity* this, void*);
 
 extern void (*CBaseAnimating_DrawServerHitboxes)(CBaseAnimating* this, float, bool);
