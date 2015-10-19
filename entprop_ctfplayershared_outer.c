@@ -162,7 +162,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func3(uintptr_t *off)
 		0x89, 0x75, 0xf8,     // +000C  mov DWORD PTR [ebp-0x8],esi
 		0x8b, 0x75, 0x10,     // +000F  mov esi,DWORD PTR [ebp+0x10]
 		0x89, 0x7d, 0xfc,     // +0012  mov DWORD PTR [ebp-0x4],edi
-		0x89, 0x7d, 0x0c,     // +0015  mov edi,DWORD PTR [ebp+0xc]
+		0x8b, 0x7d, 0x0c,     // +0015  mov edi,DWORD PTR [ebp+0xc]
 		0x8b, 0x83, ANY_DWORD // +0018  mov eax,DWORD PTR [ebx+off]
 	};
 	
