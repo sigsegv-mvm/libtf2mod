@@ -15,7 +15,7 @@ static func_t *func_CCurrencyPack_MyTouch;
 
 static unknown_t detour_CTFPlayer_SpeakConceptIfAllowed(CTFPlayer* this, int concept, char const* s1, char* s2, unsigned int i1, IRecipientFilter* f)
 {
-	if (detour_responses_sapper.ok) {
+	if (detour_responses_unused_sapper.ok) {
 		if (concept == TLK_STUNNED_TARGET) {
 			uintptr_t caller1 = (uintptr_t)__builtin_extract_return_addr(
 				__builtin_return_address(0));
@@ -32,7 +32,7 @@ static unknown_t detour_CTFPlayer_SpeakConceptIfAllowed(CTFPlayer* this, int con
 	}
 	
 	
-	if (detour_responses_credits.ok) {
+	if (detour_responses_unused_credits.ok) {
 		if (concept == TLK_MVM_MONEY_PICKUP) {
 			uintptr_t caller1 = (uintptr_t)__builtin_extract_return_addr(
 				__builtin_return_address(0));
