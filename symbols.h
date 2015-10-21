@@ -26,6 +26,41 @@ extern void *typeinfo_for_CTFCrossbow;
 extern void *typeinfo_for_CTFTankBoss;
 
 
+/* strings */
+
+extern char const *((*g_aAmmoNames)[]);           // TF_AMMO_*
+extern char const *((*g_aWeaponNames)[]);         // TF_WEAPON_*
+extern char const *((*g_szSpecialDamageNames)[]); // TF_DMG_CUSTOM_*
+extern char const *((*taunt_attack_name)[]);      // TANTATK_*
+extern char const *((*g_szProjectileNames)[]);    // projectile_*
+
+extern char const *((*g_aConditionNames)[]); // TF_COND_*
+
+extern char const *((*g_szWeaponTypeSubstrings)[]); // primary/melee/etc
+extern char const *((*g_szLoadoutStrings)[]);       // loadout slots
+extern char const *((*g_szQualityStrings)[]);       // item qualities
+
+extern char const *((*g_aClassNames)[]);                    // TF_CLASS_*
+extern char const *((*g_aRawPlayerClassNames)[]);           // heavyweapons etc
+extern char const *((*g_aRawPlayerClassNamesShort)[]);      // heavy etc
+extern char const *((*g_aPlayerClassNames_NonLocalized)[]); // capitalized
+
+extern char const *((*g_pszMPConcepts)[]); // TLK_*
+
+extern char const *((*g_aCTFEventNames)[]); // TF_FLAGEVENT_*
+
+extern char const (*g_szBotModels)[10][260];         // models: non-giants
+extern char const (*g_szBotBossModels)[10][260];     // models: giants
+extern char const **g_szBotBossSentryBusterModel;    // models: sentry buster
+extern char const (*g_szPlayerRobotModels)[10][260]; // models: obsolete
+
+extern char const *((*s_TankModel)[]);     // models: tank
+extern char const *((*s_TankModelRome)[]); // models: tank (romevision)
+
+extern char const (*g_szRomePromoItems_Hat)[10][260];  // models: romevision hats
+extern char const (*g_szRomePromoItems_Misc)[10][260]; // models: romevision miscs
+
+
 /* globals */
 
 extern CVEngineServer **engine;

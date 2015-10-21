@@ -38,6 +38,64 @@ void symbols_init(void)
 		"_ZTI11CTFTankBoss");
 	
 	
+	/* strings */
+	
+	SYMBOL_OBJ(g_aAmmoNames,
+		"g_aAmmoNames");
+	SYMBOL_OBJ(g_aWeaponNames,
+		"g_aWeaponNames");
+	SYMBOL_OBJ(g_szSpecialDamageNames,
+		"g_szSpecialDamageNames");
+	SYMBOL_OBJ(taunt_attack_name,
+		"_ZL17taunt_attack_name");
+	SYMBOL_OBJ(g_szProjectileNames,
+		"g_szProjectileNames");
+
+	SYMBOL_OBJ(g_aConditionNames,
+		"_ZL17g_aConditionNames");
+
+	SYMBOL_OBJ(g_szWeaponTypeSubstrings,
+		"g_szWeaponTypeSubstrings");
+	SYMBOL_OBJ(g_szLoadoutStrings,
+		"g_szLoadoutStrings");
+	SYMBOL_OBJ(g_szQualityStrings,
+		"g_szQualityStrings");
+
+	SYMBOL_OBJ(g_aClassNames,
+		"g_aClassNames");
+	SYMBOL_OBJ(g_aRawPlayerClassNames,
+		"g_aRawPlayerClassNames");
+	SYMBOL_OBJ(g_aRawPlayerClassNamesShort,
+		"g_aRawPlayerClassNamesShort");
+	SYMBOL_OBJ(g_aPlayerClassNames_NonLocalized,
+		"g_aPlayerClassNames_NonLocalized");
+
+	SYMBOL_OBJ(g_pszMPConcepts,
+		"g_pszMPConcepts");
+
+	SYMBOL_OBJ(g_aCTFEventNames,
+		"g_aCTFEventNames");
+
+	SYMBOL_OBJ(g_szBotModels,
+		"g_szBotModels");
+	SYMBOL_OBJ(g_szBotBossModels,
+		"g_szBotBossModels");
+	SYMBOL_OBJ(g_szBotBossSentryBusterModel,
+		"g_szBotBossSentryBusterModel");
+	SYMBOL_OBJ(g_szPlayerRobotModels,
+		"g_szPlayerRobotModels");
+
+	SYMBOL_OBJ(s_TankModel,
+		"_ZL11s_TankModel");
+	SYMBOL_OBJ(s_TankModelRome,
+		"_ZL15s_TankModelRome");
+
+	SYMBOL_OBJ(g_szRomePromoItems_Hat,
+		"g_szRomePromoItems_Hat");
+	SYMBOL_OBJ(g_szRomePromoItems_Misc,
+		"g_szRomePromoItems_Misc");
+	
+	
 	/* globals */
 	
 	SYMBOL_OBJ(engine,
