@@ -150,25 +150,7 @@ extern void (*CBaseAnimating_SetModelScale)(CBaseAnimating* this, float, float);
 extern CBaseEntity* (*CBasePlayer_GiveNamedItem)(CBasePlayer* this, char const*, int);
 extern bool (*CBasePlayer_IsBot)(CBasePlayer* this);
 
-extern void (*CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CBaseEntity*);
-extern void (*CTFPlayerShared_Burn)(CTFPlayerShared* this, CTFPlayer*, CTFWeaponBase*, float);
-extern unknown_t (*CTFPlayerShared_ConditionGameRulesThink)(CTFPlayerShared* this);
-extern CTFWeaponBase* (*CTFPlayerShared_GetActiveTFWeapon)(CTFPlayerShared* this);
-extern bool (*CTFPlayerShared_HasDemoShieldEquipped)(CTFPlayerShared* this);
-extern bool (*CTFPlayerShared_IsAlly)(CTFPlayerShared* this, CBaseEntity*);
-extern bool (*CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_OnAddBurning)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_OnAddDisguisedAsDispenser)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_OnAddReprogrammed)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_OnAddSpeedBoost)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_OnConditionAdded)(CTFPlayerShared* this, ETFCond);
-extern void (*CTFPlayerShared_OnConditionRemoved)(CTFPlayerShared* this, ETFCond);
-extern void (*CTFPlayerShared_OnRemoveDisguisedAsDispenser)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_OnRemoveReprogrammed)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_OnRemoveSpeedBoost)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_OnRemoveStunned)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
-extern void (*CTFPlayerShared_StunPlayer)(CTFPlayerShared* this, float, float, int, CTFPlayer*);
+extern bool (*CBaseMultiplayerPlayer_SpeakConceptIfAllowed)(CBaseMultiplayerPlayer* this, int, char const*, char*, size_t, IRecipientFilter*);
 
 extern unknown_t (*CTFPlayer_AddBuildResources)(CTFPlayer* this, int);
 extern void (*CTFPlayer_ApplyAbsVelocityImpulse)(CTFPlayer* this, Vector const*);
@@ -207,6 +189,26 @@ extern unknown_t (*CTFBot_SetMission)(CTFBot* this, CTFBot_MissionType, bool);
 extern bool (*CTFBot_ShouldGib)(CTFBot* this, CTakeDamageInfo const*);
 
 extern bool (*NextBotPlayer_CTFPlayer_IsBot)(NextBotPlayer_CTFPlayer* this);
+
+extern void (*CTFPlayerShared_AddCond)(CTFPlayerShared* this, ETFCond, float, CBaseEntity*);
+extern void (*CTFPlayerShared_Burn)(CTFPlayerShared* this, CTFPlayer*, CTFWeaponBase*, float);
+extern unknown_t (*CTFPlayerShared_ConditionGameRulesThink)(CTFPlayerShared* this);
+extern CTFWeaponBase* (*CTFPlayerShared_GetActiveTFWeapon)(CTFPlayerShared* this);
+extern bool (*CTFPlayerShared_HasDemoShieldEquipped)(CTFPlayerShared* this);
+extern bool (*CTFPlayerShared_IsAlly)(CTFPlayerShared* this, CBaseEntity*);
+extern bool (*CTFPlayerShared_IsInvulnerable)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnAddBurning)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnAddDisguisedAsDispenser)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnAddReprogrammed)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnAddSpeedBoost)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnConditionAdded)(CTFPlayerShared* this, ETFCond);
+extern void (*CTFPlayerShared_OnConditionRemoved)(CTFPlayerShared* this, ETFCond);
+extern void (*CTFPlayerShared_OnRemoveDisguisedAsDispenser)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnRemoveReprogrammed)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnRemoveSpeedBoost)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_OnRemoveStunned)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_RadiusCurrencyCollectionCheck)(CTFPlayerShared* this);
+extern void (*CTFPlayerShared_StunPlayer)(CTFPlayerShared* this, float, float, int, CTFPlayer*);
 
 extern void (*CTFTankBoss_ModifyDamage)(CTFTankBoss* this, CTakeDamageInfo*);
 extern unknown_t (*CTFTankBoss_OnTakeDamage_Alive)(CTFTankBoss* this, CTakeDamageInfo const*);

@@ -9,6 +9,7 @@ void vtable_init(void);
 CBaseEntity* vcall_IServerUnknown_GetBaseEntity(IServerUnknown* this);
 bool vcall_CBaseEntity_IsPlayer(CBaseEntity* this);
 bool vcall_CBasePlayer_IsBot(CBasePlayer* this);
+bool vcall_CBaseMultiplayerPlayer_SpeakConceptIfAllowed(CBaseMultiplayerPlayer* this, int iConcept, const char *modifiers, char *pszOutResponseChosen, size_t bufsize, IRecipientFilter* filter);
 int vcall_CTFWeaponBase_GetWeaponID(CTFWeaponBase* this);
 INextBot* vcall_INextBotComponent_GetBot(INextBotComponent* this);
 

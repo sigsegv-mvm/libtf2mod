@@ -1,11 +1,12 @@
 #include "all.h"
 
 
-static int vidx_CBaseEntity_GetBaseEntity          = -1;
-static int vidx_CBaseEntity_IsPlayer               = -1;
-static int vidx_CBasePlayer_IsBot                  = -1;
-static int vidx_CTFWeaponBase_GetWeaponID          = -1;
-static int vidx_INextBotComponent_GetBot           = -1;
+static int vidx_CBaseEntity_GetBaseEntity                    = -1;
+static int vidx_CBaseEntity_IsPlayer                         = -1;
+static int vidx_CBasePlayer_IsBot                            = -1;
+static int vidx_CBaseMultiplayerPlayer_SpeakConceptIfAllowed = -1;
+static int vidx_CTFWeaponBase_GetWeaponID                    = -1;
+static int vidx_INextBotComponent_GetBot                     = -1;
 
 
 static int vtable_find_index_mem(void **vtable, size_t size, void *pfunc)
@@ -69,6 +70,10 @@ void vtable_init(void)
 		vtable_find_index_sym("_ZTV11CBasePlayer",
 		CBasePlayer_IsBot)) != -1);
 	
+	assert((vidx_CBaseMultiplayerPlayer_SpeakConceptIfAllowed =
+		vtable_find_index_sym("_ZTV22CBaseMultiplayerPlayer",
+		CBaseMultiplayerPlayer_SpeakConceptIfAllowed)) != -1);
+	
 	assert((vidx_CTFWeaponBase_GetWeaponID =
 		vtable_find_index_sym("_ZTV13CTFWeaponBase",
 		CTFWeaponBase_GetWeaponID)) != -1);
@@ -109,6 +114,17 @@ bool vcall_CBasePlayer_IsBot(CBasePlayer* this)
 	
 	bool (*vfunc)(CBasePlayer*) = vtable[vidx];
 	return vfunc(this);
+}
+
+
+bool vcall_CBaseMultiplayerPlayer_SpeakConceptIfAllowed(CBaseMultiplayerPlayer* this, int iConcept, const char *modifiers, char *pszOutResponseChosen, size_t bufsize, IRecipientFilter* filter)
+{
+	void **vtable = *((void ***)this);
+	int vidx = vidx_CBaseMultiplayerPlayer_SpeakConceptIfAllowed;
+	assert(vidx != -1);
+	
+	bool (*vfunc)(CBaseMultiplayerPlayer*, int, char const*, char*, size_t, IRecipientFilter*) = vtable[vidx];
+	return vfunc(this, iConcept, modifiers, pszOutResponseChosen, bufsize, filter);
 }
 
 

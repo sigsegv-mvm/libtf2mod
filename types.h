@@ -765,10 +765,12 @@ typedef void CBaseAnimating;
 
 typedef void CBaseCombatCharacter;
 typedef void CBasePlayer;
-typedef void CTFPlayerShared;
+typedef void CBaseMultiplayerPlayer;
 typedef void CTFPlayer;
 typedef void CTFBot;
 typedef void NextBotPlayer_CTFPlayer;
+
+typedef void CTFPlayerShared;
 
 typedef void CTFTankBoss;
 
