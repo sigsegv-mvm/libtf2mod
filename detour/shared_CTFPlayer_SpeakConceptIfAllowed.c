@@ -11,6 +11,7 @@ static unknown_t (*trampoline_CTFPlayer_SpeakConceptIfAllowed)(CTFPlayer* this, 
 static func_t *func_CTFPlayerShared_StunPlayer;
 static func_t *func_CObjectSapper_ApplyRoboSapperEffects;
 static func_t *func_CCurrencyPack_MyTouch;
+static func_t *func_CMissionPopulator_UpdateMissionDestroySentries;
 
 
 static unknown_t detour_CTFPlayer_SpeakConceptIfAllowed(CTFPlayer* this, int concept, char const* s1, char* s2, unsigned int i1, IRecipientFilter* f)
@@ -69,6 +70,22 @@ static unknown_t detour_CTFPlayer_SpeakConceptIfAllowed(CTFPlayer* this, int con
 	}
 	
 	
+	if (detour_responses_suppress_giant_sentrybuster.ok) {
+		if (concept == TLK_MVM_GIANT_CALLOUT) {
+			uintptr_t callers[5];
+			int num_callers = backtrace((void **)callers,
+				sizeof(callers) / sizeof(*callers));
+			
+			for (int i = 0; i < num_callers; ++i) {
+				if (func_owns_addr(callers[i],
+					func_CMissionPopulator_UpdateMissionDestroySentries)) {
+					return false;
+				}
+			}
+		}
+	}
+	
+	
 	return trampoline_CTFPlayer_SpeakConceptIfAllowed(this,
 		concept, s1, s2, i1, f);
 }
@@ -82,6 +99,8 @@ DETOUR_SETUP
 		func_register(CObjectSapper_ApplyRoboSapperEffects);
 	func_CCurrencyPack_MyTouch =
 		func_register(CCurrencyPack_MyTouch);
+	func_CMissionPopulator_UpdateMissionDestroySentries =
+		func_register(CMissionPopulator_UpdateMissionDestroySentries);
 	
 	DETOUR_CREATE(CTFPlayer_SpeakConceptIfAllowed);
 	

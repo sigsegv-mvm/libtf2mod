@@ -38,6 +38,7 @@ detour_info_t *detours[] = {
 	&detour_responses_unused_sapper,
 	&detour_responses_unused_credits,
 	&detour_responses_suppress_medicbot_shield,
+	&detour_responses_suppress_giant_sentrybuster,
 	
 	//&detour_mini_dispenser,
 	
