@@ -80,6 +80,7 @@ extern detour_info_t detour_loadout_allow_holiday_items;
 extern detour_info_t detour_tank_widowmaker_metal;
 extern detour_info_t detour_responses_unused_sapper;
 extern detour_info_t detour_responses_unused_credits;
+extern detour_info_t detour_responses_suppress_medicbot_shield;
 
 extern detour_info_t detour_mini_dispenser;
 

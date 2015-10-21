@@ -43,7 +43,8 @@ static unknown_t detour_CTFPlayer_SpeakConceptIfAllowed(CTFPlayer* this, int con
 				int r = rand() % 4;
 				
 				int *m_iClass = prop_CTFPlayer_m_iClass(this);
-				if (*m_iClass == TFCLASS_HEAVY || *m_iClass == TFCLASS_ENGINEER) {
+				if (*m_iClass == TFCLASS_HEAVY ||
+					*m_iClass == TFCLASS_ENGINEER) {
 					concept = TLK_MVM_ENCOURAGE_MONEY;
 				} else if (*m_iClass == TFCLASS_SOLDIER) {
 					if (r < 2) {
@@ -59,7 +60,17 @@ static unknown_t detour_CTFPlayer_SpeakConceptIfAllowed(CTFPlayer* this, int con
 	}
 	
 	
-	return trampoline_CTFPlayer_SpeakConceptIfAllowed(this, concept, s1, s2, i1, f);
+	if (detour_responses_suppress_medicbot_shield.ok) {
+		if (concept == TLK_MEDIC_HEAL_SHIELD) {
+			if (this != NULL && vcall_CBasePlayer_IsBot(this)) {
+				return false;
+			}
+		}
+	}
+	
+	
+	return trampoline_CTFPlayer_SpeakConceptIfAllowed(this,
+		concept, s1, s2, i1, f);
 }
 
 

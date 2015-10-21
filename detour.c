@@ -37,6 +37,7 @@ detour_info_t *detours[] = {
 	&detour_tank_widowmaker_metal,
 	&detour_responses_unused_sapper,
 	&detour_responses_unused_credits,
+	&detour_responses_suppress_medicbot_shield,
 	
 	//&detour_mini_dispenser,
 	
