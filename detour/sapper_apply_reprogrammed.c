@@ -48,6 +48,9 @@ static bool detour_CObjectSapper_ApplyRoboSapperEffects(CObjectSapper* this, CTF
 	CTFPlayerShared* shared = prop_CTFPlayer_m_Shared(victim);
 	CTFPlayerShared_AddCond(shared, TF_COND_REPROGRAMMED, duration, builder);
 	
+	vcall_CBaseMultiplayerPlayer_SpeakConceptIfAllowed(builder,
+		TLK_MVM_SAPPED_ROBOT, NULL, NULL, 0, NULL);
+	
 	return true;
 }
 
