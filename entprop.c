@@ -42,11 +42,11 @@ DEFINE_ENTPROP(int, CBaseAnimating, m_nSkin);
 
 DEFINE_ENTPROP(unsigned int, CBasePlayer, m_nButtons);
 
-DEFINE_ENTPROP(int, CTFPlayerShared, m_iStunFlags);
-DEFINE_ENTPROP(int, CTFPlayerShared, m_iStunIndex);
-
 DEFINE_ENTPROP(int, CTFPlayer, m_iClass);
 DEFINE_ENTPROP(CTFPlayerShared, CTFPlayer, m_Shared);
+
+DEFINE_ENTPROP(int, CTFPlayerShared, m_iStunFlags);
+DEFINE_ENTPROP(int, CTFPlayerShared, m_iStunIndex);
 
 DEFINE_ENTPROP(float, CTFWeaponBaseGun, m_flNextPrimaryAttack);
 
@@ -66,6 +66,7 @@ DEFINE_ENTPROP(bool, CCurrencyPack, m_bDistributed);
 
 DEFINE_EXTRACTED(CTFPlayer*, CTFPlayerShared, m_pOuter);
 DEFINE_EXTRACTED(int, CTFBot, m_nMission);
+DEFINE_EXTRACTED(EHANDLE, CTFBot, m_hSBTarget);
 
 
 void entprop_init(void)
@@ -78,15 +79,15 @@ void entprop_init(void)
 	INIT_DATAMAP(CBasePlayer_m_nButtons,
 		CBasePlayer, m_nButtons);
 	
-	INIT_SENDPROP(CTFPlayerShared_m_iStunFlags,
-		CTFPlayer, m_iStunFlags);
-	INIT_SENDPROP(CTFPlayerShared_m_iStunIndex,
-		CTFPlayer, m_iStunIndex);
-	
 	INIT_SENDPROP2(CTFPlayer_m_iClass,
 		CTFPlayer, m_PlayerClass, m_iClass);
 	INIT_SENDPROP(CTFPlayer_m_Shared,
 		CTFPlayer, m_Shared);
+	
+	INIT_SENDPROP(CTFPlayerShared_m_iStunFlags,
+		CTFPlayer, m_iStunFlags);
+	INIT_SENDPROP(CTFPlayerShared_m_iStunIndex,
+		CTFPlayer, m_iStunIndex);
 	
 	INIT_SENDPROP(CTFWeaponBaseGun_m_flNextPrimaryAttack,
 		CTFWeaponBaseGun, m_flNextPrimaryAttack);
@@ -114,4 +115,5 @@ void entprop_init(void)
 	INIT_EXTRACTED(CTFPlayerShared_m_pOuter);
 	
 	INIT_EXTRACTED(CTFBot_m_nMission);
+	INIT_EXTRACTED(CTFBot_m_hSBTarget);
 }

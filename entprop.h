@@ -9,11 +9,11 @@ int *prop_CBaseAnimating_m_nSkin(CBaseAnimating* ent);
 
 unsigned int *prop_CBasePlayer_m_nButtons(CBasePlayer* ent);
 
-int *prop_CTFPlayerShared_m_iStunFlags(CTFPlayerShared* ent);
-int *prop_CTFPlayerShared_m_iStunIndex(CTFPlayerShared* ent);
-
 int *prop_CTFPlayer_m_iClass(CTFPlayer* ent);
 CTFPlayerShared *prop_CTFPlayer_m_Shared(CTFPlayer* ent);
+
+int *prop_CTFPlayerShared_m_iStunFlags(CTFPlayerShared* ent);
+int *prop_CTFPlayerShared_m_iStunIndex(CTFPlayerShared* ent);
 
 float *prop_CTFWeaponBaseGun_m_flNextPrimaryAttack(CTFWeaponBaseGun* ent);
 
@@ -34,6 +34,7 @@ bool *prop_CCurrencyPack_m_bDistributed(CCurrencyPack* ent);
 CTFPlayer* *prop_CTFPlayerShared_m_pOuter(CTFPlayerShared* ent);
 
 int *prop_CTFBot_m_nMission(CTFBot* ent);
+EHANDLE *prop_CTFBot_m_hSBTarget(CTFBot* ent);
 
 
 void entprop_init(void);

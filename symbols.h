@@ -374,6 +374,8 @@ extern nextbot_event_response_t (*CTFBotMedicHeal_Update)(CTFBotMedicHeal* this,
 
 extern nextbot_event_response_t (*CTFBotMvMEngineerIdle_Update)(CTFBotMvMEngineerIdle* this, CTFBot*, float);
 
+extern nextbot_event_response_t (*CTFBotMissionSuicideBomber_OnStart)(CTFBotMissionSuicideBomber* this, CTFBot*, Action_CTFBot*);
+
 extern INextBot* (*INextBotComponent_GetBot)(INextBotComponent* this);
 
 extern void (*IBody_AimHeadTowards_ent)(IBody* this, CBaseEntity*, IBody_LookAtPriorityType, float, INextBotReply*, char const*);

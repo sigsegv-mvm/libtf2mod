@@ -643,6 +643,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFBotMvMEngineerIdle_Update,
 		"_ZN21CTFBotMvMEngineerIdle6UpdateEP6CTFBotf");
 	
+	SYMBOL_FUNC(CTFBotMissionSuicideBomber_OnStart,
+		"_ZN26CTFBotMissionSuicideBomber7OnStartEP6CTFBotP6ActionIS0_E");
+	
 	SYMBOL_FUNC(INextBotComponent_GetBot,
 		"_ZNK17INextBotComponent6GetBotEv");
 	
