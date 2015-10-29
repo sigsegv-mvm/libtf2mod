@@ -14,7 +14,7 @@ PATCH_CHECK
 	uintptr_t off_gpGlobals = (uintptr_t)gpGlobals;
 	
 	/* non-public offset in CTFPlayerShared */
-	uintptr_t off_nextcheck = 0x0a50;
+	uintptr_t off_nextcheck = 0x03ac;
 	
 	
 	size_t check1_base = 0x0066;

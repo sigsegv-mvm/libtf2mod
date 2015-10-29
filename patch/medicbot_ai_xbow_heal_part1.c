@@ -33,26 +33,25 @@ PATCH_CHECK
 		0xc7, 0x44, 0x24, 0x04, CONV_LE(off2)           // +08D1  mov DWORD PTR [esp+0x4],ds:typeinfo_for_CTFWeaponBase
 		0x89, 0x04, 0x24,                               // +08D9  mov DWORD PTR [esp],eax
 		0xe8, CONV_LE(off3)                             // +08DC  call __dynamic_cast
-		0xc6, 0x85, 0x58, 0xff, 0xff, 0xff, 0x00,       // +08E1  mov BYTE PTR [ebp-0xa8],0x0
-		0x85, 0xc0,                                     // +08E8  test eax,eax
-		0x89, 0xc3,                                     // +08EA  mov ebx,eax
-		0xc6, 0x85, 0x60, 0xff, 0xff, 0xff, 0x01,       // +08EC  mov BYTE PTR [ebp-0xa0],0x1
-		0x0f, 0x84, 0x47, 0x01, 0x00, 0x00,             // +08F3  je +0x147
+		0x85, 0xc0,                                     // +08E1  test eax,eax
+		0x89, 0xc3,                                     // +08E3  mov ebx,eax
+		0x0f, 0x84, 0xae, 0x0f, 0x00, 0x00,             // +08E5  je +0xfae
 	};
 	
-	size_t check2_base = 0x0a40;
+	size_t check2_base = 0x1899;
 	uint8_t check2[] = {
-		0x8b, 0xbd, 0x70, 0xff, 0xff, 0xff, // +0A40  mov edi,DWORD PTR [ebp-0x90]
-		0x85, 0xff,                         // +0A46  test edi,edi
-		0x74, 0x16,                         // +0A48  je +0x16
+		0xc6, 0x85, 0x5c, 0xff, 0xff, 0xff, 0x00, // +1899  mov BYTE PTR [ebp-0xa4],0x0
+		0xc6, 0x85, 0x58, 0xff, 0xff, 0xff, 0x00, // +18A0  mov BYTE PTR [ebp-0xa8],0x0
+		0xc6, 0x85, 0x59, 0xff, 0xff, 0xff, 0x01, // +18A7  mov BYTE PTR [ebp-0xa7],0x1
+		0xe9, 0xc4, 0xf1, 0xff, 0xff,             // +18AE  jmp -0xe3c
 	};
 	
-	size_t check3_base = 0x19fd;
+	size_t check3_base = 0x1b8a;
 	uint8_t check3[] = {
-		0xa1, CONV_LE(off4)       // +19FD  mov eax,ds:g_pGameRules
-		0x8b, 0x10,               // +19E2  mov edx,DWORD PTR [eax]
-		0x89, 0x04, 0x24,         // +19E4  mov DWORD PTR [esp],eax
-		0xff, 0x92, CONV_LE(off5) // +19E7  call DWORD PTR [edx+IsInTraining] CTFGameRules::IsInTraining
+		0xa1, CONV_LE(off4)       // +1B8A  mov eax,ds:g_pGameRules
+		0x8b, 0x10,               // +1B8F  mov edx,DWORD PTR [eax]
+		0x89, 0x04, 0x24,         // +1B91  mov DWORD PTR [esp],eax
+		0xff, 0x92, CONV_LE(off5) // +1B94  call DWORD PTR [edx+IsInTraining] CTFGameRules::IsInTraining
 	};
 	
 	
@@ -75,9 +74,9 @@ PATCH_APPLY
 	//	(uintptr_t)asm_CTFBotMedicHeal_Update_EnableXbow);
 	
 	
-	uintptr_t dst_medi = (uintptr_t)CTFBotMedicHeal_Update + 0x08f9;
-	uintptr_t dst_xbow = (uintptr_t)CTFBotMedicHeal_Update + 0x19fd;
-	uintptr_t dst_fail = (uintptr_t)CTFBotMedicHeal_Update + 0x0a40;
+	uintptr_t dst_medi = (uintptr_t)CTFBotMedicHeal_Update + 0x08eb;
+	uintptr_t dst_xbow = (uintptr_t)CTFBotMedicHeal_Update + 0x1b8a;
+	uintptr_t dst_fail = (uintptr_t)CTFBotMedicHeal_Update + 0x1899;
 	
 	uintptr_t rel_call = CALC_RELJMP(CTFBotMedicHeal_Update, 0x08d5,
 		asm_CTFBotMedicHeal_Update_EnableXbow);
@@ -94,10 +93,7 @@ PATCH_APPLY
 		0x90, 0x90, 0x90, 0x90, // +08DD  nop x 4
 		0x90, 0x90, 0x90, 0x90, // +08E1  nop x 4
 		0x90, 0x90, 0x90, 0x90, // +08E5  nop x 4
-		0x90, 0x90, 0x90, 0x90, // +08E9  nop x 4
-		0x90, 0x90, 0x90, 0x90, // +08ED  nop x 4
-		0x90, 0x90, 0x90, 0x90, // +08F1  nop x 4
-		0x90, 0x90, 0x90, 0x90, // +08F5  nop x 4
+		0x90, 0x90,             // +08E9  nop x 2
 	};
 	
 	

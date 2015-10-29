@@ -2,8 +2,6 @@
 
 
 patch_info_t *patches[] = {
-	&patch_eh_unrestrict_class,
-	&patch_eh_unrestrict_projtype,
 	&patch_eh_unrestrict_weaponid,
 	&patch_human_deathyell_enable,
 	&patch_sniperrifle_chargerate_uncap_stock,

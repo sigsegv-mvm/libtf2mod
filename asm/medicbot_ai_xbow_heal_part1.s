@@ -29,9 +29,6 @@ get_GOT_esi:
 ;  L_medi, L_xbow, or L_fail
 global asm_CTFBotMedicHeal_Update_EnableXbow:function
 asm_CTFBotMedicHeal_Update_EnableXbow:
-	mov byte [ebp-0xa8],0
-	mov byte [ebp-0xa0],1
-	
 	push ebp
 	mov ebp,esp
 	

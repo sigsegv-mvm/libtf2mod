@@ -39,7 +39,7 @@ PATCH_CHECK
 	uintptr_t off3_call1 = CALC_RELJMP(check3_func, 0x013b,
 		CAttributeManager_AttribHookValue_int);
 	
-	uintptr_t off4_call1 = CALC_RELJMP(check4_func, 0x2402,
+	uintptr_t off4_call1 = CALC_RELJMP(check4_func, 0x2432,
 		CAttributeManager_AttribHookValue_int);
 	
 	uintptr_t off5_call1 = CALC_RELJMP(check5_func, 0x0509,
@@ -76,14 +76,14 @@ PATCH_CHECK
 		0xe8, CONV_LE(off3_call1)                       // +0136  call CAttributeManager::AttribHookValue<int>
 	};
 	
-	size_t check4_base = 0x23da;
+	size_t check4_base = 0x240a;
 	uint8_t check4[] = {
-		0xc7, 0x44, 0x24, 0x10, 0x01, 0x00, 0x00, 0x00, // +23DA  mov DWORD PTR [esp+0x10],0x1
-		0xc7, 0x44, 0x24, 0x0c, 0x00, 0x00, 0x00, 0x00, // +23E2  mov DWORD PTR [esp+0xc],0x0
-		0x89, 0x4c, 0x24, 0x08,                         // +23EA  mov DWORD PTR [esp+0x8],ecx
-		0xc7, 0x44, 0x24, 0x04, CONV_LE(off_str2)       // +23EE  mov DWORD PTR [esp+0x4],str "halloween_green_flames"
-		0xc7, 0x04, 0x24, 0x00, 0x00, 0x00, 0x00,       // +23F6  mov DWORD PTR [esp],0x0
-		0xe8, CONV_LE(off4_call1)                       // +23FD  call CAttributeManager::AttribHookValue<int>
+		0xc7, 0x44, 0x24, 0x10, 0x01, 0x00, 0x00, 0x00, // +240A  mov DWORD PTR [esp+0x10],0x1
+		0xc7, 0x44, 0x24, 0x0c, 0x00, 0x00, 0x00, 0x00, // +2412  mov DWORD PTR [esp+0xc],0x0
+		0x89, 0x4c, 0x24, 0x08,                         // +241A  mov DWORD PTR [esp+0x8],ecx
+		0xc7, 0x44, 0x24, 0x04, CONV_LE(off_str2)       // +241E  mov DWORD PTR [esp+0x4],str "halloween_green_flames"
+		0xc7, 0x04, 0x24, 0x00, 0x00, 0x00, 0x00,       // +2426  mov DWORD PTR [esp],0x0
+		0xe8, CONV_LE(off4_call1)                       // +242D  call CAttributeManager::AttribHookValue<int>
 	};
 	
 	size_t check5_base = 0x04e1;
@@ -126,7 +126,7 @@ PATCH_APPLY
 	func_write(CTFStickBomb_Smack,               0x012b, 4, str.bytes);
 	
 	str.ptr = premunged_attrs_halloween[1];
-	func_write(CTFPlayerShared_ConditionGameRulesThink, 0x23f2, 4, str.bytes);
+	func_write(CTFPlayerShared_ConditionGameRulesThink, 0x2422, 4, str.bytes);
 	
 	str.ptr = premunged_attrs_halloween[2];
 	func_write(CTFPlayer_Event_KilledOther, 0x04f5, 4, str.bytes);

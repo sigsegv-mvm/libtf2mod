@@ -16,14 +16,14 @@ PATCH_CHECK
 		CWeaponMedigun_GetTargetRange);
 	
 	
-	size_t check1_base = 0x1a55;
+	size_t check1_base = 0x1bf2;
 	uint8_t check1[] = {
-		0x8b, 0x03,                         // +1A55  mov eax,DWORD PTR [ebx]
-		0x89, 0x1c, 0x24,                   // +1A57  mov DWORD PTR [esp],ebx
-		0xff, 0x90, CONV_LE(off1)           // +1A5A  call DWORD PTR [eax+GetTargetRange] CWeaponMedigun::GetTargetRange()
-		0x8b, 0x55, 0x10,                   // +1A60  mov edx,DWORD PTR [ebp+0x10]
-		0x89, 0xf9,                         // +1A63  mov ecx,edi
-		0xd9, 0x9d, 0x34, 0xff, 0xff, 0xff, // +1A65  fstp DWORD PTR [ebp-0xcc]
+		0x8b, 0x03,                         // +1BF2  mov eax,DWORD PTR [ebx]
+		0x89, 0x1c, 0x24,                   // +1BF4  mov DWORD PTR [esp],ebx
+		0xff, 0x90, CONV_LE(off1)           // +1BF7  call DWORD PTR [eax+GetTargetRange] CWeaponMedigun::GetTargetRange()
+		0x8b, 0x55, 0x10,                   // +1BFD  mov edx,DWORD PTR [ebp+0x10]
+		0x89, 0xf9,                         // +1C00  mov ecx,edi
+		0xd9, 0x9d, 0x40, 0xff, 0xff, 0xff, // +1C02  fstp DWORD PTR [ebp-0xc0]
 	};
 	
 	
@@ -45,16 +45,16 @@ PATCH_APPLY
 	uintptr_t voff_GetTargetRange = vtable_find_offset("_ZTV14CWeaponMedigun",
 		CWeaponMedigun_GetTargetRange);
 	
-	uintptr_t rel_call = CALC_RELJMP(CTFBotMedicHeal_Update, 0x1a5f,
+	uintptr_t rel_call = CALC_RELJMP(CTFBotMedicHeal_Update, 0x1bfc,
 		asm_CTFBotMedicHeal_Update_GetTargetRange);
 	
 	
-	size_t data1_base = 0x1a55;
+	size_t data1_base = 0x1bf2;
 	uint8_t data1[] = {
-		0xb8, CONV_LE(voff_GetTargetRange)  // +1A55  mov eax,voff_GetTargetRange
-		0xe8, CONV_LE(rel_call)             // +1A5A  call asm_CTFBotMedicHeal_Update_GetTargetRange
-		0xd9, 0x9d, 0x34, 0xff, 0xff, 0xff, // +1A5F  fstp DWORD PTR [ebp-0xcc]
-		0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // +1A65  nop x 6
+		0xb8, CONV_LE(voff_GetTargetRange)  // +1BF2  mov eax,voff_GetTargetRange
+		0xe8, CONV_LE(rel_call)             // +1BF7  call asm_CTFBotMedicHeal_Update_GetTargetRange
+		0xd9, 0x9d, 0x40, 0xff, 0xff, 0xff, // +1BFC  fstp DWORD PTR [ebp-0xc0]
+		0x90, 0x90, 0x90, 0x90, 0x90, 0x90, // +1C02  nop x 6
 	};
 	
 	
