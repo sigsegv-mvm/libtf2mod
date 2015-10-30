@@ -21,7 +21,6 @@ detour_info_t *detours[] = {
 	&detour_robot_gib_dissolve_fix,
 	&detour_yer_nerf_disable,
 	&detour_arrow_pen_ignoreuber,
-	&detour_medishield_teamskin_enable,
 	&detour_eh_medieval_disable,
 	&detour_bot_multiclass_item_fix,
 	&detour_mvm_chat_unrestrict,
