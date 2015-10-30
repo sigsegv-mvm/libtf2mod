@@ -55,7 +55,6 @@ detour_info_t *detours[] = {
 	//&detour_sniperdot_nodestroy,
 	
 	&detour_medicbot_ai_xbow_heal,
-	&detour_medicbot_ai_shield,
 	
 	&detour_perf_attr_nomunge,
 	

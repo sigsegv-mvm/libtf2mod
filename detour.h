@@ -99,7 +99,6 @@ extern detour_info_t detour_sniperdot_nodestroy;
 extern detour_info_t detour_sapper_apply_reprogrammed;
 
 extern detour_info_t detour_medicbot_ai_xbow_heal;
-extern detour_info_t detour_medicbot_ai_shield;
 
 extern detour_info_t detour_perf_attr_nomunge;
 
