@@ -72,7 +72,6 @@ extern detour_info_t detour_wave_reset_countdown_fix;
 extern detour_info_t detour_sentrybuster_roundwin_behavior_fix;
 extern detour_info_t detour_eh_recursive_fix;
 extern detour_info_t detour_nextprimaryattack_unalias;
-extern detour_info_t detour_soundemitter_override_force_precache;
 extern detour_info_t detour_sapper_allow_multiple_active;
 extern detour_info_t detour_eh_sydney_check_uber;
 extern detour_info_t detour_loadout_allow_holiday_items;

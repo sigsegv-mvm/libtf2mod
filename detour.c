@@ -29,7 +29,6 @@ detour_info_t *detours[] = {
 	&detour_sentrybuster_roundwin_behavior_fix,
 	&detour_eh_recursive_fix,
 	//&detour_nextprimaryattack_unalias,
-	&detour_soundemitter_override_force_precache,
 	&detour_sapper_allow_multiple_active,
 	&detour_eh_sydney_check_uber,
 	&detour_loadout_allow_holiday_items,
