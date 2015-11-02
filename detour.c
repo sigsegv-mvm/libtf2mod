@@ -81,6 +81,7 @@ detour_info_t *detours[] = {
 	
 #if CHEATS
 	&detour_sapper_apply_reprogrammed,
+	&detour_mvm_enable_dropped_weapons,
 #endif
 };
 

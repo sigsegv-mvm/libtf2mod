@@ -29,6 +29,7 @@ patch_info_t *patches[] = {
 #if CHEATS
 	&patch_eh_unrestrict_weaponid,
 	&patch_bazaarbargain_head_uncap,
+	&patch_mvm_enable_dropped_weapons,
 #endif
 };
 

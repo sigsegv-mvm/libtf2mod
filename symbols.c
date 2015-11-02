@@ -234,6 +234,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot,
 		"_ZN20CTFPlayerSharedUtils28GetEconItemViewByLoadoutSlotEP9CTFPlayeriPP11CEconEntity");
 	
+	SYMBOL_FUNC(CTFDroppedWeapon_Create,
+		"_ZN16CTFDroppedWeapon6CreateEP9CTFPlayerRK6VectorRK6QAnglePKcPK13CEconItemView");
+	
 	SYMBOL_FUNC(CAttributeManager_AttribHookValue_CAttribute_String,
 		"_ZN17CAttributeManager15AttribHookValueI17CAttribute_StringEET_S2_PKcPK11CBaseEntityP10CUtlVectorIPS5_10CUtlMemoryIS9_iEEb");
 	SYMBOL_FUNC(CAttributeManager_AttribHookValue_float,
@@ -350,6 +353,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer14RemoveCurrencyEi");
 	SYMBOL_FUNC(CTFPlayer_RemoveDisguise,
 		"_ZN9CTFPlayer14RemoveDisguiseEv");
+	SYMBOL_FUNC(CTFPlayer_ShouldDropAmmoPack,
+		"_ZN9CTFPlayer18ShouldDropAmmoPackEv");
 	SYMBOL_FUNC(CTFPlayer_ShouldGib,
 		"_ZN9CTFPlayer9ShouldGibERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFPlayer_SpeakConceptIfAllowed,

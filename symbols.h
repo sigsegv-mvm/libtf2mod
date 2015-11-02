@@ -147,6 +147,8 @@ extern CTFMedigunShield* (*CTFMedigunShield_Create)(CTFPlayer*);
 
 extern CEconItemView* (*CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot)(CTFPlayer*, int, CEconEntity**);
 
+extern unknown_t (*CTFDroppedWeapon_Create)(CTFPlayer*, Vector const*, QAngle const*, char const*, CEconItemView const*);
+
 extern CAttribute_String* (*CAttributeManager_AttribHookValue_CAttribute_String)(CAttribute_String*, CAttribute_String*, char const*, CBaseEntity const*, CUtlVector*, bool);
 extern float (*CAttributeManager_AttribHookValue_float)(float, char const*, CBaseEntity const*, CUtlVector*, bool);
 extern int (*CAttributeManager_AttribHookValue_int)(int, char const*, CBaseEntity const*, CUtlVector*, bool);
@@ -212,6 +214,7 @@ extern void (*CTFPlayer_RememberUpgrade)(CTFPlayer* this, int, CEconItemView*, i
 extern void (*CTFPlayer_RemoveAmmo)(CTFPlayer* this, int, int);
 extern void (*CTFPlayer_RemoveCurrency)(CTFPlayer* this, int);
 extern void (*CTFPlayer_RemoveDisguise)(CTFPlayer* this);
+extern bool (*CTFPlayer_ShouldDropAmmoPack)(CTFPlayer* this);
 extern bool (*CTFPlayer_ShouldGib)(CTFPlayer* this, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_SpeakConceptIfAllowed)(CTFPlayer* this, int, char const*, char*, unsigned int, IRecipientFilter*);
 extern unknown_t (*CTFPlayer_TFPlayerThink)(CTFPlayer* this);

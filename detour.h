@@ -123,5 +123,7 @@ extern detour_info_t detour_profile_attributes;
 extern detour_info_t detour_reimplement_sv_showhitboxes;
 extern detour_info_t detour_reimplement_cond_reprogrammed;
 
+extern detour_info_t detour_mvm_enable_dropped_weapons;
+
 
 #endif

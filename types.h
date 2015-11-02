@@ -859,6 +859,8 @@ typedef void CTFReviveMarker;
 
 typedef void CCurrencyPack;
 
+typedef void CTFDroppedWeapon;
+
 typedef void CFuncNavCost;
 
 typedef void CUtlVector;
