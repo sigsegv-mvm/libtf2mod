@@ -17,6 +17,7 @@ patch_info_t *patches[] = {
 	&patch_bot_medieval_nonmelee_allow,
 	&patch_eyelander_overheal_decay_fix,
 	&patch_currencypack_no_pull,
+	&patch_mvm_gametype_fix,
 	
 	//&patch_tank_shake_disable,
 	//&patch_bot_revivemarker_enable,
