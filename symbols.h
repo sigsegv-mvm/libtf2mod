@@ -336,6 +336,7 @@ extern bool (*CObjectSapper_ApplyRoboSapperEffects)(CObjectSapper* this, CTFPlay
 extern bool (*CObjectSapper_IsValidRoboSapperTarget)(CObjectSapper* this, CTFPlayer*);
 extern void (*CObjectSapper_Spawn)(CObjectSapper* this);
 
+extern void (*CTFGameRules_Activate)(CTFGameRules* this);
 extern void (*CTFGameRules_BetweenRounds_Think)(CTFGameRules* this);
 extern bool (*CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*);
 extern unknown_t (*CTFGameRules_DistributeCurrencyAmount)(CTFGameRules* this, int, CTFPlayer*, bool, bool, bool);
@@ -354,6 +355,8 @@ extern bool (*CTFGameRules_UsePlayerReadyStatusMode)(CTFGameRules* this);
 
 extern bool (*CTeamplayRoundBasedRules_AreLobbyPlayersOnTeamReady)(CTeamplayRoundBasedRules* this, int);
 extern void (*CTeamplayRoundBasedRules_CheckReadyRestart)(CTeamplayRoundBasedRules* this);
+
+extern void (*CTFGameRulesProxy_Activate)(CTFGameRulesProxy* this);
 
 extern unknown_t (*CTFGameStats_IncrementStat)(CTFGameStats* this, CTFPlayer*, TFStatType_t, int);
 extern unknown_t (*CTFGameStats_ResetPlayerStats)(CTFGameStats* this, CTFPlayer*);

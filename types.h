@@ -743,6 +743,18 @@ typedef enum {
 	LOOKPRI_CRITICAL    = 3,
 } IBody_LookAtPriorityType;
 
+typedef enum {
+	TF_GAMETYPE_UNDEFINED = 0,
+	TF_GAMETYPE_CTF       = 1,
+	TF_GAMETYPE_CP        = 2,
+	TF_GAMETYPE_ESCORT    = 3,
+	TF_GAMETYPE_ARENA     = 4,
+	TF_GAMETYPE_MVM       = 5,
+	TF_GAMETYPE_RD        = 6,
+	TF_GAMETYPE_PASSTIME  = 7,
+	TF_GAMETYPE_PD        = 8,
+} TFGameType;
+
 
 /* opaque types */
 
@@ -817,6 +829,7 @@ typedef void CTFMedigunShield;
 
 typedef void CTFGameRules;
 typedef void CTeamplayRoundBasedRules;
+typedef void CTFGameRulesProxy;
 
 typedef void CTFGameStats;
 

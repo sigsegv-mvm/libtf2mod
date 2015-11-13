@@ -570,6 +570,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CObjectSapper_Spawn,
 		"_ZN13CObjectSapper5SpawnEv");
 	
+	SYMBOL_FUNC(CTFGameRules_Activate,
+		"_ZN12CTFGameRules8ActivateEv");
 	SYMBOL_FUNC(CTFGameRules_BetweenRounds_Think,
 		"_ZN12CTFGameRules19BetweenRounds_ThinkEv");
 	SYMBOL_FUNC(CTFGameRules_CanUpgradeWithAttrib,
@@ -605,6 +607,9 @@ void symbols_init(void)
 		"_ZN24CTeamplayRoundBasedRules26AreLobbyPlayersOnTeamReadyEi");
 	SYMBOL_FUNC(CTeamplayRoundBasedRules_CheckReadyRestart,
 		"_ZN24CTeamplayRoundBasedRules17CheckReadyRestartEv");
+	
+	SYMBOL_FUNC(CTFGameRulesProxy_Activate,
+		"_ZN17CTFGameRulesProxy8ActivateEv");
 	
 	SYMBOL_FUNC(CTFGameStats_IncrementStat,
 		"_ZN12CTFGameStats13IncrementStatEP9CTFPlayer12TFStatType_ti");
