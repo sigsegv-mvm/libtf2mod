@@ -31,6 +31,7 @@ void patch_all(void);
 
 void func_read(void *pfunc, size_t off, size_t len, void *dst);
 bool func_verify(void *pfunc, size_t off, size_t len, const void *cmp);
+bool func_verify_quiet(void *pfunc, size_t off, size_t len, const void *cmp);
 
 void func_write(void *pfunc, size_t off, size_t len, const void *src);
 void func_write_nop(void *pfunc, size_t off, size_t count);

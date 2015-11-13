@@ -41,4 +41,38 @@ EHANDLE *prop_CTFBot_m_hSBTarget(CTFBot* ent);
 void entprop_init(void);
 
 
+/* useful stuff for extracting entprop offsets from code */
+
+#define ANY_BYTE  0x00,
+#define ANY_WORD  0x00, 0x00,
+#define ANY_DWORD 0x00, 0x00, 0x00, 0x00,
+
+#define NOP_1BYTE 0x00,
+#define NOP_3BYTE 0x00, 0x00, 0x00,
+#define NOP_7BYTE 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+
+
+#define EXTRACT_CHECK(_name) \
+	if (_name != 0) { \
+		if (off == 0) { \
+			off = _name; \
+			pr_debug("%s: %s OK\n", __func__, #_name); \
+		} else if (_name != off) { \
+			pr_err("%s: %s MISMATCH: %04x vs %04x\n", __func__, #_name, off, _name); \
+			fail = true; \
+		} else { \
+			pr_debug("%s: %s OK\n", __func__, #_name); \
+		} \
+	} else { \
+		pr_warn("%s: %s FAIL\n", __func__, #_name); \
+	}
+
+
+bool entprop_extract_verify_runs(void *func,
+	size_t check_base, uint8_t check[],
+	int num_runs, size_t runs[][2]);
+bool entprop_extract_ensure_match(const char *caller,
+	int num_offs, size_t offs[]);
+
+
 #endif

@@ -80,15 +80,19 @@ void func_read(void *pfunc, size_t off, size_t len, void *dst)
 	memcpy(dst, (void *)where, len);
 }
 
-bool func_verify(void *pfunc, size_t off, size_t len, const void *cmp)
+static bool _func_verify(void *pfunc, size_t off, size_t len, const void *cmp,
+	bool quiet)
 {
 	func_t *func = func_register(pfunc);
 	
 	if (off + len > func->func_size) {
-		pr_err("func_verify failed for func '%s':\n", func->name_demangled);
-		
-		pr_err("bounds check failed: %u + %u > %u\n",
-			off, len, func->func_size);
+		if (!quiet)
+		{
+			pr_err("func_verify failed for func '%s':\n", func->name_demangled);
+			
+			pr_err("bounds check failed: %u + %u > %u\n",
+				off, len, func->func_size);
+		}
 		
 		return false;
 	}
@@ -96,26 +100,38 @@ bool func_verify(void *pfunc, size_t off, size_t len, const void *cmp)
 	uintptr_t where = func->func_addr + off;
 	
 	if (memcmp((void *)where, cmp, len) != 0) {
-		pr_err("func_verify failed for func '%s':\n", func->name_demangled);
-		
-		pr_err("should be:\n");
-		mem_dump(cmp, len, false);
-		
-		pr_err("actual:\n");
-		mem_dump((void *)where, len, false);
-		
-		pr_err("differences at:\n");
-		for (int i = 0; i < len; ++i) {
-			if (((uint8_t *)cmp)[i] != ((uint8_t *)where)[i]) {
-				pr_info("%02x ", i);
+		if (!quiet) {
+			pr_err("func_verify failed for func '%s':\n", func->name_demangled);
+			
+			pr_err("should be:\n");
+			mem_dump(cmp, len, false);
+			
+			pr_err("actual:\n");
+			mem_dump((void *)where, len, false);
+			
+			pr_err("differences at:\n");
+			for (int i = 0; i < len; ++i) {
+				if (((uint8_t *)cmp)[i] != ((uint8_t *)where)[i]) {
+					pr_info("%02x ", i);
+				}
 			}
+			pr_info("\n");
 		}
-		pr_info("\n");
 		
 		return false;
 	}
 	
 	return true;
+}
+
+bool func_verify(void *pfunc, size_t off, size_t len, const void *cmp)
+{
+	return _func_verify(pfunc, off, len, cmp, false);
+}
+
+bool func_verify_quiet(void *pfunc, size_t off, size_t len, const void *cmp)
+{
+	return _func_verify(pfunc, off, len, cmp, true);
 }
 
 

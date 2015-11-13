@@ -1,60 +1,6 @@
 #include "all.h"
 
 
-#define ANY_BYTE  0x00,
-#define ANY_WORD  0x00, 0x00,
-#define ANY_DWORD 0x00, 0x00, 0x00, 0x00,
-
-#define NOP_1BYTE 0x00,
-#define NOP_3BYTE 0x00, 0x00, 0x00,
-#define NOP_7BYTE 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-
-
-static bool _entprop_extract_verify_runs(void *func,
-	size_t check_base, uint8_t check[],
-	int num_runs, size_t runs[][2])
-{
-	bool result = true;
-	
-	for (int i = 0; i < num_runs; ++i) {
-		size_t run_off = runs[i][0];
-		size_t run_len = runs[i][1];
-		
-		assert(run_off >= check_base);
-		
-		if (!func_verify(func,
-			run_off, run_len, check + (run_off - check_base))) {
-			result = false;
-			/* don't break so we don't skip any warnings */
-		}
-	}
-	
-	return result;
-}
-
-
-static bool _entprop_extract_ensure_match(const char *caller,
-	int num_offs, size_t offs[])
-{
-	bool mismatch = false;
-	for (int i = 1; i < num_offs; ++i) {
-		if (offs[i] != offs[i - 1]) {
-			mismatch = true;
-			break;
-		}
-	}
-	
-	if (mismatch) {
-		pr_warn("%s: mismatch\n", caller);
-		for (int i = 0; i < num_offs; ++i) {
-			pr_debug("  %d: %04x\n", i, offs[i]);
-		}
-	}
-	
-	return !mismatch;
-}
-
-
 static bool _entprop_extract_CTFPlayerShared_m_pOuter_func1(uintptr_t *off, void *func)
 {
 	size_t check1_base = 0x0000;
@@ -74,7 +20,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func1(uintptr_t *off, void
 	};
 	
 	
-	if (!_entprop_extract_verify_runs(func, check1_base, check1,
+	if (!entprop_extract_verify_runs(func, check1_base, check1,
 		sizeof(runs) / sizeof(*runs), runs)) {
 		return false;
 	}
@@ -85,7 +31,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func1(uintptr_t *off, void
 	func_read(func, 0x0008, sizeof(extracted[0]), &extracted[0]);
 	
 	
-	if (!_entprop_extract_ensure_match(__func__,
+	if (!entprop_extract_ensure_match(__func__,
 		sizeof(extracted) / sizeof(*extracted), extracted)) {
 		return false;
 	}
@@ -125,7 +71,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func2(uintptr_t *off)
 	};
 	
 	
-	if (!_entprop_extract_verify_runs(func, check1_base, check1,
+	if (!entprop_extract_verify_runs(func, check1_base, check1,
 		sizeof(runs) / sizeof(*runs), runs)) {
 		return false;
 	}
@@ -136,7 +82,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func2(uintptr_t *off)
 	func_read(func, 0x0019, sizeof(extracted[0]), &extracted[0]);
 	
 	
-	if (!_entprop_extract_ensure_match(__func__,
+	if (!entprop_extract_ensure_match(__func__,
 		sizeof(extracted) / sizeof(*extracted), extracted)) {
 		return false;
 	}
@@ -172,7 +118,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func3(uintptr_t *off)
 	};
 	
 	
-	if (!_entprop_extract_verify_runs(func, check1_base, check1,
+	if (!entprop_extract_verify_runs(func, check1_base, check1,
 		sizeof(runs) / sizeof(*runs), runs)) {
 		return false;
 	}
@@ -183,7 +129,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func3(uintptr_t *off)
 	func_read(func, 0x001a, sizeof(extracted[0]), &extracted[0]);
 	
 	
-	if (!_entprop_extract_ensure_match(__func__,
+	if (!entprop_extract_ensure_match(__func__,
 		sizeof(extracted) / sizeof(*extracted), extracted)) {
 		return false;
 	}
@@ -222,7 +168,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func4(uintptr_t *off)
 	};
 	
 	
-	if (!_entprop_extract_verify_runs(func, check1_base, check1,
+	if (!entprop_extract_verify_runs(func, check1_base, check1,
 		sizeof(runs) / sizeof(*runs), runs)) {
 		return false;
 	}
@@ -233,7 +179,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func4(uintptr_t *off)
 	func_read(func, 0x000b, sizeof(extracted[0]), &extracted[0]);
 	
 	
-	if (!_entprop_extract_ensure_match(__func__,
+	if (!entprop_extract_ensure_match(__func__,
 		sizeof(extracted) / sizeof(*extracted), extracted)) {
 		return false;
 	}
@@ -274,7 +220,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func5(uintptr_t *off)
 	};
 	
 	
-	if (!_entprop_extract_verify_runs(func, check1_base, check1,
+	if (!entprop_extract_verify_runs(func, check1_base, check1,
 		sizeof(runs) / sizeof(*runs), runs)) {
 		return false;
 	}
@@ -285,7 +231,7 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func5(uintptr_t *off)
 	func_read(func, 0x0023, sizeof(extracted[0]), &extracted[0]);
 	
 	
-	if (!_entprop_extract_ensure_match(__func__,
+	if (!entprop_extract_ensure_match(__func__,
 		sizeof(extracted) / sizeof(*extracted), extracted)) {
 		return false;
 	}
@@ -298,76 +244,55 @@ static bool _entprop_extract_CTFPlayerShared_m_pOuter_func5(uintptr_t *off)
 
 uintptr_t entprop_extract_CTFPlayerShared_m_pOuter(void)
 {
+	bool fail = false;
 	uintptr_t off = 0;
 	
-#ifdef TEST_ENTPROP_EXTRACT
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_OnAddSpeedBoost)) {
-		pr_special("%s: PASS #1a\n", __func__);
-	} else {
-		pr_warn("%s: FAIL #1a\n", __func__);
-	}
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_OnAddDisguisedAsDispenser)) {
-		pr_special("%s: PASS #1b\n", __func__);
-	} else {
-		pr_warn("%s: FAIL #1b\n", __func__);
-	}
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_OnRemoveSpeedBoost)) {
-		pr_special("%s: PASS #1c\n", __func__);
-	} else {
-		pr_warn("%s: FAIL #1c\n", __func__);
-	}
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_OnRemoveDisguisedAsDispenser)) {
-		pr_special("%s: PASS #1d\n", __func__);
-	} else {
-		pr_warn("%s: FAIL #1d\n", __func__);
-	}
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_GetActiveTFWeapon)) {
-		pr_special("%s: PASS #1e\n", __func__);
-	} else {
-		pr_warn("%s: FAIL #1e\n", __func__);
-	}
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func2(&off)) {
-		pr_special("%s: PASS #2\n", __func__);
-	} else {
-		pr_warn("%s: FAIL #2\n", __func__);
-	}
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func3(&off)) {
-		pr_special("%s: PASS #3\n", __func__);
-	} else {
-		pr_warn("%s: FAIL #3\n", __func__);
-	}
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func4(&off)) {
-		pr_special("%s: PASS #4\n", __func__);
-	} else {
-		pr_warn("%s: FAIL #4\n", __func__);
-	}
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func5(&off)) {
-		pr_special("%s: PASS #5\n", __func__);
-	} else {
-		pr_warn("%s: FAIL #5\n", __func__);
-	}
-#endif
 	
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_OnAddSpeedBoost)) goto done;
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_OnAddDisguisedAsDispenser)) goto done;
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_OnRemoveSpeedBoost)) goto done;
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_OnRemoveDisguisedAsDispenser)) goto done;
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off,
-		CTFPlayerShared_GetActiveTFWeapon)) goto done;
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func2(&off)) goto done;
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func3(&off)) goto done;
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func4(&off)) goto done;
-	if (_entprop_extract_CTFPlayerShared_m_pOuter_func5(&off)) goto done;
+	uintptr_t off1a = 0;
+	_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off1a,
+		CTFPlayerShared_OnAddSpeedBoost);
+	EXTRACT_CHECK(off1a);
 	
-done:
-	return off;
+	uintptr_t off1b = 0;
+	_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off1b,
+		CTFPlayerShared_OnAddDisguisedAsDispenser);
+	EXTRACT_CHECK(off1b);
+	
+	uintptr_t off1c = 0;
+	_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off1c,
+		CTFPlayerShared_OnRemoveSpeedBoost);
+	EXTRACT_CHECK(off1c);
+	
+	uintptr_t off1d = 0;
+	_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off1d,
+		CTFPlayerShared_OnRemoveDisguisedAsDispenser);
+	EXTRACT_CHECK(off1d);
+	
+	uintptr_t off1e = 0;
+	_entprop_extract_CTFPlayerShared_m_pOuter_func1(&off1e,
+		CTFPlayerShared_GetActiveTFWeapon);
+	EXTRACT_CHECK(off1e);
+	
+	uintptr_t off2 = 0;
+	_entprop_extract_CTFPlayerShared_m_pOuter_func2(&off2);
+	EXTRACT_CHECK(off2);
+	
+	uintptr_t off3 = 0;
+	_entprop_extract_CTFPlayerShared_m_pOuter_func3(&off3);
+	EXTRACT_CHECK(off3);
+	
+	uintptr_t off4 = 0;
+	_entprop_extract_CTFPlayerShared_m_pOuter_func4(&off4);
+	EXTRACT_CHECK(off4);
+	
+	uintptr_t off5 = 0;
+	_entprop_extract_CTFPlayerShared_m_pOuter_func5(&off5);
+	EXTRACT_CHECK(off5);
+	
+	
+	if (fail) {
+		return 0;
+	} else {
+		return off;
+	}
 }

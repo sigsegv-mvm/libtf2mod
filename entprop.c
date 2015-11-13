@@ -120,3 +120,48 @@ void entprop_init(void)
 	INIT_EXTRACTED(CTFBot_m_nMission);
 	INIT_EXTRACTED(CTFBot_m_hSBTarget);
 }
+
+
+bool entprop_extract_verify_runs(void *func,
+	size_t check_base, uint8_t check[],
+	int num_runs, size_t runs[][2])
+{
+	bool result = true;
+	
+	for (int i = 0; i < num_runs; ++i) {
+		size_t run_off = runs[i][0];
+		size_t run_len = runs[i][1];
+		
+		assert(run_off >= check_base);
+		
+		if (!func_verify_quiet(func,
+			run_off, run_len, check + (run_off - check_base))) {
+			result = false;
+			/* don't break so we don't skip any warnings */
+		}
+	}
+	
+	return result;
+}
+
+
+bool entprop_extract_ensure_match(const char *caller,
+	int num_offs, size_t offs[])
+{
+	bool mismatch = false;
+	for (int i = 1; i < num_offs; ++i) {
+		if (offs[i] != offs[i - 1]) {
+			mismatch = true;
+			break;
+		}
+	}
+	
+	if (mismatch) {
+		pr_warn("%s: mismatch\n", caller);
+		for (int i = 0; i < num_offs; ++i) {
+			pr_debug("  %d: %04x\n", i, offs[i]);
+		}
+	}
+	
+	return !mismatch;
+}
