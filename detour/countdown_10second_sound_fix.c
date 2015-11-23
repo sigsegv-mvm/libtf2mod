@@ -18,9 +18,7 @@ static void detour_ConVar_SetValue_int(ConVar* this, int val)
 {
 	trampoline_ConVar_SetValue_int(this, val);
 	
-	pr_debug("%s(%08x, %d)\n", "ConVar::SetValue", (uintptr_t)this, val);
 	if (this == CONVAR_mp_restartgame && val != 0) {
-		pr_debug("  this and val are good\n");
 		uintptr_t caller1 = (uintptr_t)__builtin_extract_return_addr(
 			__builtin_return_address(0));
 		if (func_owns_addr(caller1,
