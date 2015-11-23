@@ -80,6 +80,7 @@ extern detour_info_t detour_responses_unused_sapper;
 extern detour_info_t detour_responses_unused_credits;
 extern detour_info_t detour_responses_suppress_medicbot_shield;
 extern detour_info_t detour_responses_suppress_giant_sentrybuster;
+extern detour_info_t detour_countdown_10second_sound_fix;
 
 extern detour_info_t detour_mini_dispenser;
 

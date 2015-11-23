@@ -264,7 +264,7 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(ConVar_ctor,
 		"_ZN6ConVarC2EPKcS1_iS1_");
-	SYMBOL_FUNC(ConVar_SetValue_int,
+	SYMBOL_FUNC_LIB("server_srv.so", ConVar_SetValue_int,
 		"_ZN6ConVar8SetValueEi");
 	
 	SYMBOL_FUNC(ConCommand_ctor,
@@ -603,6 +603,8 @@ void symbols_init(void)
 		"_ZN12CTFGameRules40PlayerReadyStatus_HaveMinPlayersToEnableEv");
 	SYMBOL_FUNC(CTFGameRules_PlayerReadyStatus_ShouldStartCountdown,
 		"_ZN12CTFGameRules38PlayerReadyStatus_ShouldStartCountdownEv");
+	SYMBOL_FUNC(CTFGameRules_PlayerReadyStatus_UpdatePlayerState,
+		"_ZN12CTFGameRules35PlayerReadyStatus_UpdatePlayerStateEP9CTFPlayerb");
 	SYMBOL_FUNC(CTFGameRules_PushAllPlayersAway,
 		"_ZN12CTFGameRules18PushAllPlayersAwayERK6VectorffiP10CUtlVectorIP9CTFPlayer10CUtlMemoryIS5_iEE");
 	SYMBOL_FUNC(CTFGameRules_UsePlayerReadyStatusMode,

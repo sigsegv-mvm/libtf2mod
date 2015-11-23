@@ -350,6 +350,7 @@ extern bool (*CTFGameRules_IsPVEModeControlled)(CTFGameRules* this, CBaseEntity*
 extern bool (*CTFGameRules_IsUpgradeTierEnabled)(CTFGameRules* this, CTFPlayer*, int, int);
 extern bool (*CTFGameRules_PlayerReadyStatus_HaveMinPlayersToEnable)(CTFGameRules* this);
 extern bool (*CTFGameRules_PlayerReadyStatus_ShouldStartCountdown)(CTFGameRules* this);
+extern void (*CTFGameRules_PlayerReadyStatus_UpdatePlayerState)(CTFGameRules* this, CTFPlayer*, bool);
 extern void (*CTFGameRules_PushAllPlayersAway)(CTFGameRules* this, Vector const*, float, float, int, CUtlVector*);
 extern bool (*CTFGameRules_UsePlayerReadyStatusMode)(CTFGameRules* this);
 
