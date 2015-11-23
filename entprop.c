@@ -55,6 +55,8 @@ DEFINE_ENTPROP(bool, CBaseObject, m_bDisposableBuilding);
 DEFINE_ENTPROP(bool, CBaseObject, m_bMiniBuilding);
 DEFINE_ENTPROP(int, CBaseObject, m_iMaxHealth);
 
+DEFINE_ENTPROP(bool, CTFGameRules, m_bAwaitingReadyRestart);
+DEFINE_ENTPROP(bool, CTFGameRules, m_bInWaitingForPlayers);
 DEFINE_ENTPROP(bool, CTFGameRules, m_bPlayingMedieval);
 DEFINE_ENTPROP(float, CTFGameRules, m_flRestartRoundTime);
 DEFINE_ENTPROP(int, CTFGameRules, m_iRoundState);
@@ -102,6 +104,10 @@ void entprop_init(void)
 	INIT_DATAMAP(CBaseObject_m_iMaxHealth,
 		CBaseObject, m_iMaxHealth);
 	
+	INIT_SENDPROP(CTFGameRules_m_bAwaitingReadyRestart,
+		CTFGameRulesProxy, m_bAwaitingReadyRestart);
+	INIT_SENDPROP(CTFGameRules_m_bInWaitingForPlayers,
+		CTFGameRulesProxy, m_bInWaitingForPlayers);
 	INIT_SENDPROP(CTFGameRules_m_bPlayingMedieval,
 		CTFGameRulesProxy, m_bPlayingMedieval);
 	INIT_SENDPROP(CTFGameRules_m_flRestartRoundTime,

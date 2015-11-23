@@ -22,6 +22,8 @@ bool *prop_CBaseObject_m_bDisposableBuilding(CBaseObject* ent);
 bool *prop_CBaseObject_m_bMiniBuilding(CBaseObject* ent);
 int *prop_CBaseObject_m_iMaxHealth(CBaseObject* ent);
 
+bool *prop_CTFGameRules_m_bAwaitingReadyRestart(CTFGameRules* ent);
+bool *prop_CTFGameRules_m_bInWaitingForPlayers(CTFGameRules* ent);
 bool *prop_CTFGameRules_m_bPlayingMedieval(CTFGameRules* ent);
 float *prop_CTFGameRules_m_flRestartRoundTime(CTFGameRules* ent);
 int *prop_CTFGameRules_m_iRoundState(CTFGameRules* ent);
