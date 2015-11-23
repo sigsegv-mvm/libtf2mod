@@ -16,7 +16,7 @@ static void reimpl_CTFPlayerShared_OnAddReprogrammed(CTFPlayerShared* this)
 	
 	CTFPlayer* *m_pOuter = prop_CTFPlayerShared_m_pOuter(this);
 	if (*m_pOuter != NULL) {
-		CTFPlayer_ForceChangeTeam(*m_pOuter, TFTEAM_RED, false);
+		CTFPlayer_ForceChangeTeam(*m_pOuter, TF_TEAM_RED, false);
 	}
 }
 
@@ -24,7 +24,7 @@ static void reimpl_CTFPlayerShared_OnRemoveReprogrammed(CTFPlayerShared* this)
 {
 	CTFPlayer* *m_pOuter = prop_CTFPlayerShared_m_pOuter(this);
 	if (*m_pOuter != NULL) {
-		CTFPlayer_ForceChangeTeam(*m_pOuter, TFTEAM_BLUE, false);
+		CTFPlayer_ForceChangeTeam(*m_pOuter, TF_TEAM_BLUE, false);
 	}
 }
 

@@ -22,7 +22,7 @@ static void detour_CTFPlayer_CreateRagdollEntity(CTFPlayer* this, bool bShouldGi
 	if ((m_iDamageCustom == TF_CUSTOM_PLASMA || 
 		m_iDamageCustom == TF_CUSTOM_PLASMA_CHARGED) &&
 		CTFGameRules_IsPVEModeActive(*g_pGameRules) &&
-		CBaseEntity_GetTeamNumber(this) == TFTEAM_BLUE) {
+		CBaseEntity_GetTeamNumber(this) == TF_TEAM_BLUE) {
 		
 		float *m_flModelScale = prop_CBaseAnimating_m_flModelScale(this);
 		bool is_giant = (CTFPlayer_IsMiniBoss(this) || *m_flModelScale > 1.0f);
@@ -36,10 +36,10 @@ static void detour_CTFPlayer_CreateRagdollEntity(CTFPlayer* this, bool bShouldGi
 		}
 		
 		
-		bool is_engie  = CTFPlayer_IsPlayerClass(this, TFCLASS_ENGINEER);
-		bool is_medic  = CTFPlayer_IsPlayerClass(this, TFCLASS_MEDIC);
-		bool is_sniper = CTFPlayer_IsPlayerClass(this, TFCLASS_SNIPER);
-		bool is_spy    = CTFPlayer_IsPlayerClass(this, TFCLASS_SPY);
+		bool is_engie  = CTFPlayer_IsPlayerClass(this, TF_CLASS_ENGINEER);
+		bool is_medic  = CTFPlayer_IsPlayerClass(this, TF_CLASS_MEDIC);
+		bool is_sniper = CTFPlayer_IsPlayerClass(this, TF_CLASS_SNIPER);
+		bool is_spy    = CTFPlayer_IsPlayerClass(this, TF_CLASS_SPY);
 		
 		/* for non-giants that have 0-1 gibs:
 		 * change the custom damage effect from TF_CUSTOM_PLASMA_CHARGED (which

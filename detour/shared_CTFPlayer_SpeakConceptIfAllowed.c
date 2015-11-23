@@ -44,14 +44,14 @@ static unknown_t detour_CTFPlayer_SpeakConceptIfAllowed(CTFPlayer* this, int con
 				int r = rand() % 4;
 				
 				int *m_iClass = prop_CTFPlayer_m_iClass(this);
-				if (*m_iClass == TFCLASS_HEAVY ||
-					*m_iClass == TFCLASS_ENGINEER) {
+				if (*m_iClass == TF_CLASS_HEAVYWEAPONS ||
+					*m_iClass == TF_CLASS_ENGINEER) {
 					concept = TLK_MVM_ENCOURAGE_MONEY;
-				} else if (*m_iClass == TFCLASS_SOLDIER) {
+				} else if (*m_iClass == TF_CLASS_SOLDIER) {
 					if (r < 2) {
 						concept = TLK_MVM_ENCOURAGE_MONEY;
 					}
-				} else if (*m_iClass == TFCLASS_MEDIC) {
+				} else if (*m_iClass == TF_CLASS_MEDIC) {
 					if (r < 3) {
 						concept = TLK_MVM_ENCOURAGE_MONEY;
 					}

@@ -166,23 +166,28 @@ typedef enum {
 } ETFCond;
 
 enum {
-	TFTEAM_UNASSIGNED = 0,
-	TFTEAM_SPECTATOR  = 1,
-	TFTEAM_RED        = 2,
-	TFTEAM_BLUE       = 3,
+	TEAM_ANY        = -2,
+	TEAM_INVALID    = -1,
+	TEAM_UNASSIGNED =  0,
+	TEAM_SPECTATOR  =  1,
+	TF_TEAM_RED     =  2,
+	TF_TEAM_BLUE    =  3,
 };
 
 enum {
-	TFCLASS_UNKNOWN  = 0,
-	TFCLASS_SCOUT    = 1,
-	TFCLASS_SNIPER   = 2,
-	TFCLASS_SOLDIER  = 3,
-	TFCLASS_DEMOMAN  = 4,
-	TFCLASS_MEDIC    = 5,
-	TFCLASS_HEAVY    = 6,
-	TFCLASS_PYRO     = 7,
-	TFCLASS_SPY      = 8,
-	TFCLASS_ENGINEER = 9,
+	TF_CLASS_UNDEFINED    =  0,
+	TF_CLASS_SCOUT        =  1,
+	TF_CLASS_SNIPER       =  2,
+	TF_CLASS_SOLDIER      =  3,
+	TF_CLASS_DEMOMAN      =  4,
+	TF_CLASS_MEDIC        =  5,
+	TF_CLASS_HEAVYWEAPONS =  6,
+	TF_CLASS_PYRO         =  7,
+	TF_CLASS_SPY          =  8,
+	TF_CLASS_ENGINEER     =  9,
+	TF_CLASS_CIVILIAN     = 10,
+	TF_CLASS_COUNT_ALL    = 11,
+	TF_CLASS_RANDOM       = 12,
 };
 
 enum {
@@ -212,13 +217,20 @@ enum {
 	DMG_REMOVENORAGDOLL       = (1 << 22),
 	DMG_PHYSGUN               = (1 << 23),
 	DMG_PLASMA                = (1 << 24),
-	DMG_AIRBLAST              = (1 << 25),
+	DMG_AIRBOAT               = (1 << 25),
 	DMG_DISSOLVE              = (1 << 26),
 	DMG_BLAST_SURFACE         = (1 << 27),
 	DMG_DIRECT                = (1 << 28),
 	DMG_BUCKSHOT              = (1 << 29),
 	
-	DMG_CRIT = DMG_ACID,
+	/* TF2 specific */
+	DMG_USE_HITLOCATIONS   = DMG_AIRBOAT,
+	DMG_HALF_FALLOFF       = DMG_RADIATION,
+	DMG_CRITICAL           = DMG_ACID,
+	DMG_RADIUS_MAX         = DMG_ENERGYBEAM,
+	DMG_IGNITE             = DMG_PLASMA,
+	DMG_USEDISTANCEMOD     = DMG_SLOWBURN,
+	DMG_NOCLOSEDISTANCEMOD = DMG_POISON,
 };
 
 enum {

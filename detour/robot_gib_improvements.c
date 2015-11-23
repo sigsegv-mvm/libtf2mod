@@ -13,7 +13,7 @@ static bool detour_CTFBot_ShouldGib(CTFBot* this, CTakeDamageInfo const* info)
 {
 	/* only meddle with the gibbing logic for MvM robots on BLU team */
 	if (CTFGameRules_IsPVEModeActive(*g_pGameRules) &&
-		CBaseEntity_GetTeamNumber(this) == TFTEAM_BLUE) {
+		CBaseEntity_GetTeamNumber(this) == TF_TEAM_BLUE) {
 		
 		bool is_miniboss = CTFPlayer_IsMiniBoss(this);
 		float *m_flModelScale = prop_CBaseAnimating_m_flModelScale(this);
@@ -34,10 +34,10 @@ static bool detour_CTFBot_ShouldGib(CTFBot* this, CTakeDamageInfo const* info)
 		}
 		
 		
-		bool is_engie  = CTFPlayer_IsPlayerClass(this, TFCLASS_ENGINEER);
-		bool is_medic  = CTFPlayer_IsPlayerClass(this, TFCLASS_MEDIC);
-		bool is_sniper = CTFPlayer_IsPlayerClass(this, TFCLASS_SNIPER);
-		bool is_spy    = CTFPlayer_IsPlayerClass(this, TFCLASS_SPY);
+		bool is_engie  = CTFPlayer_IsPlayerClass(this, TF_CLASS_ENGINEER);
+		bool is_medic  = CTFPlayer_IsPlayerClass(this, TF_CLASS_MEDIC);
+		bool is_sniper = CTFPlayer_IsPlayerClass(this, TF_CLASS_SNIPER);
+		bool is_spy    = CTFPlayer_IsPlayerClass(this, TF_CLASS_SPY);
 		
 		/* engineer bots have 0 gibs, and medic/sniper/spy have only 1 gib
 		 * (head only); so don't let these classes gib at all */

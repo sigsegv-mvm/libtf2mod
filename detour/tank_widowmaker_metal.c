@@ -36,7 +36,7 @@ static unknown_t detour_CTFTankBoss_OnTakeDamage_Alive(CTFTankBoss* this, CTakeD
 			//	(CTFPlayer_IsPlayerClass(player, TFCLASS_ENGINEER) ?
 			//		"HECK YES!" : "NOPE."));
 			
-			if (attr > 0 && CTFPlayer_IsPlayerClass(player, TFCLASS_ENGINEER)) {
+			if (attr > 0 && CTFPlayer_IsPlayerClass(player, TF_CLASS_ENGINEER)) {
 				float flAmmo = info->m_flDamage * (float)attr / (100.0f * 3.0f);
 				int iAmmo = (int)flAmmo;
 				
