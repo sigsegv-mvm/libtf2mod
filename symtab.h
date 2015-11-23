@@ -25,5 +25,10 @@ bool symtab_obj_addr_abs(symbol_t *entry, uintptr_t addr);
 void symtab_obj_absolute(const char *name, void **addr, size_t *size);
 void symtab_func_absolute(const char *name, void **addr, size_t *size);
 
+void symtab_obj_absolute_onelib(library_info_t *lib, const char *name,
+	void **addr, size_t *size);
+void symtab_func_absolute_onelib(library_info_t *lib, const char *name,
+	void **addr, size_t *size);
+
 
 #endif

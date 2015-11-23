@@ -7,6 +7,11 @@
 #define SYMBOL_FUNC(_var, _mangled) \
 	symtab_func_absolute(_mangled, (void **)&_var, NULL)
 
+#define SYMBOL_OBJ_LIB(_lib, _var, _mangled) \
+	symtab_obj_absolute_onelib(lib_find(_lib), _mangled, (void **)&_var, NULL)
+#define SYMBOL_FUNC_LIB(_lib, _var, _mangled) \
+	symtab_func_absolute_onelib(lib_find(_lib), _mangled, (void **)&_var, NULL)
+
 
 void symbols_init(void)
 {

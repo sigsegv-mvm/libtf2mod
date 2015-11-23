@@ -298,3 +298,42 @@ void symtab_func_absolute(const char *name, void **addr, size_t *size)
 		*size = sym.size;
 	}
 }
+
+
+void symtab_obj_absolute_onelib(library_info_t *lib, const char *name,
+	void **addr, size_t *size)
+{
+	assert(lib != NULL);
+	
+	symbol_t sym;
+	if (!symtab_lookup_name(lib, &sym, STT_OBJECT, name)) {
+		pr_warn("%s: failed for '%s'\n", __func__, name);
+		return;
+	}
+	
+	if (addr != NULL) {
+		*addr = (void *)(sym.lib->baseaddr + sym.addr);
+	}
+	if (size != NULL) {
+		*size = sym.size;
+	}
+}
+
+void symtab_func_absolute_onelib(library_info_t *lib, const char *name,
+	void **addr, size_t *size)
+{
+	assert(lib != NULL);
+	
+	symbol_t sym;
+	if (!symtab_lookup_name(lib, &sym, STT_FUNC, name)) {
+		pr_warn("%s: failed for '%s'\n", __func__, name);
+		return;
+	}
+	
+	if (addr != NULL) {
+		*addr = (void *)(sym.lib->baseaddr + sym.addr);
+	}
+	if (size != NULL) {
+		*size = sym.size;
+	}
+}
