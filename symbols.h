@@ -77,7 +77,7 @@ extern CTFGameStats *CTF_GameStats;
 
 extern CTFObjectiveResource **g_pObjectiveResource;
 
-extern ConVar **CONVAR_mp_restartgame;
+extern ConVar *CONVAR_mp_restartgame;
 
 
 /* functions: global */

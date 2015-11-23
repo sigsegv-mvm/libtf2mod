@@ -26,7 +26,7 @@ static void detour_ConVar_SetValue_int(ConVar* this, int val)
 	
 	if (func_owns_addr(caller0,
 		func_CTFGameRules_BetweenRounds_Think) &&
-		this == *CONVAR_mp_restartgame) {
+		this == CONVAR_mp_restartgame) {
 		pr_info(" ConVar::SetValue(mp_restartgame): ");
 		pr_debug(" was:%d now:%d\n",
 			this->m_nValue,
