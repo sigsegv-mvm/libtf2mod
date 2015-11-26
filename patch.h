@@ -63,7 +63,6 @@ extern patch_info_t patch_perf_attr_premunge_mvm;
 extern patch_info_t patch_perf_attr_premunge_halloween;
 extern patch_info_t patch_eyelander_overheal_decay_fix;
 extern patch_info_t patch_mvm_enable_dropped_weapons;
-extern patch_info_t patch_mvm_gametype_fix;
 
 
 #endif

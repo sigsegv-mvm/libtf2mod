@@ -53,7 +53,6 @@ extern detour_info_t detour_sentry_moveturret_decimate;
 extern detour_info_t detour_minisentry_quickbuild_health_fix;
 extern detour_info_t detour_pushallplayersaway_disable;
 extern detour_info_t detour_robot_tickle_enable;
-extern detour_info_t detour_giantsoldier_crit_sound_fix;
 extern detour_info_t detour_disposable_sentry_enable_health_upgrades;
 extern detour_info_t detour_wavestatus_teleporter_rtr_fix;
 extern detour_info_t detour_engiebot_ai_unsap;

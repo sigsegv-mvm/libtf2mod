@@ -10,7 +10,6 @@ detour_info_t *detours[] = {
 	&detour_minisentry_quickbuild_health_fix,
 	&detour_pushallplayersaway_disable,
 	&detour_robot_tickle_enable,
-	&detour_giantsoldier_crit_sound_fix,
 	&detour_disposable_sentry_enable_health_upgrades,
 	&detour_wavestatus_teleporter_rtr_fix,
 	&detour_engiebot_ai_unsap,
