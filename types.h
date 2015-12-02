@@ -900,6 +900,14 @@ typedef void CUtlConstStringBase;
 
 typedef void Action_CTFBot;
 
+typedef void IEngineTrace;
+typedef void CEngineTrace;
+typedef void ITraceFilter;
+
+typedef void CBulletPenetrateEnum;
+
+typedef void ICollideable;
+
 typedef void IRecipientFilter;
 
 typedef void CDmgAccumulator;
@@ -909,6 +917,10 @@ typedef void mstudiobbox_t;
 typedef unknown_t ShakeCommand_t;
 
 typedef void CTraceFilterObject;
+
+typedef void Ray_t;
+
+typedef void CFlaggedEntitiesEnum;
 
 typedef void inputdata_t;
 

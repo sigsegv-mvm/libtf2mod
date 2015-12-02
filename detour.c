@@ -72,6 +72,7 @@ detour_info_t *detours[] = {
 	//&detour_debug_airblast,
 	//&detour_debug_aimhead,
 	//&detour_debug_gametype,
+	&detour_debug_rescueranger_trace,
 	
 	&detour_debug_spawn_item_fail_trace,
 	

@@ -4,6 +4,9 @@
 
 /* known entprops */
 
+char* *prop_CBaseEntity_m_iClassname(CBaseEntity *ent);
+char* *prop_CBaseEntity_m_iName(CBaseEntity *ent);
+
 float *prop_CBaseAnimating_m_flModelScale(CBaseAnimating* ent);
 int *prop_CBaseAnimating_m_nSkin(CBaseAnimating* ent);
 

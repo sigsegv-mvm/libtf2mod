@@ -112,6 +112,9 @@ void symbols_init(void)
 	SYMBOL_OBJ(gEntList,
 		"gEntList");
 	
+	SYMBOL_OBJ(enginetrace,
+		"enginetrace");
+	
 	SYMBOL_OBJ(gameeventmanager,
 		"gameeventmanager");
 	
@@ -252,6 +255,8 @@ void symbols_init(void)
 	
 	/* functions: static */
 	
+	SYMBOL_FUNC(CBaseEntity_GetDataDescMap,
+		"_ZN11CBaseEntity14GetDataDescMapEv");
 	SYMBOL_FUNC(CBaseEntity_PrecacheScriptSound,
 		"_ZN11CBaseEntity19PrecacheScriptSoundEPKc");
 	
@@ -402,6 +407,8 @@ void symbols_init(void)
 		"_ZN9CTFPlayer13TFPlayerThinkEv");
 	SYMBOL_FUNC(CTFPlayer_TraceAttack,
 		"_ZN9CTFPlayer11TraceAttackERK15CTakeDamageInfoRK6VectorP10CGameTraceP15CDmgAccumulator");
+	SYMBOL_FUNC(CTFPlayer_TryToPickupBuilding,
+		"_ZN9CTFPlayer19TryToPickupBuildingEv");
 	
 	SYMBOL_FUNC(CTFBot_AddItem,
 		"_ZN6CTFBot7AddItemEPKc");
@@ -789,6 +796,16 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CSoundEmitterSystemBase_AddSoundOverrides,
 		"_ZN23CSoundEmitterSystemBase17AddSoundOverridesEPKcb");
+	
+	SYMBOL_FUNC(CEngineTrace_ClipRayToEntity,
+		"_ZN12CEngineTrace15ClipRayToEntityERK5Ray_tjP13IHandleEntityP10CGameTrace");
+	SYMBOL_FUNC(CEngineTrace_GetPointContents_Collideable,
+		"_ZN12CEngineTrace28GetPointContents_CollideableEP12ICollideableRK6Vector");
+	SYMBOL_FUNC(CEngineTrace_TraceRay,
+		"_ZN12CEngineTrace8TraceRayERK5Ray_tjP12ITraceFilterP10CGameTrace");
+	
+	SYMBOL_FUNC(CBulletPenetrateEnum_EnumEntity,
+		"_ZN20CBulletPenetrateEnum10EnumEntityEP13IHandleEntity");
 	
 	
 #warning TODO: symbols for these upgrade related functions

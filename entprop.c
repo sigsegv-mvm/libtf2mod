@@ -37,6 +37,9 @@
 
 /* known entprops */
 
+DEFINE_ENTPROP(char*, CBaseEntity, m_iClassname);
+DEFINE_ENTPROP(char*, CBaseEntity, m_iName);
+
 DEFINE_ENTPROP(float, CBaseAnimating, m_flModelScale);
 DEFINE_ENTPROP(int, CBaseAnimating, m_nSkin);
 
@@ -74,6 +77,11 @@ DEFINE_EXTRACTED(EHANDLE, CTFBot, m_hSBTarget);
 
 void entprop_init(void)
 {
+	INIT_DATAMAP(CBaseEntity_m_iClassname,
+		CBaseEntity, m_iClassname);
+	INIT_DATAMAP(CBaseEntity_m_iName,
+		CBaseEntity, m_iName);
+	
 	INIT_SENDPROP(CBaseAnimating_m_flModelScale,
 		CBaseAnimating, m_flModelScale);
 	INIT_SENDPROP(CBaseAnimating_m_nSkin,

@@ -69,6 +69,8 @@ extern CGlobalVars **gpGlobals;
 
 extern CGlobalEntityList *gEntList;
 
+extern CEngineTrace **enginetrace;
+
 extern CGameEventManager **gameeventmanager;
 
 extern CTFGameRules **g_pGameRules;
@@ -150,6 +152,7 @@ extern void (*GlobalAttrModifier_TFHalloweenAttribHookMunger)(char const*, CUtlC
 
 /* functions: static */
 
+extern datamap_t* (*CBaseEntity_GetDataDescMap)(void);
 extern void (*CBaseEntity_PrecacheScriptSound)(char const*);
 
 extern datamap_t* (*CBasePlayer_GetDataDescMap)(void);
@@ -236,6 +239,7 @@ extern bool (*CTFPlayer_ShouldGib)(CTFPlayer* this, CTakeDamageInfo const*);
 extern unknown_t (*CTFPlayer_SpeakConceptIfAllowed)(CTFPlayer* this, int, char const*, char*, unsigned int, IRecipientFilter*);
 extern unknown_t (*CTFPlayer_TFPlayerThink)(CTFPlayer* this);
 extern unknown_t (*CTFPlayer_TraceAttack)(CTFPlayer* this, CTakeDamageInfo const*, Vector const*, CGameTrace*, CDmgAccumulator*);
+extern bool (*CTFPlayer_TryToPickupBuilding)(CTFPlayer* this);
 
 extern void (*CTFBot_AddItem)(CTFBot* this, char const*);
 extern bool (*CTFBot_EquipRequiredWeapon)(CTFBot* this);
@@ -456,6 +460,12 @@ extern unknown_t (*Action_CTFBot_OnContact)(Action_CTFBot* this, CBaseEntity*, C
 extern unknown_t (*CTraceFilterObject_ShouldHitEntity)(CTraceFilterObject* this, IHandleEntity*, int);
 
 extern void (*CSoundEmitterSystemBase_AddSoundOverrides)(CSoundEmitterSystemBase* this, char const*, bool);
+
+extern int (*CEngineTrace_GetPointContents_Collideable)(CEngineTrace* this, ICollideable*, Vector const*);
+extern void (*CEngineTrace_ClipRayToEntity)(CGameTrace* this, Ray_t const*, unsigned int, IHandleEntity*, CGameTrace*);
+extern void (*CEngineTrace_TraceRay)(CEngineTrace* this, Ray_t const*, unsigned int, ITraceFilter*, CGameTrace*);
+
+extern bool (*CBulletPenetrateEnum_EnumEntity)(CBulletPenetrateEnum* this, IHandleEntity*);
 
 
 #undef extern
