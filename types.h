@@ -653,6 +653,13 @@ enum {
 	FIRE_BULLETS_TEMPORARY_DANGER_SOUND      = 0x8,
 };
 
+enum {
+	HUD_PRINTNOTIFY  = 1,
+	HUD_PRINTCONSOLE = 2,
+	HUD_PRINTTALK    = 3,
+	HUD_PRINTCENTER  = 4,
+};
+
 typedef enum {
 	TFSTAT_UNDEFINED = 0,
 	
@@ -910,6 +917,10 @@ typedef void CSoundEmitterSystemBase;
 typedef void IEntityFindFilter;
 
 typedef void INextBotReply;
+
+typedef void CSteamID;
+
+typedef void hudtextparams_t;
 
 typedef uint32_t EHANDLE;
 

@@ -180,16 +180,50 @@ void symbols_init(void)
 	SYMBOL_FUNC(CreateEntityByName,
 		"_Z18CreateEntityByNamePKci");
 	
+	SYMBOL_FUNC(ClientPrint,
+		"_Z11ClientPrintP11CBasePlayeriPKcS2_S2_S2_S2_");
+	SYMBOL_FUNC(UTIL_ClientPrintAll,
+		"_Z19UTIL_ClientPrintAlliPKcS0_S0_S0_S0_");
+	SYMBOL_FUNC(UTIL_ClientPrintFilter,
+		"_Z22UTIL_ClientPrintFilterR16IRecipientFilteriPKcS2_S2_S2_S2_");
+	SYMBOL_FUNC(UTIL_EntitiesAlongRay,
+		"_Z21UTIL_EntitiesAlongRayRK5Ray_tP20CFlaggedEntitiesEnum");
+	SYMBOL_FUNC(UTIL_EntitiesInBox,
+		"_Z18UTIL_EntitiesInBoxRK6VectorS1_P20CFlaggedEntitiesEnum");
+	SYMBOL_FUNC(UTIL_EntitiesInSphere,
+		"_Z21UTIL_EntitiesInSphereRK6VectorfP20CFlaggedEntitiesEnum");
 	SYMBOL_FUNC(UTIL_EntityByIndex,
 		"_Z18UTIL_EntityByIndexi");
 	SYMBOL_FUNC(UTIL_GetHolidayForString,
 		"_Z24UTIL_GetHolidayForStringPKc");
+	SYMBOL_FUNC(UTIL_HudHintText,
+		"_Z16UTIL_HudHintTextP11CBaseEntityPKc");
+	SYMBOL_FUNC(UTIL_HudMessage,
+		"_Z15UTIL_HudMessageP11CBasePlayerRK14hudtextparms_sPKc");
+	SYMBOL_FUNC(UTIL_HudMessageAll,
+		"_Z18UTIL_HudMessageAllRK14hudtextparms_sPKc");
 	SYMBOL_FUNC(UTIL_LogPrintf,
 		"_Z14UTIL_LogPrintfPKcz");
 	SYMBOL_FUNC(UTIL_PlayerByIndex,
 		"_Z18UTIL_PlayerByIndexi");
+	SYMBOL_FUNC(UTIL_PlayerByName,
+		"_Z17UTIL_PlayerByNamePKc");
+	SYMBOL_FUNC(UTIL_PlayerBySteamID,
+		"_Z20UTIL_PlayerBySteamIDRK8CSteamID");
+	SYMBOL_FUNC(UTIL_PlayerByUserId,
+		"_Z19UTIL_PlayerByUserIdi");
+	SYMBOL_FUNC(UTIL_SayText,
+		"_Z12UTIL_SayTextPKcP11CBasePlayer");
+	SYMBOL_FUNC(UTIL_SayTextAll,
+		"_Z15UTIL_SayTextAllPKcP11CBasePlayerb");
+	SYMBOL_FUNC(UTIL_SayTextFilter,
+		"_Z19UTIL_SayText2FilterR16IRecipientFilterP11CBasePlayerbPKcS4_S4_S4_S4_");
 	SYMBOL_FUNC(UTIL_ScreenShake,
 		"_Z16UTIL_ScreenShakeRK6Vectorffff14ShakeCommand_tb");
+	SYMBOL_FUNC(UTIL_ShowMessage,
+		"_Z16UTIL_ShowMessagePKcP11CBasePlayer");
+	SYMBOL_FUNC(UTIL_ShowMessageAll,
+		"_Z19UTIL_ShowMessageAllPKc");
 	
 	SYMBOL_FUNC(V_stricmp,
 		"_Z9V_stricmpPKcS0_");

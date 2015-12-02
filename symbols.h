@@ -109,11 +109,28 @@ extern unknown_t (*MessageWriteWord)(int);
 
 extern CBaseEntity* (*CreateEntityByName)(char const*, int);
 
+extern void (*ClientPrint)(CBasePlayer*, int, char const*, char const*, char const*, char const*, char const*);
+extern void (*UTIL_ClientPrintAll)(int, char const*, char const*, char const*, char const*, char const*);
+extern void (*UTIL_ClientPrintFilter)(IRecipientFilter*, int, char const*, char const*, char const*, char const*, char const*);
+extern int (*UTIL_EntitiesAlongRay)(Ray_t *const, CFlaggedEntitiesEnum*);
+extern int (*UTIL_EntitiesInBox)(Vector const*, Vector const*, CFlaggedEntitiesEnum*);
+extern int (*UTIL_EntitiesInSphere)(Vector const*, float, CFlaggedEntitiesEnum*);
 extern CBaseEntity* (*UTIL_EntityByIndex)(int);
 extern int (*UTIL_GetHolidayForString)(char const*);
+extern void (*UTIL_HudHintText)(CBaseEntity*, char const*);
+extern void (*UTIL_HudMessage)(CBasePlayer*, hudtextparams_t const*, char const*);
+extern void (*UTIL_HudMessageAll)(hudtextparams_t const*, char const*);
 extern unknown_t (*UTIL_LogPrintf)(char const*, ...);
 extern CBasePlayer* (*UTIL_PlayerByIndex)(int);
+extern CBasePlayer* (*UTIL_PlayerByName)(char const*);
+extern CBasePlayer* (*UTIL_PlayerBySteamID)(CSteamID const*);
+extern CBasePlayer* (*UTIL_PlayerByUserId)(int);
+extern void (*UTIL_SayText)(char const*, CBasePlayer*);
+extern void (*UTIL_SayTextAll)(char const*, CBasePlayer*, bool);
+extern void (*UTIL_SayTextFilter)(IRecipientFilter*, CBasePlayer*, bool, char const*, char const*, char const*, char const*, char const*);
 extern void (*UTIL_ScreenShake)(Vector const*, float, float, float, float, ShakeCommand_t, bool);
+extern void (*UTIL_ShowMessage)(char const*, CBasePlayer*);
+extern void (*UTIL_ShowMessageAll)(char const*);
 
 extern int (*V_stricmp)(char const*, char const*);
 

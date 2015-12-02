@@ -22,6 +22,8 @@ int64_t conv_timespec_to_nsec(const struct timespec *t);
 
 int conv_EHANDLE_to_entindex(EHANDLE handle);
 
+void cl_con_printf(const char *fmt, ...) __attribute__((format(printf, 1, 2)));
+
 const char *get_string_for_damagebits(uint32_t m_bitsDamageType);
 const char *get_string_for_customkill(int m_iCustomKill);
 const char *get_string_for_weaponid(int id);

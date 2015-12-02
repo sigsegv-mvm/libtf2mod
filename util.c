@@ -162,6 +162,24 @@ int conv_EHANDLE_to_entindex(EHANDLE handle)
 }
 
 
+void cl_con_printf(const char *fmt, ...)
+{
+	static char buf[16384];
+	
+	va_list va;
+	va_start(va, fmt);
+	vsnprintf(buf, sizeof(buf), fmt, va);
+	va_end(va);
+	
+	char *saveptr;
+	char *line = strtok_r(buf, "\n", &saveptr);
+	while (line != NULL) {
+		UTIL_ClientPrintAll(HUD_PRINTCONSOLE, line, NULL, NULL, NULL, NULL);
+		line = strtok_r(NULL, "\n", &saveptr);
+	}
+}
+
+
 const char *get_string_for_damagebits(uint32_t m_bitsDamageType)
 {
 	static const char *lut[] = {
