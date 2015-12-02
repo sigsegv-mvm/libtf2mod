@@ -79,19 +79,7 @@ static bool detour_CBulletPenetrateEnum_EnumEntity(CBulletPenetrateEnum* this, I
 	
 	if (ConVar_GetInt(&cvar_sigsegv_debug_rescueranger_trace) != 0) {
 		char ent_info[4096];
-		if (ent == NULL) {
-			strlcpy(ent_info, "nullptr", sizeof(ent_info));
-		} else {
-			const char *m_iClassname = *prop_CBaseEntity_m_iClassname(ent);
-			const char *m_iName = *prop_CBaseEntity_m_iName(ent);
-			
-			snprintf(ent_info, sizeof(ent_info),
-				"0x%08x [ idx:%d class:\"%s\" name:\"%s\" ]",
-				(uintptr_t)ent,
-				ENTINDEX(ent),
-				(m_iClassname != NULL ? m_iClassname : ""),
-				(m_iName != NULL ? m_iName : ""));
-		}
+		_get_ent_info(ent, ent_info, sizeof(ent_info));
 		
 		cl_con_printf(
 			"[CBulletPenetrateEnum::EnumEntity]\n"
