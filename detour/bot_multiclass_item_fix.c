@@ -14,7 +14,36 @@ static func_t *func_CItemGeneration_GenerateRandomItem;
 static func_t *func_CTFBot_AddItem;
 
 
-static CBaseEntity* detour_CreateEntityByName(char const* name, int i1)
+/* don't just call TranslateWeaponEntForClass directly, because doing so will
+ * actually break certain useful things (such as giving tf_weapon_parachute to
+ * classes other than soldier and demo) */
+static const char *_smart_TranslateWeaponEntForClass(const char *name, int classnum)
+{
+	const char *xlat = TranslateWeaponEntForClass(name, classnum);
+	
+	/* if TranslateWeaponEntForClass gave us an empty string, return a more
+	 * sensible entity class name instead (where possible) */
+	if (strcmp(xlat, "") == 0) {
+		/* tf_weapon_shotgun: default to tf_weapon_shotgun_primary */
+		if (strcasecmp(name, "tf_weapon_shotgun") == 0) {
+			return "tf_weapon_shotgun_primary";
+		}
+		
+		/* passthru the original entity class for these cases */
+		if (strcasecmp(name, "tf_weapon_pistol") == 0 ||
+			strcasecmp(name, "tf_weapon_shovel") == 0 ||
+			strcasecmp(name, "tf_weapon_bottle") == 0 ||
+			strcasecmp(name, "tf_weapon_parachute") == 0 ||
+			strcasecmp(name, "tf_weapon_revolver") == 0) {
+			return name;
+		}
+	}
+	
+	return xlat;
+}
+
+
+static CBaseEntity* detour_CreateEntityByName(const char *name, int i1)
 {
 	/* CTFBot::AddItem only knows how to deal with human-readable item names,
 	 * not entity class names, so we can't use TranslateWeaponEntForClass in
@@ -34,13 +63,6 @@ static CBaseEntity* detour_CreateEntityByName(char const* name, int i1)
 	 * it actually work
 	 */
 	
-	
-	/* calling TranslateWeaponEntForClass actually breaks parachutes for classes
-	 * other than soldier and demo, since those classes lack entries in the
-	 * pszWpnEntTranslationList array */
-	if (strcasecmp(name, "tf_weapon_parachute") == 0) {
-		goto passthru;
-	}
 	
 	uintptr_t caller1 = (uintptr_t)__builtin_extract_return_addr(
 		__builtin_return_address(0));
@@ -81,7 +103,7 @@ static CBaseEntity* detour_CreateEntityByName(char const* name, int i1)
 	//	(uintptr_t)bot,
 	//	bot_class);
 	
-	name = TranslateWeaponEntForClass(name, bot_class);
+	name = _smart_TranslateWeaponEntForClass(name, bot_class);
 	
 	
 passthru:
