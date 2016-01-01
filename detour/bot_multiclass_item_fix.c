@@ -35,6 +35,13 @@ static CBaseEntity* detour_CreateEntityByName(char const* name, int i1)
 	 */
 	
 	
+	/* calling TranslateWeaponEntForClass actually breaks parachutes for classes
+	 * other than soldier and demo, since those classes lack entries in the
+	 * pszWpnEntTranslationList array */
+	if (strcasecmp(name, "tf_weapon_parachute") == 0) {
+		goto passthru;
+	}
+	
 	uintptr_t caller1 = (uintptr_t)__builtin_extract_return_addr(
 		__builtin_return_address(0));
 	if (!func_owns_addr(caller1,
