@@ -13,7 +13,6 @@ patch_info_t *patches[] = {
 	&patch_deploybomb_suppress_output,
 	&patch_engiebot_ai_repair_tele_under_construction,
 	&patch_mvm_gib_fix,
-	&patch_playerupgrade_sell_fix,
 	&patch_bot_medieval_nonmelee_allow,
 	&patch_eyelander_overheal_decay_fix,
 	&patch_currencypack_no_pull,
