@@ -205,6 +205,8 @@ void symbols_init(void)
 		"_Z15UTIL_HudMessageP11CBasePlayerRK14hudtextparms_sPKc");
 	SYMBOL_FUNC(UTIL_HudMessageAll,
 		"_Z18UTIL_HudMessageAllRK14hudtextparms_sPKc");
+	SYMBOL_FUNC(UTIL_IsHolidayActive,
+		"_Z20UTIL_IsHolidayActivei");
 	SYMBOL_FUNC(UTIL_LogPrintf,
 		"_Z14UTIL_LogPrintfPKcz");
 	SYMBOL_FUNC(UTIL_PlayerByIndex,
@@ -702,6 +704,9 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CWave_ForceFinish,
 		"_ZN5CWave11ForceFinishEv");
+	
+	SYMBOL_FUNC(CTFBotSpawner_Spawn,
+		"_ZN13CTFBotSpawner5SpawnERK6VectorP10CUtlVectorI7CHandleI11CBaseEntityE10CUtlMemoryIS6_iEE");
 	
 	SYMBOL_FUNC(CUpgrades_ApplyUpgradeAttributeBlock,
 		"_ZN9CUpgrades26ApplyUpgradeAttributeBlockEP20UpgradeAttribBlock_tiP9CTFPlayerb");

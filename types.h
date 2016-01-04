@@ -859,8 +859,10 @@ typedef void CTFObjectiveResource;
 typedef void CPopulationManager;
 
 typedef void CMissionPopulator;
-
+typedef void CWaveSpawnPopulator;
 typedef void CWave;
+typedef void CTFBotSpawner;
+typedef void CSquadSpawner;
 
 typedef void CUpgrades;
 typedef void CMannVsMachineUpgrades;

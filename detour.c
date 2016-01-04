@@ -37,6 +37,7 @@ detour_info_t *detours[] = {
 	&detour_responses_suppress_medicbot_shield,
 	&detour_responses_suppress_giant_sentrybuster,
 	&detour_countdown_10second_sound_fix,
+	&detour_event_popfile_perennial,
 	
 	//&detour_mini_dispenser,
 	

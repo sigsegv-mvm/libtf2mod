@@ -122,6 +122,7 @@ extern int (*UTIL_GetHolidayForString)(char const*);
 extern void (*UTIL_HudHintText)(CBaseEntity*, char const*);
 extern void (*UTIL_HudMessage)(CBasePlayer*, hudtextparams_t const*, char const*);
 extern void (*UTIL_HudMessageAll)(hudtextparams_t const*, char const*);
+extern bool (*UTIL_IsHolidayActive)(int);
 extern unknown_t (*UTIL_LogPrintf)(char const*, ...);
 extern CBasePlayer* (*UTIL_PlayerByIndex)(int);
 extern CBasePlayer* (*UTIL_PlayerByName)(char const*);
@@ -404,6 +405,8 @@ extern unknown_t (*CMissionPopulator_UpdateMission)(CMissionPopulator* this, CTF
 extern unknown_t (*CMissionPopulator_UpdateMissionDestroySentries)(CMissionPopulator* this);
 
 extern void (*CWave_ForceFinish)(CWave* this);
+
+extern int (*CTFBotSpawner_Spawn)(CTFBotSpawner* this, Vector const*, CUtlVector*);
 
 extern unknown_t (*CUpgrades_ApplyUpgradeAttributeBlock)(CUpgrades* this, UpgradeAttribBlock_t, int, CTFPlayer*, bool);
 extern unsigned short (*CUpgrades_ApplyUpgradeToItem)(CUpgrades* this, CTFPlayer*, CEconItemView*, int, int, bool, bool);
