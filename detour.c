@@ -7,14 +7,14 @@ detour_info_t *detours[] = {
 	&detour_shared_CTFPlayer_SpeakConceptIfAllowed,
 	
 	&detour_sentry_moveturret_decimate,
-	&detour_minisentry_quickbuild_health_fix,
+	//&detour_minisentry_quickbuild_health_fix,
 	&detour_pushallplayersaway_disable,
 	&detour_robot_tickle_enable,
 	&detour_disposable_sentry_enable_health_upgrades,
 	&detour_wavestatus_teleporter_rtr_fix,
 	&detour_engiebot_ai_unsap,
 	&detour_robot_headslide_disable,
-	&detour_redcredits_doublecollect_fix,
+//	&detour_redcredits_doublecollect_fix,
 	&detour_spawnprotect_cond51_only,
 	&detour_robot_gib_improvements,
 	&detour_robot_gib_dissolve_fix,
@@ -24,7 +24,7 @@ detour_info_t *detours[] = {
 	&detour_bot_multiclass_item_fix,
 	&detour_mvm_chat_unrestrict,
 	&detour_tank_destroy_blu_buildings,
-	&detour_wave_reset_countdown_fix,
+//	&detour_wave_reset_countdown_fix,
 	&detour_sentrybuster_roundwin_behavior_fix,
 	&detour_eh_recursive_fix,
 	//&detour_nextprimaryattack_unalias,
@@ -36,7 +36,7 @@ detour_info_t *detours[] = {
 	&detour_responses_unused_credits,
 	&detour_responses_suppress_medicbot_shield,
 	&detour_responses_suppress_giant_sentrybuster,
-	&detour_countdown_10second_sound_fix,
+	//&detour_countdown_10second_sound_fix,
 	&detour_event_popfile_perennial,
 	
 	//&detour_mini_dispenser,
@@ -55,10 +55,10 @@ detour_info_t *detours[] = {
 	
 	&detour_medicbot_ai_xbow_heal,
 	
-	&detour_perf_attr_nomunge,
+//	&detour_perf_attr_nomunge,
 	
 	//&detour_diagnostics,
-	&detour_debug_wavecounts,
+//	&detour_debug_wavecounts,
 	//&detour_debug_rescueranger_pickup_range,
 	//&detour_debug_gib_glitch,
 	//&detour_debug_headshot_bug,
@@ -80,7 +80,7 @@ detour_info_t *detours[] = {
 	//&detour_profile_attributes,
 	
 	//&detour_reimplement_sv_showhitboxes,
-	&detour_reimplement_cond_reprogrammed,
+	//&detour_reimplement_cond_reprogrammed,
 	
 #if CHEATS
 	&detour_sapper_apply_reprogrammed,

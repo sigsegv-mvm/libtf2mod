@@ -9,7 +9,7 @@ patch_info_t *patches[] = {
 	&patch_redcredits_unrestrict_weaponid,
 	&patch_redcredits_unrestrict_class,
 	&patch_disposable_sentry_enable_health_upgrades,
-	&patch_giant_stomp_disable,
+//	&patch_giant_stomp_disable,
 	&patch_deploybomb_suppress_output,
 	&patch_engiebot_ai_repair_tele_under_construction,
 	&patch_bot_medieval_nonmelee_allow,
@@ -21,8 +21,8 @@ patch_info_t *patches[] = {
 	&patch_medicbot_ai_xbow_heal_part1,
 	&patch_medicbot_ai_xbow_heal_part2,
 	
-	&patch_perf_attr_premunge_mvm,
-	&patch_perf_attr_premunge_halloween,
+//	&patch_perf_attr_premunge_mvm,
+//	&patch_perf_attr_premunge_halloween,
 	
 #if CHEATS
 	&patch_eh_unrestrict_weaponid,
