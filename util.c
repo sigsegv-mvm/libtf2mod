@@ -182,7 +182,7 @@ void cl_con_printf(const char *fmt, ...)
 
 const char *get_string_for_damagebits(uint32_t m_bitsDamageType)
 {
-	static const char *lut[] = {
+	static const char *const lut[] = {
 		"CRUSH",
 		"BULLET",
 		"SLASH",
@@ -240,7 +240,7 @@ const char *get_string_for_damagebits(uint32_t m_bitsDamageType)
 
 const char *get_string_for_customkill(int m_iCustomKill)
 {
-	static const char *lut[] = {
+	static const char *const lut[] = {
 		"???",
 		"HEADSHOT",
 		"BACKSTAB",
@@ -315,7 +315,7 @@ const char *get_string_for_customkill(int m_iCustomKill)
 
 const char *get_string_for_weaponid(int id)
 {
-	static const char *lut[] = {
+	static const char *const lut[] = {
 		"NONE",
 		"BAT",
 		"BAT_WOOD",
@@ -423,6 +423,134 @@ const char *get_string_for_weaponid(int id)
 		return "???";
 	} else {
 		return lut[id];
+	}
+}
+
+const char *get_string_for_condition(ETFCond cond)
+{
+	static const char *lut[] = {
+		"AIMING",
+		"ZOOMED",
+		"DISGUISING",
+		"DISGUISED",
+		"STEALTHED",
+		"INVULNERABLE",
+		"TELEPORTED",
+		"TAUNTING",
+		"INVULNERABLE_WEARINGOFF",
+		"STEALTHED_BLINK",
+		"SELECTED_TO_TELEPORT",
+		"CRITBOOSTED",
+		"TMPDAMAGEBONUS",
+		"FEIGN_DEATH",
+		"PHASE",
+		"STUNNED",
+		"OFFENSEBUFF",
+		"SHIELD_CHARGE",
+		"DEMO_BUFF",
+		"ENERGY_BUFF",
+		"RADIUSHEAL",
+		"HEALTH_BUFF",
+		"BURNING",
+		"HEALTH_OVERHEALED",
+		"URINE",
+		"BLEEDING",
+		"DEFENSEBUFF",
+		"MAD_MILK",
+		"MEGAHEAL",
+		"REGENONDAMAGEBUFF",
+		"MARKEDFORDEATH",
+		"NOHEALINGDAMAGEBUFF",
+		"SPEED_BOOST",
+		"CRITBOOSTED_PUMPKIN",
+		"CRITBOOSTED_USER_BUFF",
+		"CRITBOOSTED_DEMO_CHARGE",
+		"SODAPOPPER_HYPE",
+		"CRITBOOSTED_FIRST_BLOOD",
+		"CRITBOOSTED_BONUS_TIME",
+		"CRITBOOSTED_CTF_CAPTURE",
+		"CRITBOOSTED_ON_KILL",
+		"CANNOT_SWITCH_FROM_MELEE",
+		"DEFENSEBUFF_NO_CRIT_BLOCK",
+		"REPROGRAMMED",
+		"CRITBOOSTED_RAGE_BUFF",
+		"DEFENSEBUFF_HIGH",
+		"SNIPERCHARGE_RAGE_BUFF",
+		"DISGUISE_WEARINGOFF",
+		"MARKEDFORDEATH_SILENT",
+		"DISGUISED_AS_DISPENSER",
+		"SAPPED",
+		"INVULNERABLE_HIDE_UNLESS_DAMAGED",
+		"INVULNERABLE_USER_BUFF",
+		"HALLOWEEN_BOMB_HEAD",
+		"HALLOWEEN_THRILLER",
+		"RADIUSHEAL_ON_DAMAGE",
+		"CRITBOOSTED_CARD_EFFECT",
+		"INVULNERABLE_CARD_EFFECT",
+		"MEDIGUN_UBER_BULLET_RESIST",
+		"MEDIGUN_UBER_BLAST_RESIST",
+		"MEDIGUN_UBER_FIRE_RESIST",
+		"MEDIGUN_SMALL_BULLET_RESIST",
+		"MEDIGUN_SMALL_BLAST_RESIST",
+		"MEDIGUN_SMALL_FIRE_RESIST",
+		"STEALTHED_USER_BUFF",
+		"MEDIGUN_DEBUFF",
+		"STEALTHED_USER_BUFF_FADING",
+		"BULLET_IMMUNE",
+		"BLAST_IMMUNE",
+		"FIRE_IMMUNE",
+		"PREVENT_DEATH",
+		"MVM_BOT_STUN_RADIOWAVE",
+		"HALLOWEEN_SPEED_BOOST",
+		"HALLOWEEN_QUICK_HEAL",
+		"HALLOWEEN_GIANT",
+		"HALLOWEEN_TINY",
+		"HALLOWEEN_IN_HELL",
+		"HALLOWEEN_GHOST_MODE",
+		"MINICRITBOOSTED_ON_KILL",
+		"OBSCURED_SMOKE",
+		"PARACHUTE_DEPLOYED",
+		"BLASTJUMPING",
+		"HALLOWEEN_KART",
+		"HALLOWEEN_KART_DASH",
+		"BALLOON_HEAD",
+		"MELEE_ONLY",
+		"SWIMMING_CURSE",
+		"FREEZE_INPUT",
+		"HALLOWEEN_KART_CAGE",
+		"DONOTUSE_0",
+		"RUNE_STRENGTH",
+		"RUNE_HASTE",
+		"RUNE_REGEN",
+		"RUNE_RESIST",
+		"RUNE_VAMPIRE",
+		"RUNE_WARLOCK",
+		"RUNE_PRECISION",
+		"RUNE_AGILITY",
+		"GRAPPLINGHOOK",
+		"GRAPPLINGHOOK_SAFEFALL",
+		"GRAPPLINGHOOK_LATCHED",
+		"GRAPPLINGHOOK_BLEEDING",
+		"AFTERBURN_IMMUNE",
+		"RUNE_KNOCKOUT",
+		"RUNE_IMBALANCE",
+		"CRITBOOSTED_RUNE_TEMP",
+		"PASSTIME_INTERCEPTION",
+		"SWIMMING_NO_EFFECTS",
+		"PURGATORY",
+		"RUNE_KING",
+		"RUNE_PLAGUE",
+		"RUNE_SUPERNOVA",
+		"PLAGUE",
+		"KING_BUFFED",
+		"TEAM_GLOWS",
+		"KNOCKED_INTO_AIR",
+	};
+	
+	if (cond >= sizeof(lut) / sizeof(*lut)) {
+		return "???";
+	} else {
+		return lut[cond];
 	}
 }
 

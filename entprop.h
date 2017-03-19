@@ -4,6 +4,7 @@
 
 /* known entprops */
 
+CCollisionProperty *prop_CBaseEntity_m_Collision(CBaseEntity *ent);
 char* *prop_CBaseEntity_m_iClassname(CBaseEntity *ent);
 char* *prop_CBaseEntity_m_iName(CBaseEntity *ent);
 
@@ -12,8 +13,10 @@ int *prop_CBaseAnimating_m_nSkin(CBaseAnimating* ent);
 
 unsigned int *prop_CBasePlayer_m_nButtons(CBasePlayer* ent);
 
+CAttributeList *prop_CTFPlayer_m_AttributeList(CTFPlayer* ent);
 int *prop_CTFPlayer_m_iClass(CTFPlayer* ent);
 CTFPlayerShared *prop_CTFPlayer_m_Shared(CTFPlayer* ent);
+char *prop_CTFPlayer_m_szNetname(CTFPlayer* ent);
 
 int *prop_CTFPlayerShared_m_iStunFlags(CTFPlayerShared* ent);
 int *prop_CTFPlayerShared_m_iStunIndex(CTFPlayerShared* ent);

@@ -34,6 +34,11 @@ void tf2mod_init(void)
 	
 	pr_info("libtf2mod: initializing convars\n");
 	convar_init();
+	
+	
+#if DUMP
+	pr_info("libtf2mod: dumping ")
+#endif
 }
 
 

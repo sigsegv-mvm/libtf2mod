@@ -82,9 +82,12 @@ typedef struct {
 	bool m_bHasMax;
 	float m_fMaxVal;
 	
+	/* some new stuff, probably competitive related, got added circa Dec 2015 */
+	uint8_t pad1[0x14];
+	
 	FnChangeCallback_t m_fnChangeCallback;
 } ConVar;
-SIZE_CHECK(ConVar, 0x48);
+SIZE_CHECK(ConVar, 0x5c);
 
 typedef struct {
 	ConCommandBase base;
@@ -92,6 +95,43 @@ typedef struct {
 	uint8_t pad1[0xc];
 } ConCommand;
 SIZE_CHECK(ConCommand, 0x24);
+
+
+static inline const char **CCommand_ArgV(const CCommand* this)
+{
+	if (this->m_nArgc == 0) {
+		return NULL;
+	} else {
+		return (const char **)this->m_ppArgv;
+	}
+}
+
+static inline const char *CCommand_ArgS(const CCommand* this)
+{
+	if (this->m_nArgv0Size == 0) {
+		return "";
+	} else {
+		return &this->m_pArgSBuffer[this->m_nArgv0Size];
+	}
+}
+
+static inline const char *CCommand_GetCommandString(const CCommand* this)
+{
+	if (this->m_nArgc == 0) {
+		return "";
+	} else {
+		return this->m_pArgSBuffer;
+	}
+}
+
+static inline const char *CCommand_Arg(const CCommand* this, int nIndex)
+{
+	if (nIndex < 0 || nIndex >= this->m_nArgc) {
+		return "";
+	}
+	
+	return this->m_ppArgv[nIndex];
+}
 
 
 static inline float ConVar_GetFloat(const ConVar* this)

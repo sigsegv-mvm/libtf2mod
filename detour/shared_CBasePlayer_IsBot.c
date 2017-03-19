@@ -14,6 +14,15 @@ static func_t *func_CObjectSapper_Spawn;
 
 static bool detour_CBasePlayer_IsBot(CBasePlayer* this)
 {
+#if 0
+#warning REMOVE THIS!
+#warning REMOVE THIS!
+#warning REMOVE THIS!
+#warning REMOVE THIS!
+#warning REMOVE THIS!
+	return false;
+#endif
+	
 	if (detour_yer_nerf_disable.ok) {
 		uintptr_t caller1 = (uintptr_t)__builtin_extract_return_addr(
 			__builtin_return_address(0));

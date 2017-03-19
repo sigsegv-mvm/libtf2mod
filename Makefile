@@ -15,6 +15,7 @@ OBJECTS:=$(OBJ_C) $(OBJ_ASM)
 HEADERS:=$(HDR_C) $(HDR_ASM)
 
 CHEATS:=0
+DUMP:=0
 
 
 .PHONY: all clean
@@ -26,7 +27,7 @@ libtf2mod.so: $(OBJECTS) Makefile
 	gcc $(CFLAGS) -o $@ $(OBJECTS) $(LDFLAGS)
 
 %.o: %.c $(HDR_C) Makefile
-	gcc $(CFLAGS) -DCHEATS=$(CHEATS) -o $@ -c $<
+	gcc $(CFLAGS) -DCHEATS=$(CHEATS) -DDUMP=$(DUMP) -o $@ -c $<
 
 %.o: %.s $(HDR_ASM) Makefile
 	nasm $(NASMFLAGS) -o $@ $<

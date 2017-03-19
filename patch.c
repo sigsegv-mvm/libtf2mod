@@ -14,7 +14,7 @@ patch_info_t *patches[] = {
 	&patch_engiebot_ai_repair_tele_under_construction,
 	&patch_bot_medieval_nonmelee_allow,
 	&patch_eyelander_overheal_decay_fix,
-	&patch_currencypack_no_pull,
+	//&patch_currencypack_no_pull,
 	
 	//&patch_tank_shake_disable,
 	//&patch_bot_revivemarker_enable,
@@ -23,6 +23,8 @@ patch_info_t *patches[] = {
 	
 //	&patch_perf_attr_premunge_mvm,
 //	&patch_perf_attr_premunge_halloween,
+	
+//	&patch_currencypack_torture,
 	
 #if CHEATS
 	&patch_eh_unrestrict_weaponid,

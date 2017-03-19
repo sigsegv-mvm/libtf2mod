@@ -9,6 +9,7 @@ static void (*trampoline_CTFPlayer_RememberUpgrade)(CTFPlayer* this, int, CEconI
 static unsigned short (*trampoline_CUpgrades_ApplyUpgradeToItem)(CUpgrades* this, CTFPlayer*, CEconItemView*, int, int, bool, bool);
 static void (*trampoline_CUpgrades_NotifyItemOnUpgrade)(CUpgrades* this, CTFPlayer*, unsigned short, bool);
 static void (*trampoline_CUpgrades_PlayerPurchasingUpgrade)(CUpgrades* this, CTFPlayer*, int, int, bool, bool, bool);
+static void (*trampoline_CUpgrades_ReportUpgrade)(CUpgrades* this, CTFPlayer*, int, int, int, int, bool, bool, bool);
 static int (*trampoline_CTFGameRules_GetCostForUpgrade)(CTFGameRules* this, CMannVsMachineUpgrades*, int, int, CTFPlayer*);
 static bool (*trampoline_CTFGameRules_CanUpgradeWithAttrib)(CTFGameRules* this, CTFPlayer*, int, unsigned short, CMannVsMachineUpgrades*);
 static void (*trampoline_CTFPlayer_Regenerate)(CTFPlayer* this, bool);
@@ -18,6 +19,7 @@ static int (*trampoline_CTFGameRules_GetUpgradeTier)(CTFGameRules* this, int);
 static CEconItemView* (*trampoline_CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot)(CTFPlayer*, int, CEconEntity**);
 static CEconItemAttributeDefinition* (*trampoline_CEconItemSchema_GetAttributeDefinitionByName)(CEconItemSchema* this, char const*);
 static int (*trampoline_CEconItemView_GetItemDefIndex)(CEconItemView* this);
+static void (*trampoline_CAttributeList_SetRuntimeAttributeValue)(CAttributeList* this, CEconItemAttributeDefinition const*, float);
 
 
 static void detour_CTFPlayer_RememberUpgrade(CTFPlayer* this, int class, CEconItemView* item, int upgrade, int cost, bool sell)
@@ -78,6 +80,27 @@ static void detour_CUpgrades_PlayerPurchasingUpgrade(CUpgrades* this, CTFPlayer*
 	
 	
 	trampoline_CUpgrades_PlayerPurchasingUpgrade(this, player, slot, upgrade, sell, b2, b3);
+}
+
+static void detour_CUpgrades_ReportUpgrade(CUpgrades* this, CTFPlayer* player, int item_idx, int attr_idx, int quality, int cost, bool sell, bool not_free, bool is_canteen)
+{
+	pr_info("CUpgrades::ReportUpgrade");
+	pr_debug("(player:%d, item_idx:%d, attr_idx:%d, quality:%d, cost:%d, sell:%s, not_free:%s, is_canteen:%s)\n",
+		ENTINDEX(player),
+		item_idx,
+		attr_idx,
+		quality,
+		cost,
+		(sell ? "TRUE" : "FALSE"),
+		(not_free ? "TRUE" : "FALSE"),
+		(is_canteen ? "TRUE" : "FALSE"));
+	
+	
+	pr_warn("calling CUpgrades::NotifyItemOnUpgrade from CUpgrades::ReportUpgrade detour!\n");
+	CUpgrades_NotifyItemOnUpgrade(this, player, attr_idx, sell);
+	
+	
+	trampoline_CUpgrades_ReportUpgrade(this, player, item_idx, attr_idx, quality, cost, sell, not_free, is_canteen);
 }
 
 static int detour_CTFGameRules_GetCostForUpgrade(CTFGameRules* this, CMannVsMachineUpgrades* upgrades, int slot, int class, CTFPlayer* player)
@@ -205,6 +228,25 @@ static int detour_CEconItemView_GetItemDefIndex(CEconItemView* this)
 	return result;
 }
 
+static void detour_CAttributeList_SetRuntimeAttributeValue(CAttributeList* this, CEconItemAttributeDefinition const* attr, float value)
+{
+	/* these may be wrong in the future */
+	unsigned short m_iIndex = *(unsigned short *)((uintptr_t)attr + 0x04);
+	const char *m_pszName = *(const char **)((uintptr_t)attr + 0x30);
+	const char *m_pszAttributeClass = *(const char **)((uintptr_t)attr + 0x34);
+	
+	pr_info("CAttributeList::SetRuntimeAttributeValue");
+	pr_debug("(this:%08x, attr:[%d '%s'], value:%f)\n",
+		(uintptr_t)this,
+		m_iIndex,
+		m_pszAttributeClass,
+		value);
+	
+	BACKTRACE();
+	
+	
+	trampoline_CAttributeList_SetRuntimeAttributeValue(this, attr, value);
+}
 
 
 DETOUR_SETUP
@@ -213,15 +255,17 @@ DETOUR_SETUP
 	DETOUR_CREATE(CUpgrades_ApplyUpgradeToItem);
 	DETOUR_CREATE(CUpgrades_NotifyItemOnUpgrade);
 	DETOUR_CREATE(CUpgrades_PlayerPurchasingUpgrade);
+	DETOUR_CREATE(CUpgrades_ReportUpgrade);
 	DETOUR_CREATE(CTFGameRules_GetCostForUpgrade);
 	DETOUR_CREATE(CTFGameRules_CanUpgradeWithAttrib);
 	DETOUR_CREATE(CTFPlayer_Regenerate);
 	DETOUR_CREATE(CTFPlayer_RemoveCurrency);
 	DETOUR_CREATE(CTFGameRules_IsUpgradeTierEnabled);
 	DETOUR_CREATE(CTFGameRules_GetUpgradeTier);
-	DETOUR_CREATE(CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot);
-	DETOUR_CREATE(CEconItemSchema_GetAttributeDefinitionByName);
-	DETOUR_CREATE(CEconItemView_GetItemDefIndex);
+	//DETOUR_CREATE(CTFPlayerSharedUtils_GetEconItemViewByLoadoutSlot);
+	//DETOUR_CREATE(CEconItemSchema_GetAttributeDefinitionByName);
+	//DETOUR_CREATE(CEconItemView_GetItemDefIndex);
+	DETOUR_CREATE(CAttributeList_SetRuntimeAttributeValue);
 	
 	return true;
 }

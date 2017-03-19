@@ -60,6 +60,7 @@ extern patch_info_t patch_medicbot_ai_xbow_heal_part2;
 extern patch_info_t patch_perf_attr_premunge_mvm;
 extern patch_info_t patch_perf_attr_premunge_halloween;
 extern patch_info_t patch_eyelander_overheal_decay_fix;
+extern patch_info_t patch_currencypack_torture;
 extern patch_info_t patch_mvm_enable_dropped_weapons;
 extern patch_info_t patch_mvm_enable_human_gibbing;
 

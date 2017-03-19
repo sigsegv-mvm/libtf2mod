@@ -27,6 +27,7 @@ void cl_con_printf(const char *fmt, ...) __attribute__((format(printf, 1, 2)));
 const char *get_string_for_damagebits(uint32_t m_bitsDamageType);
 const char *get_string_for_customkill(int m_iCustomKill);
 const char *get_string_for_weaponid(int id);
+const char *get_string_for_condition(ETFCond cond);
 
 
 static inline edict_t* INDEXENT(int iEdictNum)
@@ -65,6 +66,10 @@ void *__dynamic_cast_NULL_safe(const void *__src_ptr,
 
 #define DYNAMIC_CAST(_src, _src_type, _dst_type) \
 	__dynamic_cast_NULL_safe(_src, typeinfo_for_ ## _src_type, typeinfo_for_ ## _dst_type, -1)
+
+
+extern void *_Znwj(size_t n);
+#define OPERATOR_NEW(_n) _Znwj(_n)
 
 
 #endif

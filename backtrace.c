@@ -122,11 +122,42 @@ void print_backtrace(const char *from)
 			_get_runtime_sym(&sym, entries[i])) {
 			uintptr_t func_base = sym.lib->baseaddr + sym.addr;
 			
-			pr_debug("%s+0x%x  [%s]\n", try_demangle(sym.name),
-				entries[i] - func_base,
-				sym.lib->name);
+			pr_debug("%-20s  %s + 0x%x\n",
+				sym.lib->name,
+				try_demangle(sym.name),
+				entries[i] - func_base);
 		} else {
 			pr_debug("???\n");
+		}
+	}
+}
+
+void print_backtrace_cl_con(const char *from, const char *prefix, int skip)
+{
+	uintptr_t entries[100];
+	memset(entries, 0, sizeof(entries));
+	
+	int num_entries = backtrace((void **)entries,
+		sizeof(entries) / sizeof(*entries));
+	
+	cl_con_printf("%sBACKTRACE in %s:\n", prefix, from);
+	
+	/* start at 1 so we skip this function's frame */
+	for (int i = 1 + skip; i < num_entries; ++i) {
+		char buf[128];
+		snprintf(buf, sizeof(buf), "  #%-2d  %08x  ", i, entries[i]);
+		
+		symbol_t sym;
+		if (symtab_func_addr_range_abs(&sym, entries[i]) ||
+			_get_runtime_sym(&sym, entries[i])) {
+			uintptr_t func_base = sym.lib->baseaddr + sym.addr;
+			
+			cl_con_printf("%s%s%-20s  %s + 0x%x\n", prefix, buf,
+				sym.lib->name,
+				try_demangle(sym.name),
+				entries[i] - func_base);
+		} else {
+			cl_con_printf("%s%s???\n", prefix, buf);
 		}
 	}
 }

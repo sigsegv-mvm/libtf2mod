@@ -7,6 +7,26 @@
 #include <shareddefs.h>
 #include <trace.h>
 #include <gametrace.h>
+#include <string_t.h>
+#include <isaverestore.h>
+#include <variant_t.h>
+#include <edict.h>
+#include <iserverunknown.h>
+#include <iservernetworkable.h>
+#include <basehandle.h>
+#include <ehandle.h>
+#include <predictable_entity.h>
+#include <entitylist_base.h>
+#include <predictableid.h>
+#include <util.h>
+#include <takedamageinfo.h>
+#include <touchlink.h>
+#include <groundlink.h>
+#include <networkvar.h>
+#include <baseentity_shared.h>
+#include <baseentity.h>
+#include <entitylist.h>
+#include <entityoutput.h>
 
 
 #define SIZEOF(_type) \
@@ -61,6 +81,9 @@ int main()
 	SIZEOF(csurface_t);
 	SIZEOF(CBaseTrace);
 	SIZEOF(CGameTrace);
+	puts("");
+	
+	SIZEOF(COutputEvent);
 	puts("");
 	
 	

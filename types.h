@@ -234,6 +234,7 @@ enum {
 };
 
 enum {
+// #warning switch these to the actual strings from the binary, not these sourcemod definitions
 	TF_CUSTOM_HEADSHOT = 1,
 	TF_CUSTOM_BACKSTAB,
 	TF_CUSTOM_BURNING,
@@ -774,6 +775,47 @@ typedef enum {
 	TF_GAMETYPE_PD        = 8,
 } TFGameType;
 
+typedef enum {
+	SOLID_NONE     = 0,
+	SOLID_BSP      = 1,
+	SOLID_BBOX     = 2,
+	SOLID_OBB      = 3,
+	SOLID_OBB_YAW  = 4,
+	SOLID_CUSTOM   = 5,
+	SOLID_VPHYSICS = 6,
+	SOLID_LAST,
+} SolidType_t;
+
+typedef enum {
+	SOLID_TO_PLAYER_USE_DEFAULT = 0,
+	SOLID_TO_PLAYER_YES         = 1,
+	SOLID_TO_PLAYER_NO          = 2,
+} OBJSOLIDTYPE;
+
+typedef enum
+{
+	COLLISION_GROUP_NONE = 0,
+	COLLISION_GROUP_DEBRIS,
+	COLLISION_GROUP_DEBRIS_TRIGGER,
+	COLLISION_GROUP_INTERACTIVE_DEBRIS,
+	COLLISION_GROUP_INTERACTIVE,
+	COLLISION_GROUP_PLAYER,
+	COLLISION_GROUP_BREAKABLE_GLASS,
+	COLLISION_GROUP_VEHICLE,
+	COLLISION_GROUP_PLAYER_MOVEMENT,
+	COLLISION_GROUP_NPC,
+	COLLISION_GROUP_IN_VEHICLE,
+	COLLISION_GROUP_WEAPON,
+	COLLISION_GROUP_VEHICLE_CLIP,
+	COLLISION_GROUP_PROJECTILE,
+	COLLISION_GROUP_DOOR_BLOCKER,
+	COLLISION_GROUP_PASSABLE_DOOR,
+	COLLISION_GROUP_DISSOLVING,
+	COLLISION_GROUP_PUSHAWAY,
+	COLLISION_GROUP_NPC_ACTOR,
+	COLLISION_GROUP_NPC_SCRIPTED,
+} Collision_Group_t;
+
 
 /* opaque types */
 
@@ -802,7 +844,9 @@ typedef void CTFBot;
 typedef void NextBotPlayer_CTFPlayer;
 
 typedef void CTFPlayerShared;
+typedef void CTFPlayerClassShared;
 
+typedef void CTFBaseBoss;
 typedef void CTFTankBoss;
 
 typedef void CEconEntity;
@@ -817,8 +861,8 @@ typedef void CItemGeneration;
 typedef void CItemSelectionCriteria;
 
 typedef void CAttribute_String;
-typedef void CAttributeList;
 
+typedef void CBaseCombatWeapon;
 typedef void CTFWeaponBase;
 typedef void CTFWeaponBaseGun;
 typedef void CWeaponMedigun;
@@ -845,6 +889,8 @@ typedef void CObjectTeleporter;
 typedef void CObjectSapper;
 
 typedef void CTFMedigunShield;
+
+typedef void CTFPowerupBottle;
 
 typedef void CTFGameRules;
 typedef void CTeamplayRoundBasedRules;
@@ -875,6 +921,8 @@ typedef void CTFBotScenarioMonitor;
 typedef void CTFBotTacticalMonitor;
 typedef void CTFBotMedicHeal;
 typedef void CTFBotMvMEngineerIdle;
+typedef void CTFBotMvMEngineerBuildSentryGun;
+typedef void CTFBotMvMEngineerBuildTeleportExit;
 typedef void CTFBotMissionSuicideBomber;
 
 typedef void INextBot;
@@ -891,13 +939,13 @@ typedef void PlayerLocomotion;
 
 typedef void CTFReviveMarker;
 
+typedef void CTFPowerup;
 typedef void CCurrencyPack;
 
 typedef void CTFDroppedWeapon;
 
 typedef void CFuncNavCost;
 
-typedef void CUtlVector;
 typedef void CUtlConstStringBase;
 
 typedef void Action_CTFBot;
@@ -935,6 +983,12 @@ typedef void INextBotReply;
 typedef void CSteamID;
 
 typedef void hudtextparams_t;
+
+typedef void CAttributeManager;
+
+typedef void CCollisionProperty;
+
+typedef void IConVar;
 
 typedef uint32_t EHANDLE;
 
@@ -1092,10 +1146,42 @@ typedef struct {
 SIZE_CHECK(CBaseEdict, 0x10);
 
 typedef struct {
+	void *m_pMemory;
+	int m_nAllocationCount;
+	int m_nGrowSize;
+} CUtlMemory;
+SIZE_CHECK(CUtlMemory, 0xc);
+
+typedef struct {
+	CUtlMemory m_Memory;
+	int m_Size;
+	void *m_pElements;
+} CUtlVector;
+SIZE_CHECK(CUtlVector, 0x14);
+
+typedef struct {
 	CBaseEdict base;
 	float freetime;
 } edict_t;
 SIZE_CHECK(edict_t, 0x14);
+
+typedef struct {
+	void **vtable;
+	unsigned short m_iAttributeDefinitionIndex;
+	union {
+		float f;
+		int i;
+	} m_iRawValue32;
+	int m_nRefundableCurrency;
+} CEconItemAttribute;
+SIZE_CHECK(CEconItemAttribute, 0x10);
+
+typedef struct {
+	void **vtable;
+	CUtlVector m_Attributes;
+	CAttributeManager *m_Manager;
+} CAttributeList;
+SIZE_CHECK(CAttributeList, 0x1c);
 
 
 #endif

@@ -37,6 +37,7 @@
 
 /* known entprops */
 
+DEFINE_ENTPROP(CCollisionProperty, CBaseEntity, m_Collision);
 DEFINE_ENTPROP(char*, CBaseEntity, m_iClassname);
 DEFINE_ENTPROP(char*, CBaseEntity, m_iName);
 
@@ -45,8 +46,10 @@ DEFINE_ENTPROP(int, CBaseAnimating, m_nSkin);
 
 DEFINE_ENTPROP(unsigned int, CBasePlayer, m_nButtons);
 
+DEFINE_ENTPROP(CAttributeList, CTFPlayer, m_AttributeList);
 DEFINE_ENTPROP(int, CTFPlayer, m_iClass);
 DEFINE_ENTPROP(CTFPlayerShared, CTFPlayer, m_Shared);
+DEFINE_ENTPROP(char, CTFPlayer, m_szNetname);
 
 DEFINE_ENTPROP(int, CTFPlayerShared, m_iStunFlags);
 DEFINE_ENTPROP(int, CTFPlayerShared, m_iStunIndex);
@@ -77,6 +80,8 @@ DEFINE_EXTRACTED(EHANDLE, CTFBot, m_hSBTarget);
 
 void entprop_init(void)
 {
+	INIT_SENDPROP(CBaseEntity_m_Collision,
+		CBaseEntity, m_Collision);
 	INIT_DATAMAP(CBaseEntity_m_iClassname,
 		CBaseEntity, m_iClassname);
 	INIT_DATAMAP(CBaseEntity_m_iName,
@@ -90,10 +95,14 @@ void entprop_init(void)
 	INIT_DATAMAP(CBasePlayer_m_nButtons,
 		CBasePlayer, m_nButtons);
 	
+	INIT_SENDPROP(CTFPlayer_m_AttributeList,
+		CTFPlayer, m_AttributeList);
 	INIT_SENDPROP2(CTFPlayer_m_iClass,
 		CTFPlayer, m_PlayerClass, m_iClass);
 	INIT_SENDPROP(CTFPlayer_m_Shared,
 		CTFPlayer, m_Shared);
+	INIT_DATAMAP(CTFPlayer_m_szNetname,
+		CTFPlayer, m_szNetname);
 	
 	INIT_SENDPROP(CTFPlayerShared_m_iStunFlags,
 		CTFPlayer, m_iStunFlags);

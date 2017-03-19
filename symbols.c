@@ -27,6 +27,8 @@ void symbols_init(void)
 		"_ZTI9CTFPlayer");
 	SYMBOL_OBJ(typeinfo_for_CTFBot,
 		"_ZTI6CTFBot");
+	SYMBOL_OBJ(typeinfo_for_NextBotPlayer_CTFPlayer,
+		"_ZTI13NextBotPlayerI9CTFPlayerE");
 	SYMBOL_OBJ(typeinfo_for_CBaseObject,
 		"_ZTI11CBaseObject");
 	SYMBOL_OBJ(typeinfo_for_CTFWeaponBase,
@@ -41,6 +43,8 @@ void symbols_init(void)
 		"_ZTI11CTFCrossbow");
 	SYMBOL_OBJ(typeinfo_for_CTFTankBoss,
 		"_ZTI11CTFTankBoss");
+	SYMBOL_OBJ(typeinfo_for_INextBot,
+		"_ZTI8INextBot");
 	
 	
 	/* strings */
@@ -254,6 +258,12 @@ void symbols_init(void)
 	SYMBOL_FUNC(GlobalAttrModifier_TFHalloweenAttribHookMunger,
 		"_ZL46GlobalAttrModifier_TFHalloweenAttribHookMungerPKcP19CUtlConstStringBaseIcE");
 	
+	SYMBOL_FUNC(GetEquippedDemoShield,
+		"_Z21GetEquippedDemoShieldP9CTFPlayer");
+	
+	SYMBOL_FUNC(EconEntity_OnOwnerKillEaterEventNoPartner,
+		"_Z41EconEntity_OnOwnerKillEaterEventNoPartnerP11CEconEntityP9CTFPlayer18kill_eater_event_ti");
+	
 	
 	/* functions: static */
 	
@@ -264,6 +274,9 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CBasePlayer_GetDataDescMap,
 		"_ZN11CBasePlayer14GetDataDescMapEv");
+	
+	SYMBOL_FUNC(CTFPlayer_GetDataDescMap,
+		"_ZN9CTFPlayer14GetDataDescMapEv");
 	
 	SYMBOL_FUNC(CBaseObject_GetDataDescMap,
 		"_ZN11CBaseObject14GetDataDescMapEv");
@@ -304,7 +317,9 @@ void symbols_init(void)
 		"_ZN14CVEngineServer17PEntityOfEntIndexEi");
 	
 	SYMBOL_FUNC(ConVar_ctor,
-		"_ZN6ConVarC2EPKcS1_iS1_");
+		"_ZN6ConVarC1EPKcS1_iS1_");
+	SYMBOL_FUNC(ConVar_ctor_callback,
+		"_ZN6ConVarC1EPKcS1_iS1_PFvP7IConVarS1_fE");
 	SYMBOL_FUNC_LIB("server_srv.so", ConVar_SetValue_int,
 		"_ZN6ConVar8SetValueEi");
 	
@@ -327,6 +342,8 @@ void symbols_init(void)
 		"_ZNK11CBaseEntity12GetMaxHealthEv");
 	SYMBOL_FUNC(CBaseEntity_GetTeamNumber,
 		"_ZNK11CBaseEntity13GetTeamNumberEv");
+	SYMBOL_FUNC(CBaseEntity_IsAlive,
+		"_ZN11CBaseEntity7IsAliveEv");
 	SYMBOL_FUNC(CBaseEntity_InSameTeam,
 		"_ZNK11CBaseEntity10InSameTeamEPS_");
 	SYMBOL_FUNC(CBaseEntity_IsBaseObject,
@@ -335,12 +352,20 @@ void symbols_init(void)
 		"_ZNK11CBaseEntity8IsPlayerEv");
 	SYMBOL_FUNC(CBaseEntity_NetworkStateChanged,
 		"_ZN11CBaseEntity19NetworkStateChangedEPv");
+	SYMBOL_FUNC(CBaseEntity_TakeDamage,
+		"_ZN11CBaseEntity10TakeDamageERK15CTakeDamageInfo");
 	
 	SYMBOL_FUNC(CBaseAnimating_DrawServerHitboxes,
 		"_ZN14CBaseAnimating18DrawServerHitboxesEfb");
 	SYMBOL_FUNC(CBaseAnimating_SetModelScale,
 		"_ZN14CBaseAnimating13SetModelScaleEff");
 	
+	SYMBOL_FUNC(CBasePlayer_ChangeTeam,
+		"_ZN11CBasePlayer10ChangeTeamEi");
+	SYMBOL_FUNC(CBasePlayer_ChangeTeam_bool,
+		"_ZN11CBasePlayer10ChangeTeamEibb");
+	SYMBOL_FUNC(CBasePlayer_CommitSuicide,
+		"_ZN11CBasePlayer13CommitSuicideEbb");
 	SYMBOL_FUNC(CBasePlayer_GiveNamedItem,
 		"_ZN11CBasePlayer13GiveNamedItemEPKci");
 	SYMBOL_FUNC(CBasePlayer_IsBot,
@@ -363,6 +388,12 @@ void symbols_init(void)
 		"_ZN9CTFPlayer22CanHearAndReadChatFromEP11CBasePlayer");
 	SYMBOL_FUNC(CTFPlayer_CanPickupBuilding,
 		"_ZN9CTFPlayer17CanPickupBuildingEP11CBaseObject");
+	SYMBOL_FUNC(CTFPlayer_ChangeTeam,
+		"_ZN9CTFPlayer10ChangeTeamEi");
+	SYMBOL_FUNC(CTFPlayer_ChangeTeam_bool,
+		"_ZN9CTFPlayer10ChangeTeamEibb");
+	SYMBOL_FUNC(CTFPlayer_CommitSuicide,
+		"_ZN9CTFPlayer13CommitSuicideEbb");
 	SYMBOL_FUNC(CTFPlayer_CreateRagdollEntity,
 		"_ZN9CTFPlayer19CreateRagdollEntityEbbbbbbbbib");
 	SYMBOL_FUNC(CTFPlayer_DeathSound,
@@ -377,10 +408,14 @@ void symbols_init(void)
 		"_ZN9CTFPlayer15ForceChangeTeamEib");
 	SYMBOL_FUNC(CTFPlayer_GetActiveTFWeapon,
 		"_ZNK9CTFPlayer17GetActiveTFWeaponEv");
+	SYMBOL_FUNC(CTFPlayer_GetClosestCaptureZone,
+		"_ZN9CTFPlayer21GetClosestCaptureZoneEv");
 	SYMBOL_FUNC(CTFPlayer_GetNumObjects,
 		"_ZN9CTFPlayer13GetNumObjectsEii");
 	SYMBOL_FUNC(CTFPlayer_GiveNamedItem,
 		"_ZN9CTFPlayer13GiveNamedItemEPKciPK13CEconItemViewb");
+	SYMBOL_FUNC(CTFPlayer_HandleCommand_JoinClass,
+		"_ZN9CTFPlayer23HandleCommand_JoinClassEPKcb");
 	SYMBOL_FUNC(CTFPlayer_IsMiniBoss,
 		"_ZNK9CTFPlayer10IsMiniBossEv");
 	SYMBOL_FUNC(CTFPlayer_IsPlayerClass,
@@ -414,17 +449,79 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFBot_AddItem,
 		"_ZN6CTFBot7AddItemEPKc");
+	SYMBOL_FUNC(CTFBot_ChangeTeam,
+		"_ZN6CTFBot10ChangeTeamEibb");
 	SYMBOL_FUNC(CTFBot_EquipRequiredWeapon,
 		"_ZN6CTFBot19EquipRequiredWeaponEv");
 	SYMBOL_FUNC(CTFBot_IsAllowedToPickUpFlag,
 		"_ZNK6CTFBot21IsAllowedToPickUpFlagEv");
+	SYMBOL_FUNC(CTFBot_PressFireButton,
+		"_ZN6CTFBot15PressFireButtonEf");
+	SYMBOL_FUNC(CTFBot_PressAltFireButton,
+		"_ZN6CTFBot18PressAltFireButtonEf");
+	SYMBOL_FUNC(CTFBot_PressSpecialFireButton,
+		"_ZN6CTFBot22PressSpecialFireButtonEf");
+	SYMBOL_FUNC(CTFBot_SelectRandomReachableEnemy,
+		"_ZN6CTFBot26SelectRandomReachableEnemyEv");
 	SYMBOL_FUNC(CTFBot_SetMission,
 		"_ZN6CTFBot10SetMissionENS_11MissionTypeEb");
 	SYMBOL_FUNC(CTFBot_ShouldGib,
 		"_ZN6CTFBot9ShouldGibERK15CTakeDamageInfo");
 	
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_GetEntity,
+		"_ZNK13NextBotPlayerI9CTFPlayerE9GetEntityEv");
 	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_IsBot,
 		"_ZNK13NextBotPlayerI9CTFPlayerE5IsBotEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressFireButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE15PressFireButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseFireButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE17ReleaseFireButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressMeleeButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE16PressMeleeButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseMeleeButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE18ReleaseMeleeButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressSpecialFireButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE22PressSpecialFireButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseSpecialFireButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE24ReleaseSpecialFireButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressUseButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE14PressUseButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseUseButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE16ReleaseUseButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressReloadButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE17PressReloadButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseReloadButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE19ReleaseReloadButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressForwardButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE18PressForwardButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseForwardButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE20ReleaseForwardButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressBackwardButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE19PressBackwardButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseBackwardButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE21ReleaseBackwardButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressLeftButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE15PressLeftButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseLeftButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE17ReleaseLeftButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressRightButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE16PressRightButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseRightButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE18ReleaseRightButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressJumpButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE15PressJumpButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseJumpButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE17ReleaseJumpButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressCrouchButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE17PressCrouchButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseCrouchButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE19ReleaseCrouchButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_PressWalkButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE15PressWalkButtonEf");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_ReleaseWalkButton,
+		"_ZN13NextBotPlayerI9CTFPlayerE17ReleaseWalkButtonEv");
+	SYMBOL_FUNC(NextBotPlayer_CTFPlayer_SetButtonScale,
+		"_ZN13NextBotPlayerI9CTFPlayerE14SetButtonScaleEff");
 	
 	SYMBOL_FUNC(CTFPlayerShared_AddCond,
 		"_ZN15CTFPlayerShared7AddCondE7ETFCondfP11CBaseEntity");
@@ -438,6 +535,8 @@ void symbols_init(void)
 		"_ZNK15CTFPlayerShared21HasDemoShieldEquippedEv");
 	SYMBOL_FUNC(CTFPlayerShared_IsAlly,
 		"_ZN15CTFPlayerShared6IsAllyEP11CBaseEntity");
+	SYMBOL_FUNC(CTFPlayerShared_IsControlStunned,
+		"_ZN15CTFPlayerShared16IsControlStunnedEv");
 	SYMBOL_FUNC(CTFPlayerShared_IsInvulnerable,
 		"_ZNK15CTFPlayerShared14IsInvulnerableEv");
 	SYMBOL_FUNC(CTFPlayerShared_OnAddBurning,
@@ -462,13 +561,23 @@ void symbols_init(void)
 		"_ZN15CTFPlayerShared15OnRemoveStunnedEv");
 	SYMBOL_FUNC(CTFPlayerShared_RadiusCurrencyCollectionCheck,
 		"_ZN15CTFPlayerShared29RadiusCurrencyCollectionCheckEv");
+	SYMBOL_FUNC(CTFPlayerShared_RemoveCond,
+		"_ZN15CTFPlayerShared10RemoveCondE7ETFCondb");
 	SYMBOL_FUNC(CTFPlayerShared_StunPlayer,
 		"_ZN15CTFPlayerShared10StunPlayerEffiP9CTFPlayer");
+	
+	SYMBOL_FUNC(CTFPlayerClassShared_SetCustomModel,
+		"_ZN20CTFPlayerClassShared14SetCustomModelEPKcb");
+	
+	SYMBOL_FUNC(CTFBaseBoss_ResolvePlayerCollision,
+		"_ZN11CTFBaseBoss22ResolvePlayerCollisionEP9CTFPlayer");
 	
 	SYMBOL_FUNC(CTFTankBoss_ModifyDamage,
 		"_ZNK11CTFTankBoss12ModifyDamageEP15CTakeDamageInfo");
 	SYMBOL_FUNC(CTFTankBoss_OnTakeDamage_Alive,
 		"_ZN11CTFTankBoss18OnTakeDamage_AliveERK15CTakeDamageInfo");
+	SYMBOL_FUNC(CTFTankBoss_Spawn,
+		"_ZN11CTFTankBoss5SpawnEv");
 	SYMBOL_FUNC(CTFTankBoss_TankBossThink,
 		"_ZN11CTFTankBoss13TankBossThinkEv");
 	
@@ -487,6 +596,9 @@ void symbols_init(void)
 		"_ZN15CItemGeneration18GenerateRandomItemEP22CItemSelectionCriteriaRK6VectorRK6QAngle");
 	SYMBOL_FUNC(CItemGeneration_SpawnItem,
 		"_ZN15CItemGeneration9SpawnItemEiRK6VectorRK6QAngleiiPKc");
+	
+	SYMBOL_FUNC(CBaseCombatWeapon_SetWeaponVisible,
+		"_ZN17CBaseCombatWeapon16SetWeaponVisibleEb");
 	
 	SYMBOL_FUNC(CTFWeaponBase_AreRandomCritsEnabled,
 		"_ZN13CTFWeaponBase21AreRandomCritsEnabledEv");
@@ -581,8 +693,14 @@ void symbols_init(void)
 		"_ZN11CBaseObject12OnTakeDamageERK15CTakeDamageInfo");
 	SYMBOL_FUNC(CBaseObject_SetHealth,
 		"_ZN11CBaseObject9SetHealthEf");
+	SYMBOL_FUNC(CBaseObject_SetSolidToPlayers,
+		"_ZN11CBaseObject17SetSolidToPlayersENS_12OBJSOLIDTYPEEb");
 	SYMBOL_FUNC(CBaseObject_ShouldBeMiniBuilding,
 		"_ZN11CBaseObject20ShouldBeMiniBuildingEP9CTFPlayer");
+	SYMBOL_FUNC(CBaseObject_ShouldCollide,
+		"_ZNK11CBaseObject13ShouldCollideEii");
+	SYMBOL_FUNC(CBaseObject_StopPlacement,
+		"_ZN11CBaseObject13StopPlacementEv");
 	
 	SYMBOL_FUNC(CObjectDispenser_MakeMiniBuilding,
 		"_ZN16CObjectDispenser16MakeMiniBuildingEP9CTFPlayer");
@@ -605,9 +723,15 @@ void symbols_init(void)
 		"_ZN16CObjectSentrygun11SentryThinkEv");
 	SYMBOL_FUNC(CObjectSentrygun_Spawn,
 		"_ZN16CObjectSentrygun5SpawnEv");
+	SYMBOL_FUNC(CObjectSentrygun_StartBuilding,
+		"_ZN16CObjectSentrygun13StartBuildingEP11CBaseEntity");
 	
 	SYMBOL_FUNC(CObjectTeleporter_FinishedBuilding,
 		"_ZN17CObjectTeleporter16FinishedBuildingEv");
+	SYMBOL_FUNC(CObjectTeleporter_Spawn,
+		"_ZN17CObjectTeleporter5SpawnEv");
+	SYMBOL_FUNC(CObjectTeleporter_StartBuilding,
+		"_ZN17CObjectTeleporter13StartBuildingEP11CBaseEntity");
 	
 	SYMBOL_FUNC(CObjectSapper_ApplyRoboSapper,
 		"_ZN13CObjectSapper15ApplyRoboSapperEP9CTFPlayerfi");
@@ -618,6 +742,9 @@ void symbols_init(void)
 	SYMBOL_FUNC(CObjectSapper_Spawn,
 		"_ZN13CObjectSapper5SpawnEv");
 	
+	SYMBOL_FUNC(CTFPowerupBottle_ReapplyProvision,
+		"_ZN16CTFPowerupBottle16ReapplyProvisionEv");
+	
 	SYMBOL_FUNC(CTFGameRules_Activate,
 		"_ZN12CTFGameRules8ActivateEv");
 	SYMBOL_FUNC(CTFGameRules_BetweenRounds_Think,
@@ -626,6 +753,8 @@ void symbols_init(void)
 		"_ZN12CTFGameRules20CanUpgradeWithAttribEP9CTFPlayeritP22CMannVsMachineUpgrades");
 	SYMBOL_FUNC(CTFGameRules_DistributeCurrencyAmount,
 		"_ZN12CTFGameRules24DistributeCurrencyAmountEiP9CTFPlayerbbb");
+	SYMBOL_FUNC(CTFGameRules_FireGameEvent,
+		"_ZN12CTFGameRules13FireGameEventEP10IGameEvent");
 	SYMBOL_FUNC(CTFGameRules_GameModeUsesUpgrades,
 		"_ZN12CTFGameRules20GameModeUsesUpgradesEv");
 	SYMBOL_FUNC(CTFGameRules_GetBonusRoundTime,
@@ -692,6 +821,8 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFObjectiveResource_SetMannVsMachineWaveClassName,
 		"_ZN20CTFObjectiveResource29SetMannVsMachineWaveClassNameEi8string_t");
 	
+	SYMBOL_FUNC(CPopulationManager_IsInEndlessWaves,
+		"_ZN18CPopulationManager16IsInEndlessWavesEv");
 	SYMBOL_FUNC(CPopulationManager_IsValidMvMMap,
 		"_ZN18CPopulationManager13IsValidMvMMapEPKc");
 	SYMBOL_FUNC(CPopulationManager_JumpToWave,
@@ -702,11 +833,17 @@ void symbols_init(void)
 	SYMBOL_FUNC(CMissionPopulator_UpdateMissionDestroySentries,
 		"_ZN17CMissionPopulator28UpdateMissionDestroySentriesEv");
 	
+	SYMBOL_FUNC(CWaveSpawnPopulator_ForceFinish,
+		"_ZN19CWaveSpawnPopulator11ForceFinishEv");
+	
 	SYMBOL_FUNC(CWave_ForceFinish,
 		"_ZN5CWave11ForceFinishEv");
 	
 	SYMBOL_FUNC(CTFBotSpawner_Spawn,
 		"_ZN13CTFBotSpawner5SpawnERK6VectorP10CUtlVectorI7CHandleI11CBaseEntityE10CUtlMemoryIS6_iEE");
+	
+	SYMBOL_FUNC(CSquadSpawner_Spawn,
+		"_ZN13CSquadSpawner5SpawnERK6VectorP10CUtlVectorI7CHandleI11CBaseEntityE10CUtlMemoryIS6_iEE");
 	
 	SYMBOL_FUNC(CUpgrades_ApplyUpgradeAttributeBlock,
 		"_ZN9CUpgrades26ApplyUpgradeAttributeBlockEP20UpgradeAttribBlock_tiP9CTFPlayerb");
@@ -744,7 +881,11 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFBotLocomotion_Jump,
 		"_ZN16CTFBotLocomotion4JumpEv");
+	SYMBOL_FUNC(CTFBotLocomotion_GetRunSpeed,
+		"_ZNK16CTFBotLocomotion11GetRunSpeedEv");
 	
+	SYMBOL_FUNC(CTFBotMainAction_GetName,
+		"_ZNK16CTFBotMainAction7GetNameEv");
 	SYMBOL_FUNC(CTFBotMainAction_OnContact,
 		"_ZN16CTFBotMainAction9OnContactEP6CTFBotP11CBaseEntityP10CGameTrace");
 	SYMBOL_FUNC(CTFBotMainAction_Update,
@@ -764,6 +905,14 @@ void symbols_init(void)
 	SYMBOL_FUNC(CTFBotMvMEngineerIdle_Update,
 		"_ZN21CTFBotMvMEngineerIdle6UpdateEP6CTFBotf");
 	
+	SYMBOL_FUNC(CTFBotMvMEngineerBuildSentryGun_Update,
+		"_ZN31CTFBotMvMEngineerBuildSentryGun6UpdateEP6CTFBotf");
+	
+	SYMBOL_FUNC(CTFBotMvMEngineerBuildTeleportExit_Update,
+		"_ZN34CTFBotMvMEngineerBuildTeleportExit6UpdateEP6CTFBotf");
+	
+	SYMBOL_FUNC(CTFBotMissionSuicideBomber_Detonate,
+		"_ZN26CTFBotMissionSuicideBomber8DetonateEP6CTFBot");
 	SYMBOL_FUNC(CTFBotMissionSuicideBomber_OnStart,
 		"_ZN26CTFBotMissionSuicideBomber7OnStartEP6CTFBotP6ActionIS0_E");
 	
@@ -782,6 +931,9 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CTFReviveMarker_AddMarkerHealth,
 		"_ZN15CTFReviveMarker15AddMarkerHealthEf");
+	
+	SYMBOL_FUNC(CTFPowerup_ValidTouch,
+		"_ZN10CTFPowerup10ValidTouchEP11CBasePlayer");
 	
 	SYMBOL_FUNC(CCurrencyPack_ComeToRest,
 		"_ZN13CCurrencyPack10ComeToRestEv");
@@ -811,6 +963,15 @@ void symbols_init(void)
 	
 	SYMBOL_FUNC(CBulletPenetrateEnum_EnumEntity,
 		"_ZN20CBulletPenetrateEnum10EnumEntityEP13IHandleEntity");
+	
+	SYMBOL_FUNC(CAttributeManager_ApplyAttributeFloatWrapper,
+		"_ZN17CAttributeManager26ApplyAttributeFloatWrapperEfP11CBaseEntity8string_tP10CUtlVectorIS1_10CUtlMemoryIS1_iEE");
+	
+	SYMBOL_FUNC(CAttributeList_SetRuntimeAttributeValue,
+		"_ZN14CAttributeList24SetRuntimeAttributeValueEPK28CEconItemAttributeDefinitionf");
+	
+	SYMBOL_FUNC(CCollisionProperty_SetSolid,
+		"_ZN18CCollisionProperty8SetSolidE11SolidType_t");
 	
 	
 #warning TODO: symbols for these upgrade related functions

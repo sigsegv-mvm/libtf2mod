@@ -71,15 +71,20 @@ extern detour_info_t detour_wave_reset_countdown_fix;
 extern detour_info_t detour_sentrybuster_roundwin_behavior_fix;
 extern detour_info_t detour_eh_recursive_fix;
 extern detour_info_t detour_nextprimaryattack_unalias;
+extern detour_info_t detour_stun_weapon_unhide_fix;
 extern detour_info_t detour_sapper_allow_multiple_active;
+extern detour_info_t detour_bot_enemy_selection_tweak;
 extern detour_info_t detour_eh_sydney_check_uber;
 extern detour_info_t detour_loadout_allow_holiday_items;
+extern detour_info_t detour_bot_stun_disallow_headmove;
 extern detour_info_t detour_tank_widowmaker_metal;
 extern detour_info_t detour_responses_unused_sapper;
 extern detour_info_t detour_responses_unused_credits;
 extern detour_info_t detour_responses_suppress_medicbot_shield;
 extern detour_info_t detour_responses_suppress_giant_sentrybuster;
 extern detour_info_t detour_countdown_10second_sound_fix;
+extern detour_info_t detour_engiebot_nonsolid_buildings;
+extern detour_info_t detour_engiebot_check_build_placement;
 extern detour_info_t detour_event_popfile_perennial;
 
 extern detour_info_t detour_mini_dispenser;
@@ -118,6 +123,14 @@ extern detour_info_t detour_debug_airblast;
 extern detour_info_t detour_debug_aimhead;
 extern detour_info_t detour_debug_gametype;
 extern detour_info_t detour_debug_rescueranger_trace;
+extern detour_info_t detour_debug_addcond_removecond;
+extern detour_info_t detour_debug_nextbot_input;
+extern detour_info_t detour_debug_sentry_dmg_kills;
+extern detour_info_t detour_debug_spectator_bomb_carrier;
+extern detour_info_t detour_debug_wavestatus_tele_count;
+extern detour_info_t detour_debug_onkilled;
+extern detour_info_t detour_debug_player_attributes;
+extern detour_info_t detour_debug_multidamage;
 
 extern detour_info_t detour_debug_spawn_item_fail_trace;
 
@@ -127,6 +140,17 @@ extern detour_info_t detour_reimplement_sv_showhitboxes;
 extern detour_info_t detour_reimplement_cond_reprogrammed;
 
 extern detour_info_t detour_mvm_enable_dropped_weapons;
+
+extern detour_info_t detour_demoshield_tank_killeater_cheat;
+extern detour_info_t detour_override_locomotion_runspeed;
+extern detour_info_t detour_unused_attribute_classes;
+
+extern detour_info_t detour_canteen_override;
+extern detour_info_t detour_allow_class_change_during_wave;
+extern detour_info_t detour_tank_use_vcollide;
+
+extern detour_info_t detour_force_spec_kill_bots;
+extern detour_info_t detour_disallow_deploy_when_ubered;
 
 
 #endif
